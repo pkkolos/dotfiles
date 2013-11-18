@@ -1,0 +1,28 @@
+[global_config]
+  window_state = maximise
+  focus = system
+  title_transmit_fg_color = "#99cc99"
+  title_transmit_bg_color = "#515151"
+  title_inactive_fg_color = "#515151"
+  title_inactive_bg_color = "#2d2d2d"
+  title_receive_fg_color = "#f2f0ec"
+  title_receive_bg_color = "#6699cc"
+[keybindings]
+[profiles]
+  [[default]]
+    background_image = None
+    scrollback_infinite = True
+    palette = "#2d2d2d:#f99157:#393939:#515151:#a09f93:#e8e6df:#d27b53:#d3d0c8:#747369:#f2777a:#99cc99:#ffcc66:#6699cc:#cc99cc:#66cccc:#f2f0ec"
+    foreground_color = "#d3d0c8"
+    background_color = "#2d2d2d"
+    cursor_color = "#d3d0c8"
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+      profile = default
+[plugins]

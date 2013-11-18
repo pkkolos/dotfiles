@@ -1,0 +1,103 @@
+background no
+update_interval 1
+update_interval_on_battery 5
+double_buffer yes
+no_buffers yes
+total_run_times 0
+
+own_window yes
+own_window_type desktop
+own_window_colour ffffff
+own_window_title conky
+minimum_size 300
+maximum_width 300
+
+alignment tl
+gap_x 16
+gap_y 44
+
+border_inner_margin 15
+
+draw_shades no
+draw_graph_borders no
+
+use_xft yes
+xftalpha 0.0
+xftfont HandelGotD:size=9
+
+default_color 111111
+
+#blue
+color1 0099cc
+#green
+color2 669900
+#orange
+color3 ff8800
+#red
+color4 cc0000
+#purple
+color5 9933cc
+#light grey
+color6 dddddd
+
+TEXT
+${voffset 18}${cpugraph cpu1 40,140 0099cc 0099cc}${alignr}${cpugraph cpu2 40,140 0099cc 0099cc}
+${voffset -65}${offset 15}${font Bitstream Vera Sans Mono:size=20}${cpu cpu1}%${font}
+${voffset -26}${offset 80}${font Bitstream Vera Sans Mono:size=10}${hwmon 1 temp 2}°C${font}
+${voffset -18}${offset 175}${font Bitstream Vera Sans Mono:size=20}${cpu cpu2}%${font}
+${voffset -26}${offset 240}${font Bitstream Vera Sans Mono:size=10}${hwmon 1 temp 3}°C${font}
+${voffset 30}
+${color4}${top name 1}
+${voffset -15}${offset 135}${top pid 1}${alignr}${top cpu 1}%${color}
+${color3}${top name 2}
+${voffset -15}${offset 135}${top pid 2}${alignr}${top cpu 2}%${color}
+${color2}${top name 3}
+${voffset -15}${offset 135}${top pid 3}${alignr}${top cpu 3}%${color}
+${color1}${top name 4}
+${voffset -15}${offset 135}${top pid 4}${alignr}${top cpu 4}%${color}
+${color6}${hr}${color}
+RAM:
+${voffset -15}${offset 100}${color4}${mem}${color} / ${memmax}${alignr}${memperc}%
+${membar}
+Swap:
+${voffset -15}${offset 100}${color3}${swap}${color} / ${swapmax}${alignr}${swapperc}%
+${swapbar}
+${color4}${top_mem name 1}
+${voffset -15}${offset 135}${top_mem pid 1}${alignr}${top_mem mem 1}%${color}
+${color3}${top_mem name 2}
+${voffset -15}${offset 135}${top_mem pid 2}${alignr}${top_mem mem 2}%${color}
+${color2}${top_mem name 3}
+${voffset -15}${offset 135}${top_mem pid 3}${alignr}${top_mem mem 3}%${color}
+${color1}${top_mem name 4}
+${voffset -15}${offset 135}${top_mem pid 4}${alignr}${top_mem mem 4}%${color}
+${color6}${hr}${color}
+Uptime: ${color1}${uptime}${color}${alignr}Updates: ${color1}${texeci 300 aptitude search "~U" | wc -l | tail}${color}
+Battery: ${color4}${battery BAT1}${if_match "${battery_short BAT1}" != "F"} (${battery_time BAT1})${endif}${color}${alignr}ACPI: ${color3}${hwmon 0 temp 1}°C${color}
+
+Gmail: ${execpi 300 ~/.config/conky/mails.sh gmail}${alignr}Outlook: ${execpi 300 ~/.config/conky/mails.sh outlook}
+${color6}${hr}${color}
+${voffset 15}${downspeedgraph eth0 40,140 ff8800 ff8800}${alignr}${upspeedgraph eth0 40,140 669900 669900}
+${voffset -66}${offset 05}${font Bitstream Vera Sans Mono:size=10}${color3}In${color}${font}
+${voffset -18}${offset 35}${font Bitstream Vera Sans Mono:size=15}${downspeedf eth0}${font}
+${voffset -20}${offset 165}${font Bitstream Vera Sans Mono:size=10}${color2}Out${color}${font}
+${voffset -18}${offset 195}${font Bitstream Vera Sans Mono:size=15}${upspeedf eth0}${font}
+${voffset 30}
+${color6}${hr}${color}
+${voffset 15}${downspeedgraph wlan0 40,140 ff8800 ff8800}${alignr}${upspeedgraph wlan0 40,140 669900 669900}
+${voffset -66}${offset 05}${font Bitstream Vera Sans Mono:size=10}${color3}In${color}${font}
+${voffset -18}${offset 35}${font Bitstream Vera Sans Mono:size=15}${downspeedf wlan0}${font}
+${voffset -20}${offset 165}${font Bitstream Vera Sans Mono:size=10}${color2}Out${color}${font}
+${voffset -18}${offset 195}${font Bitstream Vera Sans Mono:size=15}${upspeedf wlan0}${font}
+${voffset 30}
+${color5}${wireless_essid wlan0}${color}
+${voffset -15}${offset 100}Signal: ${color1}${wireless_link_qual_perc wlan0}%${color}${alignr}Bitrate: ${color1}${wireless_bitrate wlan0}${color}
+${color6}${hr}${color}
+/ ${color3}
+${voffset -15}${offset 100}${fs_used /}${color} / ${fs_size /}${alignr}${fs_used_perc /}%${voffset 5}
+/home ${color3}
+${voffset -15}${offset 100}${fs_used /home}${color} / ${fs_size /home}${alignr}${fs_used_perc /home}%
+
+HDD Temperature: ${alignr}${color3}${hddtemp}°C${color}
+${color6}${hr}${color}
+Entropy:
+${voffset -15}${offset 100}${color4}${entropy_avail}${color} / ${entropy_poolsize}${alignr}${entropy_perc}%

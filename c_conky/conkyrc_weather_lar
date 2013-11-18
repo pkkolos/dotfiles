@@ -1,0 +1,94 @@
+background no
+use_xft yes
+xftfont HandelGotD:size=9
+xftalpha 0.8
+update_interval 1
+update_interval_on_battery 5
+total_run_times 0
+own_window yes
+own_window_type desktop
+own_window_transparent yes
+own_window_argb_visual yes
+own_window_argb_value 200
+own_window_title Weather_Conky
+own_window_hints below,sticky,undecorated,skip_taskbar,skip_pager
+default_color E9EAED
+double_buffer yes
+minimum_size 560 0
+maximum_width 560
+draw_shades no
+alignment tl
+no_buffers yes
+uppercase no
+out_to_console no
+gap_x 50
+gap_y 50
+use_spacer none
+show_graph_scale yes
+
+color0 585958 #7293FC
+
+TEXT
+${font Bitstream Vera Sans Mono:style=Bold:size=11}Weather${font}${offset -4}${voffset 2}${hr}${voffset 0}
+${if_existing /proc/net/route wlan0}${font Trebuchet MS:style=Bold:size=10}${execi 600 conkyForecast -l CYXX0003 -d CN -r}, ${execi 600 conkyForecast -l CYXX0003 -d CO}
+Right Now
+${voffset -16}${alignr 341}${font ConkyWeather:style=Bold:size=40}${execi 600 conkyForecast -l CYXX0003 -d WF}${font}
+${alignr 285}${font}${color0}${execi 600 conkyForecast -l CYXX0003 -d CT}${color}
+
+${voffset -52}${font Weather:size=40}y${font}   ${voffset -38}${font Trebuchet MS:size=26}${execi 600 conkyForecast -l CYXX0003 -d HT}${font}
+${goto 35}Feels Like: ${color0}${execi 600 conkyForecast -l CYXX0003 -d LT}${color}
+
+${font}Daylight: ${alignr 345}${color0}${execi 600 conkyForecast -l CYXX0003 --d SR} - ${execi 600 conkyForecast -l CYXX0003 -d SS}${color}
+Wind Speed: ${alignr 345}${if_match "${execi 600 conkyForecast -l CYXX0003 -d WD}" == "CALM"}${color0}${execi 600 conkyForecast -l CYXX0003 -d WD}${color}${else}${color0}${execi 600 conkyForecast -l CYXX0003 -d WS} - ${execi 600 conkyForecast -l CYXX0003 -d WS -b}bf${color}${endif}
+Visibility: ${alignr 345}${color0}${execi 600 conkyForecast -l CYXX0003 -d VI}${color}
+Humidity: ${alignr 345}${color0}${execi 600 conkyForecast -l CYXX0003 -d HM}${color}
+${voffset -60}${alignr 341}${font ConkyWindNESW:style=Bold:size=40}${execi 600 conkyForecast -l CYXX0003 -d BS}${font}${voffset 14}
+Chance of Precipitation: ${alignr 345}${color0}${execi 600 conkyForecast -l CYXX0003 -d PC -s 0}${color}
+${font Trebuchet MS:size=12}${execi 600 conkyForecast --location=CYXX0003 --datatype=MP}
+${voffset -40}${alignr 333}${font MoonPhases:size=28}${execi 600 conkyForecast --location=CYXX0003 --datatype=MF}${font}
+${voffset -205}
+${offset 295}${font Trebuchet MS:style=Bold:size=10}${execi 600 conkyForecast -l CYXX0003 -d DW -s 1}
+${voffset -16}${alignr 56}${font ConkyWeather:style=Bold:size=40}${execi 600 conkyForecast -l CYXX0003 -d WF -s 1}${font}
+${alignr}${font}${color0}${execi 600 conkyForecast -l CYXX0003 -d CT -s 1}${color}
+
+${offset 295}${voffset -52}${font Weather:size=40}y${font}   ${voffset -38}${font Trebuchet MS:size=26}${execi 600 conkyForecast -l CYXX0003 -d HT -s 1}${font}
+${offset 325}Low: ${color0}${execi 600 conkyForecast -l CYXX0003 -d LT -s 1}${color}
+${voffset 16}
+${offset 295}${font Trebuchet MS:style=Bold:size=10}${execi 600 conkyForecast -l CYXX0003 -d DW -s 2}
+${voffset -16}${alignr 56}${font ConkyWeather:style=Bold:size=40}${execi 600 conkyForecast -l CYXX0003 -d WF -s 2}${font}
+${alignr}${font}${color0}${execi 600 conkyForecast -l CYXX0003 -d CT -s 2}${color}
+
+${offset 295}${voffset -52}${font Weather:size=40}y${font}   ${voffset -38}${font Trebuchet MS:size=26}${execi 600 conkyForecast -l CYXX0003 -d HT -s 2}${font}
+${offset 325}Low: ${color0}${execi 600 conkyForecast -l CYXX0003 -d LT -s 2}${color}
+${else}${if_existing /proc/net/route eth0}${font Trebuchet MS:style=Bold:size=10}${execi 600 conkyForecast -l CYXX0003 -d CN -r}, ${execi 600 conkyForecast -l CYXX0003 -d CO}
+Right Now
+${voffset -16}${alignr 341}${font ConkyWeather:style=Bold:size=40}${execi 600 conkyForecast -l CYXX0003 -d WF}${font}
+${alignr 285}${font}${color0}${execi 600 conkyForecast -l CYXX0003 -d CT}${color}
+
+${voffset -52}${font Weather:size=40}y${font}   ${voffset -38}${font Trebuchet MS:size=26}${execi 600 conkyForecast -l CYXX0003 -d HT}${font}
+${goto 35}Feels Like: ${color0}${execi 600 conkyForecast -l CYXX0003 -d LT}${color}
+
+${font}Daylight: ${alignr 345}${color0}${execi 600 conkyForecast -l CYXX0003 --d SR} - ${execi 600 conkyForecast -l CYXX0003 -d SS}${color}
+Wind Speed: ${alignr 345}${if_match "${execi 600 conkyForecast -l CYXX0003 -d WD}" == "CALM"}${color0}${execi 600 conkyForecast -l CYXX0003 -d WD}${color}${else}${color0}${execi 600 conkyForecast -l CYXX0003 -d WS} - ${execi 600 conkyForecast -l CYXX0003 -d WS -b}bf${color}${endif}
+Visibility: ${alignr 345}${color0}${execi 600 conkyForecast -l CYXX0003 -d VI}${color}
+Humidity: ${alignr 345}${color0}${execi 600 conkyForecast -l CYXX0003 -d HM}${color}
+${voffset -60}${alignr 341}${font ConkyWindNESW:style=Bold:size=40}${execi 600 conkyForecast -l CYXX0003 -d BS}${font}${voffset 14}
+Chance of Precipitation: ${alignr 345}${color0}${execi 600 conkyForecast -l CYXX0003 -d PC -s 0}${color}
+${font Trebuchet MS:size=12}${execi 600 conkyForecast --location=CYXX0003 --datatype=MP}
+${voffset -40}${alignr 333}${font MoonPhases:size=28}${execi 600 conkyForecast --location=CYXX0003 --datatype=MF}${font}
+${voffset -205}
+${offset 295}${font Trebuchet MS:style=Bold:size=10}${execi 600 conkyForecast -l CYXX0003 -d DW -s 1}
+${voffset -16}${alignr 56}${font ConkyWeather:style=Bold:size=40}${execi 600 conkyForecast -l CYXX0003 -d WF -s 1}${font}
+${alignr}${font}${color0}${execi 600 conkyForecast -l CYXX0003 -d CT -s 1}${color}
+
+${offset 295}${voffset -52}${font Weather:size=40}y${font}   ${voffset -38}${font Trebuchet MS:size=26}${execi 600 conkyForecast -l CYXX0003 -d HT -s 1}${font}
+${offset 325}Low: ${color0}${execi 600 conkyForecast -l CYXX0003 -d LT -s 1}${color}
+${voffset 16}
+${offset 295}${font Trebuchet MS:style=Bold:size=10}${execi 600 conkyForecast -l CYXX0003 -d DW -s 2}
+${voffset -16}${alignr 56}${font ConkyWeather:style=Bold:size=40}${execi 600 conkyForecast -l CYXX0003 -d WF -s 2}${font}
+${alignr}${font}${color0}${execi 600 conkyForecast -l CYXX0003 -d CT -s 2}${color}
+
+${offset 295}${voffset -52}${font Weather:size=40}y${font}   ${voffset -38}${font Trebuchet MS:size=26}${execi 600 conkyForecast -l CYXX0003 -d HT -s 2}${font}
+${offset 325}Low: ${color0}${execi 600 conkyForecast -l CYXX0003 -d LT -s 2}${color}
+${else}${font PizzaDude Bullets:size=14}4${font} ${voffset -2}Weather Unavailable
+${endif}${endif}

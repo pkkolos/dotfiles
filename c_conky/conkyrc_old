@@ -1,0 +1,66 @@
+background no
+use_xft yes
+xftfont HandelGotD:size=9
+xftalpha 0.8
+update_interval 1
+update_interval_on_battery 5
+total_run_times 0
+own_window yes
+own_window_type desktop
+own_window_transparent yes
+own_window_argb_visual yes
+own_window_argb_value 200
+own_window_title Main_Conky
+own_window_hints below,sticky,undecorated,skip_taskbar,skip_pager
+default_color E9EAED
+double_buffer yes
+minimum_size 560 0
+maximum_width 560
+draw_shades no
+alignment tl
+no_buffers yes
+uppercase no
+out_to_console no
+gap_x 50
+gap_y 50 #300
+use_spacer none
+show_graph_scale yes
+cpu_avg_samples 2
+
+color0 585958 #7293FC
+color1 B30008
+color2 C96110
+color3 217800
+color4 0779A0
+
+TEXT
+${font Bitstream Vera Sans Mono:style=Bold:size=11}System${font}${voffset 2}${hr}${voffset 0}
+${voffset 4}${font StyleBats:size=16}i${font} ${voffset -4}Kernel: $color0${alignr 285}$kernel ($machine)$color${voffset 4}
+${font StyleBats:size=16}A${font} ${voffset -4}Core 1: $color0${cpu cpu1}% $color${alignr 285}${cpubar cpu1 6,160}${voffset 4}
+${font StyleBats:size=16}A${font} ${voffset -4}Core 2: $color0${cpu cpu2}% $color${alignr 285}${cpubar cpu2 6,160}${voffset 4}
+${font StyleBats:size=16}g${font} ${voffset -4}Memory: $color0$mem / $memmax${alignr 285}$memperc%$color${voffset 4}
+${membar 6,275}${voffset 0}
+${font Webdings:size=13}~${font} ${voffset -1}Battery:  $color0${battery BAT1}${if_match "${battery_short BAT1}" != "F"} (${battery_time BAT1})${endif}$color${voffset 1}$alignr${battery_bar 6,275 BAT1}${voffset 2}
+${font Webdings:size=13}·${font} ${voffset -1}Temperatures: ${alignr 60}ACPI: $color0${hwmon 0 temp 1}°C${color}${alignr 40}CPU Core 1: $color0${hwmon 1 temp 2}°C${color}${alignr 20}CPU Core 2: $color0${hwmon 1 temp 3}°C${color}${alignr}HDD: $color0${hddtemp}°C$color${voffset 3}
+${voffset -152}
+${offset 285}${font StyleBats:size=16}q${font} ${voffset -4}Uptime: $color0$alignr$uptime$color${voffset 4}
+${offset 285}${cpugraph 27,275}
+${offset 285}${font StyleBats:size=16}j${font} ${voffset -4}Swap: $color0$swap / $swapmax $alignr $swapperc%$color${voffset 4}
+${offset 285}$swapbar${voffset 35}
+
+${font Bitstream Vera Sans Mono:style=Bold:size=11}Top Processes${font}${offset -1}${voffset 2}${hr}${voffset 0}${offset 0}
+${font style=Bold:size=10}CPU Usage${alignc 75}PID${alignr 285}CPU%${font}
+$color1${top name 1}${alignc 75}${top pid 1}${alignr 285}${top cpu 1}%
+$color2${top name 2}${alignc 75}${top pid 2}${alignr 285}${top cpu 2}%
+$color3${top name 3}${alignc 75}${top pid 3}${alignr 285}${top cpu 3}%
+$color4${top name 4}${alignc 75}${top pid 4}${alignr 285}${top cpu 4}%$color
+${voffset -91}
+${offset 285}${font style=Bold:size=10}Memory Usage${alignc -200}PID${alignr}MEM%${font}
+${offset 285}$color1${top_mem name 1}${alignc -200}${top_mem pid 1}$alignr${top_mem mem 1}%
+${offset 285}$color2${top_mem name 2}${alignc -200}${top_mem pid 2}$alignr${top_mem mem 2}%
+${offset 285}$color3${top_mem name 3}${alignc -200}${top_mem pid 3}$alignr${top_mem mem 3}%
+${offset 285}$color4${top_mem name 4}${alignc -200}${top_mem pid 4}$alignr${top_mem mem 4}%$color
+
+${font Bitstream Vera Sans Mono:style=Bold:size=11}Emails|Updates|Trash${font}${voffset 2}${hr}${voffset 0}
+Gmail: $color0${execpi 300 ~/.config/conky/mails.sh gmail}$color${alignr 285}Outlook: $color0${execpi 300 ~/.config/conky/mails.sh outlook}$color
+${voffset -15}${offset 285}Updates: $color0${texeci 300 aptitude search "~U" | wc -l | tail}$color$alignr Trash: $color0${exec ~/.config/conky/trash.sh}$color

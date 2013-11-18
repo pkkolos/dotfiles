@@ -1,0 +1,38 @@
+set nocompatible
+
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" Dependency
+Bundle 'gmarik/vundle'
+
+" General
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'smancill/conky-syntax.vim'
+Bundle 'scrooloose/nerdtree'
+Bundle 'mbbill/undotree'
+Bundle 'kien/ctrlp.vim'
+Bundle 'endel/ctrlp-filetype.vim'
+Bundle 'tpope/vim-abolish'
+Bundle 'tpope/vim-surround'
+Bundle 'terryma/vim-expand-region'
+Bundle 'terryma/vim-multiple-cursors'
+Bundle 'godlygeek/tabular'
+
+" For Programming
+Bundle 'Shougo/neocomplete'
+Bundle 'Shougo/neosnippet'
+Bundle 'honza/vim-snippets'
+"Bundle 'SirVer/ultisnips'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/syntastic'
+Bundle 'tpope/vim-fugitive'
+if executable('ctags')
+    Bundle 'majutsushi/tagbar'
+endif
+if has('python')
+    Bundle 'klen/python-mode'
+endif
+
+" vim: tabstop=4 softtabstop=4 shiftwidth=4 expandtab:

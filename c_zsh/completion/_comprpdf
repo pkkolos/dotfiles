@@ -1,0 +1,8 @@
+#compdef comprpdf
+#autoload
+
+_arguments \
+  "(-q -o)-l[list supported quality options]" \
+  "(-l)-q[set quality]:quality options:(default screen ebook printer prepress)" \
+  "(-l)-o[define output file]:output file:_files -g '*.pdf'" \
+  ":pdf file:_files -g '*.pdf'" && return 0
