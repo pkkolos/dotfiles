@@ -44,7 +44,7 @@ else
     [[ "$LP_ENABLE_VCS_ROOT" = "1" ]] && LP_PS1="${LP_PS1}${LP_VCS}"
 fi
 # add return code and prompt mark
-LP_PS1="${LP_PS1}${LP_ERR}${LP_MARK}${LP_PS1_POSTFIX}"
+LP_PS1="${LP_PS1}${LP_ERR}${LP_MARK} ${LP_PS1_POSTFIX}"
 LP_TITLE="${LP_TITLE}${LP_MARK}"
 
 # "invisible" parts
