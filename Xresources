@@ -1,0 +1,63 @@
+#define base00 #2d2d2d
+#define base01 #393939
+#define base02 #515151
+#define base03 #747369
+#define base04 #a09f93
+#define base05 #d3d0c8
+#define base06 #e8e6df
+#define base07 #f2f0ec
+#define base08 #f2777a
+#define base09 #f99157
+#define base0A #ffcc66
+#define base0B #99cc99
+#define base0C #66cccc
+#define base0D #6699cc
+#define base0E #cc99cc
+#define base0F #d27b53
+
+*.foreground:  base05
+*.background:  base00
+*.cursorColor: base05
+*.color0:      base00
+*.color1:      base08
+*.color2:      base0B
+*.color3:      base0A
+*.color4:      base0D
+*.color5:      base0E
+*.color6:      base0C
+*.color7:      base05
+*.color8:      base03
+*.color9:      base09
+*.color10:     base01
+*.color11:     base02
+*.color12:     base04
+*.color13:     base06
+*.color14:     base0F
+*.color15:     base07
+
+XTerm*title:      XTerm
+XTerm*termName:   xterm-256color
+XTerm*faceName:   Monospace
+XTerm*faceSize:   10
+XTerm*maximized:  true
+XTerm*boldColors: false
+
+XTerm*locale:    true
+XTerm*utf8:      always
+XTerm*utf8Title: true
+
+XTerm*saveLines:       4096
+XTerm*scrollKey:       true
+XTerm*fastScroll:      true
+XTerm*scrollTtyOutput: false
+
+XTerm*highlightSelection: true
+
+XTerm*VT100.translations: #override \
+         Shift <Btn1Up>:  select-end(CLIPBOARD) \n\
+         Shift <Btn2Up>:  insert-selection(CLIPBOARD) \n\
+    Ctrl Shift <Key>V:    insert-selection(CLIPBOARD) \n\
+    Ctrl       <Key>Up:   scroll-back(1, line) \n\
+    Ctrl       <Key>Down: scroll-forw(1, line) \n\
+
+! vim: ft=xdefaults ts=4 sts=4 sw=4 et:

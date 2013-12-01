@@ -2,3 +2,4 @@
 
 xset s off
 xset -dpms
+xrdb ~/.Xresources
