@@ -1437,7 +1437,7 @@ _lp_title()
     case "$TERM" in
       screen*)
         [[ "$LP_ENABLE_SCREEN_TITLE" != "1" ]] && return
-        local title="${LP_SCREEN_TITLE_OPEN}${txt}${LP_SCREEN_TITLE_CLOSE}"
+        local title="${_LP_OPEN_ESC}${LP_SCREEN_TITLE_OPEN}${txt}${LP_SCREEN_TITLE_CLOSE}${_LP_CLOSE_ESC}"
       ;;
       linux*)
         local title=""
