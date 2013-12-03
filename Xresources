@@ -51,6 +51,7 @@ XTerm*scrollKey:       true
 XTerm*fastScroll:      true
 XTerm*scrollTtyOutput: false
 
+XTerm*metaSendsEscape:    true
 XTerm*highlightSelection: true
 
 XTerm*VT100.translations: #override \
