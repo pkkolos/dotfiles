@@ -1,11 +1,13 @@
 [user]
 	name = Panayiotis Kkolos
 	email = pkkolos@gmail.com
-[color]
-	ui = true
 [core]
 	editor = vim
-[color "status"]
-	untracked = blue
 [push]
 	default = simple
+[color]
+	ui = true
+[color "diff"]
+	meta = magenta bold
+[color "status"]
+	untracked = blue
