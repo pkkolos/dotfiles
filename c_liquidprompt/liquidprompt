@@ -289,7 +289,7 @@ _lp_source_config()
     LP_TITLE_OPEN=${LP_TITLE_OPEN:-"\e]0;"}
     LP_TITLE_CLOSE=${LP_TITLE_CLOSE:-"\a"}
     LP_SCREEN_TITLE_OPEN=${LP_SCREEN_TITLE_OPEN:-"\033k"}
-    LP_SCREEN_TITLE_CLOSE=${LP_SCREEN_TITLE_CLOSE:-"\033\\"}
+    LP_SCREEN_TITLE_CLOSE=${LP_SCREEN_TITLE_CLOSE:-"\033\\\\"}
 
     LP_ENABLE_PERM=${LP_ENABLE_PERM:-1}
     LP_ENABLE_SHORTEN_PATH=${LP_ENABLE_SHORTEN_PATH:-1}
@@ -1419,18 +1419,21 @@ _lp_temperature() {
 # Remove all colors and escape characters of the given string and return a pure text
 _lp_as_text()
 {
-    # Remove colors from the computed prompt
-    # FIXME Darwin regex
     case "$LP_OS" in
-        Linux|FreeBSD|OpenBSD|SunOS) local pst="$(echo $1 | sed -r -e "s/\x1B\[([0-9]{1,2}(;[0-9]{1,3}){,2})?[m|K]//g" -e "s/\x1B\(B//g")" ;;
-        Darwin                     ) local pst="$(echo $1 | sed -E "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g")" ;;
+        Darwin) local ereg="E" ;;
+        *)      local ereg="r" ;;
     esac
+
+    # Remove colors from the computed prompt
+    local pst="$(echo $1 | sed -$ereg "s/\x1B\[([0-9]+(;[0-9]+)*)?[m|K]//g")"
+
+    # Remove bold sequences and shift in characters
+    pst="$(echo $pst | sed "s,\x1B(B\|\x0F,,g")"
 
     # Remove escape sequences
     local op="$(printf "%q" "$_LP_OPEN_ESC")"
     local cl="$(printf "%q" "$_LP_CLOSE_ESC")"
-    # FIXME Check for Darwin compatibility
-    pst="$(echo $pst | sed -r "s,$op|$cl,,g")" # replace all open _or_ close tags with nothing
+    pst="$(echo $pst | sed -$ereg "s,$op|$cl,,g")" # replace all open _or_ close tags with nothing
 
     echo -n "$pst"
 }
