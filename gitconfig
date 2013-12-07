@@ -17,6 +17,9 @@
 	untracked = blue
 [core]
 	editor = vim
+[diff]
+	renames = copies
+	mnemonicprefix = true
 [push]
 	default = simple
 [user]
