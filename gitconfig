@@ -1,13 +1,24 @@
-[user]
-	name = Panayiotis Kkolos
-	email = pkkolos@gmail.com
-[core]
-	editor = vim
-[push]
-	default = simple
+[alias]
+	a = add
+	ca = commit -a
+	c = commit
+	co = checkout
+	d = diff
+	l = log
+	r = reset
+	rh = reset --hard
+	s = status
+	t = tag
 [color]
 	ui = true
 [color "diff"]
 	meta = magenta bold
 [color "status"]
 	untracked = blue
+[core]
+	editor = vim
+[push]
+	default = simple
+[user]
+	name = Panayiotis Kkolos
+	email = pkkolos@gmail.com
