@@ -9,6 +9,7 @@ Bundle 'gmarik/vundle'
 
 " General
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'chriskempson/base16-vim'
 Bundle 'smancill/conky-syntax.vim'
 Bundle 'scrooloose/nerdtree'
 Bundle 'mbbill/undotree'
