@@ -10,6 +10,9 @@ activity "activity in %n (%t) [%c]"
 termcapinfo xterm* ti@:te@
 # Don't leave residual editor text
 altscreen on
+# Change the colour of vertical split line
+# to match that of horizontal split line
+sorendition "= Gd"
 
-caption always '%L=%{= Gw}%?%-Lw%?%45L>%{r}[%{+b g}%n*%f %{b}%t%{-b r}]%{w}%?%+Lw%?%-19= [%{+b y}%Y-%m-%d %0c%{-b w}]'
-hardstatus alwayslastline '%{= kw}[%{+b y}%H%{-b w}] %{g}%n %f %{b}%t%? %{+b r}(%{-b w}%u%{+b r})%{-b w}%?%-19= %{w}[ %{+b r}%l%{-b w} ]'
+caption always '%{= Gr}%n*%f %{b}%t%? %{+b y}[%{-b}%u%{+b}]%{-b d}%?'
+hardstatus alwayslastline '%L=%{= d}%?%-Lw%?%40L>%{+b Gr} %n*%f %{-b dd}%?%+Lw%?%-34=%{+b Gg} %l %{y} %Y-%m-%d %0c '
