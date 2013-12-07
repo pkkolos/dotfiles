@@ -1,5 +1,5 @@
 " Author: Panayiotis Kkolos
-" Date:   2013 November 18
+" Date:   2013 December 07
 
 " === Vim Addons ===
 if filereadable(expand("~/.vimrc.bundles"))
@@ -238,18 +238,16 @@ autocmd FileType html,xml,xslt setlocal matchpairs+=<:>
 set laststatus=2  "always show status line
 set lazyredraw    "necessary for correct usage of status line colours
 
-set statusline=%{UpdateStatuslineColour()}
-set statusline+=%1*%{&paste?'[PASTE]':''}                               "Paste
-set statusline+=%0*%{&paste?'\ ':''}[%n]                                "Buffer Number
-set statusline+=\ %f                                                    "Full Path
-set statusline+=%h%m%r%w                                                "Help, Modified, Read-Only, Preview
-set statusline+=%{strlen(&ft)>0?'\ \ \|\ ':''}%{&ft}                    "File Type
-set statusline+=\ \|\ %{strlen(&fenc)>0?&fenc:&enc}%{&bomb?'/bom':''}   "Encoding & Byte Order Mark
-set statusline+=\ \|\ %{&ff}                                            "File Format (unix/dos/...)
-set statusline+=\ %{&spell?'\|\ ':''}%{&spell?&spelllang:''}            "Spell Language(s)
-set statusline+=%<%=\ %{&ts}\ %{&et?'SPC':'TB'}                         "(Soft)tabstop, Shiftwidth & Expandtab
-set statusline+=\ \|\ LN:%l/%L\ \|\ COL:%c%V                            "Line Number, Column Number
-set statusline+=\ \|\ CHR:%03b(0x%04B)\ \|\ %P                          "Character, Top/Bot
+set statusline=%{UpdateStatuslineColour()}    "Change status line's colour in insert, visual and replace mode
+set statusline+=%1*%{&paste?'[PASTE]':''}     "Paste status
+set statusline+=%0*[%n]\ %f%h%m%r%w           "Buffer number, full path, help, modified, read-only, preview
+set statusline+=%{strlen(&ft)>0?'\ \ \|\ ':''}%{&ft}                   "Filetype
+set statusline+=\ \|\ %{strlen(&fenc)>0?&fenc:&enc}%{&bomb?'/bom':''}  "Encoding & byte order mark
+set statusline+=\ \|\ %{&ff}                                           "File format (unix/dos/...)
+set statusline+=%{&spell?'\ \ \|\ ':''}%{&spell?&spelllang:''}         "Spell language(s)
+set statusline+=\ %<%=%{&ts}\ %{&et?'SP':'TB'}                         "(Soft)tabstop, Shiftwidth & Expandtab
+set statusline+=\ \|\ LN:%l/%L\ \|\ COL:%c%V                           "Line number, column number
+set statusline+=\ \|\ CHR:%03b(0x%04B)\ \|\ %P                         "Character, top/bot
 
 hi User1 guifg=#fdf6e3 guibg=#dc322f gui=NONE ctermfg=0 ctermbg=1 cterm=NONE
 hi StatusLine guifg=#073642 guibg=#93a1a1 gui=NONE ctermfg=12 ctermbg=10 cterm=NONE
