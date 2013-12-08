@@ -5,6 +5,7 @@
 # Special characters
 # Be sure to use characters that exists in the font you use. You can use several
 # characters at once.
+LP_MARK_DEFAULT=""          # prompt mark outside of repositories
 LP_MARK_BATTERY="⌁"         # in front of the battery charge
 LP_MARK_ADAPTER="⏚"         # displayed when plugged
 LP_MARK_LOAD="⌂"            # in front of the load
@@ -14,12 +15,17 @@ LP_MARK_HG="☿"              # prompt mark in hg repositories
 LP_MARK_SVN="‡"             # prompt mark in svn repositories
 LP_MARK_GIT="±"             # prompt mark in git repositories
 LP_MARK_FOSSIL="⌘"          # prompt mark in fossil repositories
+LP_MARK_BZR="⚯"             # prompt mark in bzr repositories
+LP_MARK_DISABLED="⌀"        # prompt mark if the vcs repository is disabled
 LP_MARK_UNTRACKED="*"       # if git has untracked files
 LP_MARK_STASH="+"           # if git has stashs
-LP_MARK_SHORTEN_PATH="…"    # prompt mark in shortened paths
+LP_MARK_BRACKET_OPEN="["    # open bracket mark
+LP_MARK_BRACKET_CLOSE="]"   # close bracket mark
+LP_MARK_SHORTEN_PATH=" … "  # prompt mark in shortened paths
 
 # Do not prefix the prompt
 LP_PS1_PREFIX=""
+LP_PS1_POSTFIX=""
 
 # Colors
 # Available colors are:
@@ -55,6 +61,7 @@ LP_COLOR_USER_ROOT="$BOLD_YELLOW"  # root
 # Hostname
 LP_COLOR_HOST=""             # local host
 LP_COLOR_SSH="$BLUE"         # connected via SSH
+LP_COLOR_SU="$BOLD_YELLOW"   # remote su/sudo
 LP_COLOR_TELNET="$WARN_RED"  # connected via telnet
 LP_COLOR_X11_ON="$GREEN"     # connected with X11 support
 LP_COLOR_X11_OFF="$YELLOW"   # connected without X11 support
@@ -77,6 +84,9 @@ LP_COLOR_DISCHARGING_UNDER="$RED"     # discharging and under threshold
 
 # Time
 LP_COLOR_TIME="$BLUE"
+
+# Screen/Tmux
+LP_COLOR_IN_MULTIPLEXER="$BOLD_BLUE"
 
 # Virtualenv
 LP_COLOR_VIRTUALENV="$CYAN"
