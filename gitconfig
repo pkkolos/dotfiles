@@ -1,5 +1,6 @@
 [alias]
 	a = add
+	ap = add -p
 	ca = commit -a
 	c = commit
 	co = checkout
