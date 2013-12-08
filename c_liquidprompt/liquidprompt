@@ -240,7 +240,7 @@ _lp_source_config()
     LP_PERCENTS_ALWAYS=${LP_PERCENTS_ALWAYS:-1}
     LP_PS1=${LP_PS1:-""}
     LP_PS1_PREFIX=${LP_PS1_PREFIX:-""}
-    LP_PS1_POSTFIX=${LP_PS1_POSTFIX:-""}
+    LP_PS1_POSTFIX=${LP_PS1_POSTFIX:-" "}
     LP_TITLE_OPEN=${LP_TITLE_OPEN:-"\e]0;"}
     LP_TITLE_CLOSE=${LP_TITLE_CLOSE:-"\a"}
     LP_SCREEN_TITLE_OPEN=${LP_SCREEN_TITLE_OPEN:-"\033k"}
@@ -283,6 +283,7 @@ _lp_source_config()
     LP_MARK_BRACKET_OPEN=${LP_MARK_BRACKET_OPEN:-"["}
     LP_MARK_BRACKET_CLOSE=${LP_MARK_BRACKET_CLOSE:-"]"}
     LP_MARK_SHORTEN_PATH=${LP_MARK_SHORTEN_PATH:-" … "}
+    LP_MARK_PREFIX=${LP_MARK_PREFIX:-" "}
 
     LP_COLOR_PATH=${LP_COLOR_PATH:-$BOLD}
     LP_COLOR_PATH_ROOT=${LP_COLOR_PATH_ROOT:-$BOLD_YELLOW}
@@ -1634,7 +1635,7 @@ _lp_set_prompt()
         fi
 
         # end of the prompt line: double spaces
-        LP_MARK="$(_lp_sl "$(_lp_smart_mark $LP_VCS_TYPE)")"
+        LP_MARK="$(_lp_smart_mark $LP_VCS_TYPE)"
 
         # The color is different if user is root
         LP_PWD="${LP_COLOR_PATH}${LP_PWD}${NO_COL}"
@@ -1672,7 +1673,7 @@ _lp_set_prompt()
         PS1="${PS1}${LP_VCS}"
 
         # add return code and prompt mark
-        PS1="${PS1}${LP_ERR}${LP_MARK} ${LP_PS1_POSTFIX}"
+        PS1="${PS1}${LP_ERR}${LP_MARK_PREFIX}${LP_MARK}${LP_PS1_POSTFIX}"
 
         # "invisible" parts
         # Get the current prompt on the fly and make it a title
