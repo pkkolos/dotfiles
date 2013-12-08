@@ -37,7 +37,7 @@ bindsym $mod+Shift+q kill
 # installed.
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-bindsym $mod+l exec --no-startup-id i3lock -n -d -c 000000
+#bindsym $mod+l exec --no-startup-id i3lock -n -d -c 000000
 
 # change focus
 #bindsym $mod+j focus left
@@ -87,7 +87,7 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-bindsym $mod+c focus child
+bindsym $mod+z focus child
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -118,7 +118,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -128,10 +128,10 @@ mode "resize" {
     # Pressing right will grow the window’s width.
     # Pressing up will shrink the window’s height.
     # Pressing down will grow the window’s height.
-    bindsym j           resize shrink width 10 px or 10 ppt
-    bindsym k           resize grow height 10 px or 10 ppt
-    bindsym l           resize shrink height 10 px or 10 ppt
-    bindsym semicolon   resize grow width 10 px or 10 ppt
+    #bindsym j           resize shrink width 10 px or 10 ppt
+    #bindsym k           resize grow height 10 px or 10 ppt
+    #bindsym l           resize shrink height 10 px or 10 ppt
+    #bindsym semicolon   resize grow width 10 px or 10 ppt
 
     # same bindings, but for the arrow keys
     bindsym Left        resize shrink width 10 px or 10 ppt
@@ -146,12 +146,12 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-#set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (p) poweroff
-set $mode_system System (s) suspend, (h) hibernate, (r) reboot, (p) poweroff
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (p) poweroff
+#set $mode_system System (s) suspend, (h) hibernate, (r) reboot, (p) poweroff
 
 mode "$mode_system" {
-    #bindsym l exec --no-startup-id i3lock -n -d -c 000000, mode "default"
-    #bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym l exec --no-startup-id i3lock -n -d -c 000000, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
     bindsym s exec --no-startup-id i3lock -c 000000 && systemctl suspend, mode "default"
     bindsym h exec --no-startup-id i3lock -c 000000 && systemctl hibernate, mode "default"
     bindsym r exec --no-startup-id systemctl reboot
