@@ -794,26 +794,32 @@ _lp_git_branch_color()
         local ret
         shortstat="$(LC_ALL=C \git diff --shortstat HEAD 2>/dev/null)"
         if [[ -n "$shortstat" ]] ; then
-            local has_lines
-            #has_lines=$(\git diff --numstat 2>/dev/null | awk 'NF==3 {plus+=$1; minus+=$2} END {printf("+%d/-%d\n", plus, minus)}')
-            has_lines=${shortstat/*changed, /}
-            has_lines=${has_lines/ inser*, /\/-}
-            has_lines=${has_lines/ del*/}
-            [[ "$shortstat" = *insertion* ]] && has_lines="+${has_lines/ inser*/}" || has_lines="-$has_lines"
+            shortstat="$(LC_ALL=C \git diff --shortstat 2>/dev/null)"
 
-            if [[ "$has_commit" -gt "0" ]] ; then
-                # Changes to commit and commits to push
-                ret="${LP_COLOR_CHANGES}${branch}${NO_COL}(${LP_COLOR_DIFF}$has_lines${NO_COL},${LP_COLOR_COMMITS}$has_commit${NO_COL})"
-            else
-                ret="${LP_COLOR_CHANGES}${branch}${NO_COL}(${LP_COLOR_DIFF}$has_lines${NO_COL})" # changes to commit
-            fi
-        else
-            if [[ "$has_commit" -gt "0" ]] ; then
+            if [[ -n "$shortstat" ]] ; then
+                local has_lines
+                has_lines=${shortstat/*changed, /}
+                has_lines=${has_lines/ inser*, /\/-}
+                has_lines=${has_lines/ del*/}
+                [[ "$shortstat" = *insertion* ]] && has_lines="+${has_lines/ inser*/}" || has_lines="-$has_lines"
+
+                if [[ "$has_commit" -gt "0" ]] ; then
+                    # Changes to commit and commits to push
+                    ret="${LP_COLOR_CHANGES}${branch}${NO_COL}(${LP_COLOR_DIFF}$has_lines${NO_COL},${LP_COLOR_COMMITS}$has_commit${NO_COL})"
+                else
+                    ret="${LP_COLOR_CHANGES}${branch}${NO_COL}(${LP_COLOR_DIFF}$has_lines${NO_COL})" # changes to commit
+                fi
+            elif [[ "$has_commit" -gt "0" ]] ; then
                 # some commit(s) to push
-                ret="${LP_COLOR_COMMITS}${branch}${NO_COL}(${LP_COLOR_COMMITS}$has_commit${NO_COL})"
+                ret="${LP_COLOR_CHANGES}${branch}${NO_COL}(${LP_COLOR_COMMITS}$has_commit${NO_COL})"
             else
-                ret="${LP_COLOR_UP}${branch}" # nothing to commit or push
+                ret="${LP_COLOR_CHANGES}${branch}"
             fi
+        elif [[ "$has_commit" -gt "0" ]] ; then
+            # some commit(s) to push
+            ret="${LP_COLOR_COMMITS}${branch}${NO_COL}(${LP_COLOR_COMMITS}$has_commit${NO_COL})"
+        else
+            ret="${LP_COLOR_UP}${branch}" # nothing to commit or push
         fi
         echo -ne "$ret$end"
     fi
