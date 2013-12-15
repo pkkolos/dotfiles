@@ -74,3 +74,4 @@ autoload -U compinit && compinit -i
 
 autoload comprpdf
 autoload convsub
+autoload extract
