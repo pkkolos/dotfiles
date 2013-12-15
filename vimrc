@@ -397,10 +397,22 @@ imap <C-s> <Plug>(neosnippet_expand_or_jump)
 smap <C-s> <Plug>(neosnippet_expand_or_jump)
 xmap <C-s> <Plug>(neosnippet_expand_target)
 
-"inoremap <expr><bs> pumvisible() ? neocomplete#smart_close_popup() : "\<bs>"
-inoremap <expr><cr> pumvisible() ? neocomplete#close_popup() : "\<cr>"
-inoremap <expr><kEnter> pumvisible() ? neocomplete#close_popup() : "\<cr>"
-inoremap <expr><S-kEnter> pumvisible() ? neocomplete#close_popup()."\<cr>" : "\<cr>"
+inoremap <expr><C-g> neocomplete#undo_completion()
+inoremap <expr><C-l> neocomplete#complete_common_string()
+"inoremap <expr><C-h> neocomplete#smart_close_popup()
+"inoremap <expr><C-y> neocomplete#close_popup()
+inoremap <expr><C-e> neocomplete#cancel_popup()
+
+inoremap <expr><left>  neocomplete#cancel_popup()."\<left>"
+inoremap <expr><right> neocomplete#cancel_popup()."\<right>"
+inoremap <expr><up>    pumvisible() ? "\<up>"   : neocomplete#cancel_popup()."\<up>"
+inoremap <expr><down>  pumvisible() ? "\<down>" : neocomplete#cancel_popup()."\<down>"
+
+inoremap <expr><bs>       pumvisible() ? neocomplete#smart_close_popup()."\<C-h>" : "\<bs>"
+inoremap <expr><cr>       pumvisible() ? neocomplete#close_popup()                : "\<cr>"
+inoremap <expr><space>    pumvisible() ? neocomplete#close_popup()."\<space>"     : "\<space>"
+inoremap <expr><kenter>   pumvisible() ? neocomplete#close_popup()                : "\<cr>"
+inoremap <expr><S-kenter> pumvisible() ? neocomplete#close_popup()."\<cr>"        : "\<cr>"
 
 imap     <expr><tab> pumvisible() ? "\<C-n>" : neosnippet#expandable_or_jumpable()
     \ ? "\<Plug>(neosnippet_expand_or_jump)" : <SID>check_back_space()
