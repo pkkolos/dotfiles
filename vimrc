@@ -401,8 +401,12 @@ inoremap <expr><cr> pumvisible() ? neocomplete#close_popup() : "\<cr>"
 inoremap <expr><kEnter> pumvisible() ? neocomplete#close_popup() : "\<cr>"
 inoremap <expr><S-kEnter> pumvisible() ? neocomplete#close_popup()."\<cr>" : "\<cr>"
 
-inoremap <expr><tab> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<tab>" : "\<C-x>\<C-u>"
-inoremap <expr><S-tab> pumvisible() ? "\<C-p>" : <SID>check_back_space() ? "\<tab>" : "\<C-x>\<C-u>"
+imap     <expr><tab> pumvisible() ? "\<C-n>" : neosnippet#expandable_or_jumpable()
+    \ ? "\<Plug>(neosnippet_expand_or_jump)" : <SID>check_back_space()
+    \ ? "\<tab>" : neocomplete#start_manual_complete()
+smap     <expr><tab> neosnippet#expandable_or_jumpable()
+    \ ? "\<Plug>(neosnippet_expand_or_jump)" : "\<tab>"
+inoremap <expr><S-tab> pumvisible() ? "\<C-p>" : "\<tab>"
 
 autocmd FileType c             setlocal omnifunc=ccomplete#Complete
 autocmd FileType python        setlocal omnifunc=pythoncomplete#Complete
