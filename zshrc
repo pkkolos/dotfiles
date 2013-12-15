@@ -30,8 +30,6 @@ setopt promptsubst
 setopt no_sh_word_split
 setopt no_beep
 
-export EDITOR=vim
-
 zstyle ':completion:*'                  completer _expand _complete _match _list _correct _approximate _files
 zstyle ':completion:*'                  matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*'                  ignore-parents parent pwd
@@ -67,6 +65,7 @@ zstyle ':completion:*:*:-subscript-:*'  tag-order indexes parameters
 zstyle ':completion:*:warnings'         format $'%B%F{red}No matches for:%f %F{yellow}%d%f%b'
 
 source ~/.config/liquidprompt/liquidprompt
+source ~/.config/zsh/exports.zsh
 source ~/.config/zsh/aliases.zsh
 
 load_functions=(comprpdf convsub)
