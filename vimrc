@@ -176,8 +176,9 @@ nnoremap <silent> <leader>tv :call g:ToggleColorColumn()<cr>
 nnoremap <silent> <leader>tc :call g:ToggleCursorColumn()<cr>
 
 " === Scrolling & Folding ===
-set scrolloff=2  "lines to keep around the cursor
-set foldenable   "enable folding
+set scrolloff=2        "lines to keep around the cursor
+set foldenable         "enable folding
+set foldlevelstart=99  "start with all foldings opened
 
 nnoremap <space> za
 nnoremap <leader>f0 :set foldlevel=0<cr>
