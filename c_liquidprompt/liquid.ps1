@@ -36,7 +36,7 @@ LP_PS1="${LP_PS1}${LP_VCS}"
 
 # add return code and prompt mark
 LP_PS1="${LP_PS1}${LP_ERR}${LP_MARK_PREFIX}${LP_MARK}${LP_PS1_POSTFIX}"
-LP_TITLE="${LP_TITLE}${LP_MARK}"
+LP_TITLE="${LP_TITLE} ${LP_MARK}"
 
 # "invisible" parts
 # Get the current prompt on the fly and make it a title
