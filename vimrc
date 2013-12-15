@@ -11,6 +11,7 @@ set mouse=a    "use mouse in normal, visual, insert and command mode
 set mousehide  "hide mouse pointer when typing
 
 filetype plugin indent on
+set omnifunc=syntaxcomplete#Complete
 
 if has("syntax")
     syntax enable
@@ -395,14 +396,15 @@ inoremap <expr><S-kEnter> pumvisible() ? neocomplete#close_popup()."\<cr>" : "\<
 inoremap <expr><tab> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<tab>" : "\<C-x>\<C-u>"
 inoremap <expr><S-tab> pumvisible() ? "\<C-p>" : <SID>check_back_space() ? "\<tab>" : "\<C-x>\<C-u>"
 
-autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType c             setlocal omnifunc=ccomplete#Complete
+autocmd FileType python        setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType ruby          setlocal omnifunc=rubycomplete#Complete
+autocmd FileType erlang        setlocal omnifunc=erlang_complete#Complete
 autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
-autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
-autocmd FileType c setlocal omnifunc=ccomplete#Complete
+autocmd FileType css           setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml           setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType javascript    setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType php           setlocal omnifunc=phpcomplete#CompletePHP
 
 if !exists('g:neocomplete#sources#omni#input_patterns')
     let g:neocomplete#sources#omni#input_patterns = {}
@@ -415,6 +417,7 @@ if has('gui_running')
     let g:neocomplete#sources#omni#input_patterns.python = ''
 endif
 let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
+let g:neocomplete#force_omni_input_patterns.erlang = '\<[[:digit:][:alnum:]_-]\+:[[:digit:][:alnum:]_-]*'
 
 " ==== Neosnippet ====
 imap <C-s> <Plug>(neosnippet_expand_or_jump)
