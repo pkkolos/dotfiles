@@ -1,15 +1,31 @@
 [alias]
 	a = add
 	ap = add -p
-	ca = commit -a
+	b = branch -vv
 	c = commit
+	ca = commit -a
 	co = checkout
 	d = diff
-	l = log
+	ds = diff --staged
+	dst = diff --stat
+	dsts = diff --stat --staged
+	f = fetch
+	l = log --stat
+	lg = log --graph --abbrev-commit --date=relative --all --pretty='format:%C(yellow)%h%Creset %C(bold blue)%an -%Cred%d%Creset %s %Cgreen(%cr)%Creset'
+	lga = log --graph --abbrev-commit --date=relative --all --pretty='format:%C(yellow)%h%Creset %C(bold blue)%an -%Cred%d%Creset %s %Cgreen(%ar)%Creset'
+	m = merge
+	mm = merge --no-ff
 	r = reset
 	rh = reset --hard
-	s = status
+	rmt = remote
+	rmu = remote update --prune
+	s = status --short --branch
+	st = stash
+	stl = stash list
+	stp = stash pop
 	t = tag
+	wd = diff --word-diff
+	wds = diff --word-diff --staged
 [color]
 	ui = true
 [color "diff"]
