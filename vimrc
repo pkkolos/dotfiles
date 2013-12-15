@@ -378,8 +378,6 @@ let g:undotree_setfocuswhentoggle=1
 nnoremap <silent> <leader>tu :UndotreeToggle<cr>
 
 " ==== Neocomplete & Neosnippet ====
-"let g:neocomplcache_enable_camel_case_completion = 1
-"let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 0
 let g:neocomplete#force_overwrite_completefunc = 1
@@ -396,7 +394,7 @@ imap <C-s> <Plug>(neosnippet_expand_or_jump)
 smap <C-s> <Plug>(neosnippet_expand_or_jump)
 xmap <C-s> <Plug>(neosnippet_expand_target)
 
-"inoremap <expr><bs> pumvisible() ? neocomplcache#smart_close_popup() : "\<bs>"
+"inoremap <expr><bs> pumvisible() ? neocomplete#smart_close_popup() : "\<bs>"
 inoremap <expr><cr> pumvisible() ? neocomplete#close_popup() : "\<cr>"
 inoremap <expr><kEnter> pumvisible() ? neocomplete#close_popup() : "\<cr>"
 inoremap <expr><S-kEnter> pumvisible() ? neocomplete#close_popup()."\<cr>" : "\<cr>"
