@@ -1,6 +1,6 @@
 HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=2000
+SAVEHIST=1000
 
 fpath=(~/.config/zsh/functions $fpath)
 
