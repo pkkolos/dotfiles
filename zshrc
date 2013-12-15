@@ -67,6 +67,7 @@ zstyle ':completion:*:warnings'         format $'%B%F{red}No matches for:%f %F{y
 source ~/.config/liquidprompt/liquidprompt
 source ~/.config/zsh/exports.zsh
 source ~/.config/zsh/aliases.zsh
+source ~/.config/zsh/functions.zsh
 
 
 autoload -U colors   && colors
