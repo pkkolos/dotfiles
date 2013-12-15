@@ -1,11 +1,20 @@
+alias e='$EDITOR'
+alias se='sudo -e'
+alias v='vim'
+alias vd='vim -d'
+
+alias g='git'
+alias j='jobs -l'
+
+alias md='mkdir -p'
+alias rd='rmdir'
+
 alias ls='ls -F --color=auto'
 alias ll='ls -alh'
 alias la='ls -A'
+alias lh='ls -d .*'
 alias l='ls -x'
 
-alias dir='dir --color=auto'
-alias vdir='vdir --color=auto'
-
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
+alias ds='du -sch'
+alias drs='du -sch * | sort -hr'
+alias fcnt='find . -type f | wc -l'
