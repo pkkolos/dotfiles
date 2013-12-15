@@ -6,13 +6,13 @@ fpath=(~/.config/zsh/functions $fpath)
 
 bindkey -e
 
-source ~/.config/liquidprompt/liquidprompt
 source ~/.config/zsh/options.zsh
 source ~/.config/zsh/exports.zsh
 source ~/.config/zsh/completion.zsh
 source ~/.config/zsh/aliases.zsh
 source ~/.config/zsh/functions.zsh
 
+source ~/.config/zsh/lprompt
 
 autoload -U colors   && colors
 autoload -U compinit && compinit -i
