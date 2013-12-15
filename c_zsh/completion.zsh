@@ -1,5 +1,5 @@
 zstyle ':completion:*'                  completer _expand _complete _match _list _correct _approximate _files
-zstyle ':completion:*'                  matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ':completion:*'                  matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=** r:|=*'
 zstyle ':completion:*'                  ignore-parents parent pwd
 zstyle ':completion:*'                  group-name ''
 zstyle ':completion:*'                  list-prompt '%SAt %p: Hit TAB for more, or the character to insert%s'
@@ -26,8 +26,8 @@ zstyle ':completion:*:matches'          group 'yes'
 zstyle ':completion:*:messages'         format '%d'
 zstyle ':completion:*:options'          auto-description '%d'
 zstyle ':completion:*:options'          description yes
-zstyle ':completion:*:processes'        command "ps -au $USER -o pid,user,comm -w -w"
-zstyle ':completion:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
+zstyle ':completion:*:processes'        command "ps -au $USER -o pid,comm -w -w"
+zstyle ':completion:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=1;34=33'
 zstyle ':completion:*:processes-names'  command "ps c -u $USER -o comm | uniq"
 zstyle ':completion:*:*:-subscript-:*'  tag-order indexes parameters
 zstyle ':completion:*:warnings'         format $'%B%F{red}No matches for:%f %F{yellow}%d%f%b'
