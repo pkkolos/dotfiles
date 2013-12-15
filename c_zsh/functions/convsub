@@ -1,5 +1,5 @@
-local temp=$( mktemp )
-iconv -f windows-1253 -t utf8 $1 -o $temp
-mv $temp $1
+local temp="$( mktemp )"
+iconv -f windows-1253 -t utf8 "$1" -o "$temp"
+mv "$temp" "$1"
 
 # vim: ft=zsh et ts=4 sts=4 sw=4

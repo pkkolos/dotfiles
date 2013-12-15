@@ -6,40 +6,46 @@ quality="default"
 list=("default" "screen" "ebook" "printer" "prepress")
 
 if [[ $# -eq 0 ]]; then
-    echo "Usage:"
-    echo "    mkpdf -l"
-    echo "or  mkpdf [-q <quality>] -o <output_file> <input_file>"
+    cat >&2 <<EOF
+Usage:
+    $0 -l
+    $0 [-q <quality>] -o <output_file> <input_file>
+EOF
     return 1
 fi
 
 while getopts ":lq::o:" optname; do
     case $optname in
-        l) echo "[default,screen,ebook,printer,prepress]"; return 0;;
+        l) echo "default, screen, ebook, printer, prepress"; return 0;;
         q) quality=$OPTARG;;
         o) output=$OPTARG;;
-        :) echo "Missing option argument for -$OPTARG" >&2; return 2;;
-        *) echo "Unknown option" >&2; return 3;;
+        :) echo "Missing option argument for -$OPTARG" >&2; return 1;;
+        *) echo "Unknown option" >&2; return 1;;
     esac
 done
 shift $((OPTIND-1))
 unset optname
 
 if [[ ${list[(i)$quality]} -gt ${#list} ]]; then
-    echo "Unknown option argument for -q"
-    echo "Use mkpdf -l to see supported arguments"
-    return 4
+    cat >&2 <<EOF
+Unknown option argument for -q
+Use $0 -l to see supported arguments
+EOF
+    return 1
 fi
 
 if [[ -z "$output" ]]; then
-    echo "Missing option -o <output_file>"
-    return 5
+    print "$0: missing option -o <output_file>" >&2
+    return 1
 fi
 
-if [[ ! -f "$1" ]]; then
-    echo "mkpdf: '$1' is not a valid file" 1>&2
-    return 6
+if [[ ! -s "$1" ]]; then
+    print "$0: file not valid: $1" >&2
+    return 1
 fi
 
 gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 \
-    -dPDFSETTINGS=/$quality -dNOPAUSE -dQUIET \
-    -dBATCH -sOutputFile=$output $1
+    -dPDFSETTINGS=/"$quality" -dNOPAUSE -dQUIET \
+    -dBATCH -sOutputFile="$output" "$1"
+
+# vim: ft=zsh et ts=4 sts=4 sw=4
