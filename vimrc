@@ -1,6 +1,3 @@
-" Author: Panayiotis Kkolos
-" Date:   2013 December 07
-
 " === Vim Addons ===
 if filereadable(expand("~/.vimrc.bundles"))
     source ~/.vimrc.bundles
@@ -368,13 +365,13 @@ let g:Tex_CompileRule_pdf='xelatex -shell-escape -interaction=nonstopmode -file-
 let g:Tex_UseMakefile=0
 let g:Imap_UsePlaceHolders=0
 
-" Tagbar
+" ==== Tagbar ====
 nnoremap <silent> <leader>tt :TagbarToggle<cr>
 
-" Nerdtree
+" ==== Nerdtree ====
 nnoremap <silent> <leader>td :NERDTreeToggle<cr>
 
-" Undotree
+" ==== Undotree ====
 let g:undotree_setfocuswhentoggle=1
 nnoremap <silent> <leader>tu :UndotreeToggle<cr>
 
