@@ -34,11 +34,15 @@
 	untracked = blue
 [core]
 	editor = vim
+	pager = less -FX
 [diff]
 	renames = copies
 	mnemonicprefix = true
+	algorithm = histogram
 [push]
 	default = simple
+[status]
+	submodulesummary = true
 [user]
 	name = Panayiotis Kkolos
 	email = pkkolos@gmail.com
