@@ -379,8 +379,11 @@ nnoremap <silent> <leader>tu :UndotreeToggle<cr>
 
 " ==== Neocomplete & Neosnippet ====
 let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 0
+"let g:neocomplete#enable_smart_case = 0
+"let g:neocomplete#enable_auto_select = 1
 let g:neocomplete#force_overwrite_completefunc = 1
+let g:neocomplete#auto_completion_start_length = 1
+let g:neocomplete#data_directory = '~/.vim/tmp/neocomplete'
 
 let g:neosnippet#enable_snipmate_compatibility = 1
 let g:neosnippet#snippets_directory = '~/.vim/bundle/vim-snippets/snippets'
@@ -416,15 +419,20 @@ autocmd FileType xml           setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType javascript    setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType php           setlocal omnifunc=phpcomplete#CompletePHP
 
+if !exists('g:neocomplete#keyword_patterns')
+    let g:neocomplete#keyword_patterns = {}
+endif
+let g:neocomplete#keyword_patterns['default'] = '\h\w*'
+
 if !exists('g:neocomplete#sources#omni#input_patterns')
     let g:neocomplete#sources#omni#input_patterns = {}
 endif
+"if has('gui_running')
+    "let g:neocomplete#sources#omni#input_patterns.python = ''
+"endif
+
 if !exists('g:neocomplete#force_omni_input_patterns')
     let g:neocomplete#force_omni_input_patterns = {}
-endif
-
-if has('gui_running')
-    let g:neocomplete#sources#omni#input_patterns.python = ''
 endif
 let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 let g:neocomplete#force_omni_input_patterns.erlang = '\<[[:digit:][:alnum:]_-]\+:[[:digit:][:alnum:]_-]*'
