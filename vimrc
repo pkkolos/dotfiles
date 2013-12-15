@@ -377,17 +377,24 @@ nnoremap <silent> <leader>td :NERDTreeToggle<cr>
 let g:undotree_setfocuswhentoggle=1
 nnoremap <silent> <leader>tu :UndotreeToggle<cr>
 
-" ==== Neocomplete ====
+" ==== Neocomplete & Neosnippet ====
 "let g:neocomplcache_enable_camel_case_completion = 1
 "let g:neocomplcache_enable_underbar_completion = 1
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 0
 let g:neocomplete#force_overwrite_completefunc = 1
 
+let g:neosnippet#enable_snipmate_compatibility = 1
+let g:neosnippet#snippets_directory = '~/.vim/bundle/vim-snippets/snippets'
+
 function! s:check_back_space()
     let col = col('.') - 1
     return !col || getline('.')[col - 1] =~ '\s'
 endfunction
+
+imap <C-s> <Plug>(neosnippet_expand_or_jump)
+smap <C-s> <Plug>(neosnippet_expand_or_jump)
+xmap <C-s> <Plug>(neosnippet_expand_target)
 
 "inoremap <expr><bs> pumvisible() ? neocomplcache#smart_close_popup() : "\<bs>"
 inoremap <expr><cr> pumvisible() ? neocomplete#close_popup() : "\<cr>"
@@ -419,14 +426,6 @@ if has('gui_running')
 endif
 let g:neocomplete#force_omni_input_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 let g:neocomplete#force_omni_input_patterns.erlang = '\<[[:digit:][:alnum:]_-]\+:[[:digit:][:alnum:]_-]*'
-
-" ==== Neosnippet ====
-imap <C-s> <Plug>(neosnippet_expand_or_jump)
-smap <C-s> <Plug>(neosnippet_expand_or_jump)
-xmap <C-s> <Plug>(neosnippet_expand_target)
-
-let g:neosnippet#enable_snipmate_compatibility = 1
-let g:neosnippet#snippets_directory = '/home/panayiotis/.vim/bundle/vim-snippets/snippets'
 
 " ==== Ultisnips ====
 "let g:UltiSnipsExpandTrigger="<C-CR>"
