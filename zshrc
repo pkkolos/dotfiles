@@ -2,7 +2,7 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 
-fpath=(~/.config/zsh/completion $fpath)
+fpath=(~/.config/zsh/functions $fpath)
 
 bindkey -e
 
@@ -68,15 +68,9 @@ source ~/.config/liquidprompt/liquidprompt
 source ~/.config/zsh/exports.zsh
 source ~/.config/zsh/aliases.zsh
 
-load_functions=(comprpdf convsub)
-
-for func ($load_functions); do
-    if [ -f ~/.config/zsh/functions/$func.zsh ]; then
-        source ~/.config/zsh/functions/$func.zsh
-    fi
-done
 
 autoload -U colors   && colors
 autoload -U compinit && compinit -i
 
-# vim: tabstop=4 softtabstop=4 shiftwidth=4 expandtab:
+autoload comprpdf
+autoload convsub
