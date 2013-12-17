@@ -272,6 +272,38 @@
             return ''
         endfunction
     " }}}
+    " Short Message Format                       {{{
+    " -------------------------------------------------------------------------
+        set shortmess=atToOI
+        " f -d  use "(3 of 5)" instead of "(file 3 of 5)"
+        " i -d  use "[noeol]" instead of "[Incomplete last line]"
+        " l -d  use "999L, 888C" instead of "999 lines, 888 characters"
+        " m -   use "[+]" instead of "[Modified]"
+        " n -d  use "[New]" instead of "[New File]"
+        " r -   use "[RO]" instead of "[readonly]"
+        " w -   use "[w]" instead of "written" for file write message
+        "       and "[a]" instead of "appended" for ':w >> file' command
+        " x -d  use "[dos]" instead of "[dos format]", "[unix]" instead of
+        "       "[unix format]" and "[mac]" instead of "[mac format]".
+        " a +   all of the above abbreviations
+        "
+        " o +d  overwrite message for writing a file with subsequent message
+        "       for reading a file (useful for ":wn" or when 'autowrite' on)
+        " O +d  message for reading a file overwrites any previous message.
+        "       Also for quickfix message (e.g., ":cn").
+        " s -   don't give "search hit BOTTOM, continuing at TOP" or "search
+        "       hit TOP, continuing at BOTTOM" messages
+        " t +d  truncate file message at the start if it is too long to fit on
+        "       the command-line, "<" will appear in the left most column.
+        "       Ignored in Ex mode.
+        " T +d  truncate other messages in the middle if they are too long to
+        "       fit on the command line.  "..." will appear in the middle.
+        "       Ignored in Ex mode.
+        " W -   don't give "written" or "[w]" when writing a file
+        " A -   don't give the "ATTENTION" message when an existing swap file
+        "       is found.
+        " I +   don't give the intro message when starting Vim |:intro|.
+    " }}}
     " Folding                                    {{{
     " -------------------------------------------------------------------------
         set foldenable         "enable folding
