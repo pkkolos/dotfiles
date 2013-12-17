@@ -332,13 +332,13 @@
     " }}}
     " Format Options                             {{{
     " -------------------------------------------------------------------------
-        set formatoptions=tcqrnlj
+        set formatoptions=tcqronlj
         " t +d  Auto-wrap text using textwidth
         " c +d  Auto-wrap comments using textwidth, inserting the current
         "       comment leader automatically.
         " r +   Automatically insert the current comment leader after hitting
         "       <Enter> in Insert mode.
-        " o -   Automatically insert the current comment leader after hitting
+        " o +   Automatically insert the current comment leader after hitting
         "       'o' or 'O' in Normal mode.
         " q +d  Allow formatting of comments with "gq".
         "       Note that formatting will not change blank lines or lines
