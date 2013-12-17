@@ -14,7 +14,7 @@
 " }}}
 " GUI Options                                    {{{
 " -----------------------------------------------------------------------------
-    set guioptions=aegimrLtc
+    set guioptions=aegimrLc
     " a +d  Autoselect: If present, then whenever VISUAL mode is started, or
     "       the Visual area extended, Vim tries to become the owner of the
     "       windowing system's global selection. This means that the Visually
@@ -62,7 +62,7 @@
     " g +d  Grey menu items: Make menu items that are not active grey. If 'g'
     "       is not included inactive menu items are not shown at all.
     "       Exception: Athena will always use grey menu items.
-    " t +d  Include tearoff menu items. Currently only works for Win32, GTK+,
+    " t -d  Include tearoff menu items. Currently only works for Win32, GTK+,
     "       and Motif 1.2 GUI.
     " T -d  Include Toolbar. Currently only in Win32, GTK+, Motif, Photon and
     "       Athena GUIs.
