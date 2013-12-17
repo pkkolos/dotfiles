@@ -73,7 +73,7 @@
     " }}}
     " Compatible Options                         {{{
     " -------------------------------------------------------------------------
-        set cpoptions+=In
+        set cpoptions=aABceFsIn
         " a +d  When included, a ":read" command with a file name argument will
         "       set the alternate file name for the current window.
         " A +d  When included, a ":write" command with a file name argument
@@ -300,7 +300,7 @@
     " }}}
     " Format Options                             {{{
     " -------------------------------------------------------------------------
-        set formatoptions+=rnlj
+        set formatoptions=tcqrnlj
         " t +d  Auto-wrap text using textwidth
         " c +d  Auto-wrap comments using textwidth, inserting the current
         "       comment leader automatically.

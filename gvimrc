@@ -14,8 +14,7 @@
 " }}}
 " GUI Options                                    {{{
 " -----------------------------------------------------------------------------
-    set guioptions-=T
-    set guioptions+=c
+    set guioptions=aegimrLtc
     " a +d  Autoselect: If present, then whenever VISUAL mode is started, or
     "       the Visual area extended, Vim tries to become the owner of the
     "       windowing system's global selection. This means that the Visually
