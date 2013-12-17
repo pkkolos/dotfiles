@@ -10,6 +10,8 @@
 " }}}
 " General Settings                               {{{
 " -----------------------------------------------------------------------------
+    set columns=103
+    set lines=32
     set mousehide     "hide mouse pointer when typing
 " }}}
 " GUI Options                                    {{{
