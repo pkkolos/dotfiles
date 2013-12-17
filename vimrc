@@ -534,6 +534,7 @@
         noremap / /\v
         noremap ? ?\v
         cnoremap s/ s/\v
+        nnoremap Y y$
     " }}}
     " Toggle Indicators                          {{{
     " -------------------------------------------------------------------------
