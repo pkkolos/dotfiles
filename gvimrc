@@ -5,6 +5,7 @@
 " Theme                                          {{{
 " -----------------------------------------------------------------------------
     let g:solarized_menu=0
+    let g:solarized_visibility="low"
     colorscheme solarized
     call togglebg#map("<F5>")
 " }}}
