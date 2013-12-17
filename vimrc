@@ -44,12 +44,7 @@ set tags+=~/.vim/tags
 let mapleader = "\\"
 
 "when vimrc is edited, reload it.
-au! BufWritePost .vimrc
-    \ source $MYVIMRC        |
-    \ setlocal tabstop=4     |
-    \ setlocal softtabstop=4 |
-    \ setlocal shiftwidth=4  |
-    \ setlocal expandtab
+au! BufWritePost .vimrc source $MYVIMRC
 
 nnoremap ; :
 inoremap jk <Esc>
@@ -62,7 +57,7 @@ set tabstop=4         "how many columns a tab counts for
 set softtabstop=4     "how many columns to use when you hit tab
 set shiftwidth=4      "how many columns text is indented
 set shiftround        "indentation is rounded to multiple of shiftwidth
-set noexpandtab       "use spaces instead of tabs
+set expandtab         "use spaces instead of tabs
 set smarttab          "use shiftwidth value for inserting tabs at the beggining of a line
 
 set autoindent        "automatically indent a new line
@@ -73,18 +68,7 @@ set formatoptions+=n  "indent wrapped lines on number lists
 set formatoptions+=j  "auto-format comments when joining lines
 set cinoptions=l1,t0,U1
 
-"set tabstop, softtabstop and shiftwidth to the same value
-command! -nargs=* Stab call Stab()
-function! Stab()
-    let l:tabstop = 1 * input('set (soft)tabstop & shiftwidth = ')
-    if l:tabstop > 0
-        let &l:sts = l:tabstop
-        let &l:ts = l:tabstop
-        let &l:sw = l:tabstop
-    endif
-endfunction
-
-autocmd FileType haskell,python setlocal expandtab
+"autocmd FileType haskell,python setlocal expandtab
 
 nnoremap <leader>[ <<
 nnoremap <leader>] >>
@@ -92,7 +76,6 @@ vnoremap <leader>[ <gv
 vnoremap <leader>] >gv
 nnoremap <leader>rt :retab!<cr>
 vnoremap <leader>rt :retab!<cr>
-nnoremap <leader>ss :call Stab()<cr>
 nnoremap <silent> <leader>te :set expandtab!<cr>
 
 " === Whitespace ===
@@ -126,7 +109,7 @@ set wrap               "auto wrap line view, but not text itself
 set whichwrap=<,>,[,]  "left/right arrows move the cursor to previous/next line
 set nocursorcolumn     "don't highlight current column
 set colorcolumn=0      "list of highlighted screen columns
-"set textwidth=80       "maximum text width (column for text wrapping)
+set textwidth=79       "maximum text width (column for text wrapping)
 
 function! g:ToggleNumMode()
     if (&relativenumber == 1)
@@ -256,16 +239,11 @@ endfunction
 
 " === Buffers, Windows & Tabs ===
 "always switch to the current file directory
-autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
+set autochdir
 
-cnoremap cwd lcd %:p:h
 "nnoremap <leader>t :tabnew<cr>:e<space>
 
 " === Clipboard ===
-"if has('x') && has('gui')
-    ""use + register for copy-paste
-    "set clipboard=unnamedplus
-"endif
 set pastetoggle=<F3>
 
 nnoremap <leader>y "+yy
@@ -298,12 +276,12 @@ endif
 set backupdir=~/.vim/tmp/backup//
 set backup
 
-let directory = $HOME . "/.vim/tmp/undo/"
-if !isdirectory(directory)
-    call system('mkdir -p ' . directory)
-endif
-set undodir=~/.vim/tmp/undo//
 if has('persistent_undo')
+    let directory = $HOME . "/.vim/tmp/undo/"
+    if !isdirectory(directory)
+        call system('mkdir -p ' . directory)
+    endif
+    set undodir=~/.vim/tmp/undo//
     set undofile
     set undolevels=1000
     set undoreload=10000
@@ -478,6 +456,3 @@ endif
 "endfunction
 
 "inoremap <silent> <Bar> <Bar><Esc>:call <SID>align()<CR>a
-
-" === Modeline ===
-" vim: tabstop=4 softtabstop=4 shiftwidth=4 expandtab:
