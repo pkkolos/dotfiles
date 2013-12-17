@@ -8,26 +8,15 @@ set runtimepath+=/usr/share/vim/addons
 
 " === Mouse, Theme & Syntax Highlighting ===
 set mouse=a    "use mouse in normal, visual, insert and command mode
-set mousehide  "hide mouse pointer when typing
 
 filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
 
-if has("syntax")
-    syntax enable
-    set background=dark
-    if !has('gui_running')
-        set t_Co=16
-        colorscheme base16-eighties
-    else
-        let g:solarized_menu=0
-        colorscheme solarized
-        call togglebg#map("<F5>")
-    endif
-    set foldmethod=syntax
-else
-    set foldmethod=manual
-endif
+syntax enable
+set t_Co=16
+set background=dark
+colorscheme base16-eighties
+set foldmethod=syntax
 
 " === General Settings ===
 set encoding=utf-8
@@ -45,8 +34,6 @@ set backspace=indent,eol,start  "backspace and del always working
 set novisualbell       "don't use visual bell (flash)
 set selection=old      "don't let the cursor move past the last char in visual mode
 set virtualedit=block  "let the cursor move past the last char in visual block mode
-set guioptions-=T      "remove toolbar
-set guioptions+=c      "use console dialogs instead of popups for simple choices
 set report=0           "always report number of lines changed
 set nojoinspaces       "when joining lines don't insert two spaces after .?!
 set shell=$SHELL
