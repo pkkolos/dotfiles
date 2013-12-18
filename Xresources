@@ -39,6 +39,12 @@ XTerm*title:      XTerm
 XTerm*termName:   xterm-256color
 XTerm*faceName:   Monospace
 XTerm*faceSize:   10
+XTerm*faceSize1:  6
+XTerm*faceSize2:  8
+XTerm*faceSize3:  12
+XTerm*faceSize4:  14
+XTerm*faceSize5:  18
+XTerm*faceSize6:  24
 XTerm*maximized:  true
 XTerm*boldColors: false
 
@@ -61,4 +67,4 @@ XTerm*VT100.translations: #override \
     Ctrl       <Key>Up:   scroll-back(1, line) \n\
     Ctrl       <Key>Down: scroll-forw(1, line) \n\
 
-! vim: ft=xdefaults ts=4 sts=4 sw=4 et:
+! vim: ft=xdefaults
