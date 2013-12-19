@@ -61,13 +61,14 @@ XTerm*metaSendsEscape:    true
 XTerm*highlightSelection: true
 
 XTerm*VT100.translations: #override \
-         Shift <Btn1Up>:  select-end(CLIPBOARD) \n\
-         Shift <Btn2Up>:  insert-selection(CLIPBOARD) \n\
-    Ctrl Shift <Key>V:    insert-selection(CLIPBOARD) \n\
-    Ctrl       <Key>Up:   scroll-back(1, line) \n\
-    Ctrl       <Key>Down: scroll-forw(1, line) \n\
-         Shift <Key>Up:   scroll-back(1, halfpage) \n\
-         Shift <Key>Down: scroll-forw(1, halfpage) \n\
-               <Key>F11:  fullscreen() \n\
+         Shift <Btn1Up>:          select-end(CLIPBOARD) \n\
+         Shift <Btn2Up>:          insert-selection(CLIPBOARD) \n\
+    Ctrl Shift <Key>V:            insert-selection(CLIPBOARD) \n\
+    Ctrl       <Key>Up:           scroll-back(1, line) \n\
+    Ctrl       <Key>Down:         scroll-forw(1, line) \n\
+         Shift <Key>Up:           scroll-back(1, halfpage) \n\
+         Shift <Key>Down:         scroll-forw(1, halfpage) \n\
+         Shift <Key>KP_Multiply:  set-vt-font(d) \n\
+               <Key>F11:          fullscreen() \n\
 
 ! vim: ft=xdefaults
