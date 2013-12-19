@@ -93,18 +93,23 @@
 " }}}
 " Maps & Functions                               {{{
 " -----------------------------------------------------------------------------
-    function! AdjustFontSize(amount)
+    function! AdjustFontSize(amount, relative)
         let pattern = '^\(.* \)\([1-9][0-9]*\)$'
         let fontname = substitute(&guifont, pattern, '\1', '')
-        let cursize = substitute(&guifont, pattern, '\2', '')
-        let newsize = cursize + a:amount
+        if a:relative
+            let cursize = substitute(&guifont, pattern, '\2', '')
+            let newsize = cursize + a:amount
+        else
+            let newsize = a:amount
+        endif
         if (newsize >= 6) && (newsize <= 24)
             let newfont = fontname . newsize
             let &guifont = newfont
         endif
     endfunction
-    nnoremap <silent> <S-kPlus> :call AdjustFontSize(2)<CR>
-    nnoremap <silent> <S-kMinus> :call AdjustFontSize(-2)<CR>
+    nnoremap <silent> <S-kPlus> :call AdjustFontSize(2, 1)<CR>
+    nnoremap <silent> <S-kMinus> :call AdjustFontSize(-2, 1)<CR>
+    nnoremap <silent> <S-kMultiply> :call AdjustFontSize(10, 0)<CR>
 " }}}
 " -----------------------------------------------------------------------------
 " vim: foldmethod=marker
