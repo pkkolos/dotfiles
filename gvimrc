@@ -14,6 +14,7 @@
     set columns=103
     set lines=32
     set mousehide     "hide mouse pointer when typing
+    set guifont=Monospace\ 10
 " }}}
 " GUI Options                                    {{{
 " -----------------------------------------------------------------------------
@@ -89,6 +90,21 @@
     "       GUI. Set it in your |gvimrc|. Adding or removing it after the GUI
     "       has started has no effect.
     " F -   Add a footer. Only for Motif. See |gui-footer|.
+" }}}
+" Maps & Functions                               {{{
+" -----------------------------------------------------------------------------
+    function! AdjustFontSize(amount)
+        let pattern = '^\(.* \)\([1-9][0-9]*\)$'
+        let fontname = substitute(&guifont, pattern, '\1', '')
+        let cursize = substitute(&guifont, pattern, '\2', '')
+        let newsize = cursize + a:amount
+        if (newsize >= 6) && (newsize <= 24)
+            let newfont = fontname . newsize
+            let &guifont = newfont
+        endif
+    endfunction
+    nnoremap <silent> <S-kPlus> :call AdjustFontSize(2)<CR>
+    nnoremap <silent> <S-kMinus> :call AdjustFontSize(-2)<CR>
 " }}}
 " -----------------------------------------------------------------------------
 " vim: foldmethod=marker
