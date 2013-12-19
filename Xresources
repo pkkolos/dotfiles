@@ -66,5 +66,7 @@ XTerm*VT100.translations: #override \
     Ctrl Shift <Key>V:    insert-selection(CLIPBOARD) \n\
     Ctrl       <Key>Up:   scroll-back(1, line) \n\
     Ctrl       <Key>Down: scroll-forw(1, line) \n\
+         Shift <Key>Up:   scroll-back(1, halfpage) \n\
+         Shift <Key>Down: scroll-forw(1, halfpage) \n\
 
 ! vim: ft=xdefaults
