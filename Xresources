@@ -68,5 +68,6 @@ XTerm*VT100.translations: #override \
     Ctrl       <Key>Down: scroll-forw(1, line) \n\
          Shift <Key>Up:   scroll-back(1, halfpage) \n\
          Shift <Key>Down: scroll-forw(1, halfpage) \n\
+               <Key>F11:  fullscreen() \n\
 
 ! vim: ft=xdefaults
