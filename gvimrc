@@ -94,6 +94,8 @@
 " Maps & Functions                               {{{
 " -----------------------------------------------------------------------------
     if executable('wmctrl')
+        autocmd GUIEnter * call system("wmctrl -ir " . v:windowid
+                    \ . " -b add,maximized_vert,maximized_horz")
         function! ToggleFullscreen()
             if &guioptions =~# 'm'
                 set guioptions-=mrL
