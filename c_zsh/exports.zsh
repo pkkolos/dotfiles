@@ -1,4 +1,4 @@
-export LESS='-RS'
+export LESS='-ix4 -MRS'
 export PAGER='less'
 export EDITOR='vim'
 export VISUAL='vim'
