@@ -8,13 +8,13 @@ elif [ "$1" = "outlook" ]; then
 fi
 
 if [ "$MAIL" = "0" ]; then
-	MAIL='No new mail' ;
+	MAIL='${color2}No new mail${color}' ;
 elif [ "$MAIL" = "1" ]; then
-	MAIL='${color2}1 new mail${color}' ;
+	MAIL='${color3}1 new mail${color}' ;
 elif [[ "$MAIL" =~ ^[0-9]+$ ]]; then
-	MAIL='${color2}'$MAIL' new mails${color}' ;
+	MAIL='${color3}'$MAIL' new mails${color}' ;
 else
-	MAIL='${color1}Error!${color}' ;
+	MAIL='${color4}Error!${color}' ;
 fi
 
 echo $MAIL
