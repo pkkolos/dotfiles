@@ -93,6 +93,19 @@
 " }}}
 " Maps & Functions                               {{{
 " -----------------------------------------------------------------------------
+    if executable('wmctrl')
+        function! ToggleFullscreen()
+            if &guioptions =~# 'm'
+                set guioptions-=mrL
+            else
+                set guioptions+=mrL
+            endif
+            call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")
+        endfunction
+        nnoremap <F11> :call ToggleFullscreen()<CR>
+        vnoremap <F11> :call ToggleFullscreen()<CR>gv
+        inoremap <F11> <C-O>:call ToggleFullscreen()<CR>
+    endif
     function! AdjustFontSize(amount, relative)
         let pattern = '^\(.* \)\([1-9][0-9]*\)$'
         let fontname = substitute(&guifont, pattern, '\1', '')
