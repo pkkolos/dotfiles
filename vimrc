@@ -178,6 +178,8 @@
         set showmatch                        "bracket match highlighting
         set matchtime=3                      "time of bracket matching
         set matchpairs=(:),[:],{:}           "type of brackets to match
+        set display=lastline                 "display as much as possible
+                                             "of the last line
     " }}}
     " Navigation                                 {{{
     " -------------------------------------------------------------------------
