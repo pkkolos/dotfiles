@@ -16,6 +16,11 @@ compinit -i  #enable zsh completion
 
 bindkey -e
 
+bindkey ' '     magic-space         #do history expansion on space
+bindkey '^I'    complete-word
+bindkey '^U'    backward-kill-line
+bindkey '^[k'   kill-whole-line
+
 source ~/.config/zsh/options.zsh
 source ~/.config/zsh/exports.zsh
 source ~/.config/zsh/completion.zsh
