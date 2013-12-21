@@ -476,7 +476,6 @@
         nnoremap <leader>P "+gP
         vnoremap <leader>p "+gp
         vnoremap <leader>P "+gP
-        nnoremap <silent> <F3> :set paste!<cr>
         nnoremap <silent> <leader>tp :set paste!<cr>
     " }}}
     " Search, Copy, Replace                      {{{
