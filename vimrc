@@ -1,7 +1,7 @@
 " -----------------------------------------------------------------------------
 " Panayiotis Kkolos
 " Layout inspired by Ethan Schoonover's vimrc (github.com/altercation)
-" Modified: 2013-12-16
+" Modified: 2013-12-21
 " -----------------------------------------------------------------------------
 " Environment                                    {{{
 " -----------------------------------------------------------------------------
@@ -59,8 +59,6 @@
         set title         "set the title of the window
         set mouse=a       "use mouse in normal, visual, insert and command mode
         set autochdir
-
-        set nojoinspaces  "when joining lines insert only one space after .?!
         set autowrite     "save current buffer when changing buffers
         set confirm       "operations on unsaved buffers don't fail
                           "instead they are asking for confirmation
@@ -172,23 +170,7 @@
         set smartcase   "case-sensitive if there is an upper-case letter
         set gdefault    "when replacing, use /g by default
     " }}}
-    " Location Indicators                        {{{
-    " -------------------------------------------------------------------------
-        set number          "show line numbers (compatibility)
-        set relativenumber  "show relative line numbers
-        set numberwidth=3   "minimal digits in line numbers
-        set cursorline      "highlight current line
-        set nocursorcolumn  "don't highlight current column
-        set colorcolumn=0   "list of highlighted screen columns
-        set showbreak=+++   "string for wrapped lines
-    " }}}
-    " Screen Drawing                             {{{
-    " -------------------------------------------------------------------------
-        set ttyfast     "indicates a fast terminal connection (fast redraw)
-        set lazyredraw  "do not redraw while running macros
-                        "necessary for correct usage of status line colours
-    " }}}
-    " Character Display                          {{{
+    " Display                                    {{{
     " -------------------------------------------------------------------------
         set list                             "show special characters
         set listchars=tab:▸\ ,trail:·,eol:↲  "for tabs, trailing spaces,
@@ -213,6 +195,22 @@
                                                 "shows a list of matches
         set wildmode=longest,list:longest,full
         set omnifunc=syntaxcomplete#Complete
+    " }}}
+    " Folding                                    {{{
+    " -------------------------------------------------------------------------
+        set foldenable         "enable folding
+        set foldmethod=syntax  "fold based on syntax
+        set foldlevelstart=99  "start with all foldings opened
+    " }}}
+    " Location Indicators                        {{{
+    " -------------------------------------------------------------------------
+        set number          "show line numbers (compatibility)
+        set relativenumber  "show relative line numbers
+        set numberwidth=3   "minimal digits in line numbers
+        set cursorline      "highlight current line
+        set nocursorcolumn  "don't highlight current column
+        set colorcolumn=0   "list of highlighted screen columns
+        set showbreak=+++   "string for wrapped lines
     " }}}
     " Status Indicators                          {{{
     " -------------------------------------------------------------------------
@@ -304,31 +302,32 @@
         "       is found.
         " I +   don't give the intro message when starting Vim |:intro|.
     " }}}
-    " Folding                                    {{{
+    " Screen Drawing                             {{{
     " -------------------------------------------------------------------------
-        set foldenable         "enable folding
-        set foldmethod=syntax  "fold based on syntax
-        set foldlevelstart=99  "start with all foldings opened
+        set ttyfast     "indicates a fast terminal connection (fast redraw)
+        set lazyredraw  "do not redraw while running macros
+                        "necessary for correct usage of status line colours
     " }}}
 " }}}
 " Text Formatting/Layout                         {{{
 " -----------------------------------------------------------------------------
-    " Wrap and Indent                            {{{
+    " Wrap, Join                                 {{{
     " -------------------------------------------------------------------------
         set wrap          "auto wrap line view, but not text itself
         set textwidth=79  "maximum text width (column for text wrapping)
-        set autoindent    "automatically indent a new line
-        set smartindent   "smart autoindentation when starting new line
+        set nojoinspaces  "when joining lines insert only one space after .?!
     " }}}
-    " Tabs                                       {{{
+    " Tabs, Indentation                          {{{
     " -------------------------------------------------------------------------
         set expandtab      "use spaces instead of tabs
         set tabstop=4      "how many columns a tab counts for
         set softtabstop=4  "how many columns to use when you hit tab
         set shiftwidth=4   "how many columns text is indented
-        set shiftround     "indentation is rounded to multiple of shiftwidth
         set smarttab       "use shiftwidth value for inserting
                            "tabs at the beggining of a line
+        set shiftround     "indentation is rounded to multiple of shiftwidth
+        set autoindent    "automatically indent a new line
+        set smartindent   "smart autoindentation when starting new line
     " }}}
     " Format Options                             {{{
     " -------------------------------------------------------------------------
@@ -465,6 +464,29 @@
             au InsertLeave * :set listchars+=trail:·
         augroup END
     " }}}
+    " Clipboard                                  {{{
+    " -------------------------------------------------------------------------
+        nnoremap <leader>y "+yy
+        vnoremap <leader>y "+ygv
+        nnoremap <leader>d "+dd
+        vnoremap <leader>d "+d
+        nnoremap <leader>p "+p
+        nnoremap <leader>P "+gP
+        vnoremap <leader>p "+gp
+        vnoremap <leader>P "+gP
+        nnoremap <silent> <F3> :set paste!<cr>
+        nnoremap <silent> <leader>tp :set paste!<cr>
+    " }}}
+    " Search, Copy, Replace                      {{{
+    " -------------------------------------------------------------------------
+        nnoremap <leader>/ :noh<cr>
+        noremap n nzz
+        noremap N Nzz
+        noremap / /\v
+        noremap ? ?\v
+        cnoremap s/ s/\v
+        nnoremap Y y$
+    " }}}
     " Navigation                                 {{{
     " -------------------------------------------------------------------------
         noremap k gk
@@ -489,52 +511,7 @@
         nnoremap <leader>f8 :set foldlevel=8<cr>
         nnoremap <leader>f9 :set foldlevel=9<cr>
     " }}}
-    " Clipboard                                  {{{
-    " -------------------------------------------------------------------------
-        nnoremap <leader>y "+yy
-        vnoremap <leader>y "+ygv
-        nnoremap <leader>d "+dd
-        vnoremap <leader>d "+d
-        nnoremap <leader>p "+p
-        nnoremap <leader>P "+gP
-        vnoremap <leader>p "+gp
-        vnoremap <leader>P "+gP
-        nnoremap <silent> <F3> :set paste!<cr>
-        nnoremap <silent> <leader>tp :set paste!<cr>
-    " }}}
-    " Tabs, Indentation, Whitespace              {{{
-    " -------------------------------------------------------------------------
-        function! <sid>StripTrWhSp()
-            " preparation: save last search, and cursor position.
-            let _s=@/
-            let l = line(".")
-            let c = col(".")
-            " Do the business:
-            %s/\s\+$//e
-            " clean up: restore previous search history, and cursor position
-            let @/=_s
-            call cursor(l, c)
-        endfunction
-        nnoremap <leader>[ <<
-        nnoremap <leader>] >>
-        vnoremap <leader>[ <gv
-        vnoremap <leader>] >gv
-        nnoremap <leader>rt :retab!<cr>
-        vnoremap <leader>rt :retab!<cr>
-        nnoremap <silent> <leader>te :set expandtab!<cr>
-        nnoremap <leader>w :call <sid>StripTrWhSp()<cr>
-    " }}}
-    " Search, Copy, Replace                      {{{
-    " -------------------------------------------------------------------------
-        nnoremap <leader>/ :noh<cr>
-        noremap n nzz
-        noremap N Nzz
-        noremap / /\v
-        noremap ? ?\v
-        cnoremap s/ s/\v
-        nnoremap Y y$
-    " }}}
-    " Toggle Indicators                          {{{
+    " Location Indicators                        {{{
     " -------------------------------------------------------------------------
         function! g:ToggleNumMode()
             if (&relativenumber == 1)
@@ -561,6 +538,28 @@
         nnoremap <silent> <leader>tn :call g:ToggleNumMode()<cr>
         nnoremap <silent> <leader>tv :call g:ToggleColorColumn()<cr>
         nnoremap <silent> <leader>tc :call g:ToggleCursorColumn()<cr>
+    " }}}
+    " Tabs, Indentation, Whitespace              {{{
+    " -------------------------------------------------------------------------
+        function! <sid>StripTrWhSp()
+            " preparation: save last search, and cursor position.
+            let _s=@/
+            let l = line(".")
+            let c = col(".")
+            " Do the business:
+            %s/\s\+$//e
+            " clean up: restore previous search history, and cursor position
+            let @/=_s
+            call cursor(l, c)
+        endfunction
+        nnoremap <leader>[ <<
+        nnoremap <leader>] >>
+        vnoremap <leader>[ <gv
+        vnoremap <leader>] >gv
+        nnoremap <leader>rt :retab!<cr>
+        vnoremap <leader>rt :retab!<cr>
+        nnoremap <silent> <leader>te :set expandtab!<cr>
+        nnoremap <leader>w :call <sid>StripTrWhSp()<cr>
     " }}}
     " Shell                                      {{{
     " -------------------------------------------------------------------------
