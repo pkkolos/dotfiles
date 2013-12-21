@@ -728,12 +728,6 @@
         let g:neocomplete#force_omni_input_patterns.erlang =
                     \ '\<[[:digit:][:alnum:]_-]\+:[[:digit:][:alnum:]_-]*'
     " }}}
-    " Ultisnips                                  {{{
-    " -------------------------------------------------------------------------
-        "let g:UltiSnipsExpandTrigger="<C-CR>"
-        "let g:UltiSnipsJumpForwardTrigger="<C-tab>"
-        "let g:UltiSnipsJumpBackwardTrigger="<S-tab>"
-    " }}}
     " Syntastic                                  {{{
     " -------------------------------------------------------------------------
         let g:syntastic_mode_map = { 'mode': 'active',

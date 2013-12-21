@@ -29,7 +29,6 @@
     Bundle 'Shougo/neocomplete'
     Bundle 'Shougo/neosnippet'
     Bundle 'honza/vim-snippets'
-    "Bundle 'SirVer/ultisnips'
     Bundle 'scrooloose/nerdcommenter'
     Bundle 'scrooloose/syntastic'
     Bundle 'tpope/vim-fugitive'
