@@ -22,6 +22,7 @@
     Bundle 'terryma/vim-expand-region'
     Bundle 'terryma/vim-multiple-cursors'
     Bundle 'tpope/vim-surround'
+    Bundle 'maxbrunsfeld/vim-yankstack'
     " color schemes
     Bundle 'altercation/vim-colors-solarized'
     Bundle 'chriskempson/base16-vim'

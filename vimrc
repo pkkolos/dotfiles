@@ -501,8 +501,6 @@
         vnoremap <leader>P "+gP
         nnoremap <silent> <F3> :set paste!<cr>
         nnoremap <silent> <leader>tp :set paste!<cr>
-        nnoremap <leader>pp :set paste<cr>"+p<cr>:set nopaste<cr>
-        nnoremap <leader>PP :set paste<cr>"+gP<cr>:set nopaste<cr>
     " }}}
     " Tabs, Indentation, Whitespace              {{{
     " -------------------------------------------------------------------------
@@ -774,6 +772,13 @@
         "endfunction
 
         "inoremap <silent> <Bar> <Bar><Esc>:call <SID>align()<CR>a
+    " }}}
+    " Yankstack                                  {{{
+    " -------------------------------------------------------------------------
+        let g:yankstack_map_keys = 0
+
+        nmap <leader>pp <Plug>yankstack_substitute_older_paste
+        nmap <leader>PP <Plug>yankstack_substitute_newer_paste
     " }}}
 " }}}
 " -----------------------------------------------------------------------------
