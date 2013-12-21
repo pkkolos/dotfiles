@@ -1,6 +1,6 @@
 " -----------------------------------------------------------------------------
 " Panayiotis Kkolos
-" Modified: 2013-12-16
+" Modified: 2013-12-21
 " -----------------------------------------------------------------------------
 " Configure Vundle                               {{{
 " -----------------------------------------------------------------------------
@@ -14,29 +14,32 @@
 " }}}
 " Enable Addons                                  {{{
 " -----------------------------------------------------------------------------
-    Bundle 'altercation/vim-colors-solarized'
-    Bundle 'chriskempson/base16-vim'
-    Bundle 'smancill/conky-syntax.vim'
-    Bundle 'scrooloose/nerdtree'
+    " core
+    Bundle 'Shougo/neocomplete'
+    Bundle 'godlygeek/tabular'
     Bundle 'mbbill/undotree'
-    Bundle 'kien/ctrlp.vim'
-    Bundle 'endel/ctrlp-filetype.vim'
     Bundle 'tpope/vim-abolish'
-    Bundle 'tpope/vim-surround'
     Bundle 'terryma/vim-expand-region'
     Bundle 'terryma/vim-multiple-cursors'
-    Bundle 'godlygeek/tabular'
-    Bundle 'Shougo/neocomplete'
+    Bundle 'tpope/vim-surround'
+    " color schemes
+    Bundle 'altercation/vim-colors-solarized'
+    Bundle 'chriskempson/base16-vim'
+    " file navication
+    Bundle 'kien/ctrlp.vim'
+    Bundle 'endel/ctrlp-filetype.vim'
+    Bundle 'scrooloose/nerdtree'
+    " languages
+    Bundle 'smancill/conky-syntax.vim'
+    " programming
     Bundle 'Shougo/neosnippet'
-    Bundle 'honza/vim-snippets'
     Bundle 'scrooloose/nerdcommenter'
+    Bundle 'klen/python-mode'
     Bundle 'scrooloose/syntastic'
     Bundle 'tpope/vim-fugitive'
+    Bundle 'honza/vim-snippets'
     if executable('ctags')
         Bundle 'majutsushi/tagbar'
-    endif
-    if has('python')
-        Bundle 'klen/python-mode'
     endif
 " }}}
 " -----------------------------------------------------------------------------
