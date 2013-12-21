@@ -1,3 +1,5 @@
+export WORDCHARS=${WORDCHARS//\/}
+
 export LESS='-ix4 -MRS'
 export PAGER='less'
 export EDITOR='vim'
