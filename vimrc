@@ -1,7 +1,7 @@
 " -----------------------------------------------------------------------------
 " Panayiotis Kkolos
 " Layout inspired by Ethan Schoonover's vimrc (github.com/altercation)
-" Modified: 2013-12-21
+" Modified: 2014-01-01
 " -----------------------------------------------------------------------------
 " Environment                                    {{{
 " -----------------------------------------------------------------------------
@@ -21,6 +21,9 @@
         set t_Co=16
         set background=dark
         colorscheme base16-eighties
+        " when opening .tex-files, don’t treat them as plaintext
+        " if there are no LaTeX commands inside yet
+        let g:tex_flavor='latex'
     " }}}
     " Swap, Backup, Undo                         {{{
     " -------------------------------------------------------------------------
@@ -53,6 +56,7 @@
     " -------------------------------------------------------------------------
         set encoding=utf-8
         set shell=$SHELL
+        set grepprg=grep\ -nH\ $*
         set tags+=~/.vim/tags
         set pastetoggle=<F3>
 
