@@ -6,6 +6,7 @@ zstyle ':completion:*'                  list-prompt '%SAt %p: Hit TAB for more, 
 zstyle ':completion:*'                  matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=*' 'l:|=*'
 zstyle ':completion:*'                  menu select
 zstyle ':completion:*'                  select-prompt '%SScrolling active: current selection at %p%s'
+zstyle ':completion:*'                  special-dirs '..'
 zstyle ':completion:*'                  verbose true
 
 zstyle ':completion:*:approximate:*'    max-errors 5 numeric
