@@ -232,7 +232,7 @@
         " paste status
         set statusline+=%1*%{&paste?'[PASTE]':''}
         " buffer number, full path, help, modified, read-only, preview
-        set statusline+=%0*[%n]\ %f%h%m%r%w
+        set statusline+=%*[%n]\ %f%h%m%r%w
         " filetype
         set statusline+=%{strlen(&ft)>0?'\ \ \|\ ':''}%{&ft}
         " encoding & byte order mark
@@ -248,27 +248,41 @@
         " character code, top/bot
         set statusline+=\ \|\ CHR:%03b(0x%04B)\ \|\ %P
 
-        hi User1 guifg=#fdf6e3 guibg=#dc322f gui=NONE
-        hi User1 ctermfg=0 ctermbg=1 cterm=NONE
-        hi StatusLine guifg=#073642 guibg=#93a1a1 gui=NONE
         hi StatusLine ctermfg=12 ctermbg=10 cterm=NONE
+
+        function! Hi(group, guifg, guibg, ctermfg, ctermbg, attr)
+            exec "hi " . a:group . " guifg=#" . a:guifg
+                        \ . " guibg=#" . a:guibg . " gui=" . a:attr
+                        \ . " ctermfg=" . a:ctermfg
+                        \ . " ctermbg=" . a:ctermbg . " cterm=" . a:attr
+        endfun
 
         function! UpdateStatuslineColour()
             let l:mode = mode()
+            if (&background == "dark")
+                let l:gfg = "073642"
+                let l:gbg = "93a1a1"
+                let l:tfg = "10"
+                let l:tbg = "10"
+                let l:tdfg = "12"
+            else
+                let l:gfg = "eee8d5"
+                let l:gbg = "586e75"
+                let l:tfg = "11"
+                let l:tbg = "7"
+                let l:tdfg = "11"
+            endif
 
+            call Hi("User1", l:gfg, "dc322f", l:tfg, "1", "none")
             if (l:mode ==# 'i')
-                hi StatusLine guifg=#073642 guibg=#268bd2 gui=NONE
-                hi StatusLine ctermfg=0 ctermbg=4 cterm=NONE
+                call Hi("StatusLine", l:gfg, "268bd2", l:tfg, "4", "none")
             elseif (l:mode ==? 'v' || l:mode ==# '' ||
                         \ l:mode ==? 's' || l:mode ==# '')
-                hi StatusLine guifg=#073642 guibg=#719e07 gui=NONE
-                hi StatusLine ctermfg=0 ctermbg=2 cterm=NONE
+                call Hi("StatusLine", l:gfg, "719e07", l:tfg, "2", "none")
             elseif (l:mode ==# 'R')
-                hi StatusLine guifg=#fdf6e3 guibg=#dc322f gui=NONE
-                hi StatusLine ctermfg=0 ctermbg=1 cterm=NONE
+                call Hi("StatusLine", l:gfg, "dc322f", l:tfg, "1", "none")
             else
-                hi StatusLine guifg=#073642 guibg=#93a1a1 gui=NONE
-                hi StatusLine ctermfg=12 ctermbg=10 cterm=NONE
+                call Hi("StatusLine", l:gfg, l:gbg, l:tdfg, l:tbg, "none")
             endif
 
             return ''
