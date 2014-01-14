@@ -555,18 +555,10 @@ _lp_git_branch_color()
 # Remove all colors and escape characters of the given string and return a pure text
 _lp_as_text()
 {
-    # Remove colors from the computed prompt
-    local pst="$(echo $1 | sed -r "s/\x1B\[([0-9]+(;[0-9]+)*)?[m|K]//g")"
+    # Sed expression using extended regexp to remove shell codes around terminal escape sequences
+    local clean_esc="$(printf "s/(%q)[^%.1q]*%q//g" "$_LP_OPEN_ESC" "$_LP_CLOSE_ESC" "$_LP_CLOSE_ESC")"
 
-    # Remove bold sequences and shift in characters
-    pst="$(echo $pst | sed "s,\x1B(B\|\x0F,,g")"
-
-    # Remove escape sequences
-    local op="$(printf "%q" "$_LP_OPEN_ESC")"
-    local cl="$(printf "%q" "$_LP_CLOSE_ESC")"
-    pst="$(echo $pst | sed -r "s,$op|$cl,,g")"
-
-    echo -n "$pst"
+    echo -n "$1" | sed -r "$clean_esc"
 }
 
 _lp_title()
