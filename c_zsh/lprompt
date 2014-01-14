@@ -628,7 +628,7 @@ _lp_set_prompt()
 
     # Reset IFS to its default value to avoid strange behaviors
     # (in case the user is playing with the value at the prompt)
-    local IFS="$(echo -e ' \t\n')" # space, tab, LF
+    local IFS=$' \t\n' # space, tab, LF
 
     # execute the old prompt
     #if $_LP_SHELL_bash; then
