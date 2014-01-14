@@ -33,7 +33,7 @@
 # David Loureiro    <david.loureiro@sysfera.com>  # Small portability fix
 # Étienne Deparis   <etienne@depar.is>            # Fossil support
 # Florian Le Frioux <florian@lefrioux.fr>         # Use ± mark when root in VCS dir.
-# François Schmidts <francois.schmidts@gmail.com> # Small code fix, _lp_get_dirtrim
+# François Schmidts <francois.schmidts@gmail.com> # Initial PROMPT_DIRTRIM support
 # Frédéric Lepied   <flepied@gmail.com>           # Python virtual env
 # Jonas Bengtsson   <jonas.b@gmail.com>           # Git remotes fix
 # Joris Dedieu      <joris@pontiac3.nfrance.com>  # Portability framework, FreeBSD support, bugfixes.
@@ -45,8 +45,12 @@
 # nojhan            <nojhan@gmail.com>            # Original author.
 # Olivier Mengué    <dolmen@cpan.org>             # Major optimizations, refactorings everywhere; current maintainer
 # Poil              <poil@quake.fr>               # Speed improvements
+# Rolf Morel        <rolfmorel@gmail.com>         # "Shorten path" refactoring and fixes
 # Thomas Debesse    <thomas.debesse@gmail.com>    # Fix columns use.
 # Yann 'Ze' Richard <ze@nbox.org>                 # Do not fail on missing commands.
+
+# Issue #161: do not load if not an interactive shell
+test -z "$TERM" -o "x$TERM" = dumb && return
 
 # Check for recent enough version of bash.
 if test -n "$BASH_VERSION" ; then
@@ -57,6 +61,7 @@ if test -n "$BASH_VERSION" ; then
     _LP_HOST_SYMBOL="\h"
     _LP_TIME_SYMBOL="\A"      #t for seconds
     _LP_MARK_SYMBOL='\$'
+    _LP_PWD_SYMBOL="\\w"
 elif test -n "$ZSH_VERSION" ; then
     _LP_SHELL_bash=false
     _LP_OPEN_ESC="%{"
@@ -65,11 +70,14 @@ elif test -n "$ZSH_VERSION" ; then
     _LP_HOST_SYMBOL="%m"
     _LP_TIME_SYMBOL="%D{%R}"  #%D{%T} for seconds
     _LP_MARK_SYMBOL='%(!.#.%%)'
+    _LP_PWD_SYMBOL="%~"
 else
     echo "liquidprompt: shell not supported" >&2
     return
 fi
 
+# Reset so all PWD dependent variables are computed after loading
+unset LP_OLD_PWD
 
 #################
 # CONFIGURATION #
@@ -131,11 +139,6 @@ _lp_source_config()
 
     unset ti_sgr0 ti_bold ti_setaf ti_setab
 
-    LP_TITLE_OPEN="\e]0;"
-    LP_TITLE_CLOSE="\a"
-    LP_SCREEN_TITLE_OPEN="\033k"
-    LP_SCREEN_TITLE_CLOSE="\033\\\\"
-
     LP_ENABLE_PERM=1
     LP_ENABLE_SHORTEN_PATH=1
     LP_ENABLE_TIME=0
@@ -152,6 +155,7 @@ _lp_source_config()
     LP_PATH_LENGTH=35
     LP_PATH_KEEP=2
 
+    LP_PATH_DEFAULT="$_LP_PWD_SYMBOL"
     LP_DISABLED_VCS_PATH=""
     LP_PS1_PREFIX=""
     LP_PS1_POSTFIX=" "
@@ -160,6 +164,7 @@ _lp_source_config()
     LP_MARK_BRACKET_CLOSE="]"
     LP_MARK_SHORTEN_PATH=" … "
     LP_MARK_GIT="±"
+    LP_MARK_SVN="‡"
     LP_MARK_DISABLED="⌀"
     LP_MARK_UNTRACKED="*"
     LP_MARK_STASH="+"
@@ -205,11 +210,20 @@ unset _lp_source_config
 if [[ "$TERM" == screen* ]]; then
     LP_BRACKET_OPEN="${LP_COLOR_IN_MULTIPLEXER}${LP_MARK_BRACKET_OPEN}${NO_COL}"
     LP_BRACKET_CLOSE="${LP_COLOR_IN_MULTIPLEXER}${LP_MARK_BRACKET_CLOSE}${NO_COL}"
+    (( LP_ENABLE_TITLE = LP_ENABLE_TITLE && LP_ENABLE_SCREEN_TITLE ))
+    LP_TITLE_OPEN="\033k"
+    LP_TITLE_CLOSE="\033\\\\"
+elif [[ "$TERM" == linux* ]]; then
+    LP_ENABLE_TITLE=0
 else
     LP_BRACKET_OPEN="${LP_MARK_BRACKET_OPEN}"
     LP_BRACKET_CLOSE="${LP_MARK_BRACKET_CLOSE}"
+    LP_TITLE_OPEN="\e]0;"
+    LP_TITLE_CLOSE="\a"
 fi
 
+# Default value for LP_PERM when LP_ENABLE_PERM is 0
+LP_PERM=:   # without color
 
 ###############
 # Who are we? #
@@ -247,6 +261,7 @@ _lp_connection()
     if [[ -n "$SSH_CLIENT$SSH2_CLIENT$SSH_TTY" ]] ; then
         echo ssh
     else
+        # TODO check on *BSD
         local sess_src="$(who am i | sed -n 's/.*(\(.*\))/\1/p')"
         local sess_parent="$(ps -o comm= -p $PPID 2> /dev/null)"
         if [[ -z "$sess_src" || "$sess_src" = ":"* ]] ; then
@@ -318,11 +333,7 @@ unset _lp_connection
 _lp_shorten_path()
 {
     if [[ "$LP_ENABLE_SHORTEN_PATH" != 1 ]] ; then
-        if $_LP_SHELL_bash; then
-            echo "\\w"
-        else
-            print -P '%~'
-        fi
+        LP_PWD="$LP_PATH_DEFAULT"
         return
     fi
 
@@ -373,32 +384,11 @@ _lp_shorten_path()
             ret="${ret}${mask}${p:${#p} - ${len_left}}${base}"
         fi
     fi
-
-    echo "${ret}"
-}
-
-# Display a ":"
-# colored in green if user have write permission on the current directory
-# colored in red if it have not.
-_lp_permissions_color()
-{
-    if [[ "$LP_ENABLE_PERM" != 1 ]]; then
-        echo : # without color
-    else
-        if [[ -w "${PWD}" ]]; then
-            echo "${LP_COLOR_WRITE}:${NO_COL}"
-        else
-            echo "${LP_COLOR_NOWRITE}:${NO_COL}"
-        fi
-    fi
-}
-
-# Display the current Python virtual environnement, if available.
-_lp_virtualenv()
-{
-    [[ "$LP_ENABLE_VIRTUALENV" != 1 ]] && return
-    if [[ -n "$VIRTUAL_ENV" ]]; then
-        echo "[${LP_COLOR_VIRTUALENV}$(basename $VIRTUAL_ENV)${NO_COL}]"
+    # Escape special chars
+    if $_LP_SHELL_bash; then
+        LP_PWD="${ret//\\/\\\\}"
+    else # zsh
+        LP_PWD="${ret//\%/%%}"
     fi
 }
 
@@ -514,36 +504,45 @@ _lp_git_branch_color()
             fi
         fi
 
-        local shortstat
         local ret
+        local shortstat # only to check for uncommitted changes
         shortstat="$(LC_ALL=C \git diff --shortstat HEAD 2>/dev/null)"
-        if [[ -n "$shortstat" ]] ; then
-            shortstat="$(LC_ALL=C \git diff --shortstat 2>/dev/null)"
+        if [[ -n "$shortstat" ]]; then
+            local u_stat # shorstat of *unstaged* changes
+            u_stat="$(LC_ALL=C \git diff --shortstat 2>/dev/null)"
+            u_stat=${u_stat/*changed, /} # removing "n file(s) changed"
 
-            if [[ -n "$shortstat" ]] ; then
-                local has_lines
-                has_lines=${shortstat/*changed, /}
-                has_lines=${has_lines/ inser*, /\/-}
-                has_lines=${has_lines/ del*/}
-                [[ "$shortstat" = *insertion* ]] && has_lines="+${has_lines/ inser*/}" || has_lines="-$has_lines"
-
-                if [[ "$has_commit" -gt "0" ]] ; then
-                    # Changes to commit and commits to push
-                    ret="${LP_COLOR_CHANGES}${branch}${NO_COL}(${LP_COLOR_DIFF}$has_lines${NO_COL},${LP_COLOR_COMMITS}$has_commit${NO_COL})"
-                else
-                    ret="${LP_COLOR_CHANGES}${branch}${NO_COL}(${LP_COLOR_DIFF}$has_lines${NO_COL})" # changes to commit
-                fi
-            elif [[ "$has_commit" -gt "0" ]] ; then
-                # some commit(s) to push
-                ret="${LP_COLOR_CHANGES}${branch}${NO_COL}(${LP_COLOR_COMMITS}$has_commit${NO_COL})"
+            local i_lines # inserted lines
+            if [[ "$u_stat" = *insertion* ]] ; then
+                i_lines=${u_stat/ inser*}
             else
-                ret="${LP_COLOR_CHANGES}${branch}"
+                i_lines=0
             fi
-        elif [[ "$has_commit" -gt "0" ]] ; then
-            # some commit(s) to push
-            ret="${LP_COLOR_COMMITS}${branch}${NO_COL}(${LP_COLOR_COMMITS}$has_commit${NO_COL})"
+
+            local d_lines # deleted lines
+            if [[ "$u_stat" = *deletion* ]] ; then
+                d_lines=${u_stat/*\(+\), }
+                d_lines=${d_lines/ del*/}
+            else
+                d_lines=0
+            fi
+
+            local has_lines
+            has_lines="+$i_lines/-$d_lines"
+
+            if [[ "$has_commit" -gt "0" ]] ; then
+                # Changes to commit and commits to push
+                ret="${LP_COLOR_CHANGES}${branch}${NO_COL}(${LP_COLOR_DIFF}$has_lines${NO_COL},${LP_COLOR_COMMITS}$has_commit${NO_COL})"
+            else
+                ret="${LP_COLOR_CHANGES}${branch}${NO_COL}(${LP_COLOR_DIFF}$has_lines${NO_COL})" # changes to commit
+            fi
         else
-            ret="${LP_COLOR_UP}${branch}" # nothing to commit or push
+            if [[ "$has_commit" -gt "0" ]]; then
+                # some commit(s) to push
+                ret="${LP_COLOR_COMMITS}${branch}${NO_COL}(${LP_COLOR_COMMITS}$has_commit${NO_COL})"
+            else
+                ret="${LP_COLOR_UP}${branch}" # nothing to commit or push
+            fi
         fi
         echo -ne "$ret$end"
     fi
@@ -575,24 +574,7 @@ _lp_title()
     [[ "$LP_ENABLE_TITLE" != "1" ]] && return
 
     # Get the current computed prompt as pure text
-    local txt="$(_lp_as_text "$1")"
-
-    # Use it in the window's title
-    # Escapes whill tells bash to ignore the non-printing control characters when calculating the width of the prompt.
-    # Otherwise line editing commands will mess the cursor positionning
-    case "$TERM" in
-        screen*)
-            [[ "$LP_ENABLE_SCREEN_TITLE" != "1" ]] && return
-            local title="${_LP_OPEN_ESC}${LP_SCREEN_TITLE_OPEN}${txt}${LP_SCREEN_TITLE_CLOSE}${_LP_CLOSE_ESC}"
-            ;;
-        linux*)
-            local title=""
-            ;;
-        *)
-            local title="${_LP_OPEN_ESC}${LP_TITLE_OPEN}${txt}${LP_TITLE_CLOSE}${_LP_CLOSE_ESC}"
-            ;;
-    esac
-    echo -n "${title}"
+    echo -n "${_LP_OPEN_ESC}${LP_TITLE_OPEN}$(_lp_as_text "$1")${LP_TITLE_CLOSE}${_LP_CLOSE_ESC}"
 }
 
 # Set the prompt mark to ± if git, to ☿ if mercurial, to ‡ if subversion
@@ -601,9 +583,10 @@ _lp_smart_mark()
 {
     local mark
     case "$LP_VCS_TYPE" in
-        git     ) mark="$LP_MARK_GIT"      ;;
-        disabled) mark="$LP_MARK_DISABLED" ;;
-        *       ) mark="$_LP_MARK_SYMBOL"  ;;
+        git     ) mark="$LP_MARK_GIT"             ;;
+        git-svn ) mark="$LP_MARK_GIT$LP_MARK_SVN" ;;
+        disabled) mark="$LP_MARK_DISABLED"        ;;
+        *       ) mark="$_LP_MARK_SYMBOL"         ;;
     esac
     echo -ne "${LP_COLOR_MARK}${mark}${NO_COL}"
 }
@@ -666,17 +649,37 @@ _lp_set_prompt()
         LP_PROXY=""
     fi
 
-    # right of main prompt: space at left
-    LP_VENV="$(_lp_sl "$(_lp_virtualenv)")"
+    # Display the current Python virtual environnement, if available
+    if [[ "$LP_ENABLE_VIRTUALENV,$VIRTUAL_ENV" = 1,?* ]] ; then
+        LP_VENV=" [${LP_COLOR_VIRTUALENV}${VIRTUAL_ENV##*/}${NO_COL}]"
+    else
+        LP_VENV=""
+    fi
+
     # if change of working directory
     if [[ "$LP_OLD_PWD" != "LP:$PWD" ]]; then
-        LP_PERM="$(_lp_permissions_color)"
-        LP_PWD="$(_lp_shorten_path)"
+        # LP_PERM: shows a ":"
+        # - colored in green if user has write permission on the current dir
+        # - colored in red if not
+        if [[ "$LP_ENABLE_PERM" = 1 ]]; then
+            if [[ -w "${PWD}" ]]; then
+                LP_PERM="${LP_COLOR_WRITE}:${NO_COL}"
+            else
+                LP_PERM="${LP_COLOR_NOWRITE}:${NO_COL}"
+            fi
+        fi
+
+        _lp_shorten_path   # set LP_PWD
 
         if _lp_are_vcs_enabled; then
             LP_VCS="$(_lp_git_branch_color)"
             LP_VCS_TYPE="git"
-            if [[ -z "$LP_VCS" ]]; then
+            if [[ -n "$LP_VCS" ]]; then
+                # If this is a git-svn repository
+                if [[ -d "$(\git rev-parse --git-dir 2>/dev/null)/svn" ]]; then
+                    LP_VCS_TYPE="git-svn"
+                fi # git-svn
+            else
                 LP_VCS=""
                 LP_VCS_TYPE=""
             fi # nothing
@@ -702,7 +705,8 @@ _lp_set_prompt()
     # if do not change of working directory but...
     elif [[ -n "$LP_VCS_TYPE" ]]; then # we are still in a VCS dir
         case "$LP_VCS_TYPE" in
-            git     ) LP_VCS="$(_lp_sl "$(_lp_git_branch_color)")";;
+            # git, git-svn
+            git*    ) LP_VCS="$(_lp_sl "$(_lp_git_branch_color)")";;
             disabled) LP_VCS="";;
         esac
     fi
