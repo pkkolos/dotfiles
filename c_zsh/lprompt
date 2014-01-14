@@ -5,7 +5,7 @@
 # LIQUID PROMPT
 # An intelligent and non intrusive prompt for bash and zsh
 ################################################################################
-#
+
 # Licensed under the AGPL version 3
 #
 # This program is free software: you can redistribute it and/or modify
@@ -83,16 +83,16 @@ _lp_source_config()
     local ti_setaf
     local ti_setab
     if tput setaf >/dev/null 2>&1 ; then
-        ti_setaf () { tput setaf "$1" ; }
+        ti_setaf() { tput setaf "$1" ; }
     else
         echo "liquidprompt: terminal $TERM not supported" >&2
-        ti_setaf () { : ; }
+        ti_setaf() { : ; }
     fi
     if tput setab >/dev/null 2>&1 ; then
-        ti_setab () { tput setab "$1" ; }
+        ti_setab() { tput setab "$1" ; }
     else
         echo "liquidprompt: terminal $TERM not supported" >&2
-        ti_setab () { : ; }
+        ti_setab() { : ; }
     fi
 
     # Colors: variables are local so they will have a value only
@@ -138,17 +138,17 @@ _lp_source_config()
 
     LP_ENABLE_PERM=1
     LP_ENABLE_SHORTEN_PATH=1
-    LP_ENABLE_PROXY=0
-    LP_ENABLE_JOBS=1
-    LP_ENABLE_VCS_ROOT=0
-    LP_ENABLE_GIT=1
     LP_ENABLE_TIME=0
+    LP_ENABLE_JOBS=1
+    LP_ENABLE_GIT=1
+    LP_ENABLE_VCS_ROOT=0
+    LP_ENABLE_PROXY=0
     LP_ENABLE_VIRTUALENV=1
     LP_ENABLE_TITLE=1
     LP_ENABLE_SCREEN_TITLE=1
 
-    LP_HOSTNAME_ALWAYS=0
     LP_USER_ALWAYS=0
+    LP_HOSTNAME_ALWAYS=0
     LP_PATH_LENGTH=35
     LP_PATH_KEEP=2
 
@@ -156,14 +156,14 @@ _lp_source_config()
     LP_PS1_PREFIX=""
     LP_PS1_POSTFIX=" "
 
-    LP_MARK_PROXY="↥"
+    LP_MARK_BRACKET_OPEN="["
+    LP_MARK_BRACKET_CLOSE="]"
+    LP_MARK_SHORTEN_PATH=" … "
     LP_MARK_GIT="±"
     LP_MARK_DISABLED="⌀"
     LP_MARK_UNTRACKED="*"
     LP_MARK_STASH="+"
-    LP_MARK_BRACKET_OPEN="["
-    LP_MARK_BRACKET_CLOSE="]"
-    LP_MARK_SHORTEN_PATH=" … "
+    LP_MARK_PROXY="↥"
     LP_MARK_PREFIX=" "
 
     LP_COLOR_PATH=$BOLD
@@ -238,7 +238,6 @@ else # root!
     fi
 fi
 
-
 #################
 # Where are we? #
 #################
@@ -285,26 +284,26 @@ else
 fi
 
 case "$(_lp_connection)" in
-lcl)
-    if [[ "${LP_HOSTNAME_ALWAYS}" -eq "0" ]] ; then
-        # FIXME do we want to display the chroot if local?
-        LP_HOST="" # no hostname if local
-    else
-        LP_HOST="${LP_HOST}${LP_COLOR_HOST}${_LP_HOST_SYMBOL}${NO_COL}"
-    fi
-    ;;
-ssh)
-    LP_HOST="${LP_HOST}${LP_COLOR_SSH}${_LP_HOST_SYMBOL}${NO_COL}"
-    ;;
-su)
-    LP_HOST="${LP_HOST}${LP_COLOR_SU}${_LP_HOST_SYMBOL}${NO_COL}"
-    ;;
-tel)
-    LP_HOST="${LP_HOST}${LP_COLOR_TELNET}${_LP_HOST_SYMBOL}${NO_COL}"
-    ;;
-*)
-    LP_HOST="${LP_HOST}${_LP_HOST_SYMBOL}" # defaults to no color
-    ;;
+    lcl)
+        if [[ "${LP_HOSTNAME_ALWAYS}" -eq "0" ]] ; then
+            # FIXME do we want to display the chroot if local?
+            LP_HOST="" # no hostname if local
+        else
+            LP_HOST="${LP_HOST}${LP_COLOR_HOST}${_LP_HOST_SYMBOL}${NO_COL}"
+        fi
+        ;;
+    ssh)
+        LP_HOST="${LP_HOST}${LP_COLOR_SSH}${_LP_HOST_SYMBOL}${NO_COL}"
+        ;;
+    su)
+        LP_HOST="${LP_HOST}${LP_COLOR_SU}${_LP_HOST_SYMBOL}${NO_COL}"
+        ;;
+    tel)
+        LP_HOST="${LP_HOST}${LP_COLOR_TELNET}${_LP_HOST_SYMBOL}${NO_COL}"
+        ;;
+    *)
+        LP_HOST="${LP_HOST}${_LP_HOST_SYMBOL}" # defaults to no color
+        ;;
 esac
 
 # Useless now, so undefine
@@ -403,7 +402,6 @@ _lp_virtualenv()
     fi
 }
 
-
 ################
 # Related jobs #
 ################
@@ -441,7 +439,6 @@ _lp_jobcount_color()
 
     echo -ne "$ret"
 }
-
 
 ######################
 # VCS branch display #
@@ -552,7 +549,6 @@ _lp_git_branch_color()
     fi
 }
 
-
 ##########
 # DESIGN #
 ##########
@@ -630,16 +626,15 @@ _lp_sb()
     [[ -n "$1" ]] && echo -n " $1 "
 }
 
-
 ###################
 # CURRENT TIME    #
 ###################
+
 _lp_time()
 {
     [[ "$LP_ENABLE_TIME" != 1 ]] && return
     echo -n "${LP_COLOR_TIME}${_LP_TIME_SYMBOL}${NO_COL}"
 }
-
 
 ########################
 # Construct the prompt #
@@ -668,16 +663,13 @@ _lp_set_prompt()
     if [[ "$LP_ENABLE_PROXY,$http_proxy" = 1,?* ]] ; then
         LP_PROXY="$LP_COLOR_PROXY$LP_MARK_PROXY$NO_COL"
     else
-        LP_PROXY=
+        LP_PROXY=""
     fi
 
     # right of main prompt: space at left
     LP_VENV="$(_lp_sl "$(_lp_virtualenv)")"
     # if change of working directory
     if [[ "$LP_OLD_PWD" != "LP:$PWD" ]]; then
-        LP_VCS=""
-        LP_VCS_TYPE=""
-        # LP_HOST is a global set at load time
         LP_PERM="$(_lp_permissions_color)"
         LP_PWD="$(_lp_shorten_path)"
 
@@ -762,9 +754,7 @@ prompt_on()
     if $_LP_SHELL_bash; then
         PROMPT_COMMAND=_lp_set_prompt
     else # zsh
-        function precmd {
-            _lp_set_prompt
-        }
+        precmd() { _lp_set_prompt ; }
     fi
 
     # Keep in mind that LP has been sourced
@@ -777,7 +767,7 @@ prompt_off()
 {
     PS1=$LP_OLD_PS1
     if $_LP_SHELL_bash; then
-        PROMPT_COMMAND=$LP_OLD_PROMPT_COMMAND
+        PROMPT_COMMAND="$LP_OLD_PROMPT_COMMAND"
     else # zsh
         if [[ -n "$LP_OLD_PROMPT_COMMAND" ]]; then
             precmd=$LP_OLD_PROMPT_COMMAND
@@ -787,12 +777,12 @@ prompt_off()
     fi
 }
 
-# Use an empty prompt: just the \$ mark
+# Use an empty prompt: just the ❯ mark
 prompt_OFF()
 {
-    PS1="\$ "
+    PS1="❯ "
     if $_LP_SHELL_bash; then
-        PROMPT_COMMAND=$LP_OLD_PROMPT_COMMAND
+        PROMPT_COMMAND="$LP_OLD_PROMPT_COMMAND"
     else # zsh
         if [[ -n "$LP_OLD_PROMPT_COMMAND" ]]; then
             precmd=$LP_OLD_PROMPT_COMMAND
