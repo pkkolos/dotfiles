@@ -5,14 +5,12 @@
 " -----------------------------------------------------------------------------
 " Environment                                    {{{
 " -----------------------------------------------------------------------------
-    " Setup Addons                               {{{
+    " Setup Bundles                              {{{
     " -------------------------------------------------------------------------
         " setup bundle support (in separate file)
         if filereadable(expand("~/.vimrc.bundles"))
             source ~/.vimrc.bundles
         endif
-        " add system-wide path for vim addons
-        set runtimepath+=/usr/share/vim/addons
     " }}}
     " Syntax Highlighting, Theme                 {{{
     " -------------------------------------------------------------------------
