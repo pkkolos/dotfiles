@@ -480,7 +480,7 @@ _lp_git_branch_color()
 
         local end
         end="$NO_COL"
-        if LC_ALL=C \git status 2>/dev/null | grep -q '\(# Untracked\)'; then
+        if LC_ALL=C \git status 2>/dev/null | grep -q 'Untracked'; then
             end="$LP_COLOR_CHANGES$LP_MARK_UNTRACKED$end"
         fi
 
