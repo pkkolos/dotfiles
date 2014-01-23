@@ -4,6 +4,12 @@
 font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 #font pango:DejaVu Sans Mono 10
 
+# colours for windows
+client.focused          #c44231 #c44231 #f2f2f2 #268bd2
+client.focused_inactive #515151 #515151 #f2f2f2 #363636
+client.unfocused        #222222 #222222 #888888 #101010
+client.urgent           #268bd2 #268bd2 #f2f2f2 #c44231
+
 # define modification key
 set $mod Mod4
 
@@ -147,6 +153,15 @@ bindsym $mod+q mode "$mode_system"
 
 # Start i3bar to display a workspace bar plus the system information i3status
 bar {
+    colors {
+        background         #111111
+        statusline         #f2f2f2
+        separator          #393939
+        focused_workspace  #c44231 #c44231 #f2f2f2
+        active_workspace   #515151 #515151 #f2f2f2
+        inactive_workspace #222222 #222222 #595959
+        urgent_workspace   #268bd2 #268bd2 #f2f2f2
+    }
     status_command i3status
     position top
 }
