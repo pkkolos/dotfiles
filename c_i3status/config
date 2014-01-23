@@ -19,6 +19,7 @@ order += "wireless wlan0"
 order += "disk /"
 order += "disk /home"
 order += "cpu_usage"
+order += "load"
 order += "battery 1"
 order += "time"
 
@@ -45,6 +46,11 @@ time {
 
 cpu_usage {
     format = "%usage"
+}
+
+load {
+    format = "%1min %5min %15min"
+    max_threshold = 0.8
 }
 
 disk "/" {
