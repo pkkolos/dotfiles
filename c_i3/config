@@ -26,7 +26,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec dmenu_run
 #bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-#bindsym $mod+l exec --no-startup-id i3lock -n -d -c 000000
+bindsym $mod+l exec --no-startup-id i3lock -n -d -c 000000
 
 # change focus
 #bindsym $mod+j focus left
@@ -133,12 +133,12 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (p) poweroff
-#set $mode_system System (s) suspend, (h) hibernate, (r) reboot, (p) poweroff
+#set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (p) poweroff
+set $mode_system System (l) logout, (s) suspend, (h) hibernate, (r) reboot, (p) poweroff
 
 mode "$mode_system" {
-    bindsym l exec --no-startup-id i3lock -n -d -c 000000, mode "default"
-    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    #bindsym l exec --no-startup-id i3lock -n -d -c 000000, mode "default"
+    bindsym l exec --no-startup-id i3-msg exit, mode "default"
     bindsym s exec --no-startup-id i3lock -c 000000 && systemctl suspend, mode "default"
     bindsym h exec --no-startup-id i3lock -c 000000 && systemctl hibernate, mode "default"
     bindsym r exec --no-startup-id systemctl reboot
