@@ -19,6 +19,7 @@ order += "wireless wlan0"
 order += "disk /"
 order += "disk /home"
 order += "cpu_usage"
+order += "cpu_temperature 0"
 order += "load"
 order += "battery 1"
 order += "time"
@@ -46,6 +47,11 @@ time {
 
 cpu_usage {
     format = "%usage"
+}
+
+cpu_temperature 0 {
+    format = "%degrees°C"
+    path = "/sys/devices/platform/coretemp.0/temp2_input"
 }
 
 load {
