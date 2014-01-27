@@ -63,7 +63,7 @@ ${voffset 10}
 Uptime: ${alignr 50}${uptime}
 Battery: ${alignr 50}${battery BAT1}${if_match "${battery_short BAT1}" != "F"} (${battery_time BAT1})${endif}
 ACPI: ${alignr 50}${hwmon 0 temp 1}°C
-Updates: ${alignr 50}${texeci 300 aptitude search "~U" | wc -l}
+Updates: ${alignr 45}${texeci 300 aptitude search "~U" | wc -l} 
 ${voffset -5}
 Gmail: ${alignr 50}${execpi 300 ~/.config/conky/mails.sh gmail}
 Outlook: ${alignr 50}${execpi 300 ~/.config/conky/mails.sh outlook}
