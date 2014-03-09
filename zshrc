@@ -31,4 +31,4 @@ source ~/.config/zsh/completion.zsh
 source ~/.config/zsh/aliases.zsh
 source ~/.config/zsh/functions.zsh
 
-source ~/.config/zsh/lprompt
+source ~/.config/liquidprompt/liquidprompt

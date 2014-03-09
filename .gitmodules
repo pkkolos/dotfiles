@@ -1,0 +1,3 @@
+[submodule "c_liquidprompt"]
+	path = c_liquidprompt
+	url = git@github.com:pkkolos/liquidprompt.git
