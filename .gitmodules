@@ -1,3 +1,5 @@
 [submodule "c_liquidprompt"]
+	branch = personal
+	ignore = untracked
 	path = c_liquidprompt
 	url = git@github.com:pkkolos/liquidprompt.git
