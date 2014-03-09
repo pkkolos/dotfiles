@@ -1,7 +1,7 @@
 " -----------------------------------------------------------------------------
 " Panayiotis Kkolos
 " Layout inspired by Ethan Schoonover's vimrc (github.com/altercation)
-" Modified: 2014-01-01
+" Modified: 2014-02-07
 " -----------------------------------------------------------------------------
 " Environment                                    {{{
 " -----------------------------------------------------------------------------
@@ -457,7 +457,7 @@
     " }}}
     " Autocommands                               {{{
     " -------------------------------------------------------------------------
-        "autocmd FileType haskell,python setlocal expandtab
+        autocmd FileType c,cpp setlocal noexpandtab
         autocmd FileType haskell setlocal foldmethod=indent
         autocmd FileType html,xml,xslt setlocal matchpairs+=<:>
         autocmd FileType c setlocal omnifunc=ccomplete#Complete
