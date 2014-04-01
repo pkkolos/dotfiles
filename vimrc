@@ -524,12 +524,33 @@
     " }}}
     " Navigation, Windows, Tabs                  {{{
     " --------------------------------------------------------------------------
-        noremap k gk
-        noremap j gj
-        noremap gk k
-        noremap gj j
-        noremap <up> gk
-        noremap <down> gj
+        " move vertically by screen lines instead of physical lines.
+        " exchange meanings for physical and screen motion keys
+        " down
+        nnoremap  j  gj
+        xnoremap  j  gj
+        nnoremap gj   j
+        xnoremap gj   j
+        " up
+        nnoremap  k  gk
+        xnoremap  k  gk
+        nnoremap gk   k
+        xnoremap gk   k
+        " start of line
+        nnoremap  0  g0
+        xnoremap  0  g0
+        nnoremap g0   0
+        xnoremap g0   0
+        nnoremap  ^  g^
+        xnoremap  ^  g^
+        nnoremap g^   ^
+        xnoremap g^   ^
+        " end of line
+        nnoremap  $  g$
+        xnoremap  $  g$
+        nnoremap g$   $
+        xnoremap g$   $
+        " use tab to jump between matching pairs
         noremap <tab> %
         " move between windows
         nnoremap <Esc>h <C-w>h
