@@ -185,13 +185,16 @@
     " }}}
     " Navigation                                 {{{
     " -------------------------------------------------------------------------
-        set scrolloff=2        "lines to keep around the cursor
-        set selection=old      "don't let the cursor move past
-                               "the last char in visual mode
-        set virtualedit=block  "let the cursor move past the
-                               "last char in visual block mode
-        set whichwrap=<,>,[,]  "left/right arrows move the cursor
-                               "to previous/next line
+        set scrolloff=2         "lines to keep around the cursor
+        set selection=old       "don't let the cursor move past
+                                "the last char in visual mode
+        set virtualedit=block   "let the cursor move past the
+                                "last char in visual block mode
+        set whichwrap=<,>,[,]   "left/right arrows move the cursor
+                                "to previous/next line
+        set switchbuf+=useopen  "when switching between buffers jump to the
+                                "first window that contains the specified
+                                "buffer; don't consider windows on other tabs
     " }}}
     " Completion                                 {{{
     " -------------------------------------------------------------------------
