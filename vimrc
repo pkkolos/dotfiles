@@ -1,7 +1,7 @@
 " -----------------------------------------------------------------------------
 " Panayiotis Kkolos
 " Layout inspired by Ethan Schoonover's vimrc (github.com/altercation)
-" Modified: 2014-02-07
+" Modified: 2014-04-01
 " -----------------------------------------------------------------------------
 " Environment                                    {{{
 " -----------------------------------------------------------------------------
@@ -19,7 +19,7 @@
         set t_Co=16
         set background=dark
         colorscheme base16-eighties
-        " when opening .tex-files, don’t treat them as plaintext
+        " when opening .tex-files, don't treat them as plaintext
         " if there are no LaTeX commands inside yet
         let g:tex_flavor='latex'
     " }}}
@@ -492,7 +492,6 @@
         nnoremap <leader>P "+gP
         vnoremap <leader>p "+gp
         vnoremap <leader>P "+gP
-        nnoremap <silent> <leader>tp :set paste!<cr>
     " }}}
     " Search, Copy, Replace                      {{{
     " -------------------------------------------------------------------------
@@ -544,17 +543,10 @@
                 set colorcolumn=0
             endif
         endfunc
-        function! g:ToggleCursorColumn()
-            if (&cursorcolumn == 1)
-                set nocursorcolumn
-            else
-                set cursorcolumn
-            endif
-        endfunc
         nnoremap <silent> <leader>tl :set list!<cr>
         nnoremap <silent> <leader>tn :call g:ToggleNumMode()<cr>
         nnoremap <silent> <leader>tv :call g:ToggleColorColumn()<cr>
-        nnoremap <silent> <leader>tc :call g:ToggleCursorColumn()<cr>
+        nnoremap <silent> <leader>tc :set cursorcolumn!<cr>
     " }}}
     " Tabs, Indentation, Whitespace              {{{
     " -------------------------------------------------------------------------
