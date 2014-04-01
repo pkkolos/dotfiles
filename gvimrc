@@ -16,6 +16,7 @@
     set mousehide                    "hide mouse pointer when typing
     set guicursor+=a:block-blinkon0  "always block cursor; no blinking
     set guifont=Monospace\ 10
+    set winaltkeys=no                "don't use the alt key to access the menus
 " }}}
 " GUI Options                                    {{{
 " ------------------------------------------------------------------------------
