@@ -216,6 +216,9 @@
         set foldenable         "enable folding
         set foldmethod=syntax  "fold based on syntax
         set foldlevelstart=99  "start with all foldings opened
+        set foldnestmax=3      "sets the maximum nesting of folds for indent
+                               "and syntax methods
+        set foldcolumn=4       "use 4 columns to indicate open/closed folds
     " }}}
     " Location Indicators                        {{{
     " --------------------------------------------------------------------------
@@ -546,6 +549,13 @@
     " }}}
     " Folding                                    {{{
     " --------------------------------------------------------------------------
+        function! g:ToggleFoldColumn()
+            if (&foldcolumn == "0")
+                set foldcolumn=4
+            else
+                set foldcolumn=0
+            endif
+        endfunc
         nnoremap <space> za
         nnoremap <leader>f0 :set foldlevel=0<cr>
         nnoremap <leader>f1 :set foldlevel=1<cr>
@@ -557,6 +567,7 @@
         nnoremap <leader>f7 :set foldlevel=7<cr>
         nnoremap <leader>f8 :set foldlevel=8<cr>
         nnoremap <leader>f9 :set foldlevel=9<cr>
+        nnoremap <silent> <leader>tf :call g:ToggleFoldColumn()<cr>
     " }}}
     " Location Indicators                        {{{
     " --------------------------------------------------------------------------
