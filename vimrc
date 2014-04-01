@@ -177,11 +177,13 @@
         set list                             "show special characters
         set listchars=tab:▸\ ,trail:·,eol:↲  "for tabs, trailing spaces,
         set listchars+=extends:❯,precedes:❮  "end of line and long lines
-        set showmatch                        "bracket match highlighting
-        set matchtime=3                      "time of bracket matching
-        set matchpairs=(:),[:],{:}           "type of brackets to match
-        set display=lastline                 "display as much as possible
-                                             "of the last line
+        set showmatch               "bracket match highlighting
+        set matchtime=3             "time of bracket matching
+        set matchpairs=(:),[:],{:}  "type of brackets to match
+
+        set splitbelow        "put the new window below the current one
+        set splitright        "put the new window right of the current one
+        set display=lastline  "display as much as possible of the last line
     " }}}
     " Navigation                                 {{{
     " -------------------------------------------------------------------------
