@@ -19,8 +19,8 @@
 " }}}
 " GUI Options                                    {{{
 " -----------------------------------------------------------------------------
-    set guioptions=aegimrLc
-    " a +d  Autoselect: If present, then whenever VISUAL mode is started, or
+    set guioptions=cimg
+    " a -d  Autoselect: If present, then whenever VISUAL mode is started, or
     "       the Visual area extended, Vim tries to become the owner of the
     "       windowing system's global selection. This means that the Visually
     "       highlighted text is available for pasting into other applications
@@ -45,7 +45,7 @@
     "                "aA"           yes                     yes
     "
     " c +   Use console dialogs instead of popup dialogs for simple choices.
-    " e +d  Add tab pages when indicated with 'showtabline'. 'guitablabel' can
+    " e -d  Add tab pages when indicated with 'showtabline'. 'guitablabel' can
     "       be used to change the text in the labels. When 'e' is missing a
     "       non-GUI tab pages line may be used. The GUI tabs are only supported
     "       on some systems, currently GTK, Motif, Mac OS/X and MS-Windows.
@@ -71,11 +71,11 @@
     "       and Motif 1.2 GUI.
     " T -d  Include Toolbar. Currently only in Win32, GTK+, Motif, Photon and
     "       Athena GUIs.
-    " r +d  Right-hand scrollbar is always present.
+    " r -d  Right-hand scrollbar is always present.
     " R -   Right-hand scrollbar is present when there is a vertically split
     "       window.
     " l -   Left-hand scrollbar is always present.
-    " L +d  Left-hand scrollbar is present when there is a vertically split
+    " L -d  Left-hand scrollbar is present when there is a vertically split
     "       window.
     " b -   Bottom (horizontal) scrollbar is present. Its size depends on the
     "       longest visible line, or on the cursor line if the 'h' flag is
@@ -99,9 +99,9 @@
                     \ . " -b add,maximized_vert,maximized_horz")
         function! ToggleFullscreen()
             if &guioptions =~# 'm'
-                set guioptions-=mrL
+                set guioptions-=m
             else
-                set guioptions+=mrL
+                set guioptions+=m
             endif
             call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")
         endfunction
