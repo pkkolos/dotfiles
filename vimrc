@@ -219,14 +219,14 @@
     " }}}
     " Location Indicators                        {{{
     " --------------------------------------------------------------------------
-        set number          "show line numbers (if set with relativenumber it
-                            "shows the number of the current line instead of 0)
-        set relativenumber  "show relative line numbers
-        set numberwidth=3   "minimal digits in line numbers
-        set cursorline      "highlight current line
-        set nocursorcolumn  "don't highlight current column
-        set colorcolumn=0   "list of highlighted screen columns
-        set showbreak=+++   "string for wrapped lines
+        set number           "show line numbers (if set with relativenumber it
+                             "shows the number of the current line instead of 0)
+        set relativenumber   "show relative line numbers
+        set numberwidth=5    "minimal digits in line numbers
+        set cursorline       "highlight current line
+        set nocursorcolumn   "don't highlight current column
+        set colorcolumn=0    "list of highlighted screen columns
+        set showbreak=❯❯❯❯❯  "string for wrapped lines
     " }}}
     " Status Indicators                          {{{
     " --------------------------------------------------------------------------
