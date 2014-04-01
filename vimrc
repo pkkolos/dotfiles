@@ -879,8 +879,8 @@
     " --------------------------------------------------------------------------
         let g:yankstack_map_keys = 0
 
-        nmap <leader>pp <Plug>yankstack_substitute_older_paste
-        nmap <leader>PP <Plug>yankstack_substitute_newer_paste
+        nmap <leader>n <Plug>yankstack_substitute_older_paste
+        nmap <leader>N <Plug>yankstack_substitute_newer_paste
     " }}}
 " }}}
 " ------------------------------------------------------------------------------
