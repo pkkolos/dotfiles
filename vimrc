@@ -68,6 +68,9 @@
         set modelines=2
         set history=100   "history of previous commands and search patterns
 
+        set timeoutlen=3000  "configure mapping timeout
+        set ttimeoutlen=5    "configure keycode timeout
+
         set spelllang=en,el
         set nospell
 
