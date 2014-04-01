@@ -208,7 +208,8 @@
     " }}}
     " Location Indicators                        {{{
     " -------------------------------------------------------------------------
-        set number          "show line numbers (compatibility)
+        set number          "show line numbers (if set with relativenumber it
+                            "shows the number of the current line instead of 0)
         set relativenumber  "show relative line numbers
         set numberwidth=3   "minimal digits in line numbers
         set cursorline      "highlight current line
@@ -529,10 +530,19 @@
     " }}}
     " Location Indicators                        {{{
     " -------------------------------------------------------------------------
-        function! g:ToggleNumMode()
-            if (&relativenumber == 1)
-                set number
+        function! g:ToggleNumber()
+            if (&number == 1)
+                set nonumber
+                set norelativenumber
             else
+                set number
+            endif
+        endfunc
+        function! g:ToggleRelativeNum()
+            if (&relativenumber == 1)
+                set norelativenumber
+            else
+                set number
                 set relativenumber
             endif
         endfunc
@@ -544,9 +554,10 @@
             endif
         endfunc
         nnoremap <silent> <leader>tl :set list!<cr>
-        nnoremap <silent> <leader>tn :call g:ToggleNumMode()<cr>
-        nnoremap <silent> <leader>tv :call g:ToggleColorColumn()<cr>
+        nnoremap <silent> <leader>tn :call g:ToggleNumber()<cr>
+        nnoremap <silent> <leader>tr :call g:ToggleRelativeNum()<cr>
         nnoremap <silent> <leader>tc :set cursorcolumn!<cr>
+        nnoremap <silent> <leader>tv :call g:ToggleColorColumn()<cr>
     " }}}
     " Tabs, Indentation, Whitespace              {{{
     " -------------------------------------------------------------------------
