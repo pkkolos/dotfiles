@@ -186,6 +186,8 @@
     " Navigation                                 {{{
     " -------------------------------------------------------------------------
         set scrolloff=2         "lines to keep around the cursor
+        set sidescroll=1        "scroll one column at a time
+        set sidescrolloff=5     "columns to keep around the cursor
         set selection=old       "don't let the cursor move past
                                 "the last char in visual mode
         set virtualedit=block   "let the cursor move past the
