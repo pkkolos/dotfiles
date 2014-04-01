@@ -205,6 +205,8 @@
         set wildmenu                          "command-line completion
                                               "shows a list of matches
         set wildmode=list:longest,full
+        set complete-=i                       "don't scan included files
+        set completeopt-=preview              "don't show preview window
         set omnifunc=syntaxcomplete#Complete
     " }}}
     " Folding                                    {{{
