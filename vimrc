@@ -70,6 +70,8 @@
 
         set spelllang=en,el
         set nospell
+
+        set cedit=<C-g>      "open command-line with ctrl+g instead of ctrl+f
     " }}}
     " Compatible Options                         {{{
     " --------------------------------------------------------------------------
@@ -652,6 +654,20 @@
         nnoremap <silent> <leader>ts :set spell!<cr>
         " save file even when you edited it without the needed permissions
         cnoremap w!! execute ':silent w !sudo tee % > /dev/null' <bar> edit!
+        " setup emacs-style command-line editing keys
+        cnoremap <C-a> <home>
+        cnoremap <C-b> <left>
+        cnoremap <C-d> <del>
+        cnoremap <C-f> <right>
+        cnoremap <C-n> <down>
+        cnoremap <C-p> <up>
+        cnoremap <Esc>b <S-left>
+        cnoremap <Esc>f <S-right>
+        cnoremap <C-o><C-a> <C-a>
+        cnoremap <C-o><C-b> <C-b>
+        cnoremap <C-o><C-d> <C-d>
+        cnoremap <C-o><C-n> <C-n>
+        cnoremap <C-o><C-p> <C-p>
     " }}}
 " }}}
 " Plugins                                        {{{
