@@ -1,19 +1,19 @@
-" -----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
 " Panayiotis Kkolos
 " Layout inspired by Ethan Schoonover's vimrc (github.com/altercation)
 " Modified: 2014-04-01
-" -----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
 " Environment                                    {{{
-" -----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
     " Setup Bundles                              {{{
-    " -------------------------------------------------------------------------
+    " --------------------------------------------------------------------------
         " setup bundle support (in separate file)
         if filereadable(expand("~/.vimrc.bundles"))
             source ~/.vimrc.bundles
         endif
     " }}}
     " Syntax Highlighting, Theme                 {{{
-    " -------------------------------------------------------------------------
+    " --------------------------------------------------------------------------
         filetype plugin indent on
         syntax enable
         set t_Co=16
@@ -24,7 +24,7 @@
         let g:tex_flavor='latex'
     " }}}
     " Swap, Backup, Undo                         {{{
-    " -------------------------------------------------------------------------
+    " --------------------------------------------------------------------------
         let directory = $HOME . "/.vim/tmp/swap/"
         if !isdirectory(directory)
             call system('mkdir -p ' . directory)
@@ -51,7 +51,7 @@
         endif
     " }}}
     " General Settings                           {{{
-    " -------------------------------------------------------------------------
+    " --------------------------------------------------------------------------
         set encoding=utf-8
         set shell=$SHELL
         set grepprg=grep\ -nH\ $*
@@ -72,7 +72,7 @@
         set nospell
     " }}}
     " Compatible Options                         {{{
-    " -------------------------------------------------------------------------
+    " --------------------------------------------------------------------------
         set cpoptions=aABceFsIn
         " a +d  When included, a ":read" command with a file name argument will
         "       set the alternate file name for the current window.
@@ -159,13 +159,13 @@
     " }}}
 " }}}
 " Vim UI                                         {{{
-" -----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
     " Insert Mode                                {{{
-    " -------------------------------------------------------------------------
+    " --------------------------------------------------------------------------
         set backspace=indent,eol,start  "make backspace more flexible
     " }}}
     " Search, Replace                            {{{
-    " -------------------------------------------------------------------------
+    " --------------------------------------------------------------------------
         set hlsearch    "highlight what you search for
         set incsearch   "highlight as you type
         set ignorecase  "case-insensitive search by default
@@ -173,7 +173,7 @@
         set gdefault    "when replacing, use /g by default
     " }}}
     " Display                                    {{{
-    " -------------------------------------------------------------------------
+    " --------------------------------------------------------------------------
         set list                             "show special characters
         set listchars=tab:▸\ ,trail:·,eol:↲  "for tabs, trailing spaces,
         set listchars+=extends:❯,precedes:❮  "end of line and long lines
@@ -201,13 +201,13 @@
         set omnifunc=syntaxcomplete#Complete
     " }}}
     " Folding                                    {{{
-    " -------------------------------------------------------------------------
+    " --------------------------------------------------------------------------
         set foldenable         "enable folding
         set foldmethod=syntax  "fold based on syntax
         set foldlevelstart=99  "start with all foldings opened
     " }}}
     " Location Indicators                        {{{
-    " -------------------------------------------------------------------------
+    " --------------------------------------------------------------------------
         set number          "show line numbers (if set with relativenumber it
                             "shows the number of the current line instead of 0)
         set relativenumber  "show relative line numbers
@@ -218,7 +218,7 @@
         set showbreak=+++   "string for wrapped lines
     " }}}
     " Status Indicators                          {{{
-    " -------------------------------------------------------------------------
+    " --------------------------------------------------------------------------
         set showcmd       "show partial command and selected chars,
                           "lines or blocks in visual mode
         set showmode      "show message in insert, replace and visual mode
@@ -227,7 +227,7 @@
         set report=0      "always report number of lines changed
     " }}}
     " Statusline Format                          {{{
-    " -------------------------------------------------------------------------
+    " --------------------------------------------------------------------------
         " change status line's colour in insert, visual and replace mode
         set statusline=%{UpdateStatuslineColour()}
         " paste status
@@ -290,7 +290,7 @@
         endfunction
     " }}}
     " Short Message Format                       {{{
-    " -------------------------------------------------------------------------
+    " --------------------------------------------------------------------------
         set shortmess=atToOI
         " f -d  use "(3 of 5)" instead of "(file 3 of 5)"
         " i -d  use "[noeol]" instead of "[Incomplete last line]"
@@ -322,22 +322,22 @@
         " I +   don't give the intro message when starting Vim |:intro|.
     " }}}
     " Screen Drawing                             {{{
-    " -------------------------------------------------------------------------
+    " --------------------------------------------------------------------------
         set ttyfast     "indicates a fast terminal connection (fast redraw)
         set lazyredraw  "do not redraw while running macros
                         "necessary for correct usage of status line colours
     " }}}
 " }}}
 " Text Formatting/Layout                         {{{
-" -----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
     " Wrap, Join                                 {{{
-    " -------------------------------------------------------------------------
+    " --------------------------------------------------------------------------
         set wrap          "auto wrap line view, but not text itself
-        set textwidth=79  "maximum text width (column for text wrapping)
+        set textwidth=80  "maximum text width (column for text wrapping)
         set nojoinspaces  "when joining lines insert only one space after .?!
     " }}}
     " Tabs, Indentation                          {{{
-    " -------------------------------------------------------------------------
+    " --------------------------------------------------------------------------
         set expandtab      "use spaces instead of tabs
         set tabstop=4      "how many columns a tab counts for
         set softtabstop=4  "how many columns to use when you hit tab
@@ -349,8 +349,8 @@
         set smartindent   "smart autoindentation when starting new line
     " }}}
     " Format Options                             {{{
-    " -------------------------------------------------------------------------
-        set formatoptions=tcqronlj
+    " --------------------------------------------------------------------------
+        set formatoptions=tcroqnj
         " t +d  Auto-wrap text using textwidth
         " c +d  Auto-wrap comments using textwidth, inserting the current
         "       comment leader automatically.
@@ -400,7 +400,7 @@
         "       you started the insert, or you do not enter a blank in the
         "       insert before reaching 'textwidth', Vim does not perform
         "       auto-wrapping.
-        " l +   Long lines are not broken in insert mode: When a line was
+        " l -   Long lines are not broken in insert mode: When a line was
         "       longer than 'textwidth' when the insert command started, Vim
         "       does not automatically format it.
         " m -   Also break at a multi-byte character above 255. This is useful
@@ -420,7 +420,7 @@
         "               int i;   // the index in the list
     " }}}
     " C Indent Options                           {{{
-    " -------------------------------------------------------------------------
+    " --------------------------------------------------------------------------
         set cinoptions=l1,t0,U1
         " lN  If N != 0 Vim will align with a case label instead of the
         "     statement after it in the same line.
@@ -451,13 +451,13 @@
     " }}}
 " }}}
 " Maps & Functions                               {{{
-" -----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
     " Leader                                     {{{
-    " -------------------------------------------------------------------------
+    " --------------------------------------------------------------------------
         let mapleader = "\\"
     " }}}
     " Autocommands                               {{{
-    " -------------------------------------------------------------------------
+    " --------------------------------------------------------------------------
         autocmd FileType c,cpp setlocal noexpandtab
         autocmd FileType haskell setlocal foldmethod=indent
         autocmd FileType html,xml,xslt setlocal matchpairs+=<:>
@@ -484,7 +484,7 @@
         augroup END
     " }}}
     " Clipboard                                  {{{
-    " -------------------------------------------------------------------------
+    " --------------------------------------------------------------------------
         nnoremap <leader>y "+yy
         vnoremap <leader>y "+ygv
         nnoremap <leader>d "+dd
@@ -495,7 +495,7 @@
         vnoremap <leader>P "+gP
     " }}}
     " Search, Copy, Replace                      {{{
-    " -------------------------------------------------------------------------
+    " --------------------------------------------------------------------------
         nnoremap <leader>/ :noh<cr>
         noremap n nzz
         noremap N Nzz
@@ -505,7 +505,7 @@
         nnoremap Y y$
     " }}}
     " Navigation                                 {{{
-    " -------------------------------------------------------------------------
+    " --------------------------------------------------------------------------
         noremap k gk
         noremap j gj
         noremap gk k
@@ -515,7 +515,7 @@
         noremap <tab> %
     " }}}
     " Folding                                    {{{
-    " -------------------------------------------------------------------------
+    " --------------------------------------------------------------------------
         nnoremap <space> za
         nnoremap <leader>f0 :set foldlevel=0<cr>
         nnoremap <leader>f1 :set foldlevel=1<cr>
@@ -529,7 +529,7 @@
         nnoremap <leader>f9 :set foldlevel=9<cr>
     " }}}
     " Location Indicators                        {{{
-    " -------------------------------------------------------------------------
+    " --------------------------------------------------------------------------
         function! g:ToggleNumber()
             if (&number == 1)
                 set nonumber
@@ -547,8 +547,8 @@
             endif
         endfunc
         function! g:ToggleColorColumn()
-            if (&colorcolumn == 0)
-                set colorcolumn=80
+            if (&colorcolumn == "0")
+                set colorcolumn=+1
             else
                 set colorcolumn=0
             endif
@@ -560,7 +560,7 @@
         nnoremap <silent> <leader>tv :call g:ToggleColorColumn()<cr>
     " }}}
     " Tabs, Indentation, Whitespace              {{{
-    " -------------------------------------------------------------------------
+    " --------------------------------------------------------------------------
         function! <sid>StripTrWhSp()
             " preparation: save last search, and cursor position.
             let _s=@/
@@ -582,7 +582,7 @@
         nnoremap <leader>w :call <sid>StripTrWhSp()<cr>
     " }}}
     " Shell                                      {{{
-    " -------------------------------------------------------------------------
+    " --------------------------------------------------------------------------
         " Display output of shell commands in new window.
         " Only one window by command, if a window already exists for a command,
         " it will be reused.
@@ -631,7 +631,7 @@
                     \ call s:ExecuteInShell(<q-args>, '<bang>')
     " }}}
     " Other                                      {{{
-    " -------------------------------------------------------------------------
+    " --------------------------------------------------------------------------
         nnoremap ; :
         inoremap jk <Esc>
         "nnoremap <leader>o m`o<Esc>``
@@ -646,9 +646,9 @@
     " }}}
 " }}}
 " Plugins                                        {{{
-" -----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
     " Latex-Suite                                {{{
-    " -------------------------------------------------------------------------
+    " --------------------------------------------------------------------------
         let g:Tex_DefaultTargetFormat = 'pdf'
         let g:Tex_MultipleCompileFormats = 'pdf'
         let g:Tex_CompileRule_pdf =
@@ -658,20 +658,20 @@
         let g:Imap_UsePlaceHolders = 0
     " }}}
     " Tagbar                                     {{{
-    " -------------------------------------------------------------------------
+    " --------------------------------------------------------------------------
         nnoremap <silent> <leader>tt :TagbarToggle<cr>
     " }}}
     " Nerdtree                                   {{{
-    " -------------------------------------------------------------------------
+    " --------------------------------------------------------------------------
         nnoremap <silent> <leader>td :NERDTreeToggle<cr>
     " }}}
     " Undotree                                   {{{
-    " -------------------------------------------------------------------------
+    " --------------------------------------------------------------------------
         let g:undotree_setfocuswhentoggle = 1
         nnoremap <silent> <leader>tu :UndotreeToggle<cr>
     " }}}
     " Neocomplete & Neosnippet                   {{{
-    " -------------------------------------------------------------------------
+    " --------------------------------------------------------------------------
         let g:neocomplete#enable_at_startup = 1
         "let g:neocomplete#enable_smart_case = 0
         "let g:neocomplete#enable_auto_select = 1
@@ -746,7 +746,7 @@
                     \ '\<[[:digit:][:alnum:]_-]\+:[[:digit:][:alnum:]_-]*'
     " }}}
     " Syntastic                                  {{{
-    " -------------------------------------------------------------------------
+    " --------------------------------------------------------------------------
         let g:syntastic_mode_map = { 'mode': 'active',
                     \ 'active_filetypes': [],
                     \ 'passive_filetypes': ['html', 'python'] }
@@ -760,13 +760,13 @@
                     \ '--disable=C0103 -f parseable -r n -i y'
     " }}}
     " Python-Mode                                {{{
-    " -------------------------------------------------------------------------
+    " --------------------------------------------------------------------------
         let g:pymode_rope = 0
         "let g:pymode_lint_ignore = 'E501'
         let g:pymode_lint_mccabe_complexity = 15
     " }}}
     " Tabular                                    {{{
-    " -------------------------------------------------------------------------
+    " --------------------------------------------------------------------------
         if exists(":Tabularize")
             nmap <leader>a= :Tabularize /=<cr>
             vmap <leader>a= :Tabularize /=<cr>
@@ -793,13 +793,13 @@
         "inoremap <silent> <Bar> <Bar><Esc>:call <SID>align()<CR>a
     " }}}
     " Yankstack                                  {{{
-    " -------------------------------------------------------------------------
+    " --------------------------------------------------------------------------
         let g:yankstack_map_keys = 0
 
         nmap <leader>pp <Plug>yankstack_substitute_older_paste
         nmap <leader>PP <Plug>yankstack_substitute_newer_paste
     " }}}
 " }}}
-" -----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
 " vim: foldmethod=marker foldlevel=1
-" -----------------------------------------------------------------------------
+" ------------------------------------------------------------------------------
