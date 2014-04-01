@@ -13,7 +13,8 @@
 " -----------------------------------------------------------------------------
     set columns=100
     set lines=30
-    set mousehide     "hide mouse pointer when typing
+    set mousehide                    "hide mouse pointer when typing
+    set guicursor+=a:block-blinkon0  "always block cursor; no blinking
     set guifont=Monospace\ 10
 " }}}
 " GUI Options                                    {{{
