@@ -195,9 +195,9 @@
     " }}}
     " Completion                                 {{{
     " -------------------------------------------------------------------------
-        set wildmenu                            "command-line completion
-                                                "shows a list of matches
-        set wildmode=longest,list:longest,full
+        set wildmenu                          "command-line completion
+                                              "shows a list of matches
+        set wildmode=list:longest,full
         set omnifunc=syntaxcomplete#Complete
     " }}}
     " Folding                                    {{{
