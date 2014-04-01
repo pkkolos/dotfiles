@@ -472,27 +472,31 @@
     " }}}
     " Autocommands                               {{{
     " --------------------------------------------------------------------------
-        autocmd FileType c,cpp setlocal noexpandtab
-        autocmd FileType haskell setlocal foldmethod=indent
-        autocmd FileType html,xml,xslt setlocal matchpairs+=<:>
-        autocmd FileType c setlocal omnifunc=ccomplete#Complete
-        autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
-        autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
-        autocmd FileType erlang setlocal omnifunc=erlang_complete#Complete
-        autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-        autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
-        autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
-        autocmd FileType html,markdown
-                    \ setlocal omnifunc=htmlcomplete#CompleteTags
-        autocmd FileType javascript
-                    \ setlocal omnifunc=javascriptcomplete#CompleteJS
-        autocmd FileType c nnoremap
-            \ <leader>c9 :Shell gcc -Wall -pedantic -O3 -std=c99 -o %:r %<cr>
+        augroup filetype_vim
+            autocmd!
+            au FileType c,cpp setlocal noexpandtab
+            au FileType haskell setlocal foldmethod=indent
+            au FileType html,xml,xslt setlocal matchpairs+=<:>
+            au FileType c setlocal omnifunc=ccomplete#Complete
+            au FileType python setlocal omnifunc=pythoncomplete#Complete
+            au FileType ruby setlocal omnifunc=rubycomplete#Complete
+            au FileType erlang setlocal omnifunc=erlang_complete#Complete
+            au FileType css setlocal omnifunc=csscomplete#CompleteCSS
+            au FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+            au FileType php setlocal omnifunc=phpcomplete#CompletePHP
+            au FileType html,markdown
+                        \ setlocal omnifunc=htmlcomplete#CompleteTags
+            au FileType javascript
+                        \ setlocal omnifunc=javascriptcomplete#CompleteJS
+            au FileType c nnoremap
+                        \ <leader>c9 :Shell gcc -Wall -pedantic
+                        \ -O3 -std=c99 -o %:r %<cr>
+        augroup END
         " when vimrc is edited, reload it.
         au! BufWritePost .vimrc source $MYVIMRC | setlocal foldmethod=marker
         " don't show trailing spaces in insert mode
         augroup trailing
-            au!
+            autocmd!
             au InsertEnter * :set listchars-=trail:·
             au InsertLeave * :set listchars+=trail:·
         augroup END
