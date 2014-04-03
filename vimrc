@@ -482,6 +482,7 @@
             au FileType c,cpp setlocal noexpandtab
             au FileType haskell setlocal foldmethod=indent
             au FileType html,xml,xslt setlocal matchpairs+=<:>
+            au FileType gitcommit setlocal textwidth=72 colorcolumn=+1 spell
             au FileType c setlocal omnifunc=ccomplete#Complete
             au FileType python setlocal omnifunc=pythoncomplete#Complete
             au FileType ruby setlocal omnifunc=rubycomplete#Complete
