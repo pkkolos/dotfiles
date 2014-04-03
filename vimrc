@@ -251,6 +251,8 @@
         set statusline+=%1*%{&paste?'[PASTE]':''}
         " buffer number, full path, help, modified, read-only, preview
         set statusline+=%*[%n]\ %f%h%m%r%w
+        " git branch via vim-fugitive
+        set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
         " filetype
         set statusline+=%{strlen(&ft)>0?'\ \ \|\ ':''}%{&ft}
         " encoding & byte order mark
