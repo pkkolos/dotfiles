@@ -1,4 +1,4 @@
-[submodule "c_liquidprompt"]
+[submodule "liquidprompt"]
 	branch = personal
 	ignore = untracked
 	path = c_liquidprompt
