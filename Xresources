@@ -35,6 +35,20 @@
 *.color14:     base0F
 *.color15:     base07
 
+*.saveLines:       4000
+*.scrollTtyOutput: false
+
+URxvt.title:           URxvt
+URxvt.font:            xft:Monospace:size=10
+URxvt.intensityStyles: false
+
+URxvt.scrollstyle:       plain
+URxvt.scrollBar_right:   true
+URxvt.jumpScroll:        true
+URxvt.skipScroll:        false
+URxvt.scrollWithBuffer:  false
+URxvt.scrollTtyKeypress: true
+
 XTerm*title:      XTerm
 XTerm*termName:   xterm-256color
 XTerm*faceName:   Monospace
@@ -52,10 +66,8 @@ XTerm*locale:    true
 XTerm*utf8:      always
 XTerm*utf8Title: true
 
-XTerm*saveLines:       4096
 XTerm*scrollKey:       true
 XTerm*fastScroll:      true
-XTerm*scrollTtyOutput: false
 
 XTerm*metaSendsEscape:    true
 XTerm*highlightSelection: true
