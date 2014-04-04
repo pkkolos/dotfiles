@@ -296,8 +296,8 @@
             call Hi("User1", l:gfg, "dc322f", l:tfg, "1", "none")
             if (l:mode ==# 'i')
                 call Hi("StatusLine", l:gfg, "268bd2", l:tfg, "4", "none")
-            elseif (l:mode ==? 'v' || l:mode ==# '' ||
-                        \ l:mode ==? 's' || l:mode ==# '')
+            elseif (l:mode ==? 'v' || l:mode ==# "\x16" ||
+                        \ l:mode ==? 's' || l:mode ==# "\x13")
                 call Hi("StatusLine", l:gfg, "719e07", l:tfg, "2", "none")
             elseif (l:mode ==# 'R')
                 call Hi("StatusLine", l:gfg, "dc322f", l:tfg, "1", "none")
@@ -462,7 +462,7 @@
         "     character in its line. (default 0).
         "
         "       cino= or cino=(s          cino=(s,U1
-        "         c = c1 &&	              c = c1 &&
+        "         c = c1 &&                 c = c1 &&
         "             (                         (
         "              c2 ||                        c2 ||
         "              c3                           c3
