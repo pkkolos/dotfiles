@@ -49,30 +49,31 @@ URxvt.skipScroll:        false
 URxvt.scrollWithBuffer:  false
 URxvt.scrollTtyKeypress: true
 
-XTerm*title:      XTerm
-XTerm*termName:   xterm-256color
-XTerm*faceName:   Monospace
-XTerm*faceSize:   10
-XTerm*faceSize1:  6
-XTerm*faceSize2:  8
-XTerm*faceSize3:  12
-XTerm*faceSize4:  14
-XTerm*faceSize5:  18
-XTerm*faceSize6:  24
-XTerm*maximized:  true
-XTerm*boldColors: false
+XTerm.title:     XTerm
+XTerm.termName:  xterm-256color
+XTerm.maximized: true
 
-XTerm*locale:    true
-XTerm*utf8:      always
-XTerm*utf8Title: true
+XTerm.VT100.locale:     true
+XTerm.VT100.utf8:       always
+XTerm.VT100.utf8Title:  true
 
-XTerm*scrollKey:       true
-XTerm*fastScroll:      true
+XTerm.VT100.faceName:   Monospace
+XTerm.VT100.faceSize:   10
+XTerm.VT100.faceSize1:  6
+XTerm.VT100.faceSize2:  8
+XTerm.VT100.faceSize3:  12
+XTerm.VT100.faceSize4:  14
+XTerm.VT100.faceSize5:  18
+XTerm.VT100.faceSize6:  24
+XTerm.VT100.boldColors: false
 
-XTerm*metaSendsEscape:    true
-XTerm*highlightSelection: true
+XTerm.VT100.scrollKey:  true
+XTerm.VT100.fastScroll: true
 
-XTerm*VT100.translations: #override \
+XTerm.VT100.metaSendsEscape:    true
+XTerm.VT100.highlightSelection: true
+
+XTerm.VT100.translations: #override \
          Shift <Btn1Up>:          select-end(CLIPBOARD) \n\
          Shift <Btn2Up>:          insert-selection(CLIPBOARD) \n\
     Ctrl Shift <Key>V:            insert-selection(CLIPBOARD) \n\
