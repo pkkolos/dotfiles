@@ -1,6 +1,6 @@
 " ------------------------------------------------------------------------------
 " Panayiotis Kkolos
-" Modified: 2014-04-01
+" Modified: 2014-04-09
 " ------------------------------------------------------------------------------
 " Theme                                          {{{
 " ------------------------------------------------------------------------------
@@ -124,9 +124,10 @@
             let &guifont = newfont
         endif
     endfunction
-    nnoremap <silent> <S-kPlus> :call AdjustFontSize(2, 1)<CR>
-    nnoremap <silent> <S-kMinus> :call AdjustFontSize(-2, 1)<CR>
-    nnoremap <silent> <S-kMultiply> :call AdjustFontSize(10, 0)<CR>
+    nnoremap <silent> <M-+> :call AdjustFontSize(2, 1)<cr>
+    nnoremap <silent> <M-=> :call AdjustFontSize(2, 1)<cr>
+    nnoremap <silent> <M--> :call AdjustFontSize(-2, 1)<cr>
+    nnoremap <silent> <M-0> :call AdjustFontSize(10, 0)<cr>
 " }}}
 " ------------------------------------------------------------------------------
 " vim: foldmethod=marker
