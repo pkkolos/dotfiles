@@ -49,7 +49,7 @@ URxvt.skipScroll:        false
 URxvt.scrollWithBuffer:  false
 URxvt.scrollTtyKeypress: true
 
-URxvt.perl-ext-common:    clipboard,confirm-paste,font-size
+URxvt.perl-ext-common:    clipboard,confirm-paste,font-size,fullscreen
 URxvt.clipboard.copycmd:  xclip -i -selection clipboard
 URxvt.clipboard.pastecmd: xclip -o -selection clipboard
 URxvt.keysym.C-Up:        command:\033]720;1\007
@@ -63,6 +63,7 @@ URxvt.keysym.M-plus:      perl:font-size:increase
 URxvt.keysym.M-equal:     perl:font-size:increase
 URxvt.keysym.M-minus:     perl:font-size:decrease
 URxvt.keysym.M-0:         perl:font-size:reset
+URxvt.keysym.F11:         perl:fullscreen:switch
 
 XTerm.title:     XTerm
 XTerm.termName:  xterm-256color
