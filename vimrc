@@ -181,7 +181,9 @@
     " --------------------------------------------------------------------------
         set list                             "show special characters
         set listchars=tab:▸\ ,trail:·,eol:↲  "for tabs, trailing spaces,
-        set listchars+=extends:❯,precedes:❮  "end of line and long lines
+        set listchars+=extends:❯,precedes:❮  "end of line, long lines, and
+        set listchars+=nbsp:␣                "non breakable spaces
+
         set showmatch               "bracket match highlighting
         set matchtime=3             "time of bracket matching
         set matchpairs=(:),[:],{:}  "type of brackets to match
