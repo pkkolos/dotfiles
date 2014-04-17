@@ -180,9 +180,9 @@
     " Display                                    {{{
     " --------------------------------------------------------------------------
         set list                             "show special characters
-        set listchars=tab:▸\ ,trail:·,eol:↲  "for tabs, trailing spaces,
-        set listchars+=extends:❯,precedes:❮  "end of line, long lines, and
-        set listchars+=nbsp:␣                "non breakable spaces
+        set listchars=tab:▸\ ,trail:·,eol:↲  "for tabs, trailing spaces, end of
+        set listchars+=extends:❯,precedes:❮  "line, long lines, non breakable
+        set listchars+=nbsp:␣,conceal:✘      "spaces, and conceal characters
 
         set showmatch               "bracket match highlighting
         set matchtime=3             "time of bracket matching
@@ -191,6 +191,9 @@
         set splitbelow        "put the new window below the current one
         set splitright        "put the new window right of the current one
         set display=lastline  "display as much as possible of the last line
+        set conceallevel=1    "show cchar or listchar for conceal text
+        set concealcursor=nc  "conceal text even in the cursorline in
+                              "normal mode and command-line editing mode
     " }}}
     " Navigation                                 {{{
     " -------------------------------------------------------------------------
