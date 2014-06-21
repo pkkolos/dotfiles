@@ -717,6 +717,10 @@
         nnoremap <leader>O O<Esc>
         nnoremap <leader>s `[v`]
         nnoremap <leader>S `[V`]
+        " format
+        nnoremap Q gq
+        xnoremap Q gq
+        " toggle spell
         nnoremap <silent> <leader>ts :set spell!<cr>
         " save file even when you edited it without the needed permissions
         cnoremap w!! execute ':silent w !sudo tee % > /dev/null' <bar> edit!
