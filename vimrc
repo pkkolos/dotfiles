@@ -711,12 +711,8 @@
     " --------------------------------------------------------------------------
         nnoremap ; :
         inoremap jk <Esc>
-        "nnoremap <leader>o m`o<Esc>``
-        "nnoremap <leader>O m`O<Esc>``
         nnoremap <leader>o o<Esc>
         nnoremap <leader>O O<Esc>
-        nnoremap <leader>s `[v`]
-        nnoremap <leader>S `[V`]
         " format
         nnoremap Q gq
         xnoremap Q gq

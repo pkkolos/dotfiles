@@ -106,9 +106,9 @@
             endif
             call system("wmctrl -ir " . v:windowid . " -b toggle,fullscreen")
         endfunction
-        nnoremap <F11> :call ToggleFullscreen()<CR>
-        vnoremap <F11> :call ToggleFullscreen()<CR>gv
-        inoremap <F11> <C-O>:call ToggleFullscreen()<CR>
+        nnoremap <F11> :call ToggleFullscreen()<cr>
+        vnoremap <F11> :call ToggleFullscreen()<cr>gv
+        inoremap <F11> <C-o>:call ToggleFullscreen()<cr>
     endif
     function! AdjustFontSize(amount, relative)
         let pattern = '^\(.* \)\([1-9][0-9]*\)$'
