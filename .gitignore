@@ -1,3 +1,11 @@
+.*
 c_conky/mails.sh
+moc/cache
+moc/equalizer
+moc/last_directory
+moc/pid
+moc/playlist.m3u
+moc/socket2
+moc/softmixer
 vim/bundle
 vim/tmp
