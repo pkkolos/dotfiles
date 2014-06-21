@@ -769,7 +769,7 @@
         let g:undotree_setfocuswhentoggle = 1
         nnoremap <silent> <leader>tu :UndotreeToggle<cr>
     " }}}
-    " Neocomplete & Neosnippet                   {{{
+    " Neocomplete                                {{{
     " --------------------------------------------------------------------------
         let g:neocomplete#enable_at_startup = 1
         "let g:neocomplete#enable_smart_case = 0
@@ -778,18 +778,10 @@
         let g:neocomplete#auto_completion_start_length = 1
         let g:neocomplete#data_directory = '~/.vim/tmp/neocomplete'
 
-        let g:neosnippet#enable_snipmate_compatibility = 1
-        let g:neosnippet#snippets_directory =
-                    \ '~/.vim/bundle/vim-snippets/snippets'
-
         function! s:check_back_space()
             let col = col('.') - 1
             return !col || getline('.')[col - 1] =~ '\s'
         endfunction
-
-        imap <C-s> <Plug>(neosnippet_expand_or_jump)
-        smap <C-s> <Plug>(neosnippet_expand_or_jump)
-        xmap <C-s> <Plug>(neosnippet_expand_target)
 
         inoremap <expr><C-g> neocomplete#undo_completion()
         inoremap <expr><C-l> neocomplete#complete_common_string()
@@ -815,13 +807,9 @@
         inoremap <expr><S-kenter> pumvisible()
                     \ ? neocomplete#close_popup()."\<cr>"        : "\<cr>"
 
-        imap     <expr><tab> pumvisible() ? "\<C-n>"
-                    \ : neosnippet#expandable_or_jumpable()
-                    \ ? "\<Plug>(neosnippet_expand_or_jump)"
+        inoremap <expr><tab> pumvisible() ? "\<C-n>"
                     \ : <SID>check_back_space() ? "\<tab>"
                     \ : neocomplete#start_manual_complete()
-        smap     <expr><tab> neosnippet#expandable_or_jumpable()
-                    \ ? "\<Plug>(neosnippet_expand_or_jump)" : "\<tab>"
         inoremap <expr><S-tab> pumvisible() ? "\<C-p>" : "\<tab>"
 
         if !exists('g:neocomplete#keyword_patterns')
@@ -843,6 +831,16 @@
                     \ '[^. *\t]\.\w*\|\h\w*::'
         let g:neocomplete#force_omni_input_patterns.erlang =
                     \ '\<[[:digit:][:alnum:]_-]\+:[[:digit:][:alnum:]_-]*'
+    " }}}
+    " Neosnippet                                 {{{
+    " --------------------------------------------------------------------------
+        let g:neosnippet#enable_snipmate_compatibility = 1
+        let g:neosnippet#snippets_directory =
+                    \ '~/.vim/bundle/vim-snippets/snippets'
+
+        imap <C-e> <Plug>(neosnippet_expand_or_jump)
+        smap <C-e> <Plug>(neosnippet_expand_or_jump)
+        xmap <C-e> <Plug>(neosnippet_expand_target)
     " }}}
     " Syntastic                                  {{{
     " --------------------------------------------------------------------------
