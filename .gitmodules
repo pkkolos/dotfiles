@@ -1,9 +1,9 @@
 [submodule "liquidprompt"]
 	branch = personal
 	ignore = untracked
-	path = c_liquidprompt
+	path = config_liquidprompt
 	url = git@github.com:pkkolos/liquidprompt.git
 [submodule "urxvt-scripts"]
 	ignore = untracked
-	path = urxvt/ext
+	path = urxvt_ext
 	url = git@github.com:pkkolos/urxvt-scripts.git

@@ -36,12 +36,8 @@ do
         echo "WARNING: Skipping ${name}... Doesn't exist!"
     elif [[ "$name" != "setup.sh" ]]
     then
-        if [[ "${name%_*}" != 'c' ]]
-        then
-            target="$HOME/.$name"
-        else
-            target="$HOME/.config/${name#c_}"
-        fi
+        IFS="_" read -ra target <<<"$name"
+        target=$(IFS="/"; echo "$HOME/.${target[*]}")
         if [[ -h "$target" ]]
         then
             link="$(file "$target" | sed -r "s/^.*\`([^']*).*$/\1/")"
@@ -85,6 +81,7 @@ do
             if [[ "$cmnd" != "remove" ]]
             then
                 echo "INFO: Creating $target"
+                mkdir -p "${target%/*}"
                 ln -s "$PWD/$name" "$target"
             else
                 echo "INFO: $target doesn't exist"
