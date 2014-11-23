@@ -894,6 +894,7 @@
     " Yankstack                                  {{{
     " --------------------------------------------------------------------------
         let g:yankstack_map_keys = 0
+        let g:yankstack_yank_keys = ['c', 'C', 'd', 'D', 'x', 'X', 'y', 'Y']
 
         nmap <leader>n <Plug>yankstack_substitute_older_paste
         nmap <leader>N <Plug>yankstack_substitute_newer_paste
