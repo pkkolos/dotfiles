@@ -97,12 +97,12 @@ then
     then
         git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
         cmnd="install"
-        echo "Vundle have been cloned"
+        echo "Vundle has been cloned"
     else
         cmnd="updat"
         echo "Vundle already exists"
     fi
-    echo -n "${cmnd^*}ing bundles... "
-    vim -u ~/.vimrc.bundles +BundleInstall! +qa
-    echo "Bundles have been ${cmnd}ed"
+    echo -n "Installing bundles... "
+    vim -u ~/.vimrc.bundles +PluginInstall +qa
+    echo "Bundles have been installed"
 fi
