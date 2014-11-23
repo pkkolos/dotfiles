@@ -3,6 +3,7 @@ alias se='sudo -e'
 alias v='vim -R'
 alias vd='vim -d'
 
+alias a='git-annex'
 alias g='git'
 alias j='jobs -l'
 
