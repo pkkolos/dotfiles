@@ -33,9 +33,10 @@
     " programming
     Plugin 'honza/vim-snippets'
     Plugin 'klen/python-mode'
-    Plugin 'scrooloose/nerdcommenter'
+    "Plugin 'scrooloose/nerdcommenter'
     Plugin 'scrooloose/syntastic'
     Plugin 'Shougo/neosnippet'
+    Plugin 'tomtom/tcomment_vim'
     Plugin 'tpope/vim-fugitive'
     if executable('ctags')
         Plugin 'majutsushi/tagbar'

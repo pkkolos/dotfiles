@@ -885,6 +885,11 @@
 
         "inoremap <silent> <Bar> <Bar><Esc>:call <SID>align()<CR>a
     " }}}
+    " TComment                                   {{{
+    " --------------------------------------------------------------------------
+        let g:tcomment#blank_lines = 0
+        let g:tcomment#rstrip_on_uncomment = 2
+    " }}}
     " Yankstack                                  {{{
     " --------------------------------------------------------------------------
         let g:yankstack_map_keys = 0
