@@ -530,7 +530,7 @@
         noremap N Nzz
         noremap / /\v
         noremap ? ?\v
-        cnoremap s/ s/\v
+        cnoremap s// s/\v
         nnoremap Y y$
     " }}}
     " Navigation, Windows, Tabs                  {{{
