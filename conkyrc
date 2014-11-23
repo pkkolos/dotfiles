@@ -74,8 +74,13 @@ Battery: ${alignr}${color4}${battery BAT1}${if_match "${battery_short BAT1}" != 
 ACPI: ${alignr}${color3}${hwmon 0 temp 1}°C${color}
 Updates: ${alignr -4}${color1}${texeci 300 aptitude search "~U" | wc -l}${color} 
 ${voffset -5}
-Gmail: ${alignr}${execpi 300 ~/.config/conky/mails.sh gmail}
-Outlook: ${alignr}${execpi 300 ~/.config/conky/mails.sh outlook}
+Gmail: ${alignr}${if_match ${new_mails $HOME/Mail/Gmail/Inbox} == 0}${color2}No new mail${color}\
+${else}${if_match ${new_mails $HOME/Mail/Gmail/Inbox} == 1}${color3}1 new mail${color}\
+${else}${color3}${new_mails $HOME/Mail/Gmail/Inbox} new mails${color}${endif}${endif}
+Outlook: ${alignr}${if_match ${new_mails $HOME/Mail/Outlook/Inbox} == 0}${color2}No new mail${color}\
+${else}${if_match ${new_mails $HOME/Mail/Outlook/Inbox} == 1}${color3}1 new mail${color}\
+${else}${color3}${new_mails $HOME/Mail/Outlook/Inbox} new mails${color}${endif}${endif}
+# ${color4}Outlook: ${new_mails $HOME/Mail/Outlook/Inbox} new mails${color}
 ${voffset 26}
 ${downspeedgraph eth0 35,140 ff8800 ff8800}${alignr}${upspeedgraph eth0 35,140 669900 669900}
 ${voffset -61}${offset 05}${font Bitstream Vera Sans Mono:size=10}${color3}In${color}${font}
