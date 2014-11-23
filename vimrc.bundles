@@ -13,14 +13,14 @@
     Plugin 'gmarik/vundle'
 
     " general
-    Plugin 'Shougo/neocomplete'
-    Plugin 'godlygeek/tabular'
-    Plugin 'mbbill/undotree'
-    Plugin 'tpope/vim-abolish'
-    Plugin 'terryma/vim-expand-region'
-    Plugin 'terryma/vim-multiple-cursors'
-    Plugin 'tpope/vim-surround'
+    "Plugin 'godlygeek/tabular'
     Plugin 'maxbrunsfeld/vim-yankstack'
+    Plugin 'mbbill/undotree'
+    Plugin 'Shougo/neocomplete'
+    "Plugin 'terryma/vim-expand-region'
+    "Plugin 'terryma/vim-multiple-cursors'
+    Plugin 'tpope/vim-abolish'
+    Plugin 'tpope/vim-surround'
     " color schemes
     Plugin 'altercation/vim-colors-solarized'
     Plugin 'chriskempson/base16-vim'
@@ -31,12 +31,12 @@
     " languages
     Plugin 'smancill/conky-syntax.vim'
     " programming
-    Plugin 'Shougo/neosnippet'
-    Plugin 'scrooloose/nerdcommenter'
-    Plugin 'klen/python-mode'
-    Plugin 'scrooloose/syntastic'
-    Plugin 'tpope/vim-fugitive'
     Plugin 'honza/vim-snippets'
+    Plugin 'klen/python-mode'
+    Plugin 'scrooloose/nerdcommenter'
+    Plugin 'scrooloose/syntastic'
+    Plugin 'Shougo/neosnippet'
+    Plugin 'tpope/vim-fugitive'
     if executable('ctags')
         Plugin 'majutsushi/tagbar'
     endif
