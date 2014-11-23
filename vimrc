@@ -649,10 +649,8 @@
             let @/=_s
             call cursor(l, c)
         endfunction
-        nnoremap <leader>[ <<
-        nnoremap <leader>] >>
-        vnoremap <leader>[ <gv
-        vnoremap <leader>] >gv
+        vnoremap < <gv
+        vnoremap > >gv
         nnoremap <leader>rt :retab!<cr>
         vnoremap <leader>rt :retab!<cr>
         nnoremap <silent> <leader>te :set expandtab!<cr>
