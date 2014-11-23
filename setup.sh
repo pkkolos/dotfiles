@@ -50,8 +50,7 @@ do
                     if [[ "${answer^*}" == "Y" ]]
                     then
                         echo "INFO: Updating $target"
-                        rm "$target"
-                        ln -s "$PWD/$name" "$target"
+                        ln -s -f "$PWD/$name" "$target"
                     else
                         echo "INFO: $target not updated"
                     fi
