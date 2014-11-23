@@ -2,6 +2,7 @@ zstyle ':completion:*'                  completer _expand _complete _list _corre
 zstyle ':completion:*'                  group-name ''
 zstyle ':completion:*'                  ignore-parents parent pwd
 zstyle ':completion:*'                  list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*'                  list-dirs-first true
 zstyle ':completion:*'                  list-prompt '%SAt %p: Hit TAB for more, or the character to insert%s'
 zstyle ':completion:*'                  matcher-list 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=*' 'l:|=*'
 zstyle ':completion:*'                  menu select
