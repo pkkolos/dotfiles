@@ -10,9 +10,10 @@ alias md='mkdir -p'
 alias rd='rmdir'
 
 alias ls='ls -F --color=auto'
-alias ll='ls -alh'
 alias la='ls -A'
 alias lh='ls -d .*'
+alias ll='ls -lh'
+alias lla='ll -a'
 alias l='ls -x'
 
 alias ds='du -sch'
