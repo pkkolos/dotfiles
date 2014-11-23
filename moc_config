@@ -11,7 +11,7 @@ MusicDir = "${HOME}/Music"
 StartInMusicDir = no
 
 # Set playback toggles.
-Repeat = yes
+Repeat = no
 Shuffle = no
 AutoNext = yes
 
@@ -35,7 +35,7 @@ HideFileExtension = no
 # Show file time in menu?  Possible values: 'yes', 'no' and 'IfAvailable'
 # (meaning show the time only when it is already known, which often works
 # faster).
-#ShowTime = IfAvailable
+ShowTime = yes
 
 # Show time played as a percentage in the time progress bar.
 ShowTimePercent = yes
