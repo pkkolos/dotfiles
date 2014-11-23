@@ -1,6 +1,6 @@
 alias e='$EDITOR'
 alias se='sudo -e'
-alias v='vim'
+alias v='vim -R'
 alias vd='vim -d'
 
 alias g='git'
