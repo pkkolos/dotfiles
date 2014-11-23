@@ -13,7 +13,6 @@ zstyle ':completion:*'                  verbose true
 zstyle ':completion:*:approximate:*'    max-errors 5 numeric
 zstyle ':completion:*:correct:*'        max-errors 2 not-numeric
 zstyle ':completion:*:expand:*'         group-order all-expansions
-
 zstyle ':completion:*:man:*'            menu yes select
 
 zstyle ':completion:*:corrections'      format $'%B%F{blue}%d%f - %F{red}errors: %e%f%b'
@@ -32,5 +31,3 @@ zstyle ':completion:*:processes'        command "ps -au $USER -o pid,comm -w -w"
 zstyle ':completion:*:processes'        list-colors '=(#b) #([0-9]#)*=1;34=33'
 zstyle ':completion:*:processes-names'  command "ps c -u $USER -o comm | uniq"
 zstyle ':completion:*:warnings'         format $'%B%F{red}No matches for:%f %F{yellow}%d%f%b'
-
-#zstyle ':completion:*:*:-subscript-:*'  tag-order indexes parameters
