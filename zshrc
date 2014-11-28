@@ -4,13 +4,19 @@ SAVEHIST=10000
 
 fpath=(~/.config/zsh/functions $fpath)
 
+function {
+    local pfunction
+
+    setopt local_options extended_glob
+
+    for pfunction in $HOME/.config/zsh/functions/^_*(-.N:t); do
+        autoload -U "$pfunction"
+    done
+}
+
 autoload -U colors
 autoload -U compinit
 autoload -U edit-command-line
-
-autoload comprpdf
-autoload convsub
-autoload extract
 
 zle -N edit-command-line
 
