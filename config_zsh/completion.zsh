@@ -42,3 +42,14 @@ zstyle ':completion:*:processes-names' command "ps c -u $USER -o comm | uniq"
 zstyle ':completion:*:man:*'         menu yes select
 zstyle ':completion:*:manuals'       separate-sections true
 zstyle ':completion:*:manuals.(^1*)' insert-sections true
+
+# don't complete uninteresting users
+zstyle ':completion:*:users' ignored-patterns \
+    adm amanda apache 'avahi*' backup beaglidx bin cacti canna clamav colord \
+    daemon dbus '(D|d)ebian*' distcache dnsmasq dovecot epmd fax ftp games gdm \
+    geoclue gkrellmd gnats gopher hacluster haldaemon halt hplip hsqldb ident \
+    irc junkbust ldap list lp mail mailman mailnull man messagebus mldonkey \
+    mysql nagios named netdump news nfsnobody nobody nscd ntp nut nx openvpn \
+    operator pcap postfix postgres privoxy proxy pulse pvm quagga radvd rpc \
+    rpcuser rpm rtkit saned shutdown squid sshd statd sync sys 'systemd*' \
+    usbmux uucp uuidd vcsa www-data xfs '_*'
