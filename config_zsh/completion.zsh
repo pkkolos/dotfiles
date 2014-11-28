@@ -39,6 +39,6 @@ zstyle ':completion:*:processes'       command "ps -au $USER -o pid,comm -w -w"
 zstyle ':completion:*:processes-names' command "ps c -u $USER -o comm | uniq"
 
 # man
-zstyle ':completion:*:man:*'     menu yes select
-zstyle ':completion:*:manuals'   separate-sections true
-zstyle ':completion:*:manuals.*' insert-sections true
+zstyle ':completion:*:man:*'         menu yes select
+zstyle ':completion:*:manuals'       separate-sections true
+zstyle ':completion:*:manuals.(^1*)' insert-sections true
