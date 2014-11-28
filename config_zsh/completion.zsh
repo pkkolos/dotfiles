@@ -25,7 +25,7 @@ zstyle ':completion:*' list-dirs-first true
 zstyle ':completion:*' special-dirs '..'
 
 # ignore completion directives
-zstyle ':completion:*:functions' ignored-patterns '_*'
+zstyle ':completion:*:functions' ignored-patterns '(_*|precmd)'
 
 # history
 zstyle ':completion:*:history-words' list false
