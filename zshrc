@@ -10,13 +10,13 @@ function {
     setopt local_options extended_glob
 
     for pfunction in $HOME/.config/zsh/functions/^_*(-.N:t); do
-        autoload -U "$pfunction"
+        autoload -Uz "$pfunction"
     done
 }
 
-autoload -U colors
-autoload -U compinit
-autoload -U edit-command-line
+autoload -Uz colors
+autoload -Uz compinit
+autoload -Uz edit-command-line
 
 zle -N edit-command-line
 
