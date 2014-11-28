@@ -12,8 +12,7 @@ zstyle ':completion:*'              verbose true
 zstyle ':completion:*'              group-name ''
 zstyle ':completion:*:options'      description true
 zstyle ':completion:*:options'      auto-description '%d'
-zstyle ':completion:*'              list-prompt '%SAt %p: Hit TAB for more, or the character to insert%s'
-zstyle ':completion:*'              select-prompt '%SScrolling active: current selection at %p%s'
+zstyle ':completion:*'              list-prompt '%S%m matches%s'
 zstyle ':completion:*:corrections'  format $'%B%F{blue}%d%f - %F{red}errors: %e%f%b'
 zstyle ':completion:*:descriptions' format $'%B%F{blue}completion%f - %F{green}%d%f%b'
 zstyle ':completion:*:messages'     format $'%d'
