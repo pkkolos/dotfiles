@@ -1,6 +1,6 @@
 export WORDCHARS=${WORDCHARS//\/}
 
-export LESS='-ix4 -MRS'
+export LESS='-i -w -x4 -z-4 -M -R -S'
 export PAGER='less'
 export EDITOR='vim'
 export VISUAL='vim'
