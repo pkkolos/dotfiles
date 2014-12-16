@@ -190,6 +190,9 @@
 
         set splitbelow        "put the new window below the current one
         set splitright        "put the new window right of the current one
+        set winwidth=90       "try to have at least 90 columns in the current
+                              "window (80 for the document + 5 for the numbers
+                              "+ 4 for folding + 1 extra)
         set display=lastline  "display as much as possible of the last line
         set conceallevel=1    "show cchar or listchar for conceal text
         set concealcursor=nc  "conceal text even in the cursorline in
