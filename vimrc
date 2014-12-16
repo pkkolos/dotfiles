@@ -720,6 +720,8 @@
         " format
         nnoremap Q gq
         xnoremap Q gq
+        " break line and return at the end of the previous line
+        nnoremap <leader>b i<cr><Esc>k$
         " toggle spell
         nnoremap <silent> <leader>ts :set spell!<cr>
         " save file even when you edited it without the needed permissions
