@@ -506,8 +506,8 @@
             au FileType javascript
                         \ setlocal omnifunc=javascriptcomplete#CompleteJS
             au FileType c nnoremap
-                        \ <leader>c9 :Shell gcc -Wall -pedantic
-                        \ -O3 -std=c99 -o %:r %<cr>
+                        \ <leader>c9 :Shell gcc -Wall -Wextra -pedantic
+                        \ -O3 -std=gnu99 -o %:r %<cr>
         augroup END
         " when vimrc is edited, reload it.
         au! BufWritePost .vimrc source $MYVIMRC | setlocal foldmethod=marker
