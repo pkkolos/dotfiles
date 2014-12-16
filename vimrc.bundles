@@ -30,7 +30,7 @@
     Plugin 'endel/ctrlp-filetype.vim'
     Plugin 'scrooloose/nerdtree'
     " languages
-    Plugin 'smancill/conky-syntax.vim'
+    "Plugin 'smancill/conky-syntax.vim'
     " programming
     Plugin 'honza/vim-snippets'
     Plugin 'klen/python-mode'
