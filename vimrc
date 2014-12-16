@@ -360,6 +360,9 @@
     " Wrap, Join                                 {{{
     " --------------------------------------------------------------------------
         set wrap          "auto wrap line view, but not text itself
+        set linebreak     "break at a 'breakat' character; by default one of
+                          "' ', '^I', '!', '@', '*', '-', '+', ';', ':',
+                          "',', '.', '/', '?'
         set textwidth=80  "maximum text width (column for text wrapping)
         set nojoinspaces  "when joining lines insert only one space after .?!
     " }}}
