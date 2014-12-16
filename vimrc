@@ -713,7 +713,7 @@
     " }}}
     " Other                                      {{{
     " --------------------------------------------------------------------------
-        nnoremap ; :
+        "nnoremap ; :
         inoremap jk <Esc>
         nnoremap <leader>o o<Esc>
         nnoremap <leader>O O<Esc>
