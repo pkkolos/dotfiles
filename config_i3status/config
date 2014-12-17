@@ -1,5 +1,3 @@
-# i3status configuration file
-
 # It is important that this file is edited as UTF-8.
 # The following line should contain a sharp s:
 # ß
@@ -51,7 +49,7 @@ cpu_usage {
 
 cpu_temperature 0 {
     format = "%degrees°C"
-    path = "/sys/devices/platform/coretemp.0/temp2_input"
+    path = "/sys/devices/platform/coretemp.0/hwmon/hwmon0/temp2_input"
 }
 
 load {
