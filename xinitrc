@@ -12,6 +12,10 @@ xset -b
 setxkbmap -model pc105 -layout us,gr -variant altgr-intl,extended -option grp:lctrl_lshift_toggle
 # set the default background
 feh --bg-fill /home/panayiotis/Pictures/.wallpaper
+# start the gnome policykit authentication agent
+/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+# start gnome-settings-daemon
+gnome-settings-daemon &
 
 # start the window manager
 exec i3
