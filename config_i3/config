@@ -1,9 +1,5 @@
 # i3 config file (v4)
 
-# font for window titles
-font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-#font pango:DejaVu Sans Mono 10
-
 # define modification key
 set $mod Mod4
 
@@ -25,6 +21,10 @@ set $ws7   "7:"
 set $ws8   "8:"
 set $ws9   "9:"
 set $ws10  "10:"
+
+# font for window titles
+#font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+font pango:DejaVu Sans Mono 9
 
 #                        BORDER  BACKGROUND  TEXT    INDICATOR
 client.focused           $blue   $blue       $white  $lgrey
