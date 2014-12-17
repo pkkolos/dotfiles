@@ -33,6 +33,9 @@ client.unfocused         $dgrey  $dgrey      $grey   $dgrey
 client.urgent            $red    $red        $white  $red
 # client.background                $blue
 
+new_window pixel 2
+new_float normal 2
+
 # use Mouse+Mod1 to drag floating windows to their wanted position
 floating_modifier Mod1
 
@@ -97,6 +100,9 @@ bindsym $mod+a focus parent
 
 # focus the child container
 bindsym $mod+z focus child
+
+bindsym $mod+b border normal 2
+bindsym $mod+Shift+b border pixel 2
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
