@@ -1,0 +1,10 @@
+conky ~/.config/conky
+devilspie2 ~/.config/devilspie2
+i3.config ~/.config/i3/config
+i3status.config ~/.config/i3status/config
+liquidprompt ~/.config/liquidprompt
+moc.config ~/.moc/config
+moc.themes ~/.moc/themes
+mpv.conf ~/.config/mpv/mpv.conf
+urxvt-scripts ~/.urxvt/ext
+zsh ~/.config/zsh

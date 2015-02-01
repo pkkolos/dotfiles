@@ -1,0 +1,120 @@
+#!/bin/bash
+
+DIR="$(cd "${0%/*}" && pwd -P)"
+
+setup_symlink() {
+    local dir file link target
+
+    dir=$1
+    file="$DIR/$2"
+    link="$(grep "^$2 " $DIR/MAPPING | cut -d ' ' -f 2-)"
+    if [[ -z "$link" ]]
+    then
+        link="$HOME/.$2"
+    else
+        link=${link/\~/$HOME}
+    fi
+
+    if [[ -L "$link" ]]
+    then
+        target="$(readlink "$link")"
+        if [[ "$target" != "$file" ]]
+        then
+            echo "WARNING: $link links to $target instead of $file"
+            read -p "Do you want to update the link? [y/N]: " -r answer
+            if [[ "${answer^*}" == "Y" ]]
+            then
+                echo "INFO: Updating $link"
+                ln -s -f "$file" "$link"
+            else
+                echo "INFO: $link not updated"
+            fi
+        else
+            echo "INFO: $link already exists"
+        fi
+    elif $dir && [[ -d "$link" ]]
+    then
+        if [[ "$(\ls -A "$link")" ]]
+        then
+            echo "WARNING: $link exists and is not empty."
+        else
+            echo "INFO: Removing directory $link and creating link."
+            rmdir "$link"
+            ln -s "$file" "$link"
+        fi
+    elif [[ ! -e "$link" ]]
+    then
+        echo "INFO: Creating $link"
+        mkdir -p "$(dirname "$link")"
+        ln -s "$file" "$link"
+    else
+        echo "WARNING: $link exists and is not a symlink."
+    fi
+}
+
+setup_file_symlink() {
+    setup_symlink false "$1"
+}
+
+setup_dir_symlink() {
+    setup_symlink true "$1"
+}
+
+usage() {
+    echo "Usage:"
+    echo "    $0 (laptop | netbook)"
+    echo "    $0 link file..."
+    exit 1
+}
+
+if [[ $# -eq 0 ]]
+then
+    usage
+elif [[ $# -eq 1 ]]
+then
+    if [[ "$1" != "laptop" && "$1" != "netbook" ]]
+    then
+        usage
+    else
+        files=($(cat "$DIR/${1}.install"))
+        vundle=true
+    fi
+elif [[ "$1" != "link" ]]
+then
+    usage
+else
+    shift
+    files=($@)
+    vundle=false
+fi
+
+for name in ${files[@]}
+do
+    if [[ "$name" = "setup" || "$name" = "MAPPING" || "$name" == *.install ]]
+    then
+        continue
+    elif [[ ! -e "$DIR/$name" ]]
+    then
+        echo "WARNING: Skipping ${name}... Doesn't exist!"
+    elif [[ -d "$DIR/$name" ]]
+    then
+        setup_dir_symlink "$name"
+    else
+        setup_file_symlink "$name"
+    fi
+done
+
+if $vundle
+then
+    echo -n "Cloning vundle... "
+    if [[ ! -d "$HOME/.vim/bundle/vundle/.git" ]]
+    then
+        git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+        echo "Vundle has been cloned"
+    else
+        echo "Vundle already exists"
+    fi
+    echo -n "Installing bundles... "
+    vim -u ~/.vimrc.bundles +PluginInstall +qa
+    echo "Bundles have been installed"
+fi
