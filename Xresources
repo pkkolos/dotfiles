@@ -53,7 +53,7 @@ URxvt.secondaryScroll:   false
 URxvt.iso14755:    false
 URxvt.iso14755_52: false
 
-URxvt.perl-ext-common:    clipboard,confirm-paste,font-size,fullscreen,tabbed
+URxvt.perl-ext-common:    clipboard,confirm-paste,font-size,fullscreen,vtwheel,tabbed
 URxvt.clipboard.copycmd:  xclip -i -selection clipboard
 URxvt.clipboard.pastecmd: xclip -o -selection clipboard
 URxvt.keysym.C-Up:        command:\033]720;1\007
