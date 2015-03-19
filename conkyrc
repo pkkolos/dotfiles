@@ -110,10 +110,6 @@ ${if_mounted /home}/home
 ${voffset -15}${offset 100}${color3}${fs_used /home}${color} / ${fs_size /home}${alignr}${fs_used_perc /home}%
 ${fs_bar /home}
 ${endif}\
-${if_mounted /media/usb0}/media/usb0
-${voffset -15}${offset 100}${color3}${fs_used /media/usb0}${color} / ${fs_size /media/usb0}${alignr}${fs_used_perc /media/usb0}%
-${fs_bar /media/usb0}
-${endif}\
 ${if_mounted /media/lacie25}/media/lacie25
 ${voffset -15}${offset 100}${color3}${fs_used /media/lacie25}${color} / ${fs_size /media/lacie25}${alignr}${fs_used_perc /media/lacie25}%
 ${fs_bar /media/lacie25}
@@ -121,6 +117,10 @@ ${endif}\
 ${if_mounted /media/lacie35}/media/lacie35
 ${voffset -15}${offset 100}${color3}${fs_used /media/lacie35}${color} / ${fs_size /media/lacie35}${alignr}${fs_used_perc /media/lacie35}%
 ${fs_bar /media/lacie35}
+${endif}\
+${if_mounted /media/wdultra}/media/wdultra
+${voffset -15}${offset 100}${color3}${fs_used /media/wdultra}${color} / ${fs_size /media/wdultra}${alignr}${fs_used_perc /media/wdultra}%
+${fs_bar /media/wdultra}
 ${endif}\
 ${if_mounted /media/mp1}/media/mp1
 ${voffset -15}${offset 100}${color3}${fs_used /media/mp1}${color} / ${fs_size /media/mp1}${alignr}${fs_used_perc /media/mp1}%
@@ -137,6 +137,10 @@ ${endif}\
 ${if_mounted /media/mp4}/media/mp4
 ${voffset -15}${offset 100}${color3}${fs_used /media/mp4}${color} / ${fs_size /media/mp4}${alignr}${fs_used_perc /media/mp4}%
 ${fs_bar /media/mp4}
+${endif}\
+${if_mounted /media/mp5}/media/mp5
+${voffset -15}${offset 100}${color3}${fs_used /media/mp5}${color} / ${fs_size /media/mp5}${alignr}${fs_used_perc /media/mp5}%
+${fs_bar /media/mp5}
 ${endif}
 ${voffset -19}
 HDD Temperature: ${alignr}${color3}${hddtemp}°C${color}
