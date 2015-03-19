@@ -87,8 +87,9 @@ XTerm.VT100.faceSize5:  18
 XTerm.VT100.faceSize6:  24
 XTerm.VT100.boldColors: false
 
-XTerm.VT100.scrollKey:  true
-XTerm.VT100.fastScroll: true
+XTerm.VT100.scrollKey:       true
+XTerm.VT100.fastScroll:      true
+XTerm.VT100.alternateScroll: true
 
 XTerm.VT100.metaSendsEscape:    true
 XTerm.VT100.highlightSelection: true
