@@ -4,6 +4,8 @@ i3status.config ~/.config/i3status/config
 liquidprompt ~/.config/liquidprompt
 moc.config ~/.moc/config
 moc.themes ~/.moc/themes
+mpd.conf ~/.config/mpd/mpd.conf
+mpDris2.conf ~/.config/mpDris2/mpDris2.conf
 mpv.conf ~/.config/mpv/mpv.conf
 urxvt-scripts ~/.urxvt/ext
 zsh ~/.config/zsh

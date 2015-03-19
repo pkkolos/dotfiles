@@ -6,6 +6,8 @@ gvimrc
 liquidprompt
 moc.config
 moc.themes
+mpd.conf
+mpDris2.conf
 mpv.conf
 screenrc
 tmux.conf
