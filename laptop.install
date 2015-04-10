@@ -12,6 +12,7 @@ mpd.conf
 mpDris2.conf
 mpv.conf
 pbuilderrc
+pentadactylrc
 screenrc
 tmux.conf
 urxvt-scripts

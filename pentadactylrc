@@ -1,0 +1,5 @@
+map -count -modes=n j -builtin <count>10j
+map -count -modes=n k -builtin <count>10k
+set guioptions=brsTBn
+
+" vim: set ft=vim:

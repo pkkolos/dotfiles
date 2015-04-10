@@ -6,6 +6,7 @@ liquidprompt
 moc.config
 moc.themes
 mpv.conf
+pentadactylrc
 screenrc
 tmux.conf
 urxvt-scripts
