@@ -43,6 +43,8 @@
 	default = simple
 [status]
 	submodulesummary = true
+[tar "tar.xz"]
+	command = xz -c
 [user]
 	name = Panayiotis Kkolos
 	email = pkkolos@gmail.com
