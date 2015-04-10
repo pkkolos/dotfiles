@@ -9,6 +9,7 @@ moc.themes
 mpd.conf
 mpDris2.conf
 mpv.conf
+pbuilderrc
 screenrc
 tmux.conf
 urxvt-scripts

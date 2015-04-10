@@ -1,0 +1,55 @@
+########################################################
+# Last review Wed  7 Jan 00:52:27 EET 2015
+########################################################
+
+if [ -z "${PATH_PBUILDER}" ]; then
+    PATH_PBUILDER="/var/cache/pbuilder" #without the last "/"
+fi
+
+# Codenames for Debian suites according to their alias. Update these when
+# needed.
+UNSTABLE_CODENAME="sid"
+TESTING_CODENAME="jessie"
+STABLE_CODENAME="wheezy"
+
+# Optionally set a default distribution if none is used. Note that you can set
+# your own default (i.e. ${DIST:="unstable"}).
+: ${DIST:="sid"}
+
+# Optionally change Debian release states in $DIST to their names.
+case "$DIST" in
+    unstable) DIST="$UNSTABLE_CODENAME" ;;
+    testing)  DIST="$TESTING_CODENAME"  ;;
+    stable)   DIST="$STABLE_CODENAME"   ;;
+esac
+
+# Optionally set the architecture to the host architecture if none set. Note
+# that you can set your own default (i.e. ${ARCH:="i386"}).
+: ${ARCH:="$(dpkg --print-architecture)"}
+
+NAME="$DIST"
+# specifying the distribution forces the distribution on "pbuilder update"
+DISTRIBUTION="${DIST}"
+if [ -n "${ARCH}" ]; then
+    NAME="$NAME-$ARCH"
+    # specifying the architecture passes --arch= to debootstrap; the default is
+    # to use the architecture of the host
+    ARCHITECTURE="$ARCH"
+    # DEBOOTSTRAPOPTS=("--arch" "$ARCH" "${DEBOOTSTRAPOPTS[@]}")
+fi
+
+BASETGZ="$PATH_PBUILDER/base-${NAME}.tgz"
+BASEPATH="$PATH_PBUILDER/base-${NAME}.cow/"
+BUILDPLACE="$PATH_PBUILDER/build/"
+BUILDRESULT="$PATH_PBUILDER/$NAME/result/"
+
+#specify the cache for APT 
+APTCACHE="$PATH_PBUILDER/aptcache/"
+APTCACHEHARDLINK="yes"
+
+MIRRORSITE="http://ftp.de.debian.org/debian/"
+OTHERMIRROR="deb [trusted=yes] file:///var/cache/archive $DIST/"
+BINDMOUNTS="/var/cache/archive"
+COMPONENTS="main contrib non-free"
+
+# vim: ft=sh
