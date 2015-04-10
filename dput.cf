@@ -1,0 +1,7 @@
+[local]
+method = local
+incoming = /var/cache/archive/mini-dinstall/incoming
+hash = sha
+run_dinstall = 0
+allow_unsigned_uploads = 1
+post_upload_command = mini-dinstall --batch
