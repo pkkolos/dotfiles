@@ -7,3 +7,8 @@
 	ignore = untracked
 	path = urxvt-scripts
 	url = git@github.com:pkkolos/urxvt-scripts.git
+[submodule "oh-my-git"]
+	branch = personal
+	ignore = untracked
+	path = oh-my-git
+	url = git@github.com:pkkolos/oh-my-git.git

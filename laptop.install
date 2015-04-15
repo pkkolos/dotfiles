@@ -11,6 +11,7 @@ moc.themes
 mpd.conf
 mpDris2.conf
 mpv.conf
+oh-my-git
 pbuilderrc
 pentadactylrc
 screenrc
