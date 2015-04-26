@@ -9,8 +9,8 @@ fi
 # Codenames for Debian suites according to their alias. Update these when
 # needed.
 UNSTABLE_CODENAME="sid"
-TESTING_CODENAME="jessie"
-STABLE_CODENAME="wheezy"
+TESTING_CODENAME="stretch"
+STABLE_CODENAME="jessie"
 
 # Optionally set a default distribution if none is used. Note that you can set
 # your own default (i.e. ${DIST:="unstable"}).
