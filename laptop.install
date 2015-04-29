@@ -11,6 +11,8 @@ moc.themes
 mpd.conf
 mpDris2.conf
 mpv.conf
+ncmpcpp.bindings
+ncmpcpp.config
 oh-my-git
 pbuilderrc
 pentadactylrc
