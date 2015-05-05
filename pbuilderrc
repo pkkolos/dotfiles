@@ -52,4 +52,6 @@ OTHERMIRROR="deb [trusted=yes] file:///var/cache/archive $DIST/"
 BINDMOUNTS="/var/cache/archive"
 COMPONENTS="main contrib non-free"
 
+PDEBUILD_PBUILDER="cowbuilder"
+
 # vim: ft=sh
