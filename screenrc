@@ -1,4 +1,4 @@
-term screen-256color
+#term screen-256color
 startup_message off
 autodetach on
 
