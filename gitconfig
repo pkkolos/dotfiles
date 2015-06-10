@@ -11,8 +11,8 @@
 	dsts = diff --stat --staged
 	f = fetch
 	l = log --stat
-	lg = log --graph --abbrev-commit --date=relative --all --pretty='format:%C(yellow)%h%Creset %C(bold blue)%an -%Cred%d%Creset %s %Cgreen(%cr)%Creset'
-	lga = log --graph --abbrev-commit --date=relative --all --pretty='format:%C(yellow)%h%Creset %C(bold blue)%an -%Cred%d%Creset %s %Cgreen(%ar)%Creset'
+	lg = log --graph --relative-date --pretty=graph
+	lga = log --graph --relative-date --all --pretty=graph
 	m = merge
 	mm = merge --no-ff
 	r = reset
@@ -39,6 +39,8 @@
 	renames = copies
 	mnemonicprefix = true
 	algorithm = histogram
+[pretty]
+	graph = format:%C(auto,yellow)%h %C(auto,blue bold)%aN -%C(auto,red)%d%Creset %s %C(auto,green)(%cd)%Creset
 [push]
 	default = simple
 [status]
