@@ -19,6 +19,7 @@
 	mm = merge --no-ff
 	ma = merge --abort
 	mt = mergetool
+	p = push
 	r = reset
 	rh = reset --hard
 	rb = rebase
