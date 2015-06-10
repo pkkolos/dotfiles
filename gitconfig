@@ -20,6 +20,11 @@
 	mt = mergetool
 	r = reset
 	rh = reset --hard
+	rb = rebase
+	rbi = rebase -i
+	rba = rebase --abort
+	rbc = rebase --continue
+	rbs = rebase --skip
 	rmt = remote
 	rmu = remote update --prune
 	s = status --short
