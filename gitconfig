@@ -10,12 +10,14 @@
 	ds = diff --staged
 	dst = diff --stat
 	dsts = diff --stat --staged
+	dt = difftool
 	f = fetch
 	l = log --stat
 	lg = log --graph --relative-date --pretty=graph
 	lga = log --graph --relative-date --all --pretty=graph
 	m = merge
 	mm = merge --no-ff
+	mt = mergetool
 	r = reset
 	rh = reset --hard
 	rmt = remote
@@ -37,9 +39,18 @@
 	editor = vim
 	pager = less -FX
 [diff]
+	tool = vimdiff
+	guitool = meld
 	renames = copies
 	mnemonicprefix = true
 	algorithm = histogram
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+[mergetool]
+	keepBackup = false
+[mergetool "meld"]
+	hasOutput = true
 [pretty]
 	graph = format:%C(auto,yellow)%h %C(auto,blue bold)%aN -%C(auto,red)%d%Creset %s %C(auto,green)(%cd)%Creset
 [push]
