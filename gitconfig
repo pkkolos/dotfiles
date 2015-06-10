@@ -44,7 +44,6 @@
 	untracked = blue
 [core]
 	editor = vim
-	pager = less -FX
 [diff]
 	tool = vimdiff
 	guitool = meld
@@ -58,6 +57,8 @@
 	keepBackup = false
 [mergetool "meld"]
 	hasOutput = true
+[pager]
+	log = less -FX
 [pretty]
 	graph = format:%C(auto,yellow)%h %C(auto,blue bold)%aN -%C(auto,red)%d%Creset %s %C(auto,green)(%cd)%Creset
 [push]
