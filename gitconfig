@@ -19,7 +19,7 @@
 	rh = reset --hard
 	rmt = remote
 	rmu = remote update --prune
-	s = status --short --branch
+	s = status --short
 	st = stash
 	stl = stash list
 	stp = stash pop
@@ -45,6 +45,7 @@
 	default = simple
 [status]
 	submodulesummary = true
+	branch = true
 [tar "tar.xz"]
 	command = xz -c
 [user]
