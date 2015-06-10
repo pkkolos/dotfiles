@@ -1,7 +1,8 @@
 [alias]
 	a = add
 	ap = add -p
-	b = branch -vv
+	b = branch
+	ba = branch -a -vv
 	c = commit
 	ca = commit -a
 	co = checkout
