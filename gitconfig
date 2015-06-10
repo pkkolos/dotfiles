@@ -36,10 +36,8 @@
 	stl = stash list
 	stp = stash pop
 	t = tag
-	wd = diff --word-diff
-	wds = diff --word-diff --staged
 [color]
-	ui = true
+	ui = auto
 [color "diff"]
 	meta = magenta bold
 [color "status"]
@@ -65,7 +63,6 @@
 [push]
 	default = simple
 [status]
-	submodulesummary = true
 	branch = true
 [tar "tar.xz"]
 	command = xz -c
