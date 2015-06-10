@@ -17,6 +17,7 @@
 	lga = log --graph --relative-date --all --pretty=graph
 	m = merge
 	mm = merge --no-ff
+	ma = merge --abort
 	mt = mergetool
 	r = reset
 	rh = reset --hard
