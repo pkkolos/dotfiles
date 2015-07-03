@@ -10,6 +10,8 @@ alias j='jobs -l'
 alias md='mkdir -p'
 alias rd='rmdir'
 
+alias grep='grep -n --color=auto'
+
 alias ls='ls -F --color=auto'
 alias la='ls -A'
 alias lh='ls -d .*'
