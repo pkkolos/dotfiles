@@ -14,6 +14,10 @@ setup_symlink() {
     dir=$1
     file="$DIR/$2"
     link="$(grep "^$2 " $DIR/misc/MAPPING | cut -d ' ' -f 2-)"
+    if [[ -e "$DIR/host-$HOSTNAME/$2" ]]
+    then
+        file="$DIR/host-$HOSTNAME/$2"
+    fi
     if [[ -z "$link" ]]
     then
         link="$HOME/.$2"
