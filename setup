@@ -6,6 +6,8 @@ shopt -s nullglob
 DIR="$(cd "${0%/*}" && pwd -P)"
 HOSTS=($DIR/misc/host-*)
 HOSTSNAMES=(${HOSTS[@]/#$DIR\/misc\/host-})
+TAGS=($DIR/misc/tag-*)
+TAGSNAMES=(${TAGS[@]/#$DIR\/misc\/tag-})
 HOSTNAME="$(hostname)"
 
 setup_symlink() {
@@ -77,28 +79,97 @@ list_hosts() {
     echo "$hosts"
 }
 
-read_host_file() {
+list_tags() {
+    local IFS=$'\t'
+    local tags="${TAGSNAMES[*]}"
+
+    echo "$tags"
+}
+
+read_files() {
+    read_tags() {
+        local IFS=$'\n'
+        local __result=$1
+        local from_host=$2
+        local file="$3"
+        local tag="${file/#$DIR\/misc\/tag-}"
+        local items=""
+
+        if [[ ! -e "$file" ]]
+        then
+            if $from_host
+            then
+                echo "WARNING: Unknown tag '${tag}' in host config file!"
+            else
+                echo "WARNING: Skipping tag '${tag}'... Doesn't exist!"
+            fi
+        else
+            items=($(< $file))
+        fi
+
+        eval $__result="'${items[@]}'"
+    }
+
     local IFS=$'\n'
     local __result=$1
-    local host="$2"
+    local tags=$2
+    local input=${@:3}
     local items=""
+    local item file list tmp
 
-    if [[ ! -e "$DIR/misc/host-$host" ]]
-    then
-        echo "ERROR: No config file for host '${host}'!"
-        exit 1
-    else
-        items=($(< $DIR/misc/host-$host))
-    fi
+    for item in ${input[@]}
+    do
+        if $tags
+        then
+            read_tags tmp false "$DIR/misc/tag-$item"
+            items="$items $tmp"
+        else
+            if [[ ! -e "$DIR/misc/host-$item" ]]
+            then
+                echo "ERROR: No config file for host '${item}'!"
+                exit 1
+            else
+                list=($(< $DIR/misc/host-$item))
+                for file in ${list[@]}
+                do
+                    if [[ $file =~ ^TAG: ]]
+                    then
+                        file="${file#TAG:}"
+                        read_tags tmp true "$DIR/misc/tag-$file"
+                        items="$items $tmp"
+                    else
+                        items="$items $file"
+                    fi
+                done
+            fi
+        fi
+    done
 
-    eval $__result="'${items[@]}'"
+    eval $__result="'$items'"
+}
+
+read_host_file() {
+    local __result=$1
+    local result
+
+    read_files result false $2
+    eval $__result="'$result'"
+}
+
+read_tag_files() {
+    local __result=$1
+    local result
+
+    read_files result true ${@:2}
+    eval $__result="'$result'"
 }
 
 usage() {
     echo "Usage:"
     echo "    $0 host [<host>]"
+    echo "    $0 tag <tag>..."
     echo "    $0 link <file>..."
-    echo "    $0 list-hosts"
+    echo "    $0 (list-hosts | list-tags)"
     exit 1
 }
 
@@ -108,6 +179,10 @@ then
 elif [[ $# -eq 1 && "$1" = "list-hosts" ]]
 then
     list_hosts
+    exit 0
+elif [[ $# -eq 1 && "$1" = "list-tags" ]]
+then
+    list_tags
     exit 0
 elif [[ "$1" = "host" ]]
 then
@@ -122,6 +197,11 @@ then
     fi
     read_host_file files $host
     vundle=true
+elif [[ $# -gt 1 && "$1" = "tag" ]]
+then
+    shift
+    read_tag_files files $@
+    vundle=false
 elif [[ $# -gt 1 && "$1" = "link" ]]
 then
     shift
