@@ -1,5 +1,5 @@
+TAG:vim
 gitconfig
-gvimrc
 i3.config
 i3status.config
 liquidprompt
@@ -11,9 +11,6 @@ pentadactylrc
 screenrc
 tmux.conf
 urxvt-scripts
-vim
-vimrc
-vimrc.bundles
 xinitrc
 Xresources
 zsh

@@ -9,6 +9,7 @@ HOSTSNAMES=(${HOSTS[@]/#$DIR\/misc\/host-})
 TAGS=($DIR/misc/tag-*)
 TAGSNAMES=(${TAGS[@]/#$DIR\/misc\/tag-})
 HOSTNAME="$(hostname)"
+VUNDLE=false
 
 setup_symlink() {
     local dir file link target
@@ -105,6 +106,7 @@ read_files() {
             fi
         else
             items=($(< $file))
+            [[ "$tag" = "vim" ]] && VUNDLE=true
         fi
 
         eval $__result="'${items[@]}'"
@@ -196,17 +198,14 @@ then
         usage
     fi
     read_host_file files $host
-    vundle=true
 elif [[ $# -gt 1 && "$1" = "tag" ]]
 then
     shift
     read_tag_files files $@
-    vundle=false
 elif [[ $# -gt 1 && "$1" = "link" ]]
 then
     shift
     files=($@)
-    vundle=false
 else
     usage
 fi
@@ -227,7 +226,7 @@ do
     fi
 done
 
-if $vundle
+if $VUNDLE
 then
     echo -n "Cloning vundle... "
     if [[ ! -d "$HOME/.vim/bundle/vundle/.git" ]]

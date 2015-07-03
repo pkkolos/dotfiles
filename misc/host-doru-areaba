@@ -1,9 +1,9 @@
+TAG:vim
 conkyrc
 devilspie2
 dput.cf
 gbp.conf
 gitconfig
-gvimrc
 liquidprompt
 mini-dinstall.conf
 moc.config
@@ -19,9 +19,6 @@ pentadactylrc
 screenrc
 tmux.conf
 urxvt-scripts
-vim
-vimrc
-vimrc.bundles
 Xresources
 xsessionrc
 zsh
