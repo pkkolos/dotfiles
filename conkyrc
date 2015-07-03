@@ -94,23 +94,23 @@ ${else}${color3}${new_mails $HOME/Mail/Gmail/Inbox} new mails${color}${endif}${e
 Outlook: ${alignr}${if_match ${new_mails $HOME/Mail/Outlook/Inbox} == 0}${color2}No new mail${color}\
 ${else}${if_match ${new_mails $HOME/Mail/Outlook/Inbox} == 1}${color3}1 new mail${color}\
 ${else}${color3}${new_mails $HOME/Mail/Outlook/Inbox} new mails${color}${endif}${endif}
-${if_up eth0}
-${voffset 20}${downspeedgraph eth0 35,140 ff8800 ff8800}${alignr}${upspeedgraph eth0 35,140 669900 669900}
+${if_up enp4s0}
+${voffset 20}${downspeedgraph enp4s0 35,140 ff8800 ff8800}${alignr}${upspeedgraph enp4s0 35,140 669900 669900}
 ${voffset -62}${offset 5}${font DejaVu Sans Mono:size=10}${color3}In${color}${font}
-${voffset -17}${offset 35}${font DejaVu Sans Mono:size=15}${downspeedf eth0}${font}
+${voffset -17}${offset 35}${font DejaVu Sans Mono:size=15}${downspeedf enp4s0}${font}
 ${voffset -20}${offset 165}${font DejaVu Sans Mono:size=10}${color2}Out${color}${font}
-${voffset -17}${offset 195}${font DejaVu Sans Mono:size=15}${upspeedf eth0}${font}
+${voffset -17}${offset 195}${font DejaVu Sans Mono:size=15}${upspeedf enp4s0}${font}
 ${voffset 30}\
 ${endif}\
-${if_up wlan0}
-${voffset 20}${downspeedgraph wlan0 35,140 ff8800 ff8800}${alignr}${upspeedgraph wlan0 35,140 669900 669900}
+${if_up wlp3s0}
+${voffset 20}${downspeedgraph wlp3s0 35,140 ff8800 ff8800}${alignr}${upspeedgraph wlp3s0 35,140 669900 669900}
 ${voffset -62}${offset 5}${font DejaVu Sans Mono:size=10}${color3}In${color}${font}
-${voffset -17}${offset 35}${font DejaVu Sans Mono:size=15}${downspeedf wlan0}${font}
+${voffset -17}${offset 35}${font DejaVu Sans Mono:size=15}${downspeedf wlp3s0}${font}
 ${voffset -20}${offset 165}${font DejaVu Sans Mono:size=10}${color2}Out${color}${font}
-${voffset -17}${offset 195}${font DejaVu Sans Mono:size=15}${upspeedf wlan0}${font}
+${voffset -17}${offset 195}${font DejaVu Sans Mono:size=15}${upspeedf wlp3s0}${font}
 ${voffset 30}
-${color5}${wireless_essid wlan0}${color}
-${voffset -15}${offset 100}Signal: ${color1}${wireless_link_qual_perc wlan0}%${color}${alignr}Bitrate: ${color1}${wireless_bitrate wlan0}${color}
+${color5}${wireless_essid wlp3s0}${color}
+${voffset -15}${offset 100}Signal: ${color1}${wireless_link_qual_perc wlp3s0}%${color}${alignr}Bitrate: ${color1}${wireless_bitrate wlp3s0}${color}
 ${endif}\
 ${voffset 10}
 /
