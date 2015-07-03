@@ -12,11 +12,11 @@ HOSTNAME="$(hostname)"
 VUNDLE=false
 
 setup_symlink() {
-    local dir file link target
+    local dir=$1
+    local file="$DIR/$2"
+    local link="$(\grep "^$2 " $DIR/misc/MAPPING | cut -d ' ' -f 2-)"
+    local target answer
 
-    dir=$1
-    file="$DIR/$2"
-    link="$(grep "^$2 " $DIR/misc/MAPPING | cut -d ' ' -f 2-)"
     if [[ -e "$DIR/host-$HOSTNAME/$2" ]]
     then
         file="$DIR/host-$HOSTNAME/$2"
