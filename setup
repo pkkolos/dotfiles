@@ -7,7 +7,7 @@ setup_symlink() {
 
     dir=$1
     file="$DIR/$2"
-    link="$(grep "^$2 " $DIR/MAPPING | cut -d ' ' -f 2-)"
+    link="$(grep "^$2 " $DIR/misc/MAPPING | cut -d ' ' -f 2-)"
     if [[ -z "$link" ]]
     then
         link="$HOME/.$2"
@@ -76,7 +76,7 @@ then
     then
         usage
     else
-        files=($(cat "$DIR/${1}.install"))
+        files=($(cat "$DIR/misc/${1}.install"))
         vundle=true
     fi
 elif [[ "$1" != "link" ]]
@@ -90,7 +90,7 @@ fi
 
 for name in ${files[@]}
 do
-    if [[ "$name" = "setup" || "$name" = "MAPPING" || "$name" == *.install ]]
+    if [[ "$name" = "setup" || "$name" = "misc" ]]
     then
         continue
     elif [[ ! -e "$DIR/$name" ]]
