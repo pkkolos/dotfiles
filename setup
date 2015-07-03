@@ -1,6 +1,12 @@
 #!/bin/bash
 
+set -e
+shopt -s nullglob
+
 DIR="$(cd "${0%/*}" && pwd -P)"
+HOSTS=($DIR/misc/host-*)
+HOSTSNAMES=(${HOSTS[@]/#$DIR\/misc\/host-})
+HOSTNAME="$(hostname)"
 
 setup_symlink() {
     local dir file link target
@@ -60,32 +66,65 @@ setup_dir_symlink() {
     setup_symlink true "$1"
 }
 
+list_hosts() {
+    local IFS=$'\t'
+    local hosts="${HOSTSNAMES[*]}"
+
+    echo "$hosts"
+}
+
+read_host_file() {
+    local IFS=$'\n'
+    local __result=$1
+    local host="$2"
+    local items=""
+
+    if [[ ! -e "$DIR/misc/host-$host" ]]
+    then
+        echo "ERROR: No config file for host '${host}'!"
+        exit 1
+    else
+        items=($(< $DIR/misc/host-$host))
+    fi
+
+    eval $__result="'${items[@]}'"
+}
+
 usage() {
     echo "Usage:"
-    echo "    $0 (laptop | netbook)"
-    echo "    $0 link file..."
+    echo "    $0 host [<host>]"
+    echo "    $0 link <file>..."
+    echo "    $0 list-hosts"
     exit 1
 }
 
 if [[ $# -eq 0 ]]
 then
     usage
-elif [[ $# -eq 1 ]]
+elif [[ $# -eq 1 && "$1" = "list-hosts" ]]
 then
-    if [[ "$1" != "laptop" && "$1" != "netbook" ]]
+    list_hosts
+    exit 0
+elif [[ "$1" = "host" ]]
+then
+    if [[ $# -eq 1 ]]
     then
-        usage
+        host="$HOSTNAME"
+    elif [[ $# -eq 2 ]]
+    then
+        host="$2"
     else
-        files=($(cat "$DIR/misc/${1}.install"))
-        vundle=true
+        usage
     fi
-elif [[ "$1" != "link" ]]
+    read_host_file files $host
+    vundle=true
+elif [[ $# -gt 1 && "$1" = "link" ]]
 then
-    usage
-else
     shift
     files=($@)
     vundle=false
+else
+    usage
 fi
 
 for name in ${files[@]}
