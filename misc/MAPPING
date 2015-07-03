@@ -1,3 +1,4 @@
+conky.conf ~/.config/conky/conky.conf
 devilspie2 ~/.config/devilspie2
 i3.config ~/.config/i3/config
 i3status.config ~/.config/i3status/config
