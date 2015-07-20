@@ -23,20 +23,21 @@ case "$DIST" in
     stable)   DIST="$STABLE_CODENAME"   ;;
 esac
 
+# Specify the distribution.
+DISTRIBUTION="${DIST}"
+
+if [ -z "${ARCH}" ]; then
+    NAME="$DIST"
+else
+    NAME="$DIST-$ARCH"
+fi
+
 # Optionally set the architecture to the host architecture if none set. Note
 # that you can set your own default (i.e. ${ARCH:="i386"}).
 : ${ARCH:="$(dpkg --print-architecture)"}
 
-NAME="$DIST"
-# specifying the distribution forces the distribution on "pbuilder update"
-DISTRIBUTION="${DIST}"
-if [ -n "${ARCH}" ]; then
-    NAME="$NAME-$ARCH"
-    # specifying the architecture passes --arch= to debootstrap; the default is
-    # to use the architecture of the host
-    ARCHITECTURE="$ARCH"
-    # DEBOOTSTRAPOPTS=("--arch" "$ARCH" "${DEBOOTSTRAPOPTS[@]}")
-fi
+# Specify the architecture.
+ARCHITECTURE="$ARCH"
 
 BASETGZ="$PATH_PBUILDER/base-${NAME}.tgz"
 BASEPATH="$PATH_PBUILDER/base-${NAME}.cow/"
