@@ -1,5 +1,5 @@
 ########################################################
-# Last review Wed  7 Jan 00:52:27 EET 2015
+# Last review Mon 20 Jul 20:06:05 EEST 2015
 ########################################################
 
 if [ -z "${PATH_PBUILDER}" ]; then
@@ -42,9 +42,9 @@ ARCHITECTURE="$ARCH"
 BASETGZ="$PATH_PBUILDER/base-${NAME}.tgz"
 BASEPATH="$PATH_PBUILDER/base-${NAME}.cow/"
 BUILDPLACE="$PATH_PBUILDER/build/"
-BUILDRESULT="$PATH_PBUILDER/$NAME/result/"
+BUILDRESULT="$PATH_PBUILDER/result/"
 
-#specify the cache for APT 
+# Specify the cache for APT.
 APTCACHE="$PATH_PBUILDER/aptcache/"
 APTCACHEHARDLINK="yes"
 
