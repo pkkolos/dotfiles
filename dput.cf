@@ -1,3 +1,7 @@
+[DEFAULT]
+method = local
+default_host_main = local
+
 [local]
 method = local
 incoming = /var/cache/archive/mini-dinstall/incoming
