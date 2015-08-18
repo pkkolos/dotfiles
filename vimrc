@@ -378,8 +378,8 @@
         set smarttab       "use shiftwidth value for inserting
                            "tabs at the beggining of a line
         set shiftround     "indentation is rounded to multiple of shiftwidth
-        set autoindent    "automatically indent a new line
-        set smartindent   "smart autoindentation when starting new line
+        set autoindent     "automatically indent a new line
+        "set smartindent    "smart autoindentation when starting new line
     " }}}
     " Format Options                             {{{
     " --------------------------------------------------------------------------
