@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------
 " Panayiotis Kkolos
 " Layout inspired by Ethan Schoonover's vimrc (github.com/altercation)
-" Modified: 2014-04-01
+" Modified: 2015-08-18
 " ------------------------------------------------------------------------------
 " Environment                                    {{{
 " ------------------------------------------------------------------------------
@@ -242,7 +242,7 @@
         set numberwidth=5    "minimal digits in line numbers
         set cursorline       "highlight current line
         set nocursorcolumn   "don't highlight current column
-        set colorcolumn=0    "list of highlighted screen columns
+        set colorcolumn=+1   "list of highlighted screen columns
         set showbreak=❯❯❯❯❯  "string for wrapped lines
     " }}}
     " Status Indicators                          {{{
@@ -496,7 +496,7 @@
             au FileType c,cpp setlocal noexpandtab
             au FileType haskell setlocal foldmethod=indent
             au FileType html,xml,xslt setlocal matchpairs+=<:>
-            au FileType gitcommit setlocal textwidth=72 colorcolumn=+1 spell
+            au FileType gitcommit setlocal textwidth=72 spell
             au FileType c setlocal omnifunc=ccomplete#Complete
             au FileType python setlocal omnifunc=pythoncomplete#Complete
             au FileType ruby setlocal omnifunc=rubycomplete#Complete
