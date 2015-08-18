@@ -899,7 +899,7 @@
     " }}}
     " TComment                                   {{{
     " --------------------------------------------------------------------------
-        let g:tcomment#blank_lines = 0
+        let g:tcomment#blank_lines = 1
         let g:tcomment#rstrip_on_uncomment = 2
     " }}}
     " Yankstack                                  {{{
