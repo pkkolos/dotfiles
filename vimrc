@@ -39,12 +39,7 @@
         set directory=~/.vim/tmp/swap//
         set swapfile
 
-        let directory = $HOME . "/.vim/tmp/backup/"
-        if !isdirectory(directory)
-            call system('mkdir -p ' . directory)
-        endif
-        set backupdir=~/.vim/tmp/backup//
-        set backup
+        set nobackup
 
         if has('persistent_undo')
             let directory = $HOME . "/.vim/tmp/undo/"
