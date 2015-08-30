@@ -5,9 +5,13 @@
 " ------------------------------------------------------------------------------
 " Environment                                    {{{
 " ------------------------------------------------------------------------------
-    " Compatibility                              {{{
+    " Compatibility, Viminfo                     {{{
     " --------------------------------------------------------------------------
         set nocompatible
+
+        if exists("g:sudoedit")
+            set viminfo=
+        endif
     " }}}
     " Setup Bundles                              {{{
     " --------------------------------------------------------------------------
@@ -17,7 +21,9 @@
         endif
         execute pathogen#infect('bundles/themes/{}')
         execute pathogen#infect('bundles/generic/{}')
-        execute pathogen#infect('bundles/other/{}')
+        if !exists("g:sudoedit")
+            execute pathogen#infect('bundles/other/{}')
+        endif
     " }}}
     " Syntax Highlighting, Theme                 {{{
     " --------------------------------------------------------------------------
@@ -32,24 +38,30 @@
     " }}}
     " Swap, Backup, Undo                         {{{
     " --------------------------------------------------------------------------
-        let directory = $HOME . "/.vim/tmp/swap/"
-        if !isdirectory(directory)
-            call system('mkdir -p ' . directory)
+        if exists("g:sudoedit")
+            set noswapfile
+        else
+            let directory = $HOME . "/.vim/tmp/swap/"
+            if !isdirectory(directory)
+                call system('mkdir -p ' . directory)
+            endif
+            set directory=~/.vim/tmp/swap//
+            set swapfile
         endif
-        set directory=~/.vim/tmp/swap//
-        set swapfile
 
         set nobackup
 
         if has('persistent_undo')
-            let directory = $HOME . "/.vim/tmp/undo/"
-            if !isdirectory(directory)
-                call system('mkdir -p ' . directory)
+            if exists("g:sudoedit")
+                set noundofile
+            else
+                let directory = $HOME . "/.vim/tmp/undo/"
+                if !isdirectory(directory)
+                    call system('mkdir -p ' . directory)
+                endif
+                set undodir=~/.vim/tmp/undo//
+                set undofile
             endif
-            set undodir=~/.vim/tmp/undo//
-            set undofile
-            set undolevels=1000
-            set undoreload=10000
         endif
     " }}}
     " General Settings                           {{{
@@ -57,7 +69,6 @@
         set encoding=utf-8
         set shell=$SHELL
         set grepprg=grep\ -nH\ $*
-        set tags+=~/.vim/tags
         set pastetoggle=<F3>
 
         set title         "set the title of the window
@@ -66,8 +77,15 @@
         set autowrite     "save current buffer when changing buffers
         set confirm       "operations on unsaved buffers don't fail
                           "instead they are asking for confirmation
-        set modeline
-        set modelines=2
+
+        if exists("g:sudoedit")
+            set nomodeline
+            set modelines=0
+        else
+            set modeline
+            set modelines=2
+        endif
+
         set history=100   "history of previous commands and search patterns
 
         set timeoutlen=3000  "configure mapping timeout

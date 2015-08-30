@@ -1,4 +1,6 @@
 alias e='$EDITOR'
+alias eb='vim -b -n -i NONE'
+alias ec='$SUDO_EDITOR'
 alias se='sudo -e'
 alias v='vim -R'
 alias vd='vim -d'
