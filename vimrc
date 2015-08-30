@@ -1,16 +1,23 @@
 " ------------------------------------------------------------------------------
 " Panayiotis Kkolos
 " Layout inspired by Ethan Schoonover's vimrc (github.com/altercation)
-" Modified: 2015-08-18
+" Modified: 2015-08-30
 " ------------------------------------------------------------------------------
 " Environment                                    {{{
 " ------------------------------------------------------------------------------
+    " Compatibility                              {{{
+    " --------------------------------------------------------------------------
+        set nocompatible
+    " }}}
     " Setup Bundles                              {{{
     " --------------------------------------------------------------------------
-        " setup bundle support (in separate file)
-        if filereadable(expand("~/.vimrc.bundles"))
-            source ~/.vimrc.bundles
+        runtime bundles/pathogen/autoload/pathogen.vim
+        if !exists('g:pathogen_disabled')
+            let g:pathogen_disabled = []
         endif
+        execute pathogen#infect('bundles/themes/{}')
+        execute pathogen#infect('bundles/generic/{}')
+        execute pathogen#infect('bundles/other/{}')
     " }}}
     " Syntax Highlighting, Theme                 {{{
     " --------------------------------------------------------------------------
@@ -748,169 +755,7 @@
 " }}}
 " Plugins                                        {{{
 " ------------------------------------------------------------------------------
-    " CtrlP                                      {{{
-    " --------------------------------------------------------------------------
-        let g:ctrlp_extensions = ['filetype']
-    " }}}
-    " Latex-Suite                                {{{
-    " --------------------------------------------------------------------------
-        let g:Tex_DefaultTargetFormat = 'pdf'
-        let g:Tex_MultipleCompileFormats = 'pdf'
-        let g:Tex_CompileRule_pdf =
-                    \ 'xelatex -shell-escape -interaction=nonstopmode'
-                    \ . ' -file-line-error-style $*'
-        let g:Tex_UseMakefile = 0
-        let g:Imap_UsePlaceHolders = 0
-    " }}}
-    " Tagbar                                     {{{
-    " --------------------------------------------------------------------------
-        nnoremap <silent> <leader>tt :TagbarToggle<cr>
-    " }}}
-    " Nerdtree                                   {{{
-    " --------------------------------------------------------------------------
-        nnoremap <silent> <leader>td :NERDTreeToggle<cr>
-    " }}}
-    " Undotree                                   {{{
-    " --------------------------------------------------------------------------
-        let g:undotree_setfocuswhentoggle = 1
-        nnoremap <silent> <leader>tu :UndotreeToggle<cr>
-    " }}}
-    " Neocomplete                                {{{
-    " --------------------------------------------------------------------------
-        let g:neocomplete#enable_at_startup = 1
-        "let g:neocomplete#enable_smart_case = 0
-        "let g:neocomplete#enable_auto_select = 1
-        let g:neocomplete#force_overwrite_completefunc = 1
-        let g:neocomplete#auto_completion_start_length = 1
-        let g:neocomplete#data_directory = '~/.vim/tmp/neocomplete'
-
-        function! s:check_back_space()
-            let col = col('.') - 1
-            return !col || getline('.')[col - 1] =~ '\s'
-        endfunction
-
-        inoremap <expr><C-g> neocomplete#undo_completion()
-        inoremap <expr><C-l> neocomplete#complete_common_string()
-        "inoremap <expr><C-h> neocomplete#smart_close_popup()
-        "inoremap <expr><C-y> neocomplete#close_popup()
-        inoremap <expr><C-e> neocomplete#cancel_popup()
-
-        inoremap <expr><left>  neocomplete#cancel_popup()."\<left>"
-        inoremap <expr><right> neocomplete#cancel_popup()."\<right>"
-        inoremap <expr><up>    pumvisible() ? "\<up>"
-                    \ : neocomplete#cancel_popup()."\<up>"
-        inoremap <expr><down>  pumvisible() ? "\<down>"
-                    \ : neocomplete#cancel_popup()."\<down>"
-
-        inoremap <expr><bs>       pumvisible()
-                    \ ? neocomplete#smart_close_popup()."\<C-h>" : "\<bs>"
-        inoremap <expr><cr>       pumvisible()
-                    \ ? neocomplete#close_popup()                : "\<cr>"
-        inoremap <expr><space>    pumvisible()
-                    \ ? neocomplete#close_popup()."\<space>"     : "\<space>"
-        inoremap <expr><kenter>   pumvisible()
-                    \ ? neocomplete#close_popup()                : "\<cr>"
-        inoremap <expr><S-kenter> pumvisible()
-                    \ ? neocomplete#close_popup()."\<cr>"        : "\<cr>"
-
-        inoremap <expr><tab> pumvisible() ? "\<C-n>"
-                    \ : <SID>check_back_space() ? "\<tab>"
-                    \ : neocomplete#start_manual_complete()
-        inoremap <expr><S-tab> pumvisible() ? "\<C-p>" : "\<tab>"
-
-        if !exists('g:neocomplete#keyword_patterns')
-            let g:neocomplete#keyword_patterns = {}
-        endif
-        let g:neocomplete#keyword_patterns['default'] = '\h\w*'
-
-        if !exists('g:neocomplete#sources#omni#input_patterns')
-            let g:neocomplete#sources#omni#input_patterns = {}
-        endif
-        "if has('gui_running')
-            "let g:neocomplete#sources#omni#input_patterns.python = ''
-        "endif
-
-        if !exists('g:neocomplete#force_omni_input_patterns')
-            let g:neocomplete#force_omni_input_patterns = {}
-        endif
-        let g:neocomplete#force_omni_input_patterns.ruby =
-                    \ '[^. *\t]\.\w*\|\h\w*::'
-        let g:neocomplete#force_omni_input_patterns.erlang =
-                    \ '\<[[:digit:][:alnum:]_-]\+:[[:digit:][:alnum:]_-]*'
-    " }}}
-    " Neosnippet                                 {{{
-    " --------------------------------------------------------------------------
-        let g:neosnippet#disable_runtime_snippets = {
-                    \ '_' : 1,
-                    \ }
-        let g:neosnippet#enable_snipmate_compatibility = 1
-        let g:neosnippet#snippets_directory =
-                    \ '~/.vim/bundle/vim-snippets/snippets'
-
-        imap <C-e> <Plug>(neosnippet_expand_or_jump)
-        smap <C-e> <Plug>(neosnippet_expand_or_jump)
-        xmap <C-e> <Plug>(neosnippet_expand_target)
-    " }}}
-    " Syntastic                                  {{{
-    " --------------------------------------------------------------------------
-        let g:syntastic_mode_map = { 'mode': 'active',
-                    \ 'active_filetypes': [],
-                    \ 'passive_filetypes': ['html', 'python'] }
-
-        let g:syntastic_auto_loc_list = 1
-        "let g:syntastic_error_symbol = '✗'
-        "let g:syntastic_warning_symbol = '!'
-
-        let g:syntastic_python_checkers = ['pylint']
-        let g:syntastic_python_pylint_args =
-                    \ '--disable=C0103 -f parseable -r n -i y'
-    " }}}
-    " Python-Mode                                {{{
-    " --------------------------------------------------------------------------
-        let g:pymode_rope = 0
-        "let g:pymode_lint_ignore = 'E501'
-        let g:pymode_lint_mccabe_complexity = 15
-    " }}}
-    " Tabular                                    {{{
-    " --------------------------------------------------------------------------
-        if exists(":Tabularize")
-            nmap <leader>a= :Tabularize /=<cr>
-            vmap <leader>a= :Tabularize /=<cr>
-            nmap <leader>a: :Tabularize /:\zs<cr>
-            vmap <leader>a: :Tabularize /:\zs<cr>
-        endif
-
-        "function! s:align()
-           "let p = '^\s*|\s.*\s|\s*$'
-           "if exists(':Tabularize') && getline('.') =~# '^\s*|' &&
-                       "\ (getline(line('.')-1) =~# p ||
-                       "\ getline(line('.')+1) =~# p)
-               "let column = strlen(substitute(
-                           "\ getline('.')[0:col('.')],'[^|]','','g'))
-               "let position = strlen(matchstr(
-                           "\ getline('.')[0:col('.')],'.*|\s*\zs.*'))
-               "Tabularize/|/l1
-               "normal! 0
-               "call search(repeat('[^|]*|',column).'\s\{-\}'.
-                           "\ repeat('.',position),'ce',line('.'))
-           "endif
-        "endfunction
-
-        "inoremap <silent> <Bar> <Bar><Esc>:call <SID>align()<CR>a
-    " }}}
-    " TComment                                   {{{
-    " --------------------------------------------------------------------------
-        let g:tcomment#blank_lines = 1
-        let g:tcomment#rstrip_on_uncomment = 2
-    " }}}
-    " Yankstack                                  {{{
-    " --------------------------------------------------------------------------
-        let g:yankstack_map_keys = 0
-        let g:yankstack_yank_keys = ['c', 'C', 'd', 'D', 'x', 'X', 'y', 'Y']
-
-        nmap <leader>n <Plug>yankstack_substitute_older_paste
-        nmap <leader>N <Plug>yankstack_substitute_newer_paste
-    " }}}
+    source ~/.vim/settings.vim
 " }}}
 " ------------------------------------------------------------------------------
 " vim: foldmethod=marker foldlevel=1
