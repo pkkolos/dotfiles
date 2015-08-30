@@ -1,5 +1,5 @@
 "let g:neocomplete#data_directory = '~/.vim/tmp/neocomplete'
-let g:neocomplete#enable_auto_select = 1
+let g:neocomplete#enable_auto_select = 0
 let g:neocomplete#enable_fuzzy_completion = 0
 let g:neocomplete#auto_completion_start_length = 1
 let g:neocomplete#enable_at_startup = 1
