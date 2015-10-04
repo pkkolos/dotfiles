@@ -8,7 +8,7 @@ if exists("g:loaded_neocomplete")
     "inoremap <expr><C-l> neocomplete#complete_common_string()
     "inoremap <expr><C-h> neocomplete#smart_close_popup()
     "inoremap <expr><C-y> neocomplete#close_popup()
-    inoremap <expr><C-e> neocomplete#cancel_popup()
+    "inoremap <expr><C-e> neocomplete#cancel_popup()
 
     inoremap <expr><left>  neocomplete#cancel_popup()."\<left>"
     inoremap <expr><right> neocomplete#cancel_popup()."\<right>"
