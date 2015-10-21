@@ -1,4 +1,5 @@
 TAG:vim
+TAG:zsh
 conky.conf
 devilspie2
 dput.cf
@@ -21,5 +22,3 @@ tmux.conf
 urxvt-scripts
 Xresources
 xsessionrc
-zsh
-zshrc
