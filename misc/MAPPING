@@ -1,5 +1,8 @@
 conky.conf ~/.config/conky/conky.conf
 devilspie2 ~/.config/devilspie2
+dirmngr.conf ~/.gnupg/dirmngr.conf
+gpg.conf ~/.gnupg/gpg.conf
+gpg-agent.conf ~/.gnupg/gpg-agent.conf
 i3.config ~/.config/i3/config
 i3status.config ~/.config/i3status/config
 liquidprompt ~/.config/liquidprompt
