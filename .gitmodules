@@ -60,3 +60,6 @@
 [submodule "vim/yankstack"]
 	path = vim/bundles/generic/yankstack
 	url = https://github.com/maxbrunsfeld/vim-yankstack.git
+[submodule "vim/rust"]
+	path = vim/bundles/generic/rust
+	url = https://github.com/rust-lang/rust.vim.git
