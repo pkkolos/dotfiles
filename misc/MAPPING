@@ -6,6 +6,7 @@ gpg-agent.conf ~/.gnupg/gpg-agent.conf
 i3.config ~/.config/i3/config
 i3status.config ~/.config/i3status/config
 liquidprompt ~/.config/liquidprompt
+mail.target ~/.config/systemd/user/mail.target
 moc.config ~/.moc/config
 moc.themes ~/.moc/themes
 mpd.conf ~/.config/mpd/mpd.conf
@@ -13,6 +14,10 @@ mpDris2.conf ~/.config/mpDris2/mpDris2.conf
 mpv.conf ~/.config/mpv/mpv.conf
 ncmpcpp.bindings ~/.ncmpcpp/bindings
 ncmpcpp.config ~/.ncmpcpp/config
+offlineimap.config ~/.config/offlineimap/config
+offlineimap.py ~/.local/share/offlineimap/offlineimap.py
+offlineimap.service ~/.config/systemd/user/offlineimap.service
+offlineimap.timer ~/.config/systemd/user/offlineimap.timer
 oh-my-git ~/.config/oh-my-git
 urxvt-scripts ~/.urxvt/ext
 zsh ~/.config/zsh
