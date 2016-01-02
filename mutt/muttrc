@@ -1,0 +1,184 @@
+# Paths {{{
+# ------------------------------------------------------------------------------
+set alias_file       = ~/.mutt/aliases
+set mailcap_path     = ~/.mutt/mailcap
+set signature        = ~/.mutt/sig
+set certificate_file = ~/.mutt/certs
+set header_cache     = ~/.mutt/cache/hdr
+set message_cachedir = ~/.mutt/cache/bod
+set tmpdir           = ~/.mutt/tmp
+
+# }}}
+# Editor {{{
+# ------------------------------------------------------------------------------
+set editor = "/usr/bin/vim -n -i NONE -u '$HOME/.vim/se_rc.vim'"
+
+# }}}
+# Contacts {{{
+# ------------------------------------------------------------------------------
+set query_command = "/usr/bin/abook --mutt-query %s"
+macro pager A "|/usr/bin/abook --add-email<return>" 'add sender to abook'
+
+# }}}
+# Basic Options {{{
+# ------------------------------------------------------------------------------
+set folder = ~/Mail
+set mbox_type = Maildir
+set ispell = "/usr/bin/aspell -e -c"
+set date_format = "!%Y-%m-%dT%H:%M%z"
+set beep_new        # bell on new messages
+unset move          # don't move to archive
+unset confirmappend # don't ask for confirmation when moving messages
+unset mark_old      # don't distinguish between old and new unread messages
+unset wait_key      # return to mutt immediately after external command
+set delete          # delete messages on closing
+set quit            # quit without asking
+set timeout = 10    # idle time before update status
+set mail_check = 5  # time before scan for folder changes
+set thorough_search # decode headers & attachments before searching
+
+# }}}
+# Status Bar {{{
+# ------------------------------------------------------------------------------
+set status_chars = " *%A"
+set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?\
+%?d? (%d to delete)?%?F? (%F flagged)?%?t? (%t tagged)?%?p?(%p postponed)? ]\
+───%>─(%P)───"
+
+# }}}
+# Index View Options {{{
+# ------------------------------------------------------------------------------
+set index_format = "[%Z] %D %-22.22L %s"
+set sort = threads
+set sort_aux = reverse-last-date-received
+set reply_regexp = '^[ \t]*([Rr][Ee]:[ \t]*)+'
+set sort_re          # use the above regex to split messages into threads
+unset strict_threads # don't rely only in "In-Reply-To" & "References" headers
+                     # to split messages into threads
+
+# }}}
+# Pager View Options {{{
+# ------------------------------------------------------------------------------
+set pager_index_lines = 10 # index lines to keep when show the pager
+set pager_context = 5      # context lines to show when scrolling
+set pager_stop  # don't move to the next message at the end of the current one
+set menu_scroll # scroll 1 line at a time
+set tilde       # pad blank lines to the bottom of the screen with tilde (~)
+#unset markers   # don't show the markers (+) of wrapped lines
+bind pager <down>  next-line
+bind pager <up>    previous-line
+bind pager <right> next-page
+bind pager <left>  previous-page
+
+auto_view text/html
+alternative_order text/plain text/enriched text/html
+
+# }}}
+# Compose View Options {{{
+# ------------------------------------------------------------------------------
+set realname = "Panayiotis Kkolos"
+set send_charset = "us-ascii:utf-8" # list of charsets for outgoing messages
+#set edit_headers          # edit headers along with the body of the message
+set askcc                 # prompt for cc recipients
+set use_from              # generate "From" header
+unset user_agent          # don't add a "User-Agent" header
+set fast_reply            # skip to compose when replying
+unset reply_self          # if it's our message reply to recipients, not ourself
+unset metoo               # don't send to ourself when replying
+set reply_to              # use "Reply-To" header to reply to message
+set reverse_name          # reply as whomever it was sent to
+set reverse_realname      # same for real name
+set include               # include message in replies
+set forward_quote         # include message in forwards
+set forward_format = "Fwd: %s" # format of subject when forwarding
+set mime_forward = ask-no # ask to attach forwarding message as separate
+                          # MIME part
+set forward_decode        # decode into text/plain when forwarding (inline)
+unset mime_forward_decode # don't decode into text/plain when forwarding (MIME)
+set sig_dashes            # add dashes before signature
+set fcc_attach            # save attachments along with the main body
+unset fcc_clear           # sign/encrypt attachments along with the message
+
+# }}}
+# Accounts {{{
+# ------------------------------------------------------------------------------
+set spoolfile = "+Gmail/Inbox"
+set sendmail = "/usr/bin/msmtp"
+set sendmail_wait = 0  # wait for sendmail command to finish
+set envelope_from      # pass sender to sendmail command
+unset record           # don't save outgoing messages, gmail & outlook do that
+                       # for us; this avoids duplicate messages
+
+source ~/.mutt/mailboxes
+source ~/.mutt/mlists
+source ~/.mutt/accounts/gmail
+
+folder-hook Gmail/*   source ~/.mutt/accounts/gmail
+folder-hook Outlook/* source ~/.mutt/accounts/outlook
+
+# }}}
+# Colour Theme {{{
+# ------------------------------------------------------------------------------
+color normal     default       default
+color attachment yellow        default
+color error      red           default
+color indicator  brightblack   white
+color markers    brightred     default
+color message    cyan          default
+color signature  brightmagenta default
+color status     brightyellow  default
+color tilde      blue          default
+color tree       yellow        default
+
+color index default       default "~A"      # all messages
+color index brightblack   yellow  "~E"      # expired messages
+color index green         default "~R"      # read messages
+color index color09       default "!~p"     # messages from message list
+color index brightmagenta default "~Q"      # messages that have been replied to
+color index brightyellow  default "~N"      # new messages
+color index brightblue    default "~P"      # messages from me
+color index brightred     default "~F"      # flagged messages
+color index brightblack   red     "~D"      # deleted messages
+color index brightcyan    color10 "~v"      # collapsed thread
+color index brightyellow  color10 "~v~(~N)" # collapsed thread with some new
+color index brightred     color10 "~v~(~F)" # collapsed thread with some flagged
+
+color hdrdefault magenta    default
+color header     brightred  default "^(From)"
+color header     brightcyan default "^(Subject)"
+
+color body brightblack  green   "^gpg: Good signature.*"
+color body brightblack  red     "^gpg: BAD signature.*"
+color body brightblack  yellow  "^gpg: Can't check signature.*"
+color body brightyellow default "^gpg: WARNING:.*"
+color body brightblue   default "^-----BEGIN PGP SIGNED MESSAGE-----"
+color body brightblue   default "^-----BEGIN PGP SIGNATURE-----"
+color body brightblue   default "^-----END PGP SIGNED MESSAGE-----"
+color body brightblue   default "^-----END PGP SIGNATURE-----"
+
+color quoted  default color10
+color quoted1 default color11
+color quoted2 black   color12
+color quoted3 black   color13
+color quoted4 black   color12
+color quoted5 default color11
+
+# }}}
+# Sidebar Patch {{{
+# ------------------------------------------------------------------------------
+set sidebar_visible
+unset sidebar_sort
+set sidebar_width = 26
+set sidebar_delim = '│'
+
+bind index,pager <esc><down>  sidebar-next
+bind index,pager <esc><up>    sidebar-prev
+bind index,pager <esc><right> sidebar-open
+macro generic,pager <esc><left> \
+"<enter-command>toggle sidebar_visible<return><refresh>" 'show/hide sidebar'
+
+color sidebar_new     brightyellow default
+color sidebar_flagged red          default
+
+# }}}
+# vim: set foldmethod=marker:

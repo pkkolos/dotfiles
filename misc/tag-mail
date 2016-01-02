@@ -1,4 +1,5 @@
 mail.target
+mutt
 offlineimap.config
 offlineimap.py
 offlineimap.service

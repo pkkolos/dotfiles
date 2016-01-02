@@ -1,2 +1,5 @@
 .*
+mutt/cache
+mutt/mailboxes
+mutt/tmp
 vim/tmp
