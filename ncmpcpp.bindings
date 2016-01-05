@@ -46,8 +46,11 @@
 ##      picked by ncmpcpp upon next call to readKey function.
 ##      Accepted values: mouse, up, down, page_up, page_down,
 ##      home, end, space, enter, insert, delete, left, right,
-##      tab, shift_tab, ctrl_a, ctrl_b, ..., ctrl_z, f1, f2,
-##      ..., f12, backspace, backspace_2.
+##      tab, ctrl-a, ctrl-b, ..., ctrl-z, ctrl-[, ctrl-\\,
+##      ctrl-], ctrl-^, ctrl-_, f1, f2, ..., f12, backspace.
+##      In addition, most of these names can be prefixed with
+##      alt-/ctrl-/shift- to be recognized with the appropriate
+##      modifier key(s).
 ##
 ##    - push_characters "string" - pushes given string into
 ##      input queue.
@@ -106,11 +109,12 @@
 ##    could be used. Then ncmpcpp will not wait for confirmation
 ##    (enter) and will execute the command the moment it sees it.
 ##
-## Note: Both 'backspace' and 'backspace_2' are used because some
-##       terminals interpret backspace using keycode of 'backspace'
-##       and some the one of 'backspace_2'. You can get away with
-##       binding once if all your terminal emulators use the same
-##       value.
+##    Note: while command chains are executed, internal environment
+##    update (which includes current window refresh and mpd status
+##    update) is not performed for performance reasons. However, it
+##    may be desirable to do so in some situration. Therefore it's
+##    possible to invoke by hand by performing 'update enviroment'
+##    action.
 ##
 ## Note: There is a difference between:
 ##
@@ -131,14 +135,44 @@
 ##      these two is different and is described in (1) and (2).
 ##
 ## Note: Function def_key accepts non-ascii characters.
-
+##
+##### List of unbound actions #####
+##
+## The following actions are not bound to any key/command:
+##
+##  - add
+##  - add_random_items
+##  - change_browse_mode
+##  - delete_browser_items
+##  - edit_directory_name
+##  - edit_library_album
+##  - edit_library_tag
+##  - edit_song
+##  - jump_to_tag_editor
+##  - move_selected_items_to
+##  - save_tag_changes
+##  - show_artist_info
+##  - show_tag_editor
+##  - toggle_add_mode
+##  - toggle_lyrics_update_on_song_change
+##  - toggle_media_library_columns_mode
+##  - toggle_mouse
+##
 def_key "mouse"
   mouse_event
 
 def_key "up"
   scroll_up
 
+def_key "shift-up"
+  select_item
+  scroll_up
+
 def_key "down"
+  scroll_down
+
+def_key "shift-down"
+  select_item
   scroll_down
 
 def_key "["
@@ -165,10 +199,61 @@ def_key "home"
 def_key "end"
   move_end
 
+def_key "insert"
+  select_item
+
+def_key "enter"
+  enter_directory
+
+def_key "enter"
+  toggle_output
+
+def_key "enter"
+  run_action
+
+def_key "enter"
+  play_item
+
+def_key "space"
+  add_item_to_playlist
+
+def_key "space"
+  toggle_visualization_type
+
+def_key "d"
+  delete_playlist_items
+
+def_key "delete"
+  delete_playlist_items
+
+def_key "delete"
+  delete_stored_playlist
+
+def_key "right"
+  next_column
+
+def_key "right"
+  slave_screen
+
+def_key "."
+  volume_up
+
+def_key "left"
+  previous_column
+
+def_key "left"
+  master_screen
+
+def_key ","
+  volume_down
+
+def_key ":"
+  execute_command
+
 def_key "tab"
   next_screen
 
-def_key "shift_tab"
+def_key "shift-tab"
   previous_screen
 
 def_key "f1"
@@ -182,6 +267,9 @@ def_key "2"
 
 def_key "3"
   show_search_engine
+
+def_key "3"
+  reset_search_engine
 
 def_key "4"
   show_media_library
@@ -213,10 +301,16 @@ def_key ">"
 def_key "<"
   previous
 
-def_key "backspace"
+def_key "ctrl-h"
+  jump_to_parent_directory
+
+def_key "ctrl-h"
   replay_song
 
-def_key "backspace_2"
+def_key "backspace"
+  jump_to_parent_directory
+
+def_key "backspace"
   replay_song
 
 def_key "f"
@@ -225,32 +319,14 @@ def_key "f"
 def_key "b"
   seek_backward
 
-def_key ","
-  volume_down
-
-def_key "."
-  volume_up
-
-def_key "t"
-  toggle_space_mode
-
-def_key "v"
-  reverse_selection
-
-def_key "V"
-  remove_selection
-
-def_key "B"
-  select_album
-
-def_key "a"
-  add_selected_items
-
 def_key "r"
   toggle_repeat
 
 def_key "z"
   toggle_random
+
+def_key "y"
+  start_searching
 
 def_key "g"
   toggle_single
@@ -273,14 +349,23 @@ def_key "x"
 def_key "X"
   set_crossfade
 
-def_key "Y"
-  set_volume
-
 def_key "u"
   update_database
 
-def_key ":"
-  execute_command
+def_key "ctrl-s"
+  sort_playlist
+
+def_key "ctrl-s"
+  toggle_browser_sort_mode
+
+def_key "ctrl-s"
+  toggle_media_library_sort_mode
+
+def_key "ctrl-r"
+  reverse_playlist
+
+def_key "ctrl-_"
+  select_found_items
 
 def_key "/"
   find
@@ -294,29 +379,89 @@ def_key "?"
 def_key "?"
   find_item_backward
 
-def_key "N"
-  previous_found_item
-
 def_key "n"
   next_found_item
+
+def_key "N"
+  previous_found_item
 
 def_key "w"
   toggle_find_mode
 
+def_key "e"
+  edit_playlist_name
+
+def_key "e"
+  edit_lyrics
+
+def_key "i"
+  show_song_info
+
+def_key "j"
+  jump_to_position_in_song
+
+def_key "l"
+  show_lyrics
+
+def_key "ctrl-v"
+  select_range
+
+def_key "v"
+  reverse_selection
+
+def_key "V"
+  remove_selection
+
+def_key "B"
+  select_album
+
+def_key "a"
+  add_selected_items
+
+def_key "c"
+  clear_playlist
+
+def_key "c"
+  clear_main_playlist
+
+def_key "C"
+  crop_playlist
+
+def_key "C"
+  crop_main_playlist
+
+def_key "-"
+  move_sort_order_up
+
+def_key "-"
+  move_selected_items_up
+
+def_key "m"
+  set_visualizer_sample_multiplier
+
+def_key "+"
+  move_sort_order_down
+
+def_key "+"
+  move_selected_items_down
+
+def_key "S"
+  save_playlist
+
+def_key "o"
+  jump_to_playing_song
+
 def_key "@"
   jump_to_browser
+
+def_key "E"
+  jump_to_playlist_editor
 
 def_key "$"
   jump_to_media_library
 
-def_key "ctrl_l"
-  toggle_screen_lock
-
-def_key "left"
-  master_screen
-
-def_key "right"
-  slave_screen
+def_key "U"
+  toggle_playing_song_centering
 
 def_key "P"
   toggle_display_mode
@@ -327,116 +472,29 @@ def_key "\\"
 def_key "_"
   toggle_separators_between_albums
 
-def_key "j"
-  jump_to_position_in_song
-
-def_key "i"
-  show_song_info
-
 def_key "L"
   toggle_lyrics_fetcher
 
 def_key "F"
   toggle_fetching_lyrics_in_background
 
-def_key "l"
-  show_lyrics
-
-def_key "q"
-  quit
-
-def_key "enter"
-  press_enter
-
-def_key "d"
-  delete_playlist_items
-
-def_key "delete"
-  delete_playlist_items
-
-def_key "c"
-  clear_main_playlist
-
-def_key "C"
-  crop_main_playlist
-
-def_key "ctrl_p"
-  set_selected_items_priority
-
-def_key "-"
-  move_selected_items_up
-
-def_key "+"
-  move_selected_items_down
-
-def_key "S"
-  save_playlist
-
-def_key "ctrl_v"
-  sort_playlist
-
-def_key "-"
-  move_sort_order_up
-
-def_key "+"
-  move_sort_order_down
-
-def_key "ctrl_r"
-  reverse_playlist
-
-def_key "o"
-  jump_to_playing_song
-
-def_key "U"
-  toggle_playing_song_centering
-
-def_key "space"
-  press_space
-
-def_key "e"
-  edit_playlist_name
-
-def_key "backspace"
-  jump_to_parent_directory
-
-def_key "backspace_2"
-  jump_to_parent_directory
-
-def_key "E"
-  jump_to_playlist_editor
-
-def_key "y"
-  start_searching
-
-def_key "3"
-  reset_search_engine
-
-def_key "left"
-  previous_column
-
-def_key "right"
-  next_column
+def_key "ctrl-l"
+  toggle_screen_lock
 
 def_key "T"
   toggle_library_tag_type
 
-def_key "delete"
-  delete_stored_playlist
-
-def_key "c"
-  clear_playlist
-
-def_key "C"
-  crop_playlist
-
-def_key "e"
-  edit_lyrics
-
 def_key "`"
   refetch_lyrics
 
-def_key "m"
-  set_visualizer_sample_multiplier
+def_key "ctrl-p"
+  set_selected_items_priority
+
+def_key "q"
+  quit
+
+def_key "Y"
+  set_volume
 
 # disable some default bindings
 def_key "6"
@@ -467,7 +525,4 @@ def_key "I"
   dummy
 
 def_key "M"
-  dummy
-
-def_key "ctrl_h"
   dummy
