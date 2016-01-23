@@ -14,7 +14,7 @@ application/x-lzma; /usr/bin/file-roller -- %s; test=test -n "$DISPLAY"
 application/x-cpio; /usr/bin/file-roller -- %s; test=test -n "$DISPLAY"
 application/zip; /usr/bin/file-roller -- %s; test=test -n "$DISPLAY"
 application/zip; /usr/bin/unzip -Zm -- %s; copiousoutput
-application/x-rar; /usr/bin/file-roller -- %s; test=test -n "$DISPLAY"
+application/rar; /usr/bin/file-roller -- %s; test=test -n "$DISPLAY"
 
 # Documents
 application/pdf; /usr/bin/evince -- %s; test=test -n "$DISPLAY"
