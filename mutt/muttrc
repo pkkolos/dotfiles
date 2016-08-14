@@ -167,18 +167,23 @@ color quoted5 default color11
 # Sidebar Patch {{{
 # ------------------------------------------------------------------------------
 set sidebar_visible
-unset sidebar_sort
+unset sidebar_sort_method
 set sidebar_width = 26
-set sidebar_delim = '│'
+set sidebar_divider_char = '│'
+set mail_check_stats
+set sidebar_format = '%B%?F? [%F]?%* %?N?%N/?%S'
+set sidebar_short_path
+set sidebar_folder_indent
 
 bind index,pager <esc><down>  sidebar-next
 bind index,pager <esc><up>    sidebar-prev
 bind index,pager <esc><right> sidebar-open
-macro generic,pager <esc><left> \
-"<enter-command>toggle sidebar_visible<return><refresh>" 'show/hide sidebar'
+bind index,pager <esc><left>  sidebar-toggle-visible
 
-color sidebar_new     brightyellow default
-color sidebar_flagged red          default
+color sidebar_indicator brightblack  blue
+color sidebar_highlight brightblack  white
+color sidebar_new       brightyellow default
+color sidebar_flagged   red          default
 
 # }}}
 # vim: set foldmethod=marker:
