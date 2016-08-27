@@ -185,4 +185,9 @@ color sidebar_new       brightyellow default
 color sidebar_flagged   red          default
 
 # }}}
+# Progress Bar Patch {{{
+# ------------------------------------------------------------------------------
+color progress white red
+
+# }}}
 # vim: set foldmethod=marker:
