@@ -70,5 +70,5 @@
 [tar "tar.xz"]
 	command = xz -c
 [user]
-	name = Panayiotis Kkolos
+	name = Panagiotis Kkolos
 	email = pkkolos@gmail.com

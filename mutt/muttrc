@@ -75,7 +75,7 @@ alternative_order text/plain text/enriched text/html
 # }}}
 # Compose View Options {{{
 # ------------------------------------------------------------------------------
-set realname = "Panayiotis Kkolos"
+set realname = "Panagiotis Kkolos"
 set send_charset = "us-ascii:utf-8" # list of charsets for outgoing messages
 #set edit_headers          # edit headers along with the body of the message
 set askcc                 # prompt for cc recipients
