@@ -44,6 +44,8 @@
 	meta = magenta bold
 [color "status"]
 	untracked = blue
+[commit]
+	verbose = true
 [core]
 	editor = vim
 [diff]
