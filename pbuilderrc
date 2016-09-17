@@ -49,8 +49,8 @@ APTCACHE="$PATH_PBUILDER/aptcache/"
 APTCACHEHARDLINK="yes"
 
 MIRRORSITE="http://ftp.de.debian.org/debian/"
-OTHERMIRROR="deb [trusted=yes] file:///var/cache/archive $DIST/"
-BINDMOUNTS="/var/cache/archive"
+OTHERMIRROR="deb [trusted=yes] file:///var/packages/debian/ $DIST main"
+BINDMOUNTS="/var/packages/debian"
 COMPONENTS="main contrib non-free"
 
 PDEBUILD_PBUILDER="cowbuilder"
