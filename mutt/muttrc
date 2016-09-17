@@ -22,7 +22,7 @@ macro pager A "|/usr/bin/abook --add-email<return>" 'add sender to abook'
 # }}}
 # Basic Options {{{
 # ------------------------------------------------------------------------------
-set folder = ~/Mail
+set folder = ~/.mail
 set mbox_type = Maildir
 set date_format = "!%Y-%m-%dT%H:%M%z"
 set beep_new        # bell on new messages
