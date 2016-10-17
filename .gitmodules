@@ -27,9 +27,6 @@
 [submodule "vim/pathogen"]
 	path = vim/bundles/pathogen
 	url = https://github.com/tpope/vim-pathogen.git
-[submodule "vim/python-mode"]
-	path = vim/bundles/other/python-mode
-	url = https://github.com/klen/python-mode.git
 [submodule "vim/ruby"]
 	path = vim/bundles/generic/ruby
 	url = https://github.com/vim-ruby/vim-ruby.git
