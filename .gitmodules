@@ -28,13 +28,13 @@
 	path = vim/bundles/pathogen
 	url = https://github.com/tpope/vim-pathogen.git
 [submodule "vim/ruby"]
-	path = vim/bundles/generic/ruby
+	path = vim/bundles/programming/ruby
 	url = https://github.com/vim-ruby/vim-ruby.git
 [submodule "vim/sneak"]
 	path = vim/bundles/generic/sneak
 	url = https://github.com/justinmk/vim-sneak.git
 [submodule "vim/snippets"]
-	path = vim/bundles/other/snippets
+	path = vim/bundles/programming/snippets
 	url = https://github.com/honza/vim-snippets.git
 [submodule "vim/solarized"]
 	path = vim/bundles/themes/solarized
@@ -43,13 +43,13 @@
 	path = vim/bundles/other/surround
 	url = https://github.com/tpope/vim-surround.git
 [submodule "vim/syntastic"]
-	path = vim/bundles/other/syntastic
+	path = vim/bundles/programming/syntastic
 	url = https://github.com/scrooloose/syntastic.git
 [submodule "vim/tcomment"]
 	path = vim/bundles/generic/tcomment
 	url = https://github.com/tomtom/tcomment_vim.git
 [submodule "vim/ultisnips"]
-	path = vim/bundles/other/ultisnips
+	path = vim/bundles/programming/ultisnips
 	url = https://github.com/SirVer/ultisnips.git
 [submodule "vim/undotree"]
 	path = vim/bundles/generic/undotree
@@ -58,7 +58,7 @@
 	path = vim/bundles/generic/yankstack
 	url = https://github.com/maxbrunsfeld/vim-yankstack.git
 [submodule "vim/rust"]
-	path = vim/bundles/generic/rust
+	path = vim/bundles/programming/rust
 	url = https://github.com/rust-lang/rust.vim.git
 [submodule "vim/fastfold"]
 	path = vim/bundles/other/fastfold

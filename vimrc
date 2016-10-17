@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------
 " Panayiotis Kkolos
 " Layout inspired by Ethan Schoonover's vimrc (github.com/altercation)
-" Modified: 2015-08-30
+" Modified: 2016-10-17
 " ------------------------------------------------------------------------------
 " Environment                                    {{{
 " ------------------------------------------------------------------------------
@@ -20,8 +20,9 @@
             let g:pathogen_disabled = []
         endif
         execute pathogen#infect('bundles/themes/{}')
-        execute pathogen#infect('bundles/generic/{}')
         if !exists("g:sudoedit")
+            execute pathogen#infect('bundles/generic/{}')
+            execute pathogen#infect('bundles/programming/{}')
             execute pathogen#infect('bundles/other/{}')
         endif
     " }}}
@@ -697,7 +698,9 @@
 " }}}
 " Plugins                                        {{{
 " ------------------------------------------------------------------------------
-    source ~/.vim/settings.vim
+    if !exists("g:sudoedit")
+        source ~/.vim/settings.vim
+    endif
 " }}}
 " ------------------------------------------------------------------------------
 " vim: foldmethod=marker foldlevel=1
