@@ -131,7 +131,7 @@ function! s:SLUpdate()
         let w:stl_paste = '%#StatusLinePurple#' . s:stl_paste
     endif
     if !exists('w:stl_filename')
-        let w:stl_filename = '%#StatusLineDefault' . s:stl_filename
+        let w:stl_filename = '%#StatusLineDefault#' . s:stl_filename
     endif
     if !exists('w:stl_rest')
         let w:stl_rest = s:stl_visual . '%1*' . s:stl_rest
