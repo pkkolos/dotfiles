@@ -187,22 +187,22 @@ function! s:SLSetHighlight(isCurrent)
     call s:SLUpdate()
 endfun
 
-function! s:SLUpdateInsMode(mode)
-    if ! &l:modified
-        augroup StatusLineModified
-            autocmd!
-            au CursorMovedI * if &l:modified |
-                        \ call <SID>SLSetHighlight(1) |
-                        \ exec 'autocmd! StatusLineModified' | endif
-        augroup END
+function! s:SLModified()
+    if exists('w:modified') && w:modified == &l:modified
+        return
     endif
 
+    let w:modified = &l:modified
+    call s:SLSetHighlight(1)
+endfun
+
+function! s:SLUpdateInsMode(mode)
     if a:mode ==# 'i'
         call s:SLSetRestHighlight('Blue')
     elseif a:mode ==# 'v'
-        call s:SLSetRestHighlight('Red')
-    else
         call s:SLSetRestHighlight('Orange')
+    else
+        call s:SLSetRestHighlight('Red')
     endif
 
     call s:SLUpdate()
@@ -232,13 +232,19 @@ endfun
 
 augroup SLHighlight
     autocmd!
-    au VimEnter     * call <SID>SLSetHighlight(1)
     au BufWinEnter  * call <SID>SLSetHighlight(1)
     au WinEnter     * call <SID>SLSetHighlight(1)
     au CmdwinEnter  * call <SID>SLSetHighlight(1)
+    au CursorHold   * call <SID>SLSetHighlight(1)
+    au CursorHoldI  * call <SID>SLSetHighlight(1)
     au BufWritePost * call <SID>SLSetHighlight(1)
+    au BufWinLeave  * call <SID>SLSetHighlight(0)
     au WinLeave     * call <SID>SLSetHighlight(0)
+    au CmdwinLeave  * call <SID>SLSetHighlight(0)
 
+    au TextChanged  * call <SID>SLModified()
+    au TextChangedI * call <SID>SLModified()
+    au OptionSet    * call <SID>SLModified()
     au InsertEnter  * call <SID>SLUpdateInsMode(v:insertmode)
     au InsertChange * call <SID>SLUpdateInsMode(v:insertmode)
     au InsertLeave  * call SLUpdateNormMode()
