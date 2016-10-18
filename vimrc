@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------
-" Panayiotis Kkolos
+" Panagiotis Kkolos
 " Layout inspired by Ethan Schoonover's vimrc (github.com/altercation)
-" Modified: 2016-10-17
+" Modified: 2016-10-18
 " ------------------------------------------------------------------------------
 " Environment                                    {{{
 " ------------------------------------------------------------------------------
@@ -102,8 +102,8 @@
         set cpoptions=aABceFsIn
         " a +d  When included, a ":read" command with a file name argument will
         "       set the alternate file name for the current window.
-        " A +d  When included, a ":write" command with a file name argument
-        "       will set the alternate file name for the current window.
+        " A +d  When included, a ":write" command with a file name argument will
+        "       set the alternate file name for the current window.
         " B +d  A backslash has no special meaning in mappings, abbreviations
         "       and the "to" part of the menu commands. Remove this flag to be
         "       able to use a backslash like a CTRL-V. For example, the command
@@ -125,9 +125,9 @@
         " f -   When included, a ":read" command with a file name argument will
         "       set the file name for the current buffer, if the current buffer
         "       doesn't have a file name yet.
-        " F +d  When included, a ":write" command with a file name argument
-        "       will set the file name for the current buffer, if the current
-        "       buffer doesn't have a file name yet. Also see |cpo-P|.
+        " F +d  When included, a ":write" command with a file name argument will
+        "       set the file name for the current buffer, if the current buffer
+        "       doesn't have a file name yet. Also see |cpo-P|.
         " g -   Goto line 1 when using ":edit" without argument.
         " H -   When using "I" on a line with only blanks, insert before the
         "       last blank. Without this flag insert after the last blank.
@@ -136,18 +136,16 @@
         " j -   When joining lines, only add two spaces after a '.', not after
         "       '!' or '?'. Also see 'joinspaces'.
         " l -   Backslash in a [] range in a search pattern is taken literally,
-        "       only "\]", "\^", "\-" and "\\" are special.
-        "       See |/[]|
-        "          'l' included: "/[ \t]"  finds <Space>, '\' and 't'
-        "          'l' excluded: "/[ \t]"  finds <Space> and <Tab>
+        "       only "\]", "\^", "\-" and "\\" are special. See |/[]|
+        "           'l' included: "/[ \t]"  finds <Space>, '\' and 't'
+        "           'l' excluded: "/[ \t]"  finds <Space> and <Tab>
         "       Also see |cpo-\|.
         " m -   When included, a showmatch will always wait half a second. When
         "       not included, a showmatch will wait half a second or until a
         "       character is typed. |'showmatch'|
-        " n +   When included, the column used for 'number' and
-        "       'relativenumber' will also be used for text of wrapped lines.
-        " o -   Line offset to search command is not remembered for next
-        "       search.
+        " n +   When included, the column used for 'number' and 'relativenumber'
+        "       will also be used for text of wrapped lines.
+        " o -   Line offset to search command is not remembered for next search.
         " P -   When included, a ":write" command that appends to a file will
         "       set the file name for the current buffer, if the current buffer
         "       doesn't have a file name yet and the 'F' flag is also included
@@ -162,21 +160,21 @@
         " W -   Don't overwrite a readonly file. When omitted, ":w!" overwrites
         "       a readonly file, if possible.
         " y -   A yank command can be redone with ".".
-        " + -   When included, a ":write file" command will reset the
-        "       'modified' flag of the buffer, even though the buffer itself
-        "       may still be different from its file.
+        " + -   When included, a ":write file" command will reset the 'modified'
+        "       flag of the buffer, even though the buffer itself may still be
+        "       different from its file.
         " * -   Use ":*" in the same way as ":@". When not included, ":*" is an
         "       alias for ":'<,'>", select the Visual area.
         " > -   When appending to a register, put a line break before the
         "       appended text.
         " ; -   When using |,| or |;| to repeat the last |t| search and the
         "       cursor is right in front of the searched character, the cursor
-        "       won't move. When not included, the cursor would skip over it
-        "       and jump to the following occurrence.
+        "       won't move. When not included, the cursor would skip over it and
+        "       jump to the following occurrence.
         " \ -   Backslash in a [] range in a search pattern is taken literally,
-        "       only "\]" is special  See |/[]|
-        "          '\' included: "/[ \-]"  finds <Space>, '\' and '-'
-        "          '\' excluded: "/[ \-]"  finds <Space> and '-'
+        "       only "\]" is special. See |/[]|
+        "           '\' included: "/[ \-]"  finds <Space>, '\' and '-'
+        "           '\' excluded: "/[ \-]"  finds <Space> and '-'
         "       Also see |cpo-l|.
         " / -   When "%" is used as the replacement string in a |:s| command,
         "       use the previous replacement string. |:s%|
@@ -275,71 +273,6 @@
         set novisualbell  "don't use visual bell (flash)
         set report=0      "always report number of lines changed
     " }}}
-    " Statusline Format                          {{{
-    " --------------------------------------------------------------------------
-        " change status line's colour in insert, visual and replace mode
-        set statusline=%{UpdateStatuslineColour()}
-        " paste status
-        set statusline+=%1*%{&paste?'[PASTE]':''}
-        " buffer number, full path, help, modified, read-only, preview
-        set statusline+=%*[%n]\ %f%h%m%r%w
-        " git branch via vim-fugitive
-        set statusline+=%{exists('g:loaded_fugitive')?fugitive#statusline():''}
-        " filetype
-        set statusline+=%{strlen(&ft)>0?'\ \ \|\ ':''}%{&ft}
-        " encoding & byte order mark
-        set statusline+=\ \|\ %{strlen(&fenc)>0?&fenc:&enc}%{&bomb?'/bom':''}
-        " file format (unix/dos/...)
-        set statusline+=\ \|\ %{&ff}
-        " spelling language(s)
-        set statusline+=%{&spell?'\ \ \|\ ':''}%{&spell?&spelllang:''}
-        " tabstop number, expandtab status
-        set statusline+=\ %<%=%{&ts}\ %{&et?'SP':'TB'}
-        " line number, column number
-        set statusline+=\ \|\ LN:%l/%L\ \|\ COL:%c%V
-        " character code, top/bot
-        set statusline+=\ \|\ CHR:%03b(0x%04B)\ \|\ %P
-
-        hi StatusLine ctermfg=12 ctermbg=10 cterm=NONE
-
-        function! Hi(group, guifg, guibg, ctermfg, ctermbg, attr)
-            exec "hi " . a:group . " guifg=#" . a:guifg
-                        \ . " guibg=#" . a:guibg . " gui=" . a:attr
-                        \ . " ctermfg=" . a:ctermfg
-                        \ . " ctermbg=" . a:ctermbg . " cterm=" . a:attr
-        endfun
-
-        function! UpdateStatuslineColour()
-            let l:mode = mode()
-            if (&background == "dark")
-                let l:gfg = "073642"
-                let l:gbg = "93a1a1"
-                let l:tfg = "10"
-                let l:tbg = "10"
-                let l:tdfg = "12"
-            else
-                let l:gfg = "eee8d5"
-                let l:gbg = "586e75"
-                let l:tfg = "11"
-                let l:tbg = "7"
-                let l:tdfg = "11"
-            endif
-
-            call Hi("User1", l:gfg, "dc322f", l:tfg, "1", "none")
-            if (l:mode ==# 'i')
-                call Hi("StatusLine", l:gfg, "268bd2", l:tfg, "4", "none")
-            elseif (l:mode ==? 'v' || l:mode ==# "\x16" ||
-                        \ l:mode ==? 's' || l:mode ==# "\x13")
-                call Hi("StatusLine", l:gfg, "719e07", l:tfg, "2", "none")
-            elseif (l:mode ==# 'R')
-                call Hi("StatusLine", l:gfg, "dc322f", l:tfg, "1", "none")
-            else
-                call Hi("StatusLine", l:gfg, l:gbg, l:tdfg, l:tbg, "none")
-            endif
-
-            return ''
-        endfunction
-    " }}}
     " Short Message Format                       {{{
     " --------------------------------------------------------------------------
         set shortmess=atToOI
@@ -349,18 +282,18 @@
         " m -   use "[+]" instead of "[Modified]"
         " n -d  use "[New]" instead of "[New File]"
         " r -   use "[RO]" instead of "[readonly]"
-        " w -   use "[w]" instead of "written" for file write message
-        "       and "[a]" instead of "appended" for ':w >> file' command
+        " w -   use "[w]" instead of "written" for file write message and "[a]"
+        "       instead of "appended" for ':w >> file' command
         " x -d  use "[dos]" instead of "[dos format]", "[unix]" instead of
         "       "[unix format]" and "[mac]" instead of "[mac format]".
         " a +   all of the above abbreviations
         "
-        " o +d  overwrite message for writing a file with subsequent message
-        "       for reading a file (useful for ":wn" or when 'autowrite' on)
-        " O +d  message for reading a file overwrites any previous message.
-        "       Also for quickfix message (e.g., ":cn").
-        " s -   don't give "search hit BOTTOM, continuing at TOP" or "search
-        "       hit TOP, continuing at BOTTOM" messages
+        " o +d  overwrite message for writing a file with subsequent message for
+        "       reading a file (useful for ":wn" or when 'autowrite' on)
+        " O +d  message for reading a file overwrites any previous message. Also
+        "       for quickfix message (e.g., ":cn").
+        " s -   don't give "search hit BOTTOM, continuing at TOP" or "search hit
+        "       TOP, continuing at BOTTOM" messages
         " t +d  truncate file message at the start if it is too long to fit on
         "       the command-line, "<" will appear in the left most column.
         "       Ignored in Ex mode.
@@ -368,8 +301,8 @@
         "       fit on the command line.  "..." will appear in the middle.
         "       Ignored in Ex mode.
         " W -   don't give "written" or "[w]" when writing a file
-        " A -   don't give the "ATTENTION" message when an existing swap file
-        "       is found.
+        " A -   don't give the "ATTENTION" message when an existing swap file is
+        "       found.
         " I +   don't give the intro message when starting Vim |:intro|.
     " }}}
     " Screen Drawing                             {{{
@@ -416,8 +349,8 @@
         "       Note that formatting will not change blank lines or lines
         "       containing only the comment leader. A new paragraph starts
         "       after such a line, or when the comment leader changes.
-        " w -   Trailing white space indicates a paragraph continues in the
-        "       next line. A line that ends in a non-white character ends a
+        " w -   Trailing white space indicates a paragraph continues in the next
+        "       line. A line that ends in a non-white character ends a
         "       paragraph.
         " a -   Automatic formatting of paragraphs. Every time text is inserted
         "       or deleted the paragraph will be reformatted. See
@@ -430,33 +363,32 @@
         "       by '.', ':', ')', ']' or '}'. Note that 'autoindent' must be
         "       set too. Doesn't work well together with "2".
         "       Example:
-        "               1. the first item
-        "                  wraps
-        "               2. the second item
+        "           1. the first item
+        "              wraps
+        "           2. the second item
         " 2 -   When formatting text, use the indent of the second line of a
         "       paragraph for the rest of the paragraph, instead of the indent
         "       of the first line. This supports paragraphs in which the first
         "       line has a different indent than the rest. Note that
         "       'autoindent' must be set too.
         "       Example:
-        "                       first line of a paragraph
-        "               second line of the same paragraph
-        "               third line.
+        "               first line of a paragraph
+        "           second line of the same paragraph
+        "           third line.
         "       This also works inside comments, ignoring the comment leader.
-        " v -   Vi-compatible auto-wrapping in insert mode: Only break a line
-        "       at a blank that you have entered during the current insert
-        "       command.
-        "       Note: this is not 100% Vi compatible. Vi has some
-        "       "unexpected features" or bugs in this area. It uses the screen
-        "       column instead of the line column.
+        " v -   Vi-compatible auto-wrapping in insert mode: Only break a line at
+        "       a blank that you have entered during the current insert command.
+        "       Note: this is not 100% Vi compatible. Vi has some "unexpected
+        "       features" or bugs in this area. It uses the screen column
+        "       instead of the line column.
         " b -   Like 'v', but only auto-wrap if you enter a blank at or before
         "       the wrap margin. If the line was longer than 'textwidth' when
         "       you started the insert, or you do not enter a blank in the
         "       insert before reaching 'textwidth', Vim does not perform
         "       auto-wrapping.
-        " l -   Long lines are not broken in insert mode: When a line was
-        "       longer than 'textwidth' when the insert command started, Vim
-        "       does not automatically format it.
+        " l -   Long lines are not broken in insert mode: When a line was longer
+        "       than 'textwidth' when the insert command started, Vim does not
+        "       automatically format it.
         " m -   Also break at a multi-byte character above 255. This is useful
         "       for Asian text where every character is a word on its own.
         " M -   When joining lines, don't insert a space before or after a
@@ -468,10 +400,10 @@
         " j +   Where it makes sense, remove a comment leader when joining
         "       lines.
         "       For example, joining:
-        "               int i;   // the index
-        "                        // in the list
+        "           int i;   // the index
+        "                    // in the list
         "       becomes:
-        "               int i;   // the index in the list
+        "           int i;   // the index in the list
     " }}}
     " C Indent Options                           {{{
     " --------------------------------------------------------------------------
@@ -517,8 +449,8 @@
         " don't show trailing spaces in insert mode
         augroup trailing
             autocmd!
-            au InsertEnter * :set listchars-=trail:·
-            au InsertLeave * :set listchars+=trail:·
+            au InsertEnter * set listchars-=trail:·
+            au InsertLeave * set listchars+=trail:·
         augroup END
     " }}}
     " Clipboard                                  {{{
