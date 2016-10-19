@@ -216,11 +216,14 @@ function! s:SLUpdateInsMode(mode)
     call s:SLUpdate()
 endfun
 
-function! SLUpdateNormMode()
-    let l:mode = mode()
+function! s:SLUpdateInsModeLeave()
     let w:stl_rest = s:stl_visual . '%1*' . s:stl_rest
 
-    call <SID>SLUpdate()
+    call s:SLUpdate()
+endfun
+
+function! SLUpdateNormMode()
+    let l:mode = mode()
 
     if l:mode ==# 'i' || l:mode ==# 'R'
         return ''
@@ -254,7 +257,7 @@ augroup SLHighlight
     au TextChanged  * call <SID>SLTextChanged()
     au InsertEnter  * call <SID>SLUpdateInsMode(v:insertmode)
     au InsertChange * call <SID>SLUpdateInsMode(v:insertmode)
-    au InsertLeave  * call SLUpdateNormMode()
+    au InsertLeave  * call <SID>SLUpdateInsModeLeave()
 
     au VimEnter     * call <SID>SLDefaultHighlightings()
     au ColorScheme  * call <SID>SLDefaultHighlightings()
