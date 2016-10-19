@@ -187,7 +187,7 @@ function! s:SLSetHighlight(isCurrent)
     call s:SLUpdate()
 endfun
 
-function! s:SLModified()
+function! s:SLTextChanged()
     if exists('w:modified') && w:modified == &l:modified
         return
     endif
@@ -197,6 +197,14 @@ function! s:SLModified()
 endfun
 
 function! s:SLUpdateInsMode(mode)
+    if ! &l:modified
+        augroup SLModified
+            autocmd!
+            au CursorMovedI * if &l:modified | call <SID>SLSetHighlight(1) |
+                        \ exec 'autocmd! SLModified' | endif
+        augroup END
+    endif
+
     if a:mode ==# 'i'
         call s:SLSetRestHighlight('Blue')
     elseif a:mode ==# 'v'
@@ -243,8 +251,7 @@ augroup SLHighlight
     au WinLeave     * call <SID>SLSetHighlight(0)
     au CmdwinLeave  * call <SID>SLSetHighlight(0)
 
-    au TextChanged  * call <SID>SLModified()
-    au TextChangedI * call <SID>SLModified()
+    au TextChanged  * call <SID>SLTextChanged()
     au InsertEnter  * call <SID>SLUpdateInsMode(v:insertmode)
     au InsertChange * call <SID>SLUpdateInsMode(v:insertmode)
     au InsertLeave  * call SLUpdateNormMode()
