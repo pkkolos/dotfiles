@@ -449,8 +449,8 @@
         " don't show trailing spaces in insert mode
         augroup trailing
             autocmd!
-            au InsertEnter * set listchars-=trail:·
-            au InsertLeave * set listchars+=trail:·
+            autocmd InsertEnter * set listchars-=trail:·
+            autocmd InsertLeave * set listchars+=trail:·
         augroup END
     " }}}
     " Clipboard                                  {{{
@@ -526,13 +526,14 @@
     " }}}
     " Folding                                    {{{
     " --------------------------------------------------------------------------
-        function! g:ToggleFoldColumn()
+        function! s:ToggleFoldColumn()
             if (&foldcolumn == "0")
                 set foldcolumn=4
             else
                 set foldcolumn=0
             endif
-        endfunc
+        endfunction
+        command! -nargs=0 ToggleFoldColumn call <SID>ToggleFoldColumn()
         nnoremap <space> za
         nnoremap <leader>f0 :set foldlevel=0<cr>
         nnoremap <leader>f1 :set foldlevel=1<cr>
@@ -544,42 +545,45 @@
         nnoremap <leader>f7 :set foldlevel=7<cr>
         nnoremap <leader>f8 :set foldlevel=8<cr>
         nnoremap <leader>f9 :set foldlevel=9<cr>
-        nnoremap <silent> <leader>tf :call g:ToggleFoldColumn()<cr>
+        nnoremap <silent> <leader>tf :ToggleFoldColumn<cr>
     " }}}
     " Location Indicators                        {{{
     " --------------------------------------------------------------------------
-        function! g:ToggleNumber()
+        function! s:ToggleNumber()
             if (&number == 1)
                 set nonumber
                 set norelativenumber
             else
                 set number
             endif
-        endfunc
-        function! g:ToggleRelativeNum()
+        endfunction
+        function! s:ToggleRelativeNum()
             if (&relativenumber == 1)
                 set norelativenumber
             else
                 set number
                 set relativenumber
             endif
-        endfunc
-        function! g:ToggleColorColumn()
+        endfunction
+        function! s:ToggleColorColumn()
             if (&colorcolumn == "0")
                 set colorcolumn=+1
             else
                 set colorcolumn=0
             endif
-        endfunc
+        endfunction
+        command! -nargs=0 ToggleNumber call <SID>ToggleNumber()
+        command! -nargs=0 ToggleRelativeNum call <SID>ToggleRelativeNum()
+        command! -nargs=0 ToggleColorColumn call <SID>ToggleColorColumn()
         nnoremap <silent> <leader>tl :set list!<cr>
-        nnoremap <silent> <leader>tn :call g:ToggleNumber()<cr>
-        nnoremap <silent> <leader>tr :call g:ToggleRelativeNum()<cr>
+        nnoremap <silent> <leader>tn :ToggleNumber<cr>
+        nnoremap <silent> <leader>tr :ToggleRelativeNum<cr>
         nnoremap <silent> <leader>tc :set cursorcolumn!<cr>
-        nnoremap <silent> <leader>tv :call g:ToggleColorColumn()<cr>
+        nnoremap <silent> <leader>tv :ToggleColorColumn<cr>
     " }}}
     " Tabs, Indentation, Whitespace              {{{
     " --------------------------------------------------------------------------
-        function! <sid>StripTrWhSp()
+        function! s:StripTrWhSp()
             " preparation: save last search, and cursor position.
             let _s=@/
             let l = line(".")
@@ -590,12 +594,13 @@
             let @/=_s
             call cursor(l, c)
         endfunction
+        command! -nargs=0 StripTrWhiteSpace call <SID>StripTrWhSp()
         vnoremap < <gv
         vnoremap > >gv
         nnoremap <leader>rt :retab!<cr>
         vnoremap <leader>rt :retab!<cr>
         nnoremap <silent> <leader>te :set expandtab!<cr>
-        nnoremap <leader>w :call <sid>StripTrWhSp()<cr>
+        nnoremap <leader>w :StripTrWhiteSpace<cr>
     " }}}
     " Other                                      {{{
     " --------------------------------------------------------------------------
