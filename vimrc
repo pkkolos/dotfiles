@@ -549,22 +549,6 @@
     " }}}
     " Location Indicators                        {{{
     " --------------------------------------------------------------------------
-        function! s:ToggleNumber()
-            if (&number == 1)
-                set nonumber
-                set norelativenumber
-            else
-                set number
-            endif
-        endfunction
-        function! s:ToggleRelativeNum()
-            if (&relativenumber == 1)
-                set norelativenumber
-            else
-                set number
-                set relativenumber
-            endif
-        endfunction
         function! s:ToggleColorColumn()
             if (&colorcolumn == "0")
                 set colorcolumn=+1
@@ -572,12 +556,10 @@
                 set colorcolumn=0
             endif
         endfunction
-        command! -nargs=0 ToggleNumber call <SID>ToggleNumber()
-        command! -nargs=0 ToggleRelativeNum call <SID>ToggleRelativeNum()
         command! -nargs=0 ToggleColorColumn call <SID>ToggleColorColumn()
         nnoremap <silent> <leader>tl :set list!<cr>
-        nnoremap <silent> <leader>tn :ToggleNumber<cr>
-        nnoremap <silent> <leader>tr :ToggleRelativeNum<cr>
+        nnoremap <silent> <leader>tn :ToggleNumbers<cr>
+        nnoremap <silent> <leader>tr :ToggleRelNums<cr>
         nnoremap <silent> <leader>tc :set cursorcolumn!<cr>
         nnoremap <silent> <leader>tv :ToggleColorColumn<cr>
     " }}}
