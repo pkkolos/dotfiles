@@ -38,3 +38,13 @@ source ~/.config/zsh/aliases.zsh
 source ~/.config/zsh/functions.zsh
 
 source ~/.config/liquidprompt/liquidprompt
+
+# tmux
+if which tmux >/dev/null 2>&1 && test -z "$TMUX"; then
+    if tmux has-session >/dev/null 2>&1; then
+        [[ "$PWD" != "$HOME" ]] && tmux new-window -c "$PWD"
+        tmux attach-session -d
+    else
+        tmux new-session -n$USER -s$USER@$HOSTNAME
+    fi
+fi
