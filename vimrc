@@ -74,6 +74,7 @@
 
         set title         "set the title of the window
         set mouse=a       "use mouse in normal, visual, insert and command mode
+        set ttymouse=sgr  "terminal type for which codes are to be recognized
         set autochdir
         set autowrite     "save current buffer when changing buffers
         set confirm       "operations on unsaved buffers don't fail
