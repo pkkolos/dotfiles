@@ -15,7 +15,9 @@ gmail_map = {'INBOX': 'Inbox',
              '[Google Mail]/Spam': 'Spam',
              '[Google Mail]/Starred': 'Starred'}
 
-outlook_filter = ['Deleted']
+outlook_filter = ['Deleted',
+                  'Notes',
+                  'Outbox']
 
 outlook_map = {'Deleted': 'Trash',
                'Junk': 'Spam'}
