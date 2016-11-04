@@ -15,8 +15,8 @@ ncmpcpp.bindings
 ncmpcpp.config
 oh-my-git
 pbuilderrc
-pentadactylrc
 tmux.conf
 urxvt-scripts
+vimperatorrc
 Xresources
 xsessionrc

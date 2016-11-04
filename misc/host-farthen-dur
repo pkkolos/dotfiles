@@ -8,8 +8,8 @@ moc.config
 moc.themes
 mpv.conf
 oh-my-git
-pentadactylrc
 tmux.conf
 urxvt-scripts
+vimperatorrc
 xinitrc
 Xresources
