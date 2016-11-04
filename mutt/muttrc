@@ -170,7 +170,7 @@ unset sidebar_sort_method
 set sidebar_width = 26
 set sidebar_divider_char = '│'
 set mail_check_stats
-set sidebar_format = '%B%?F? [%F]?%* %?N?%N/?%S'
+set sidebar_format = '%B%*  %?F?[%F] ?%?N?%N/?%S'
 set sidebar_short_path
 set sidebar_folder_indent
 
