@@ -40,6 +40,7 @@ source ~/.config/zsh/functions.zsh
 source ~/.config/liquidprompt/liquidprompt
 
 # tmux
+[[ -o login ]] && return
 if which tmux >/dev/null 2>&1 && test -z "$TMUX"; then
     if tmux has-session >/dev/null 2>&1; then
         [[ "$PWD" != "$HOME" ]] && tmux new-window -c "$PWD"
