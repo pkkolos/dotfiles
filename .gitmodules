@@ -63,3 +63,6 @@
 [submodule "vim/fastfold"]
 	path = vim/bundles/other/fastfold
 	url = https://github.com/Konfekt/FastFold
+[submodule "vim/latex"]
+	path = vim/bundles/other/latex
+	url = https://github.com/vim-latex/vim-latex.git
