@@ -41,6 +41,7 @@ source ~/.config/liquidprompt/liquidprompt
 
 # tmux
 [[ -o login ]] && return
+[[ -n "$TERMINIX_ID" ]] && return
 if which tmux >/dev/null 2>&1 && test -z "$TMUX"; then
     if tmux has-session >/dev/null 2>&1; then
         [[ "$PWD" != "$HOME" ]] && tmux new-window -c "$PWD"
