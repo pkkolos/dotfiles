@@ -25,5 +25,6 @@ offlineimap.config ~/.config/offlineimap/config
 offlineimap.py ~/.local/share/offlineimap/offlineimap.py
 offlineimap.service ~/.config/systemd/user/offlineimap.service
 offlineimap.timer ~/.config/systemd/user/offlineimap.timer
+open-urxvt.py ~/.local/share/nautilus-python/extensions/open-urxvt.py
 rofi.config ~/.config/rofi/config
 sxhkdrc ~/.config/sxhkd/sxhkdrc

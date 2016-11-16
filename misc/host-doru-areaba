@@ -14,6 +14,7 @@ mpv.conf
 ncmpcpp.bindings
 ncmpcpp.config
 oh-my-git
+open-urxvt.py
 pbuilderrc
 tmux.conf
 urxvt-scripts
