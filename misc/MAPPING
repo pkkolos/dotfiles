@@ -1,6 +1,7 @@
 bin/lock ~/.local/bin/lock
 bin/rofi_power_menu ~/.local/bin/rofi_power_menu
 devilspie2 ~/.config/devilspie2
+gtk3 ~/.config/gtk-3.0
 liquidprompt ~/.config/liquidprompt
 moc.themes ~/.moc/themes
 oh-my-git ~/.config/oh-my-git
