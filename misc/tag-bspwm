@@ -1,6 +1,7 @@
 bin/lock
 bin/rofi_power_menu
 bspwmrc
+compton.conf
 lemonbuddy.config
 rofi.config
 sxhkdrc

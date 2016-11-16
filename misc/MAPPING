@@ -8,6 +8,7 @@ oh-my-git ~/.config/oh-my-git
 urxvt-scripts ~/.urxvt/ext
 zsh ~/.config/zsh
 bspwmrc ~/.config/bspwm/bspwmrc
+compton.conf ~/.config/compton.conf
 conky.conf ~/.config/conky/conky.conf
 dirmngr.conf ~/.gnupg/dirmngr.conf
 gpg.conf ~/.gnupg/gpg.conf
