@@ -4,18 +4,28 @@
 #
 # executed by startx
 
-# update x resources db
+# use default pointer in X Server instead of x pointer
+xsetroot -cursor_name left_ptr
+# update X resources db
 xrdb -merge ~/.Xresources
-# disable x beep
-xset -b
+# disable X beep
+xset b off
+# disable X blanking & display power management
+xset s off
+xset -dpms
 # set the keyboard layout
-setxkbmap -model pc105 -layout us,gr -variant altgr-intl,extended -option grp:lctrl_lshift_toggle
+#setxkbmap -model pc105 -layout us,gr -variant altgr-intl,extended
+#setxkbmap -option grp:win_space_toggle,grp_led:scroll,lv3:ralt_switch,compose:rwin,terminate:ctrl_alt_bksp
 # set the default background
-feh --bg-fill /home/panagiotis/Pictures/.wallpaper
-# start the gnome policykit authentication agent
-/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
-# start gnome-settings-daemon
-gnome-settings-daemon &
+feh --bg-fill $HOME/Pictures/.wallpaper
+# run autostart applications
+dex -a &
+# enable locker
+xss-lock -l -q -- $HOME/.local/bin/lock &
+# run X compositor
+compton &
+# run X hotkey daemon
+sxhkd &
 
 # start the window manager
-exec i3
+exec bspwm

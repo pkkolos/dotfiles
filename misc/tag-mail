@@ -1,6 +1,6 @@
-mail.target
 mutt
-offlineimap.config
-offlineimap.py
+mail.target
 offlineimap.service
 offlineimap.timer
+offlineimap.py
+offlineimap.config

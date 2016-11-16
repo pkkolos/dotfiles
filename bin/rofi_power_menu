@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [[ -z "$@" ]]; then
+    echo "Logout"
+    echo "Suspend"
+    echo "Reboot"
+    echo "Power Off"
+elif [[ x"Logout" = x"$@" ]]; then
+    loginctl terminate-session $XDG_SESSION_ID
+else
+    systemctl ${@,,}
+fi

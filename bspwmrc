@@ -1,0 +1,31 @@
+#!/bin/bash
+
+bspc config border_width   2
+bspc config window_gap     5
+bspc config top_padding   32
+bspc config split_ratio    0.52
+
+bspc config single_monocle     true
+bspc config gapless_monocle    true
+bspc config borderless_monocle true
+
+bspc config click_to_focus        true
+bspc config focus_follows_pointer true
+
+bspc config pointer_modifier mod1
+bspc config pointer_action1  move
+bspc config pointer_action2  resize_corner
+bspc config pointer_action3  none
+
+bspc config normal_border_color  '#191b21'
+bspc config active_border_color  '#191b21'
+bspc config focused_border_color '#cfd6f6'
+
+bspc monitor -d home terminal code browser files videos other mail chat music
+
+bspc rule -a Firefox desktop=^4
+bspc rule -a Nautilus desktop=^5
+bspc rule -a mpv desktop=^6
+
+# run lemonbuddy
+lemonbuddy panel &

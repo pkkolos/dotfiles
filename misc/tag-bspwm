@@ -1,0 +1,7 @@
+bin/lock
+bin/rofi_power_menu
+bspwmrc
+lemonbuddy.config
+rofi.config
+sxhkdrc
+xinitrc

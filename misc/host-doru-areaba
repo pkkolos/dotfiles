@@ -1,15 +1,15 @@
+TAG:bspwm
 TAG:mail
 TAG:vim
 TAG:zsh
+cdrdao
 conky.conf
-devilspie2
 gbp.conf
 gitconfig
 liquidprompt
 moc.config
 moc.themes
 mpd.conf
-mpDris2.conf
 mpv.conf
 ncmpcpp.bindings
 ncmpcpp.config
@@ -19,4 +19,3 @@ tmux.conf
 urxvt-scripts
 vimperatorrc
 Xresources
-xsessionrc
