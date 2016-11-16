@@ -17,6 +17,7 @@ ncmpcpp.config
 oh-my-git
 open-urxvt.py
 pbuilderrc
+ssh-agent.service
 tmux.conf
 urxvt-scripts
 vimperatorrc
