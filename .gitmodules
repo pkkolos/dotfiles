@@ -84,3 +84,7 @@
 	shallow = true
 	path = vim/bundles/other/latex
 	url = https://github.com/vim-latex/vim-latex.git
+[submodule "vim/sxhkdrc"]
+	shallow = true
+	path = vim/bundles/other/sxhkdrc
+	url = https://github.com/baskerville/vim-sxhkdrc.git
