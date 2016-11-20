@@ -22,16 +22,16 @@ super + ctrl + {1-9}
 super + ctrl + {g,r}
     bspc node -o 0.{33,66}
 
-super + {_,shift + }{Left,Down,Up,Right}
+super + {_,alt + }{Left,Down,Up,Right}
     bspc node -{f,s} {west,south,north,east}
 
 super + {_,shift + }{1-9,0}
     bspc {desktop -f,node -d} ^{1-9,10}
 
-super + alt + r: {Left,Down,Up,Right}
+super + alt + r: {h,t,c,n}
     bspc node -z {right -10 0, bottom 0 10, bottom 0 -10, right 10 0}
 
-super + alt + r: shift + {Left,Down,Up,Right}
+super + alt + r: shift + {h,t,c,n}
     bspc node -z {left -10 0, top 0 10, top 0 -10, left 10 0}
 
 XF86AudioRaiseVolume
