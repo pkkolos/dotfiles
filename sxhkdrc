@@ -28,6 +28,9 @@ super + ctrl + {g,r}
 super + {_,alt + }{Left,Down,Up,Right}
     bspc node -{f,s} {west,south,north,east}
 
+super + g
+    bspc node -s biggest.local
+
 super + {_,shift + }{1-9,0}
     bspc {desktop -f,node -d} ^{1-9,10}
 
