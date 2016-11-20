@@ -35,13 +35,13 @@ super + alt + r: shift + {Left,Down,Up,Right}
     bspc node -z {left -10 0, top 0 10, top 0 -10, left 10 0}
 
 XF86AudioRaiseVolume
-    pactl set-sink-volume 1 +5% && panel_upd_vol
+    pactl set-sink-volume 1 +5%
 
 XF86AudioLowerVolume
-    pactl set-sink-volume 1 -5% && panel_upd_vol
+    pactl set-sink-volume 1 -5%
 
 XF86AudioMute
-    pactl set-sink-mute 1 toggle && panel_upd_vol
+    pactl set-sink-mute 1 toggle
 
 XF86AudioPlay
     mpc toggle
