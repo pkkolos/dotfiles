@@ -13,6 +13,9 @@ super + {t,s,f}
 alt + {_,shift + }{Tab,grave}
     bspc node -f {next,prev}{_,.local}
 
+super + {Tab,grave}
+    bspc {desktop,node} -f last.local
+
 super + ctrl + {h,t,c,n,d}
     bspc node -p {west,south,north,east,cancel}
 
