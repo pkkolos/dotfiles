@@ -4,6 +4,9 @@
 #
 # executed by startx
 
+# trick qt apps to use gtk icon theme
+export DESKTOP_SESSION=gnome
+
 # use default pointer in X Server instead of x pointer
 xsetroot -cursor_name left_ptr
 # update X resources db
