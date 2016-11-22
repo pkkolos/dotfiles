@@ -28,5 +28,5 @@ bspc rule -a Firefox desktop=^4
 bspc rule -a Nautilus desktop=^5
 bspc rule -a mpv desktop=^6
 
-# run lemonbuddy
-lemonbuddy panel &
+# run polybar
+polybar panel &

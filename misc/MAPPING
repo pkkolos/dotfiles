@@ -15,7 +15,6 @@ gpg.conf ~/.gnupg/gpg.conf
 gpg-agent.conf ~/.gnupg/gpg-agent.conf
 i3.config ~/.config/i3/config
 i3status.config ~/.config/i3status/config
-lemonbuddy.config ~/.config/lemonbuddy/config
 mail.target ~/.config/systemd/user/mail.target
 moc.config ~/.moc/config
 mpd.conf ~/.config/mpd/mpd.conf
@@ -28,6 +27,7 @@ offlineimap.py ~/.local/share/offlineimap/offlineimap.py
 offlineimap.service ~/.config/systemd/user/offlineimap.service
 offlineimap.timer ~/.config/systemd/user/offlineimap.timer
 open-urxvt.py ~/.local/share/nautilus-python/extensions/open-urxvt.py
+polybar.config ~/.config/polybar/config
 rofi.config ~/.config/rofi/config
 ssh-agent.service ~/.config/systemd/user/ssh-agent.service
 sxhkdrc ~/.config/sxhkd/sxhkdrc
