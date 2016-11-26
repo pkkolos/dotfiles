@@ -465,6 +465,19 @@
         vnoremap <leader>p "+gp
         vnoremap <leader>P "+gP
     " }}}
+    " Theme Background                           {{{
+    " --------------------------------------------------------------------------
+        function! s:ToggleBackground()
+            let &background = (&background == "dark" ? "light" : "dark")
+            if exists("g:colors_name")
+                exec "colorscheme " . g:colors_name
+            endif
+        endfunction
+        command! -nargs=0 ToggleBackground call <SID>ToggleBackground()
+        nnoremap <silent> <F4> :ToggleBackground<cr>
+        inoremap <silent> <F4> :ToggleBackground<cr>
+        vnoremap <silent> <F4> :ToggleBackground<cr>
+    " }}}
     " Search, Copy, Replace                      {{{
     " --------------------------------------------------------------------------
         nnoremap <leader>/ :noh<cr>

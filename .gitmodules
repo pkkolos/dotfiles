@@ -44,10 +44,6 @@
 	shallow = true
 	path = vim/bundles/programming/snippets
 	url = https://github.com/honza/vim-snippets.git
-[submodule "vim/solarized"]
-	shallow = true
-	path = vim/bundles/themes/solarized
-	url = https://github.com/altercation/vim-colors-solarized.git
 [submodule "vim/surround"]
 	shallow = true
 	path = vim/bundles/other/surround

@@ -4,10 +4,8 @@
 " ------------------------------------------------------------------------------
 " Theme                                          {{{
 " ------------------------------------------------------------------------------
-    let g:solarized_menu=0
-    let g:solarized_visibility="low"
+    let g:solarized_diffmode = "high"
     colorscheme solarized
-    call togglebg#map("<F4>")
 " }}}
 " General Settings                               {{{
 " ------------------------------------------------------------------------------
