@@ -1,5 +1,5 @@
 let g:UltiSnipsSnippetDirectories =
-            \ [$HOME.'/.vim/bundles/other/snippets/UltiSnips']
+            \ [$HOME.'/.vim/bundles/programming/snippets/UltiSnips']
 let g:UltiSnipsExpandTrigger = "<C-e>"
 let g:UltiSnipsListSnippets = "<C-l>"
 let g:UltiSnipsJumpForwardTrigger = "<C-e>"
