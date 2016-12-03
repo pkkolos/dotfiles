@@ -8,5 +8,7 @@ if [[ -z "$@" ]]; then
 elif [[ x"Logout" = x"$@" ]]; then
     loginctl terminate-session $XDG_SESSION_ID
 else
-    systemctl ${@,,}
+    cmd="${@// /}"
+    cmd="${cmd,,}"
+    systemctl $cmd
 fi
