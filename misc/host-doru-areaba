@@ -16,7 +16,7 @@ ncmpcpp.bindings
 ncmpcpp.config
 oh-my-git
 open-urxvt.py
-pbuilderrc
+sbuildrc
 ssh-agent.service
 tmux.conf
 urxvt-scripts
