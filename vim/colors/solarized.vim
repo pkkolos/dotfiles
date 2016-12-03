@@ -3,7 +3,7 @@
 " Maintainer: Panagiotis Kkolos
 " URL:        http://ethanschoonover.com/solarized
 " License:    MIT license (see end of this file)
-" Modified:   2016 Nov 26
+" Modified:   2016 Dec 03
 "
 " Colorscheme initialization                                                 {{{
 " ------------------------------------------------------------------------------
@@ -285,23 +285,23 @@ if exists("g:solarized_diffmode") && g:solarized_diffmode == "high"
     exe "hi! DiffDelete" .s:fmt_revr .s:fg_red     .s:bg_none
     exe "hi! DiffText"   .s:fmt_revr .s:fg_blue    .s:bg_none
 else
-    exe "hi! DiffAdd"    .s:fmt_undr .s:fg_green   .s:bg_none    .s:sp_green
-    exe "hi! DiffChange" .s:fmt_undr .s:fg_yellow  .s:bg_none    .s:sp_yellow
+    exe "hi! DiffAdd"    .s:fmt_undr .s:fg_green   .s:bg_none
+    exe "hi! DiffChange" .s:fmt_undr .s:fg_yellow  .s:bg_none
     exe "hi! DiffDelete" .s:fmt_bold .s:fg_red     .s:bg_none
-    exe "hi! DiffText"   .s:fmt_undr .s:fg_blue    .s:bg_none    .s:sp_blue
+    exe "hi! DiffText"   .s:fmt_undr .s:fg_blue    .s:bg_none
 endif
 
 exe "hi! ColorColumn"    .s:fmt_none .s:fg_none    .s:bg_base02
 exe "hi! Conceal"        .s:fmt_none .s:fg_blue    .s:bg_none
 exe "hi! Cursor"         .s:fmt_none .s:fg_base03  .s:bg_base0
 exe "hi! CursorColumn"   .s:fmt_none .s:fg_none    .s:bg_base02
-exe "hi! CursorLine"     .s:fmt_none .s:fg_none    .s:bg_base02  .s:sp_base1
+exe "hi! CursorLine"     .s:fmt_none .s:fg_none    .s:bg_base02
 exe "hi! Directory"      .s:fmt_none .s:fg_blue    .s:bg_none
 exe "hi! ErrorMsg"       .s:fmt_revr .s:fg_red     .s:bg_none
 exe "hi! VertSplit"      .s:fmt_none .s:fg_base00  .s:bg_base00
-exe "hi! Folded"         .s:fmt_undb .s:fg_base0   .s:bg_base02  .s:sp_base03
+exe "hi! Folded"         .s:fmt_undb .s:fg_base0   .s:bg_base02
 exe "hi! FoldColumn"     .s:fmt_none .s:fg_base0   .s:bg_base02
-exe "hi! SignColumn"     .s:fmt_none .s:fg_base0
+exe "hi! SignColumn"     .s:fmt_none .s:fg_base0   .s:bg_base02
 exe "hi! IncSearch"      .s:fmt_stnd .s:fg_orange  .s:bg_none
 exe "hi! LineNr"         .s:fmt_none .s:fg_base01  .s:bg_base02
 exe "hi! CursorLineNr"   .s:fmt_bold .s:fg_yellow  .s:bg_base02
@@ -320,9 +320,9 @@ exe "hi! SpellLocal"     .s:fmt_curl .s:fg_none    .s:bg_none    .s:sp_yellow
 exe "hi! SpellRare"      .s:fmt_curl .s:fg_none    .s:bg_none    .s:sp_cyan
 exe "hi! StatusLine"     .s:fmt_revr .s:fg_base1   .s:bg_base02
 exe "hi! StatusLineNC"   .s:fmt_revr .s:fg_base00  .s:bg_base02
-exe "hi! TabLine"        .s:fmt_undr .s:fg_base0   .s:bg_base02  .s:sp_base0
-exe "hi! TabLineFill"    .s:fmt_undr .s:fg_base0   .s:bg_base02  .s:sp_base0
-exe "hi! TabLineSel"     .s:fmt_revu .s:fg_base01  .s:bg_base2   .s:sp_base0
+exe "hi! TabLine"        .s:fmt_undr .s:fg_base0   .s:bg_base02
+exe "hi! TabLineFill"    .s:fmt_undr .s:fg_base0   .s:bg_base02
+exe "hi! TabLineSel"     .s:fmt_revu .s:fg_base01  .s:bg_base2
 exe "hi! Title"          .s:fmt_bold .s:fg_orange  .s:bg_none
 exe "hi! Visual"         .s:fmt_revr .s:fg_base01  .s:bg_base03
 exe "hi! VisualNOS"      .s:fmt_stnd .s:fg_none    .s:bg_base02
