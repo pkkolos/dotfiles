@@ -47,6 +47,6 @@ if which tmux >/dev/null 2>&1 && test -z "$TMUX"; then
         [[ "$PWD" != "$HOME" ]] && tmux new-window -c "$PWD"
         tmux attach-session -d
     else
-        tmux new-session -n$USER -s$USER@$HOSTNAME
+        tmux new-session -n$USER -s$USER@$HOST
     fi
 fi
