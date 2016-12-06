@@ -112,7 +112,9 @@ source ~/.mutt/mailboxes
 source ~/.mutt/mlists
 source ~/.mutt/accounts/gmail
 
+folder-hook Archive/* source ~/.mutt/accounts/local
 folder-hook Gmail/*   source ~/.mutt/accounts/gmail
+folder-hook Local/*   source ~/.mutt/accounts/local
 folder-hook Outlook/* source ~/.mutt/accounts/outlook
 
 # }}}

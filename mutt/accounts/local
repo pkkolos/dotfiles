@@ -1,0 +1,4 @@
+set postponed = "+Local/Drafts"
+set trash     = "+Local/Trash"
+
+# vim: set ft=muttrc:
