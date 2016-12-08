@@ -74,7 +74,7 @@ application/x-ruby; /usr/bin/vim -R -n -i NONE -u "$HOME/.vim/se_rc.vim" -- %s; 
 application/x-shellscript; /usr/bin/vim -R -n -i NONE -u "$HOME/.vim/se_rc.vim" -- %s; needsterminal
 application/x-subrip; /usr/bin/vim -R -n -i NONE -u "$HOME/.vim/se_rc.vim" -- %s; needsterminal
 application/x-yaml; /usr/bin/vim -R -n -i NONE -u "$HOME/.vim/se_rc.vim" -- %s; needsterminal
-text/html; /usr/bin/firefox --new-tab %s; test=test -n "$DISPLAY"
+text/html; /usr/bin/firefox --new-tab %s & sleep 10; test=test -n "$DISPLAY"
 text/html; /usr/bin/links -force-html -codepage utf-8 -dump %s; copiousoutput
 text/*; /usr/bin/vim -R -n -i NONE -u "$HOME/.vim/se_rc.vim" -- %s; needsterminal
 
