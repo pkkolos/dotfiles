@@ -1,6 +1,5 @@
 bin/lock ~/.local/bin/lock
 bin/rofi_power_menu ~/.local/bin/rofi_power_menu
-devilspie2 ~/.config/devilspie2
 gtk3 ~/.config/gtk-3.0
 liquidprompt ~/.config/liquidprompt
 moc.themes ~/.moc/themes
@@ -18,7 +17,6 @@ i3status.config ~/.config/i3status/config
 mail.target ~/.config/systemd/user/mail.target
 moc.config ~/.moc/config
 mpd.conf ~/.config/mpd/mpd.conf
-mpDris2.conf ~/.config/mpDris2/mpDris2.conf
 mpv.conf ~/.config/mpv/mpv.conf
 ncmpcpp.bindings ~/.ncmpcpp/bindings
 ncmpcpp.config ~/.ncmpcpp/config
