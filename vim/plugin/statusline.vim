@@ -71,64 +71,118 @@ let s:stl_rest .= "%{&spell?'┃SP┊'.toupper(&spelllang):''}"
 let s:stl_rest .= '┃LN┊%l╱%L┃CL┊%c%V┃CH┊0x%04B┃%P'
 
 function! s:Hi(group, bgcolour, style)
-    if (&background == "dark")
-        let l:dfg = ' ctermfg=0  guifg=#002b36'
-        let l:dbg = ' ctermbg=8  guibg=#657b83'
+    if exists('g:ss_fg_default')
+        let l:fg_default    = g:ss_fg_default
+    elseif &background == 'dark'
+        let l:fg_default    = ' ctermfg=0  guifg=#002b36'
     else
-        let l:dfg = ' ctermfg=15 guifg=#fdf6e3'
-        let l:dbg = ' ctermbg=12 guibg=#839496'
+        let l:fg_default    = ' ctermfg=15 guifg=#fdf6e3'
     endif
-    let l:redbg    = ' ctermbg=1 guibg=#dc322f'
-    let l:greenbg  = ' ctermbg=2 guibg=#719e07'
-    let l:yellowbg = ' ctermbg=3 guibg=#b58900'
-    let l:bluebg   = ' ctermbg=4 guibg=#268bd2'
-    let l:purplebg = ' ctermbg=5 guibg=#6c71c4'
-    let l:orangebg = ' ctermbg=9 guibg=#cb4b16'
+    if exists('g:ss_bg_default')
+        let l:bg_default    = g:ss_bg_default
+    elseif &background == 'dark'
+        let l:bg_default    = ' ctermbg=12 guibg=#93a1a1'
+    else
+        let l:bg_default    = ' ctermbg=8  guibg=#586e75'
+    endif
+    if exists('g:ss_bg_default_nc')
+        let l:bg_default_nc = g:ss_bg_default_nc
+    elseif &background == 'dark'
+        let l:bg_default_nc = ' ctermbg=8  guibg=#657b83'
+    else
+        let l:bg_default_nc = ' ctermbg=12 guibg=#839496'
+    endif
+    if exists('g:ss_bg_red')
+        let l:bg_red        = g:ss_bg_red
+    else
+        let l:bg_red        = ' ctermbg=1  guibg=#dc322f'
+    endif
+    if exists('g:ss_bg_green')
+        let l:bg_green      = g:ss_bg_green
+    else
+        let l:bg_green      = ' ctermbg=2  guibg=#719e07'
+    endif
+    if exists('g:ss_bg_yellow')
+        let l:bg_yellow     = g:ss_bg_yellow
+    else
+        let l:bg_yellow     = ' ctermbg=3  guibg=#b58900'
+    endif
+    if exists('g:ss_bg_blue')
+        let l:bg_blue       = g:ss_bg_blue
+    else
+        let l:bg_blue       = ' ctermbg=4  guibg=#268bd2'
+    endif
+    if exists('g:ss_bg_magenta')
+        let l:bg_magenta    = g:ss_bg_magenta
+    else
+        let l:bg_magenta    = ' ctermbg=5  guibg=#d33682'
+    endif
+    if exists('g:ss_bg_cyan')
+        let l:bg_cyan       = g:ss_bg_cyan
+    else
+        let l:bg_cyan       = ' ctermbg=6  guibg=#2aa198'
+    endif
+    if exists('g:ss_bg_orange')
+        let l:bg_orange     = g:ss_bg_orange
+    else
+        let l:bg_orange     = ' ctermbg=9  guibg=#cb4b16'
+    endif
+    if exists('g:ss_bg_violet')
+        let l:bg_violet     = g:ss_bg_violet
+    else
+        let l:bg_violet     = ' ctermbg=13 guibg=#6c71c4'
+    endif
     let l:style = ' term=' . a:style . ' cterm=' . a:style . ' gui=' . a:style
 
-    let l:res = 'hi ' . a:group . l:style . l:dfg
+    let l:res = 'hi ' . a:group . l:style . l:fg_default
     if (a:bgcolour ==? 'red')
-        let l:res .= l:redbg
+        let l:res .= l:bg_red
     elseif (a:bgcolour ==? 'green')
-        let l:res .= l:greenbg
+        let l:res .= l:bg_green
     elseif (a:bgcolour ==? 'yellow')
-        let l:res .= l:yellowbg
+        let l:res .= l:bg_yellow
     elseif (a:bgcolour ==? 'blue')
-        let l:res .= l:bluebg
-    elseif (a:bgcolour ==? 'purple')
-        let l:res .= l:purplebg
+        let l:res .= l:bg_blue
+    elseif (a:bgcolour ==? 'magenta')
+        let l:res .= l:bg_magenta
+    elseif (a:bgcolour ==? 'cyan')
+        let l:res .= l:bg_cyan
     elseif (a:bgcolour ==? 'orange')
-        let l:res .= l:orangebg
+        let l:res .= l:bg_orange
+    elseif (a:bgcolour ==? 'violet')
+        let l:res .= l:bg_violet
+    elseif (a:bgcolour ==? 'default_nc')
+        let l:res .= l:bg_default_nc
     else
-        let l:res .= l:dbg
+        let l:res .= l:bg_default
     endif
 
     exec l:res
 endfun
 
 function! s:SLDefaultHighlightings()
-    call s:Hi('StatusLine',              'default', 'none')
-    call s:Hi('StatusLineNC',            'default', 'none')
-    call s:Hi('User1',                   'default', 'bold')
-    call s:Hi('def StatusLineDefault',   'default', 'bold')
-    call s:Hi('def StatusLineDefaultNC', 'default', 'none')
-    call s:Hi('def StatusLineRed',       'red',     'bold')
-    call s:Hi('def StatusLineRedNC',     'red',     'none')
-    call s:Hi('def StatusLineGreen',     'green',   'bold')
-    call s:Hi('def StatusLineGreenNC',   'green',   'none')
-    call s:Hi('def StatusLineYellow',    'yellow',  'bold')
-    call s:Hi('def StatusLineYellowNC',  'yellow',  'none')
-    call s:Hi('def StatusLineBlue',      'blue',    'bold')
-    call s:Hi('def StatusLineBlueNC',    'blue',    'none')
-    call s:Hi('def StatusLinePurple',    'purple',  'bold')
-    call s:Hi('def StatusLinePurpleNC',  'purple',  'none')
-    call s:Hi('def StatusLineOrange',    'orange',  'bold')
-    call s:Hi('def StatusLineOrangeNC',  'orange',  'none')
+    call s:Hi('User1',                   'default',    'bold')
+    call s:Hi('StatusLine',              'default',    'bold')
+    call s:Hi('StatusLineNC',            'default_nc', 'none')
+    call s:Hi('def StatusLineDefault',   'default',    'bold')
+    call s:Hi('def StatusLineDefaultNC', 'default_nc', 'none')
+    call s:Hi('def StatusLineRed',       'red',        'bold')
+    call s:Hi('def StatusLineRedNC',     'red',        'none')
+    call s:Hi('def StatusLineGreen',     'green',      'bold')
+    call s:Hi('def StatusLineGreenNC',   'green',      'none')
+    call s:Hi('def StatusLineYellow',    'yellow',     'bold')
+    call s:Hi('def StatusLineYellowNC',  'yellow',     'none')
+    call s:Hi('def StatusLineBlue',      'blue',       'bold')
+    call s:Hi('def StatusLineBlueNC',    'blue',       'none')
+    call s:Hi('def StatusLineViolet',    'violet',     'bold')
+    call s:Hi('def StatusLineVioletNC',  'violet',     'none')
+    call s:Hi('def StatusLineOrange',    'orange',     'bold')
+    call s:Hi('def StatusLineOrangeNC',  'orange',     'none')
 endfun
 
 function! s:SLUpdate()
     if !exists('w:stl_paste')
-        let w:stl_paste = '%#StatusLinePurple#' . s:stl_paste
+        let w:stl_paste = '%#StatusLineViolet#' . s:stl_paste
     endif
     if !exists('w:stl_filename')
         let w:stl_filename = '%#StatusLineDefault#' . s:stl_filename
@@ -162,10 +216,10 @@ endfun
 
 function! s:SLSetHighlight(isCurrent)
     if !a:isCurrent
-        let w:stl_paste = '%#StatusLinePurpleNC#' . s:stl_paste
+        let w:stl_paste = '%#StatusLineVioletNC#' . s:stl_paste
         let w:stl_rest = s:stl_rest
     else
-        let w:stl_paste = '%#StatusLinePurple#' . s:stl_paste
+        let w:stl_paste = '%#StatusLineViolet#' . s:stl_paste
         if exists('w:stl_rest') && w:stl_rest !~# '^%#StatusLine\w\+#'
             let w:stl_rest = s:stl_visual . '%1*' . s:stl_rest
         endif
