@@ -41,7 +41,9 @@
 [color]
 	ui = auto
 [color "diff"]
-	meta = magenta bold
+	meta = yellow bold
+	frag = blue
+	func = magenta
 [color "status"]
 	untracked = blue
 [commit]
