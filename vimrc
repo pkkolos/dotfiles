@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------
 " Panagiotis Kkolos
 " Layout inspired by Ethan Schoonover's vimrc (github.com/altercation)
-" Modified: 2016-10-18
+" Modified: 2016-12-13
 " ------------------------------------------------------------------------------
 " Environment                                    {{{
 " ------------------------------------------------------------------------------
@@ -15,12 +15,11 @@
     " }}}
     " Setup Bundles                              {{{
     " --------------------------------------------------------------------------
-        runtime bundles/pathogen/autoload/pathogen.vim
-        if !exists('g:pathogen_disabled')
-            let g:pathogen_disabled = []
-        endif
-        execute pathogen#infect('bundles/themes/{}')
         if !exists("g:sudoedit")
+            runtime bundles/pathogen/autoload/pathogen.vim
+            if !exists('g:pathogen_disabled')
+                let g:pathogen_disabled = []
+            endif
             execute pathogen#infect('bundles/generic/{}')
             execute pathogen#infect('bundles/programming/{}')
             execute pathogen#infect('bundles/other/{}')
