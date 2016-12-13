@@ -392,6 +392,20 @@ exe "hi! hsTypedef"              .s:fmt_none .s:fg_orange  .s:bg_none
 exe "hi! hsVarSym"               .s:fmt_none .s:fg_orange  .s:bg_none
 exe "hi! hsString"               .s:fmt_none .s:fg_base1   .s:bg_none
 " }}}
+" statusline highlighting                                                    {{{
+" ------------------------------------------------------------------------------
+let g:ss_fg_default = s:fg_base03
+let g:ss_bg_default = s:bg_base0
+let g:ss_bg_default_nc = s:bg_base00
+let g:ss_bg_red = s:bg_red
+let g:ss_bg_green = s:bg_green
+let g:ss_bg_yellow = s:bg_yellow
+let g:ss_bg_blue = s:bg_blue
+let g:ss_bg_magenta = s:bg_magenta
+let g:ss_bg_cyan = s:bg_cyan
+let g:ss_bg_orange = s:bg_orange
+let g:ss_bg_violet = s:bg_violet
+" }}}
 " License                                                                    {{{
 " ------------------------------------------------------------------------------
 "
