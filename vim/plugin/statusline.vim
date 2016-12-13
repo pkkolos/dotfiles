@@ -54,7 +54,7 @@ endfun
 " paste status
 let s:stl_paste = "%{&paste?'PASTE':''}%*"
 " buffer number, file name
-let s:stl_filename = "%{&paste?'▉':''}%n┊%t%*"
+let s:stl_filename = "%{&paste?'▊':''}%n┊%t%*"
 " change status line's colour in visual and select mode
 let s:stl_visual = '%{SLUpdateNormMode()}'
 " help, preview, read-only, modified, file format, file type
