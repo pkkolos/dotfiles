@@ -44,6 +44,8 @@
 	meta = yellow bold
 	frag = blue
 	func = magenta
+[color "interactive"]
+	prompt = 13 bold
 [color "status"]
 	untracked = blue
 [commit]
