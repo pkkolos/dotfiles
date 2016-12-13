@@ -3,7 +3,7 @@
 " Maintainer: Panagiotis Kkolos
 " URL:        http://ethanschoonover.com/solarized
 " License:    MIT license (see end of this file)
-" Modified:   2016 Dec 03
+" Modified:   2016 Dec 13
 "
 " Colorscheme initialization                                                 {{{
 " ------------------------------------------------------------------------------
@@ -20,10 +20,10 @@ let colors_name = "solarized"
 "
 " SOLARIZED HEX     16 TERMCOL   L*A*B      sRGB        HSB
 " --------- ------- -- --------- ---------- ----------- -----------
-" base03    #002b36  8 brblack   15 -12 -12   0  43  54 193 100  21
-" base02    #073642  0 black     20 -12 -12   7  54  66 192  90  26
-" base01    #586e75 10 brgreen   45 -07 -07  88 110 117 194  25  46
-" base00    #657b83 11 bryellow  50 -07 -07 101 123 131 195  23  51
+" base03    #002b36  0 brblack   15 -12 -12   0  43  54 193 100  21
+" base02    #073642 10 black     20 -12 -12   7  54  66 192  90  26
+" base01    #586e75 11 brgreen   45 -07 -07  88 110 117 194  25  46
+" base00    #657b83  8 bryellow  50 -07 -07 101 123 131 195  23  51
 " base0     #839496 12 brblue    60 -06 -03 131 148 150 186  13  59
 " base1     #93a1a1 14 brcyan    65 -05 -02 147 161 161 180   9  63
 " base2     #eee8d5  7 white     92 -00  10 238 232 213  44  11  93
@@ -54,10 +54,10 @@ let colors_name = "solarized"
     let s:cyan        = "#2aa198"
     "let s:green       = "#859900" "original
     let s:green       = "#719e07" "experimental
-    let s:t_base03    = "8"
-    let s:t_base02    = "0"
-    let s:t_base01    = "10"
-    let s:t_base00    = "11"
+    let s:t_base03    = "0"
+    let s:t_base02    = "10"
+    let s:t_base01    = "11"
+    let s:t_base00    = "8"
     let s:t_base0     = "12"
     let s:t_base1     = "14"
     let s:t_base2     = "7"
@@ -227,6 +227,7 @@ exe "hi! Identifier"     .s:fmt_none .s:fg_blue    .s:bg_none
 "        Function        function name (also: methods for classes)
 "
 exe "hi! Statement"      .s:fmt_none .s:fg_green   .s:bg_none
+exe "hi! Exception"      .s:fmt_none .s:fg_red     .s:bg_none
 "       *Statement       any statement
 "        Conditional     if, then, else, endif, switch, etc.
 "        Repeat          for, do, while, etc.
@@ -297,7 +298,7 @@ exe "hi! Cursor"         .s:fmt_none .s:fg_base03  .s:bg_base0
 exe "hi! CursorColumn"   .s:fmt_none .s:fg_none    .s:bg_base02
 exe "hi! CursorLine"     .s:fmt_none .s:fg_none    .s:bg_base02
 exe "hi! Directory"      .s:fmt_none .s:fg_blue    .s:bg_none
-exe "hi! ErrorMsg"       .s:fmt_revr .s:fg_red     .s:bg_none
+exe "hi! ErrorMsg"       .s:fmt_bold .s:fg_red     .s:bg_none
 exe "hi! VertSplit"      .s:fmt_none .s:fg_base00  .s:bg_base00
 exe "hi! Folded"         .s:fmt_undb .s:fg_base0   .s:bg_base02
 exe "hi! FoldColumn"     .s:fmt_none .s:fg_base0   .s:bg_base02
@@ -318,7 +319,7 @@ exe "hi! SpellBad"       .s:fmt_curl .s:fg_none    .s:bg_none    .s:sp_red
 exe "hi! SpellCap"       .s:fmt_curl .s:fg_none    .s:bg_none    .s:sp_violet
 exe "hi! SpellLocal"     .s:fmt_curl .s:fg_none    .s:bg_none    .s:sp_yellow
 exe "hi! SpellRare"      .s:fmt_curl .s:fg_none    .s:bg_none    .s:sp_cyan
-exe "hi! StatusLine"     .s:fmt_revr .s:fg_base1   .s:bg_base02
+exe "hi! StatusLine"     .s:fmt_revb .s:fg_base1   .s:bg_base02
 exe "hi! StatusLineNC"   .s:fmt_revr .s:fg_base00  .s:bg_base02
 exe "hi! TabLine"        .s:fmt_undr .s:fg_base0   .s:bg_base02
 exe "hi! TabLineFill"    .s:fmt_undr .s:fg_base0   .s:bg_base02
@@ -326,7 +327,7 @@ exe "hi! TabLineSel"     .s:fmt_revu .s:fg_base01  .s:bg_base2
 exe "hi! Title"          .s:fmt_bold .s:fg_orange  .s:bg_none
 exe "hi! Visual"         .s:fmt_revr .s:fg_base01  .s:bg_base03
 exe "hi! VisualNOS"      .s:fmt_stnd .s:fg_none    .s:bg_base02
-exe "hi! WarningMsg"     .s:fmt_bold .s:fg_red     .s:bg_none
+exe "hi! WarningMsg"     .s:fmt_bold .s:fg_yellow  .s:bg_none
 exe "hi! WildMenu"       .s:fmt_revr .s:fg_base2   .s:bg_base02
 
 hi! link lCursor Cursor
@@ -357,12 +358,15 @@ hi! link vimSetEqual Normal
 " }}}
 " diff highlighting                                                          {{{
 " ------------------------------------------------------------------------------
-hi! link diffAdded   Statement
-hi! link diffLine    Identifier
+exe "hi! diffSubname"            .s:fmt_none .s:fg_magenta .s:bg_none
+
+hi! link diffAdded     Statement
+hi! link diffLine      Identifier
+hi! link diffIndexLine Identifier
 " }}}
 " gitcommit highlighting                                                     {{{
 " ------------------------------------------------------------------------------
-exe "hi! gitcommitUnmerged"      .s:fmt_bold .s:fg_green   .s:bg_none
+exe "hi! gitcommitOverflow"      .s:fmt_none .s:fg_red     .s:bg_none
 exe "hi! gitcommitOnBranch"      .s:fmt_bold .s:fg_base01  .s:bg_none
 exe "hi! gitcommitBranch"        .s:fmt_bold .s:fg_magenta .s:bg_none
 exe "hi! gitcommitDiscardedType" .s:fmt_none .s:fg_red     .s:bg_none
@@ -374,9 +378,9 @@ exe "hi! gitcommitSelectedFile"  .s:fmt_bold .s:fg_green   .s:bg_none
 exe "hi! gitcommitUnmergedFile"  .s:fmt_bold .s:fg_yellow  .s:bg_none
 exe "hi! gitcommitFile"          .s:fmt_bold .s:fg_base0   .s:bg_none
 
-hi! link gitcommitDiscardedArrow gitcommitDiscardedFile
-hi! link gitcommitSelectedArrow  gitcommitSelectedFile
-hi! link gitcommitUnmergedArrow  gitcommitUnmergedFile
+hi! link gitcommitDiscardedArrow gitcommitDiscardedType
+hi! link gitcommitSelectedArrow  gitcommitSelectedType
+hi! link gitcommitUnmergedArrow  gitcommitUnmergedType
 " }}}
 " html highlighting                                                          {{{
 " ------------------------------------------------------------------------------
@@ -391,20 +395,21 @@ exe "hi! javaScript"             .s:fmt_none .s:fg_yellow  .s:bg_none
 " }}}
 " perl highlighting                                                          {{{
 " ------------------------------------------------------------------------------
-exe "hi! perlHereDoc"            .s:fmt_none .s:fg_base1   .s:bg_back
-exe "hi! perlStatementFileDesc"  .s:fmt_none .s:fg_cyan    .s:bg_back
-exe "hi! perlVarPlain"           .s:fmt_none .s:fg_yellow  .s:bg_back
+exe "hi! perlHereDoc"            .s:fmt_none .s:fg_base1   .s:bg_none
+exe "hi! perlStatementFileDesc"  .s:fmt_none .s:fg_cyan    .s:bg_none
+exe "hi! perlVarPlain"           .s:fmt_none .s:fg_yellow  .s:bg_none
 " }}}
 " tex highlighting                                                           {{{
 " ------------------------------------------------------------------------------
-exe "hi! texMathMatcher"         .s:fmt_none .s:fg_yellow  .s:bg_back
-exe "hi! texMathZoneX"           .s:fmt_none .s:fg_yellow  .s:bg_back
-exe "hi! texRefLabel"            .s:fmt_none .s:fg_yellow  .s:bg_back
-exe "hi! texStatement"           .s:fmt_none .s:fg_cyan    .s:bg_back
+exe "hi! texMathMatcher"         .s:fmt_none .s:fg_yellow  .s:bg_none
+exe "hi! texRefLabel"            .s:fmt_none .s:fg_yellow  .s:bg_none
+exe "hi! texStatement"           .s:fmt_none .s:fg_orange  .s:bg_none
+exe "hi! texSection"             .s:fmt_none .s:fg_blue    .s:bg_none
+exe "hi! texZone"                .s:fmt_none .s:fg_blue    .s:bg_none
 " }}}
 " ruby highlighting                                                          {{{
 " ------------------------------------------------------------------------------
-exe "hi! rubyDefine"             .s:fmt_bold .s:fg_base1   .s:bg_back
+exe "hi! rubyDefine"             .s:fmt_bold .s:fg_base1   .s:bg_none
 " }}}
 " haskell syntax highlighting                                                {{{
 " ------------------------------------------------------------------------------
@@ -417,10 +422,10 @@ exe "hi! VarId"                  .s:fmt_none .s:fg_blue    .s:bg_none
 exe "hi! ConId"                  .s:fmt_none .s:fg_yellow  .s:bg_none
 
 exe "hi! hsImport"               .s:fmt_none .s:fg_magenta .s:bg_none
-exe "hi! hsStructure"            .s:fmt_none .s:fg_cyan    .s:bg_none
-exe "hi! hsStatement"            .s:fmt_none .s:fg_cyan    .s:bg_none
-exe "hi! hsTypedef"              .s:fmt_none .s:fg_cyan    .s:bg_none
-exe "hi! hsVarSym"               .s:fmt_none .s:fg_cyan    .s:bg_none
+exe "hi! hsStructure"            .s:fmt_none .s:fg_orange  .s:bg_none
+exe "hi! hsStatement"            .s:fmt_none .s:fg_orange  .s:bg_none
+exe "hi! hsTypedef"              .s:fmt_none .s:fg_orange  .s:bg_none
+exe "hi! hsVarSym"               .s:fmt_none .s:fg_orange  .s:bg_none
 exe "hi! hsString"               .s:fmt_none .s:fg_base00  .s:bg_none
 " }}}
 " License                                                                    {{{
