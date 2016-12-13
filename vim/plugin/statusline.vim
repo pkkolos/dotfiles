@@ -73,7 +73,7 @@ let s:stl_rest .= '┃LN┊%l╱%L┃CL┊%c%V┃CH┊0x%04B┃%P'
 function! s:Hi(group, bgcolour, style)
     if (&background == "dark")
         let l:dfg = ' ctermfg=0  guifg=#002b36'
-        let l:dbg = ' ctermbg=11 guibg=#657b83'
+        let l:dbg = ' ctermbg=8  guibg=#657b83'
     else
         let l:dfg = ' ctermfg=15 guifg=#fdf6e3'
         let l:dbg = ' ctermbg=12 guibg=#839496'

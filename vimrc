@@ -32,7 +32,7 @@
         syntax enable
         set t_Co=16
         set background=dark
-        colorscheme base16-eighties
+        colorscheme darkarc
         " when opening .tex-files, don't treat them as plaintext
         " if there are no LaTeX commands inside yet
         let g:tex_flavor='latex'
