@@ -159,9 +159,9 @@ color body brightblue   default "^-----END PGP SIGNATURE-----"
 
 color quoted  default color10
 color quoted1 default color11
-color quoted2 black   color12
-color quoted3 black   color13
-color quoted4 black   color12
+color quoted2 default color08
+color quoted3 black   color12
+color quoted4 default color08
 color quoted5 default color11
 
 # }}}
