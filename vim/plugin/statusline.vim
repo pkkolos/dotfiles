@@ -219,6 +219,7 @@ function! s:SLSetHighlight(isCurrent)
         let w:stl_paste = '%#StatusLineVioletNC#' . s:stl_paste
         let w:stl_rest = s:stl_rest
     else
+        let w:modified = &l:modified
         let w:stl_paste = '%#StatusLineViolet#' . s:stl_paste
         if exists('w:stl_rest') && w:stl_rest !~# '^%#StatusLine\w\+#'
             let w:stl_rest = s:stl_visual . '%1*' . s:stl_rest
@@ -246,7 +247,6 @@ function! s:SLTextChanged()
         return
     endif
 
-    let w:modified = &l:modified
     call s:SLSetHighlight(1)
 endfun
 
