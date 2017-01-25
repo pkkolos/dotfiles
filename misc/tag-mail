@@ -4,3 +4,4 @@ offlineimap.service
 offlineimap.timer
 offlineimap.py
 offlineimap.config
+msmtprc
