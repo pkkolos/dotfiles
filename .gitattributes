@@ -1,1 +1,2 @@
 msmtprc filter=mail
+notmuch-config filter=mail
