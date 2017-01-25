@@ -1,2 +1,3 @@
 msmtprc filter=mail
 notmuch-config filter=mail
+reportbugrc filter=mail
