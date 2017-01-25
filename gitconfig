@@ -58,6 +58,9 @@
 	renames = copies
 	mnemonicprefix = true
 	algorithm = histogram
+[filter "mail"]
+	smudge = sed \"s/\\\\\\$username\\\\\\$/pkkolos/g\"
+	clean = sed \"s/pkkolos@/\\$username\\$@/g\"
 [merge]
 	tool = vimdiff
 	conflictstyle = diff3
