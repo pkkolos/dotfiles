@@ -110,6 +110,7 @@ unset record           # don't save outgoing messages, gmail & outlook do that
 
 alternates "$username$@(gmail|hotmail|outlook)\.com"
 
+source ~/.mutt/local_mailboxes
 source ~/.mutt/mailboxes
 source ~/.mutt/mlists
 source ~/.mutt/accounts/gmail

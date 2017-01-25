@@ -1,5 +1,6 @@
 .*
 mutt/cache
+mutt/local_mailboxes
 mutt/mailboxes
 mutt/tmp
 vim/tmp
