@@ -8,6 +8,7 @@ conky.conf
 gbp.conf
 gitconfig
 gtk3
+gtkrc-2.0
 liquidprompt
 moc.config
 moc.themes
