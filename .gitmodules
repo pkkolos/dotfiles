@@ -47,7 +47,7 @@
 [submodule "vim/syntastic"]
 	shallow = true
 	path = vim/bundles/programming/syntastic
-	url = https://github.com/scrooloose/syntastic.git
+	url = https://github.com/vim-syntastic/syntastic.git
 [submodule "vim/tcomment"]
 	shallow = true
 	path = vim/bundles/generic/tcomment
