@@ -1,3 +1,5 @@
+mutt/accounts/gmail filter=mail
+mutt/accounts/outlook filter=mail
 mutt/muttrc filter=mail
 msmtprc filter=mail
 notmuch-config filter=mail
