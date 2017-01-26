@@ -5,6 +5,7 @@ TAG:vim
 TAG:zsh
 cdrdao
 conky.conf
+fonts.conf
 gbp.conf
 gitconfig
 gtk3

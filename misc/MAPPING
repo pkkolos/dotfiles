@@ -10,6 +10,7 @@ bspwmrc ~/.config/bspwm/bspwmrc
 compton.conf ~/.config/compton.conf
 conky.conf ~/.config/conky/conky.conf
 dirmngr.conf ~/.gnupg/dirmngr.conf
+fonts.conf ~/.config/fontconfig/fonts.conf
 gpg.conf ~/.gnupg/gpg.conf
 gpg-agent.conf ~/.gnupg/gpg-agent.conf
 i3.config ~/.config/i3/config
