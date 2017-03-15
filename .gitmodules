@@ -88,3 +88,7 @@
 	shallow = true
 	path = vim/bundles/syntax/git
 	url = https://github.com/tpope/vim-git.git
+[submodule "vim/racer"]
+	shallow = true
+	path = vim/bundles/programming/racer
+	url = https://github.com/racer-rust/vim-racer.git
