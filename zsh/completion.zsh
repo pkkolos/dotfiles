@@ -1,7 +1,7 @@
 zstyle ':completion:*'               completer _expand _complete _list _match _approximate
 zstyle ':completion:*'               matcher-list 'm:{[:lower:]}={[:upper:]}' \
                                                   'r:|[._-]=* r:|=*' \
-                                                  'l:|=*'
+                                                  'l:|=* r:|=*'
 zstyle ':completion:*:expand:*'      group-order all-expansions
 zstyle ':completion:*:match:*'       original only
 zstyle ':completion:*:approximate:*' max-errors 2 numeric
