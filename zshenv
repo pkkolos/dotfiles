@@ -4,6 +4,7 @@ typeset -gU path fpath cdpath mailpath
 path=(~/.local/bin ~/.cargo/bin $path)
 
 export NO_AT_BRIDGE=1
+export RUST_SRC_PATH=~/.local/src/rust/src
 
 # Temporary Files
 if [[ -d "$XDG_RUNTIME_DIR" ]]; then
