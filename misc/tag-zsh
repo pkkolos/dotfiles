@@ -1,5 +1,6 @@
 zsh
 zlogin
 zlogout
+zprofile
 zshenv
 zshrc
