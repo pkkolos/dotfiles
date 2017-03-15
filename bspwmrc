@@ -24,9 +24,16 @@ bspc config presel_feedback_color '#4dadd4'
 
 bspc monitor -d home terminal code browser files videos other mail chat music
 
-bspc rule -a Firefox desktop=^4
-bspc rule -a Nautilus desktop=^5
-bspc rule -a mpv desktop=^6
+bspc rule -a mpv desktop=videos
+bspc rule -a Firefox desktop=browser
+bspc rule -a Nautilus desktop=files
+bspc rule -a URxvt:mutt desktop=mail
+bspc rule -a URxvt:ncmpcpp desktop=music
+bspc rule -a URxvt:tmux desktop=terminal
 
 # run polybar
 polybar panel &
+
+urxvt -name mutt &
+urxvt -name ncmpcpp &
+urxvt -name tmux -e tmux &
