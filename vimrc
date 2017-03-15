@@ -23,6 +23,7 @@
             execute pathogen#infect('bundles/generic/{}')
             execute pathogen#infect('bundles/programming/{}')
             execute pathogen#infect('bundles/other/{}')
+            execute pathogen#infect('bundles/syntax/{}')
         endif
     " }}}
     " Syntax Highlighting, Theme                 {{{
