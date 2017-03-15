@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------
 " Panagiotis Kkolos
 " Layout inspired by Ethan Schoonover's vimrc (github.com/altercation)
-" Modified: 2016-12-13
+" Modified: 2017-03-16
 " ------------------------------------------------------------------------------
 " Environment                                    {{{
 " ------------------------------------------------------------------------------
@@ -11,6 +11,8 @@
 
         if exists("g:sudoedit")
             set viminfo=
+        else
+            set viminfo+=n~/.vim/tmp/viminfo
         endif
     " }}}
     " Setup Bundles                              {{{
