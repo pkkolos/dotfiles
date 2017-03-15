@@ -1,7 +1,7 @@
 " Name:       DarkArc vim colorscheme
 " Author:     Panagiotis Kkolos
 " License:    MIT license (see end of this file)
-" Modified:   2016 Dec 13
+" Modified:   2017 Mar 16
 "
 " Colorscheme initialization                                                 {{{
 " ------------------------------------------------------------------------------
@@ -24,11 +24,11 @@ let colors_name = "darkarc"
 " base1   #99a2b2 14 brcyan    153 162 178 218  14  65 218  14  70
 " base2   #b6bcc8  7 white     182 188 200 220  14  75 220   9  78
 " base3   #e2e4e9 15 brwhite   226 228 233 223  14  90 223   3  91
-" yellow  #e7c879  3 yellow    231 200 121  43  70  69  43  48  91
-" orange  #df9058  9 brred     223 144  88  25  68  61  25  61  87
-" red     #e0616c  1 red       224  97 108 355  67  63 355  57  88
+" yellow  #f2c97d  3 yellow    242 201 125  39  82  72  39  48  95
+" orange  #df8558  9 brred     223 133  88  20  68  61  20  61  87
+" red     #e05c67  1 red       224  92 103 355  68  62 355  59  88
 " magenta #dd78c4  5 magenta   221 120 196 315  60  67 315  46  87
-" violet  #b578dd 13 brmagenta 181 120 221 276  60  67 276  46  87
+" violet  #b888e2 13 brmagenta 184 136 226 272  61  71 272  40  89
 " blue    #4aa4ed  4 blue       74 164 237 207  82  61 207  69  93
 " cyan    #3fc7d9  6 cyan       63 199 217 187  67  55 187  71  85
 " green   #97cb72  2 green     151 203 114  95  46  62  95  44  80
@@ -41,11 +41,11 @@ let colors_name = "darkarc"
     let s:base1       = "#99a2b2"
     let s:base2       = "#b6bcc8"
     let s:base3       = "#e2e4e9"
-    let s:yellow      = "#e7c879"
-    let s:orange      = "#df9058"
-    let s:red         = "#e0616c"
+    let s:yellow      = "#f2c97d"
+    let s:orange      = "#df8558"
+    let s:red         = "#e05c67"
     let s:magenta     = "#dd78c4"
-    let s:violet      = "#b578dd"
+    let s:violet      = "#b888e2"
     let s:blue        = "#4aa4ed"
     let s:cyan        = "#3fc7d9"
     let s:green       = "#97cb72"
