@@ -46,7 +46,8 @@ URxvt.scrollstyle:       plain
 URxvt.scrollBar_right:   true
 URxvt.jumpScroll:        true
 URxvt.skipScroll:        false
-URxvt.scrollWithBuffer:  false
+URxvt.scrollTtyOutput:   false
+URxvt.scrollWithBuffer:  true
 URxvt.scrollTtyKeypress: true
 URxvt.secondaryScroll:   false
 
