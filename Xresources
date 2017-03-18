@@ -39,7 +39,7 @@
 *.scrollTtyOutput: false
 
 URxvt.title:           URxvt
-URxvt.font:            xft:DejaVu Sans Mono:size=10:antialias=false
+URxvt.font:            xft:DejaVu Sans Mono:size=10
 URxvt.intensityStyles: false
 
 URxvt.scrollstyle:       plain
