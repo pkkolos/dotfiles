@@ -658,11 +658,6 @@
         nnoremap <M-down> <C-w>+
         nnoremap <M-left> <C-w><
         nnoremap <M-right> <C-w>>
-        " move between tabs
-        nnoremap gh gT
-        nnoremap gl gt
-        nnoremap <C-left> gT
-        nnoremap <C-right> gt
         " create new tab/window
         nnoremap <leader>T :tabnew<cr>
         nnoremap <leader>- :split<cr>
