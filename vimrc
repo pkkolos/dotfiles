@@ -649,10 +649,10 @@
         " use tab to jump between matching pairs
         noremap <tab> %
         " move between windows
-        nnoremap <Esc>h <C-w>h
-        nnoremap <Esc>j <C-w>j
-        nnoremap <Esc>k <C-w>k
-        nnoremap <Esc>l <C-w>l
+        nnoremap <M-h> <C-w>h
+        nnoremap <M-t> <C-w>j
+        nnoremap <M-c> <C-w>k
+        nnoremap <M-n> <C-w>l
         " resize window
         nnoremap <M-up> <C-w>-
         nnoremap <M-down> <C-w>+
