@@ -15,7 +15,7 @@
             set viminfo+=n~/.vim/tmp/viminfo
         endif
     " }}}
-    " Setup Bundles                              {{{
+    " Setup Plugins                              {{{
     " --------------------------------------------------------------------------
         if !exists("g:sudoedit")
             runtime bundles/pathogen/autoload/pathogen.vim
@@ -26,6 +26,7 @@
             execute pathogen#infect('bundles/programming/{}')
             execute pathogen#infect('bundles/other/{}')
             execute pathogen#infect('bundles/syntax/{}')
+            source ~/.vim/settings.vim
         endif
     " }}}
     " Syntax Highlighting, Theme                 {{{
@@ -757,12 +758,6 @@
         cnoremap <C-o><C-n> <C-n>
         cnoremap <C-o><C-p> <C-p>
     " }}}
-" }}}
-" Plugins                                        {{{
-" ------------------------------------------------------------------------------
-    if !exists("g:sudoedit")
-        source ~/.vim/settings.vim
-    endif
 " }}}
 " ------------------------------------------------------------------------------
 " vim: foldmethod=marker foldlevel=1
