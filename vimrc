@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------
 " Panagiotis Kkolos
 " Layout inspired by Ethan Schoonover's vimrc (github.com/altercation)
-" Modified: 2017-03-16
+" Modified: 2017-03-31
 " ------------------------------------------------------------------------------
 " Environment                                    {{{
 " ------------------------------------------------------------------------------
@@ -107,48 +107,92 @@
         "       set the alternate file name for the current window.
         " A +d  When included, a ":write" command with a file name argument will
         "       set the alternate file name for the current window.
+        " b -   "\|" in a ":map" command is recognized as the end of the map
+        "       command.  The '\' is included in the mapping, the text after the
+        "       '|' is interpreted as the next command.  Use a CTRL-V instead of
+        "       a backslash to include the '|' in the mapping.  Applies to all
+        "       mapping, abbreviation, menu and autocmd commands.
+        "       See also |map_bar|.
         " B +d  A backslash has no special meaning in mappings, abbreviations
-        "       and the "to" part of the menu commands. Remove this flag to be
-        "       able to use a backslash like a CTRL-V. For example, the command
+        "       and the "to" part of the menu commands.  Remove this flag to be
+        "       able to use a backslash like a CTRL-V.  For example, the command
         "       ":map X \<Esc>" results in X being mapped to:
-        "           'B' included:  "\^["    (^[ is a real <Esc>)
-        "           'B' excluded:  "<Esc>"  (5 characters)
+        "               'B' included:   "\^["    (^[ is a real <Esc>)
+        "               'B' excluded:   "<Esc>"  (5 characters)
+        "               ('<' excluded in both cases)
         " c +d  Searching continues at the end of any match at the cursor
-        "       position, but not further than the start of the next line. When
+        "       position, but not further than the start of the next line.  When
         "       not present searching continues one character from the cursor
-        "       position. With 'c' "abababababab" only gets three matches when
+        "       position.  With 'c' "abababababab" only gets three matches when
         "       repeating "/abab", without 'c' there are five matches.
         " C -   Do not concatenate sourced lines that start with a backslash.
         "       See |line-continuation|.
+        " d -   Using "./" in the 'tags' option doesn't mean to use the tags
+        "       file relative to the current file, but the tags file in the
+        "       current directory.
+        " D -   Can't use CTRL-K to enter a digraph after Normal mode commands
+        "       with a character argument, like |r|, |f| and |t|.
         " e +d  When executing a register with ":@r", always add a <CR> to the
-        "       last line, also when the register is not linewise. If this flag
+        "       last line, also when the register is not linewise.  If this flag
         "       is not present, the register is not linewise and the last line
         "       does not end in a <CR>, then the last line is put on the
         "       command-line and can be edited before hitting <CR>.
+        " E -   It is an error when using "y", "d", "c", "g~", "gu" or "gU" on
+        "       an Empty region.  The operators only work when at least one
+        "       character is to be operate on.  Example:
+        "       This makes "y0" fail in the first column.
         " f -   When included, a ":read" command with a file name argument will
         "       set the file name for the current buffer, if the current buffer
         "       doesn't have a file name yet.
         " F +d  When included, a ":write" command with a file name argument will
         "       set the file name for the current buffer, if the current buffer
-        "       doesn't have a file name yet. Also see |cpo-P|.
+        "       doesn't have a file name yet.  Also see |cpo-P|.
         " g -   Goto line 1 when using ":edit" without argument.
         " H -   When using "I" on a line with only blanks, insert before the
-        "       last blank. Without this flag insert after the last blank.
+        "       last blank.  Without this flag insert after the last blank.
+        " i -   When included, interrupting the reading of a file will leave it
+        "       modified.
         " I +   When moving the cursor up or down just after inserting indent
         "       for 'autoindent', do not delete the indent.
         " j -   When joining lines, only add two spaces after a '.', not after
-        "       '!' or '?'. Also see 'joinspaces'.
+        "       '!' or '?'.  Also see 'joinspaces'.
+        " J -   A |sentence| has to be followed by two spaces after the '.', '!'
+        "       or '?'.  A <Tab> is not recognized as white space.
+        " k -   Disable the recognition of raw key codes in mappings,
+        "       abbreviations, and the "to" part of menu commands.  For example,
+        "       if <Key> sends ^[OA (where ^[ is <Esc>), the command
+        "       ":map X ^[OA" results in X being mapped to:
+        "               'k' included:   "^[OA"   (3 characters)
+        "               'k' excluded:   "<Key>"  (one key code)
+        "       Also see the '<' flag below.
+        " K -   Don't wait for a key code to complete when it is halfway a
+        "       mapping.  This breaks mapping <F1><F1> when only part of the
+        "       second <F1> has been read.  It enables cancelling the mapping by
+        "       typing <F1><Esc>.
         " l -   Backslash in a [] range in a search pattern is taken literally,
-        "       only "\]", "\^", "\-" and "\\" are special. See |/[]|
-        "           'l' included: "/[ \t]"  finds <Space>, '\' and 't'
-        "           'l' excluded: "/[ \t]"  finds <Space> and <Tab>
+        "       only "\]", "\^", "\-" and "\\" are special.
+        "       See |/[]|
+        "               'l' included:   "/[ \t]"  finds <Space>, '\' and 't'
+        "               'l' excluded:   "/[ \t]"  finds <Space> and <Tab>
         "       Also see |cpo-\|.
-        " m -   When included, a showmatch will always wait half a second. When
+        " L -   When the 'list' option is set, 'wrapmargin', 'textwidth',
+        "       'softtabstop' and Virtual Replace mode (see |gR|) count a <Tab>
+        "       as two characters, instead of the normal behavior of a <Tab>.
+        " m -   When included, a showmatch will always wait half a second.  When
         "       not included, a showmatch will wait half a second or until a
-        "       character is typed. |'showmatch'|
+        "       character is typed.  |'showmatch'|
+        " M -   When excluded, "%" matching will take backslashes into account.
+        "       Thus in "( \( )" and "\( ( \)" the outer parenthesis match.
+        "       When included "%" ignores backslashes, which is Vi compatible.
         " n +   When included, the column used for 'number' and 'relativenumber'
         "       will also be used for text of wrapped lines.
         " o -   Line offset to search command is not remembered for next search.
+        " O -   Don't complain if a file is being overwritten, even when it
+        "       didn't exist when editing it.  This is a protection against a
+        "       file unexpectedly created by someone else.  Vi didn't complain
+        "       about this.
+        " p -   Vi compatible Lisp indenting.  When not present, a slightly
+        "       better algorithm is used.
         " P -   When included, a ":write" command that appends to a file will
         "       set the file name for the current buffer, if the current buffer
         "       doesn't have a file name yet and the 'F' flag is also included
@@ -157,32 +201,109 @@
         "       where it would be when joining two lines.
         " r -   Redo ("." command) uses "/" to repeat a search command, instead
         "       of the actually used search string.
+        " R -   Remove marks from filtered lines.  Without this flag marks are
+        "       kept like |:keepmarks| was used.
         " s +d  Set buffer options when entering the buffer for the first time.
-        "       This is like it is in Vim version 3.0. And it is the default.
+        "       This is like it is in Vim version 3.0.  And it is the default.
         "       If not present the options are set when the buffer is created.
-        " W -   Don't overwrite a readonly file. When omitted, ":w!" overwrites
+        " S -   Set buffer options always when entering a buffer (except
+        "       'readonly', 'fileformat', 'filetype' and 'syntax').  This is the
+        "       (most) Vi compatible setting.  The options are set to the values
+        "       in the current buffer.  When you change an option and go to
+        "       another buffer, the value is copied.  Effectively makes the
+        "       buffer options global to all buffers.
+        "
+        "           's'    'S'     copy buffer options
+        "           no     no      when buffer created
+        "           yes    no      when buffer first entered (default)
+        "            X     yes     each time when buffer entered (vi comp.)
+        "
+        " t -   Search pattern for the tag command is remembered for "n"
+        "       command.  Otherwise Vim only puts the pattern in the history for
+        "       search pattern, but doesn't change the last used search pattern.
+        " u -   Undo is Vi compatible.  See |undo-two-ways|.
+        " v -   Backspaced characters remain visible on the screen in Insert
+        "       mode.  Without this flag the characters are erased from the
+        "       screen right away.  With this flag the screen newly typed text
+        "       overwrites backspaced characters.
+        " w -   When using "cw" on a blank character, only change one character
+        "       and not all blanks until the start of the next word.
+        " W -   Don't overwrite a readonly file.  When omitted, ":w!" overwrites
         "       a readonly file, if possible.
+        " x -   <Esc> on the command-line executes the command-line.  The
+        "       default in Vim is to abandon the command-line, because <Esc>
+        "       normally aborts a command.  |c_<Esc>|
+        " X -   When using a count with "R" the replaced text is deleted only
+        "       once.  Also when repeating "R" with "." and a count.
         " y -   A yank command can be redone with ".".
+        " Z -   When using "w!" while the 'readonly' option is set, don't reset
+        "       'readonly'.
+        " ! -   When redoing a filter command, use the last used external
+        "       command, whatever it was.  Otherwise the last used -filter-
+        "       command is used.
+        " $ -   When making a change to one line, don't redisplay the line, but
+        "       put a '$' at the end of the changed text.  The changed text will
+        "       be overwritten when you type the new text.  The line is
+        "       redisplayed if you type any command that moves the cursor from
+        "       the insertion point.
+        " % -   Vi-compatible matching is done for the "%" command.  Does not
+        "       recognize "#if", "#endif", etc.  Does not recognize "/*" and
+        "       "*/".  Parens inside single and double quotes are also counted,
+        "       causing a string that contains a paren to disturb the matching.
+        "       For example, in a line like "if (strcmp("foo(", s))" the first
+        "       paren does not match the last one.  When this flag is not
+        "       included, parens inside single and double quotes are treated
+        "       specially.  When matching a paren outside of quotes, everything
+        "       inside quotes is ignored.  When matching a paren inside quotes,
+        "       it will find the matching one (if there is one).  This works
+        "       very well for C programs.  This flag is also used for other
+        "       features, such as C-indenting.
+        " - -   When included, a vertical movement command fails when it would
+        "       go above the first line or below the last line.  Without it the
+        "       cursor moves to the first or last line, unless it already was in
+        "       that line.  Applies to the commands "-", "k", CTRL-P, "+", "j",
+        "       CTRL-N, CTRL-J and ":1234".
         " + -   When included, a ":write file" command will reset the 'modified'
         "       flag of the buffer, even though the buffer itself may still be
         "       different from its file.
-        " * -   Use ":*" in the same way as ":@". When not included, ":*" is an
+        " * -   Use ":*" in the same way as ":@".  When not included, ":*" is an
         "       alias for ":'<,'>", select the Visual area.
+        " < -   Disable the recognition of special key codes in |<>| form in
+        "       mappings, abbreviations, and the "to" part of menu commands.
+        "       For example, the command ":map X <Tab>" results in X being
+        "       mapped to:
+        "               '<' included:   "<Tab>"  (5 characters)
+        "               '<' excluded:   "^I"     (^I is a real <Tab>)
+        "       Also see the 'k' flag above.
         " > -   When appending to a register, put a line break before the
         "       appended text.
         " ; -   When using |,| or |;| to repeat the last |t| search and the
         "       cursor is right in front of the searched character, the cursor
         "       won't move. When not included, the cursor would skip over it and
         "       jump to the following occurrence.
+        "
+        " POSIX flags.  These are not included in the Vi default value, except
+        " when $VIM_POSIX was set on startup. |posix|
+        "
+        " # -   A count before "D", "o" and "O" has no effect.
+        " & -   When ":preserve" was used keep the swap file when exiting
+        "       normally while this buffer is still loaded.  This flag is tested
+        "       when exiting.
         " \ -   Backslash in a [] range in a search pattern is taken literally,
-        "       only "\]" is special. See |/[]|
-        "           '\' included: "/[ \-]"  finds <Space>, '\' and '-'
-        "           '\' excluded: "/[ \-]"  finds <Space> and '-'
+        "       only "\]" is special  See |/[]|
+        "               '\' included:   "/[ \-]"  finds <Space>, '\' and '-'
+        "               '\' excluded:   "/[ \-]"  finds <Space> and '-'
         "       Also see |cpo-l|.
         " / -   When "%" is used as the replacement string in a |:s| command,
         "       use the previous replacement string. |:s%|
         " { -   The |{| and |}| commands also stop at a "{" character at the
         "       start of a line.
+        " . -   The ":chdir" and ":cd" commands fail if the current buffer is
+        "       modified, unless ! is used.  Vim doesn't need this, since it
+        "       remembers the full path of an opened file.
+        " | -   The value of the $LINES and $COLUMNS environment variables
+        "       overrule the terminal size values obtained with system specific
+        "       functions.
     " }}}
 " }}}
 " Vim UI                                         {{{
@@ -285,16 +406,16 @@
         " m -   use "[+]" instead of "[Modified]"
         " n -d  use "[New]" instead of "[New File]"
         " r -   use "[RO]" instead of "[readonly]"
-        " w -   use "[w]" instead of "written" for file write message and "[a]"
-        "       instead of "appended" for ':w >> file' command
+        " w -   use "[w]" instead of "written" for file write message
+        "       and "[a]" instead of "appended" for ':w >> file' command
         " x -d  use "[dos]" instead of "[dos format]", "[unix]" instead of
         "       "[unix format]" and "[mac]" instead of "[mac format]".
         " a +   all of the above abbreviations
         "
         " o +d  overwrite message for writing a file with subsequent message for
         "       reading a file (useful for ":wn" or when 'autowrite' on)
-        " O +d  message for reading a file overwrites any previous message. Also
-        "       for quickfix message (e.g., ":cn").
+        " O +d  message for reading a file overwrites any previous message.
+        "       Also for quickfix message (e.g., ":cn").
         " s -   don't give "search hit BOTTOM, continuing at TOP" or "search hit
         "       TOP, continuing at BOTTOM" messages
         " t +d  truncate file message at the start if it is too long to fit on
@@ -307,6 +428,12 @@
         " A -   don't give the "ATTENTION" message when an existing swap file is
         "       found.
         " I +   don't give the intro message when starting Vim |:intro|.
+        " c -   don't give |ins-completion-menu| messages.  For example,
+        "       "-- XXX completion (YYY)", "match 1 of 2", "The only match",
+        "       "Pattern not found", "Back at original", etc.
+        " q -   use "recording" instead of "recording @a"
+        " F -   don't give the file info when editing a file, like `:silent` was
+        "       used for the command
     " }}}
     " Screen Drawing                             {{{
     " --------------------------------------------------------------------------
@@ -350,63 +477,63 @@
         "       'o' or 'O' in Normal mode.
         " q +d  Allow formatting of comments with "gq".
         "       Note that formatting will not change blank lines or lines
-        "       containing only the comment leader. A new paragraph starts
+        "       containing only the comment leader.  A new paragraph starts
         "       after such a line, or when the comment leader changes.
         " w -   Trailing white space indicates a paragraph continues in the next
-        "       line. A line that ends in a non-white character ends a
+        "       line.  A line that ends in a non-white character ends a
         "       paragraph.
-        " a -   Automatic formatting of paragraphs. Every time text is inserted
-        "       or deleted the paragraph will be reformatted. See
-        "       |auto-format|. When the 'c' flag is present this only happens
+        " a -   Automatic formatting of paragraphs.  Every time text is inserted
+        "       or deleted the paragraph will be reformatted.  See
+        "       |auto-format|.  When the 'c' flag is present this only happens
         "       for recognized comments.
-        " n +   When formatting text, recognize numbered lists. This actually
+        " n +   When formatting text, recognize numbered lists.  This actually
         "       uses the 'formatlistpat' option, thus any kind of list can be
-        "       used. The indent of the text after the number is used for the
-        "       next line. The default is to find a number, optionally followed
-        "       by '.', ':', ')', ']' or '}'. Note that 'autoindent' must be
-        "       set too. Doesn't work well together with "2".
+        "       used.  The indent of the text after the number is used for the
+        "       next line.  The default is to find a number, optionally followed
+        "       by '.', ':', ')', ']' or '}'.  Note that 'autoindent' must be
+        "       set too.  Doesn't work well together with "2".
         "       Example:
-        "           1. the first item
-        "              wraps
-        "           2. the second item
+        "               1. the first item
+        "                  wraps
+        "               2. the second item
         " 2 -   When formatting text, use the indent of the second line of a
         "       paragraph for the rest of the paragraph, instead of the indent
-        "       of the first line. This supports paragraphs in which the first
-        "       line has a different indent than the rest. Note that
+        "       of the first line.  This supports paragraphs in which the first
+        "       line has a different indent than the rest.  Note that
         "       'autoindent' must be set too.
         "       Example:
-        "               first line of a paragraph
-        "           second line of the same paragraph
-        "           third line.
+        "                       first line of a paragraph
+        "               second line of the same paragraph
+        "               third line.
         "       This also works inside comments, ignoring the comment leader.
         " v -   Vi-compatible auto-wrapping in insert mode: Only break a line at
         "       a blank that you have entered during the current insert command.
-        "       Note: this is not 100% Vi compatible. Vi has some "unexpected
-        "       features" or bugs in this area. It uses the screen column
-        "       instead of the line column.
+        "       (Note: this is not 100% Vi compatible.  Vi has some "unexpected
+        "       features" or bugs in this area.  It uses the screen column
+        "       instead of the line column.)
         " b -   Like 'v', but only auto-wrap if you enter a blank at or before
-        "       the wrap margin. If the line was longer than 'textwidth' when
+        "       the wrap margin.  If the line was longer than 'textwidth' when
         "       you started the insert, or you do not enter a blank in the
         "       insert before reaching 'textwidth', Vim does not perform
         "       auto-wrapping.
         " l -   Long lines are not broken in insert mode: When a line was longer
         "       than 'textwidth' when the insert command started, Vim does not
         "       automatically format it.
-        " m -   Also break at a multi-byte character above 255. This is useful
+        " m -   Also break at a multi-byte character above 255.  This is useful
         "       for Asian text where every character is a word on its own.
         " M -   When joining lines, don't insert a space before or after a
-        "       multi-byte character. Overrules the 'B' flag.
+        "       multi-byte character.  Overrules the 'B' flag.
         " B -   When joining lines, don't insert a space between two multi-byte
-        "       characters. Overruled by the 'M' flag.
-        " 1 -   Don't break a line after a one-letter word. It's broken before
+        "       characters.  Overruled by the 'M' flag.
+        " 1 -   Don't break a line after a one-letter word.  It's broken before
         "       it instead (if possible).
         " j +   Where it makes sense, remove a comment leader when joining
         "       lines.
         "       For example, joining:
-        "           int i;   // the index
-        "                    // in the list
-        "       becomes:
-        "           int i;   // the index in the list
+        "               int i;   // the index
+        "                        // in the list
+        "       Becomes:
+        "               int i;   // the index in the list
     " }}}
     " C Indent Options                           {{{
     " --------------------------------------------------------------------------
@@ -421,15 +548,15 @@
         "                       }                 }
         "
         " tN  Indent a function return type declaration N characters from the
-        "     margin. (default 'shiftwidth').
+        "     margin.  (default 'shiftwidth').
         "
-        "       cino=              cino=t0              cino=t7
-        "             int            int                         int
-        "         func()             func()               func()
+        "       cino=               cino=t0             cino=t7
+        "             int             int                        int
+        "         func()              func()              func()
         "
         " UN  When N is non-zero, do not ignore the indenting specified by ( or
         "     u in case that the unclosed parentheses is the first non-white
-        "     character in its line. (default 0).
+        "     character in its line.  (default 0).
         "
         "       cino= or cino=(s          cino=(s,U1
         "         c = c1 &&                 c = c1 &&
