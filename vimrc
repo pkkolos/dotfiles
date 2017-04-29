@@ -1,7 +1,7 @@
 " ------------------------------------------------------------------------------
 " Panagiotis Kkolos
 " Layout inspired by Ethan Schoonover's vimrc (github.com/altercation)
-" Modified: 2017-03-31
+" Modified: 2017-04-29
 " ------------------------------------------------------------------------------
 " Environment                                    {{{
 " ------------------------------------------------------------------------------
@@ -654,10 +654,10 @@
         nnoremap <esc>c <C-w>k
         nnoremap <esc>n <C-w>l
         " resize window
-        nnoremap <M-up> <C-w>-
-        nnoremap <M-down> <C-w>+
-        nnoremap <M-left> <C-w><
-        nnoremap <M-right> <C-w>>
+        nnoremap <esc><up> <C-w>-
+        nnoremap <esc><down> <C-w>+
+        nnoremap <esc><left> <C-w><
+        nnoremap <esc><right> <C-w>>
         " create new tab/window
         nnoremap <leader>T :tabnew<cr>
         nnoremap <leader>- :split<cr>
