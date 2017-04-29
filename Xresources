@@ -54,16 +54,13 @@ URxvt.secondaryScroll:   false
 URxvt.iso14755:    false
 URxvt.iso14755_52: false
 
-URxvt.perl-ext-common:    clipboard,confirm-paste,font-size,fullscreen,vtwheel
-URxvt.clipboard.copycmd:  xclip -i -selection clipboard
-URxvt.clipboard.pastecmd: xclip -o -selection clipboard
+URxvt.perl-ext-common:    eval,confirm-paste,font-size,fullscreen,vtwheel
 URxvt.keysym.C-Up:        command:\033]720;1\007
 URxvt.keysym.C-Down:      command:\033]721;1\007
 URxvt.keysym.S-Up:        command:\033]720;10\007
 URxvt.keysym.S-Down:      command:\033]721;10\007
-URxvt.keysym.C-S-C:       perl:clipboard:copy
-URxvt.keysym.C-S-V:       perl:clipboard:paste
-URxvt.keysym.M-v:         perl:clipboard:paste_escaped
+URxvt.keysym.C-S-C:       eval:selection_to_clipboard
+URxvt.keysym.C-S-V:       eval:paste_clipboard
 URxvt.keysym.M-plus:      perl:font-size:increase
 URxvt.keysym.M-equal:     perl:font-size:increase
 URxvt.keysym.M-minus:     perl:font-size:decrease
