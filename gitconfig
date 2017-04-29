@@ -74,6 +74,8 @@
 	graph = format:%C(auto,yellow)%h %C(auto,blue bold)%aN -%C(auto,red)%d%Creset %s %C(auto,green)(%cd)%Creset
 [push]
 	default = simple
+[stash]
+	showPatch = true
 [status]
 	branch = true
 [tar "tar.xz"]
