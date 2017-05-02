@@ -36,7 +36,6 @@
 *.color15:     base3
 
 *.saveLines:       4000
-*.scrollTtyOutput: false
 
 URxvt.title:           URxvt
 URxvt.font:            xft:DejaVu Sans Mono:size=10
@@ -86,6 +85,7 @@ XTerm.VT100.faceSize6:  24
 XTerm.VT100.boldColors: false
 
 XTerm.VT100.scrollKey:       true
+XTerm.VT100.scrollTtyOutput: false
 XTerm.VT100.fastScroll:      true
 XTerm.VT100.alternateScroll: true
 
