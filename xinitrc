@@ -20,7 +20,7 @@ xset -dpms
 #setxkbmap -model pc105 -layout us,gr -variant altgr-intl,extended
 #setxkbmap -option grp:win_space_toggle,grp_led:scroll,lv3:ralt_switch,compose:rwin,terminate:ctrl_alt_bksp
 # set the default background
-feh --bg-fill $HOME/Pictures/.wallpaper
+feh --no-fehbg --bg-fill $HOME/Pictures/.wallpaper
 # run autostart applications
 dex -a &
 # enable locker
