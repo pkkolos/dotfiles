@@ -6,7 +6,7 @@ path=(~/.local/bin ~/.cargo/bin $path)
 export XAUTHORITY="${XDG_RUNTIME_DIR:-"${XDG_DATA_HOME:-"$HOME/.local/share"}"}/Xauthority"
 export ICEAUTHORITY="${XDG_RUNTIME_DIR:-"${XDG_DATA_HOME:-"$HOME/.local/share"}"}/ICEauthority"
 export NO_AT_BRIDGE=1
-export RUST_SRC_PATH=~/.local/src/rust/src
+export RUST_SRC_PATH=/usr/src/rust/src
 
 # Temporary Files
 if [[ -d "$XDG_RUNTIME_DIR" ]]; then
