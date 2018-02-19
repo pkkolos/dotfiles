@@ -142,12 +142,14 @@
 ##
 ##  - add
 ##  - add_random_items
+##  - apply_filter
 ##  - change_browse_mode
 ##  - delete_browser_items
 ##  - edit_directory_name
 ##  - edit_library_album
 ##  - edit_library_tag
 ##  - edit_song
+##  - fetch_lyrics_in_background
 ##  - jump_to_tag_editor
 ##  - move_selected_items_to
 ##  - save_tag_changes
@@ -435,9 +437,6 @@ def_key "-"
 
 def_key "-"
   move_selected_items_up
-
-def_key "m"
-  set_visualizer_sample_multiplier
 
 def_key "+"
   move_sort_order_down
