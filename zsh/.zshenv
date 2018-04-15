@@ -7,8 +7,8 @@ export XAUTHORITY="${XDG_RUNTIME_DIR:-"${XDG_DATA_HOME:-"$HOME/.local/share"}"}/
 export ICEAUTHORITY="${XDG_RUNTIME_DIR:-"${XDG_DATA_HOME:-"$HOME/.local/share"}"}/ICEauthority"
 export NOTMUCH_CONFIG="${XDG_CONFIG_HOME:-"$HOME/.config"}/notmuch/config"
 export URXVT_PERL_LIB="${XDG_DATA_HOME:-"$HOME/.local/share"}/urxvt/ext"
+export RUST_SRC_PATH="/usr/lib/rustlib/src/rust/src"
 export NO_AT_BRIDGE=1
-export RUST_SRC_PATH=/usr/src/rust/src
 
 # Temporary Files
 if [[ -d "$XDG_RUNTIME_DIR" ]]; then
