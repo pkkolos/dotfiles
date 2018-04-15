@@ -1,5 +1,5 @@
 mutt
-notmuch-config
+notmuch.config
 mail.target
 offlineimap.service
 offlineimap.timer

@@ -22,6 +22,7 @@ mpd.conf ~/.config/mpd/mpd.conf
 mpv.conf ~/.config/mpv/mpv.conf
 ncmpcpp.bindings ~/.ncmpcpp/bindings
 ncmpcpp.config ~/.ncmpcpp/config
+notmuch.config ~/.config/notmuch/config
 offlineimap.config ~/.config/offlineimap/config
 offlineimap.py ~/.local/share/offlineimap/offlineimap.py
 offlineimap.service ~/.config/systemd/user/offlineimap.service
