@@ -18,6 +18,5 @@ open-urxvt.py
 ssh-agent.service
 tmux.conf
 urxvt-scripts
-vimperatorrc
 Xresources
 xserverrc

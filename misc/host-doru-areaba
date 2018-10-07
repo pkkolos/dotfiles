@@ -23,6 +23,5 @@ sbuildrc
 ssh-agent.service
 tmux.conf
 urxvt-scripts
-vimperatorrc
 Xresources
 xserverrc
