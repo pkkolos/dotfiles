@@ -3,17 +3,17 @@
 " Inspired by:
 "     Numbers (https://github.com/myusuf3/numbers.vim)
 
-if exists('g:loaded_Numbers')
+if exists('g:loaded_numbers')
     finish
 endif
-let g:loaded_Numbers = 1
+let g:loaded_numbers = 1
 
 if !exists('g:numbers_off')
-    let g:numbers_off = ['undotree']
+    let g:numbers_off = ['Mundo']
 endif
 
 if !exists('g:numbers_abs')
-    let g:numbers_abs = ['help', 'diffpanel_3']
+    let g:numbers_abs = ['help', 'MundoDiff']
 endif
 
 function! s:InitNumbers()

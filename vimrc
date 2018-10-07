@@ -1,8 +1,4 @@
 " ------------------------------------------------------------------------------
-" Panagiotis Kkolos
-" Layout inspired by Ethan Schoonover's vimrc (github.com/altercation)
-" Modified: 2017-04-29
-" ------------------------------------------------------------------------------
 " Environment                                    {{{
 " ------------------------------------------------------------------------------
     " Compatibility, Viminfo                     {{{
@@ -12,20 +8,40 @@
         if exists("g:sudoedit")
             set viminfo=
         else
-            set viminfo+=n~/.vim/tmp/viminfo
+            set viminfo+=n~/.local/share/vim/viminfo
         endif
     " }}}
     " Setup Plugins                              {{{
     " --------------------------------------------------------------------------
         if !exists("g:sudoedit")
-            runtime bundles/pathogen/autoload/pathogen.vim
-            if !exists('g:pathogen_disabled')
-                let g:pathogen_disabled = []
-            endif
-            execute pathogen#infect('bundles/generic/{}')
-            execute pathogen#infect('bundles/programming/{}')
-            execute pathogen#infect('bundles/other/{}')
-            execute pathogen#infect('bundles/syntax/{}')
+            call plug#begin('~/.local/share/vim/plugins')
+            Plug 'jtratner/vim-flavored-markdown', { 'as': 'syntax/ghmarkdown' }
+            Plug 'tpope/vim-git', { 'as': 'syntax/git' }
+            Plug 'ledger/vim-ledger', { 'as': 'syntax/ledger' }
+            Plug 'tpope/vim-markdown', { 'as': 'syntax/markdown' }
+            Plug 'vim-ruby/vim-ruby', { 'as': 'syntax/ruby' }
+            Plug 'sunaku/vim-ruby-minitest', { 'as': 'syntax/ruby-minitest' }
+            Plug 'rust-lang/rust.vim', { 'as': 'syntax/rust' }
+            Plug 'baskerville/vim-sxhkdrc', { 'as': 'syntax/sxhkdrc' }
+            Plug 'cespare/vim-toml', { 'as': 'syntax/toml' }
+            Plug 'w0rp/ale', { 'as': 'programming/ale' }
+            Plug 'airblade/vim-gitgutter', { 'as': 'programming/gitgutter' }
+            Plug 'racer-rust/vim-racer', { 'as': 'programming/racer' }
+            Plug 'honza/vim-snippets', { 'as': 'programming/snippets' }
+            Plug 'SirVer/ultisnips', { 'as': 'programming/ultisnips' }
+            Plug 'qpkorr/vim-bufkill', { 'as': 'generic/bufkill' }
+            Plug 'ctrlpvim/ctrlp.vim', { 'as': 'generic/ctrlp' }
+            Plug 'Konfekt/FastFold', { 'as': 'generic/fastfold' }
+            Plug 'vim-latex/vim-latex', { 'as': 'generic/latex' }
+            Plug 'simnalamburt/vim-mundo', { 'as': 'generic/mundo' }
+            Plug 'Shougo/neocomplete.vim', { 'as': 'generic/neocomplete' }
+            Plug 'tpope/vim-repeat', { 'as': 'generic/repeat' }
+            Plug 'justinmk/vim-sneak', { 'as': 'generic/sneak' }
+            Plug 'tpope/vim-surround', { 'as': 'generic/surround' }
+            Plug 'tomtom/tcomment_vim', { 'as': 'generic/tcomment' }
+            Plug 'maxbrunsfeld/vim-yankstack', { 'as': 'generic/yankstack' }
+            call plug#end()
+
             source ~/.vim/settings.vim
         endif
     " }}}
@@ -45,11 +61,11 @@
         if exists("g:sudoedit")
             set noswapfile
         else
-            let directory = $HOME . "/.vim/tmp/swap/"
+            let directory = $HOME . "/.local/share/vim/swap/"
             if !isdirectory(directory)
                 call system('mkdir -p ' . directory)
             endif
-            set directory=~/.vim/tmp/swap//
+            set directory=~/.local/share/vim/swap//
             set swapfile
         endif
 
@@ -59,11 +75,11 @@
             if exists("g:sudoedit")
                 set noundofile
             else
-                let directory = $HOME . "/.vim/tmp/undo/"
+                let directory = $HOME . "/.local/share/vim/undo/"
                 if !isdirectory(directory)
                     call system('mkdir -p ' . directory)
                 endif
-                set undodir=~/.vim/tmp/undo//
+                set undodir=~/.local/share/vim/undo//
                 set undofile
             endif
         endif
@@ -114,12 +130,13 @@
         "       a backslash to include the '|' in the mapping.  Applies to all
         "       mapping, abbreviation, menu and autocmd commands.
         "       See also |map_bar|.
-        " B +d  A backslash has no special meaning in mappings, abbreviations
-        "       and the "to" part of the menu commands.  Remove this flag to be
-        "       able to use a backslash like a CTRL-V.  For example, the command
-        "       ":map X \<Esc>" results in X being mapped to:
-        "               'B' included:   "\^["    (^[ is a real <Esc>)
-        "               'B' excluded:   "<Esc>"  (5 characters)
+        " B +d  A backslash has no special meaning in mappings, abbreviations,
+        "       user commands and the "to" part of the menu commands.  Remove
+        "       this flag to be able to use a backslash like a CTRL-V.  For
+        "       example, the command ":map X \<Esc>" results in X being mapped
+        "       to:
+        "               'B' included:   "\^["     (^[ is a real <Esc>)
+        "               'B' excluded:   "<Esc>"   (5 characters)
         "               ('<' excluded in both cases)
         " c +d  Searching continues at the end of any match at the cursor
         "       position, but not further than the start of the next line.  When
@@ -140,8 +157,8 @@
         "       command-line and can be edited before hitting <CR>.
         " E -   It is an error when using "y", "d", "c", "g~", "gu" or "gU" on
         "       an Empty region.  The operators only work when at least one
-        "       character is to be operate on.  Example:
-        "       This makes "y0" fail in the first column.
+        "       character is to be operated on.  Example: This makes "y0" fail
+        "       in the first column.
         " f -   When included, a ":read" command with a file name argument will
         "       set the file name for the current buffer, if the current buffer
         "       doesn't have a file name yet.
@@ -163,11 +180,11 @@
         "       abbreviations, and the "to" part of menu commands.  For example,
         "       if <Key> sends ^[OA (where ^[ is <Esc>), the command
         "       ":map X ^[OA" results in X being mapped to:
-        "               'k' included:   "^[OA"   (3 characters)
-        "               'k' excluded:   "<Key>"  (one key code)
+        "               'k' included:   "^[OA"    (3 characters)
+        "               'k' excluded:   "<Key>"   (one key code)
         "       Also see the '<' flag below.
-        " K -   Don't wait for a key code to complete when it is halfway a
-        "       mapping.  This breaks mapping <F1><F1> when only part of the
+        " K -   Don't wait for a key code to complete when it is halfway through
+        "       a mapping.  This breaks mapping <F1><F1> when only part of the
         "       second <F1> has been read.  It enables cancelling the mapping by
         "       typing <F1><Esc>.
         " l -   Backslash in a [] range in a search pattern is taken literally,
@@ -213,12 +230,10 @@
         "       in the current buffer.  When you change an option and go to
         "       another buffer, the value is copied.  Effectively makes the
         "       buffer options global to all buffers.
-        "
-        "           's'    'S'     copy buffer options
-        "           no     no      when buffer created
-        "           yes    no      when buffer first entered (default)
-        "            X     yes     each time when buffer entered (vi comp.)
-        "
+        "               's'    'S'      copy buffer options
+        "               no     no       when buffer created
+        "               yes    no       when buffer first entered (default)
+        "                X     yes      each time when buffer entered (vi comp.)
         " t -   Search pattern for the tag command is remembered for "n"
         "       command.  Otherwise Vim only puts the pattern in the history for
         "       search pattern, but doesn't change the last used search pattern.
@@ -247,18 +262,19 @@
         "       be overwritten when you type the new text.  The line is
         "       redisplayed if you type any command that moves the cursor from
         "       the insertion point.
-        " % -   Vi-compatible matching is done for the "%" command.  Does not
-        "       recognize "#if", "#endif", etc.  Does not recognize "/*" and
-        "       "*/".  Parens inside single and double quotes are also counted,
-        "       causing a string that contains a paren to disturb the matching.
-        "       For example, in a line like "if (strcmp("foo(", s))" the first
-        "       paren does not match the last one.  When this flag is not
-        "       included, parens inside single and double quotes are treated
-        "       specially.  When matching a paren outside of quotes, everything
-        "       inside quotes is ignored.  When matching a paren inside quotes,
-        "       it will find the matching one (if there is one).  This works
-        "       very well for C programs.  This flag is also used for other
-        "       features, such as C-indenting.
+        " % -   Vi-compatible matching is done for the "%" command.
+        "       Does not recognize "#if", "#endif", etc.
+        "       Does not recognize "/*" and "*/".
+        "       Parens inside single and double quotes are also counted, causing
+        "       a string that contains a paren to disturb the matching.  For
+        "       example, in a line like "if (strcmp("foo(", s))" the first paren
+        "       does not match the last one.  When this flag is not included,
+        "       parens inside single and double quotes are treated specially.
+        "       When matching a paren outside of quotes, everything inside
+        "       quotes is ignored.  When matching a paren inside quotes, it will
+        "       find the matching one (if there is one).  This works very well
+        "       for C programs.  This flag is also used for other features, such
+        "       as C-indenting.
         " - -   When included, a vertical movement command fails when it would
         "       go above the first line or below the last line.  Without it the
         "       cursor moves to the first or last line, unless it already was in
@@ -273,15 +289,15 @@
         "       mappings, abbreviations, and the "to" part of menu commands.
         "       For example, the command ":map X <Tab>" results in X being
         "       mapped to:
-        "               '<' included:   "<Tab>"  (5 characters)
-        "               '<' excluded:   "^I"     (^I is a real <Tab>)
+        "               '<' included:   "<Tab>"   (5 characters)
+        "               '<' excluded:   "^I"      (^I is a real <Tab>)
         "       Also see the 'k' flag above.
         " > -   When appending to a register, put a line break before the
         "       appended text.
         " ; -   When using |,| or |;| to repeat the last |t| search and the
         "       cursor is right in front of the searched character, the cursor
-        "       won't move. When not included, the cursor would skip over it and
-        "       jump to the following occurrence.
+        "       won't move.  When not included, the cursor would skip over it
+        "       and jump to the following occurrence.
         "
         " POSIX flags.  These are not included in the Vi default value, except
         " when $VIM_POSIX was set on startup. |posix|
@@ -334,9 +350,6 @@
 
         set splitbelow        "put the new window below the current one
         set splitright        "put the new window right of the current one
-        set winwidth=90       "try to have at least 90 columns in the current
-                              "window (80 for the document + 5 for the numbers
-                              "+ 4 for folding + 1 extra)
         set display=lastline  "display as much as possible of the last line
         set conceallevel=1    "show cchar or listchar for conceal text
         set concealcursor=nc  "conceal text even in the cursorline in
@@ -407,8 +420,8 @@
         " m -   use "[+]" instead of "[Modified]"
         " n -d  use "[New]" instead of "[New File]"
         " r -   use "[RO]" instead of "[readonly]"
-        " w -   use "[w]" instead of "written" for file write message
-        "       and "[a]" instead of "appended" for ':w >> file' command
+        " w -   use "[w]" instead of "written" for file write message and "[a]"
+        "       instead of "appended" for ':w >> file' command
         " x -d  use "[dos]" instead of "[dos format]", "[unix]" instead of
         "       "[unix format]" and "[mac]" instead of "[mac format]".
         " a +   all of the above abbreviations
@@ -464,7 +477,6 @@
                            "tabs at the beggining of a line
         set shiftround     "indentation is rounded to multiple of shiftwidth
         set autoindent     "automatically indent a new line
-        "set smartindent    "smart autoindentation when starting new line
     " }}}
     " Format Options                             {{{
     " --------------------------------------------------------------------------
@@ -727,13 +739,13 @@
     " --------------------------------------------------------------------------
         "nnoremap ; :
         inoremap jk <Esc>
-        nnoremap <leader>o o<Esc>
-        nnoremap <leader>O O<Esc>
+        nnoremap <leader>o o<esc>
+        nnoremap <leader>O O<esc>
         " format
         nnoremap Q gq
         xnoremap Q gq
         " break line and return at the end of the previous line
-        nnoremap <leader>b i<cr><Esc>k$
+        nnoremap <leader>b i<cr><esc>k$
         " toggle spell
         nnoremap <silent> <leader>ts :set spell!<cr>
         " save file even when you edited it without the needed permissions
@@ -745,8 +757,8 @@
         cnoremap <C-f> <right>
         cnoremap <C-n> <down>
         cnoremap <C-p> <up>
-        cnoremap <Esc>b <S-left>
-        cnoremap <Esc>f <S-right>
+        cnoremap <esc>b <S-left>
+        cnoremap <esc>f <S-right>
         cnoremap <C-o><C-a> <C-a>
         cnoremap <C-o><C-b> <C-b>
         cnoremap <C-o><C-d> <C-d>

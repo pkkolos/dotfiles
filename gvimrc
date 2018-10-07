@@ -1,7 +1,4 @@
 " ------------------------------------------------------------------------------
-" Panagiotis Kkolos
-" Modified: 2017-03-31
-" ------------------------------------------------------------------------------
 " Theme                                          {{{
 " ------------------------------------------------------------------------------
     let g:solarized_diffmode = "high"
@@ -19,19 +16,24 @@
 " GUI Options                                    {{{
 " ------------------------------------------------------------------------------
     set guioptions=cimg
-    " a -d  Autoselect: If present, then whenever VISUAL mode is started, or the
-    "       Visual area extended, Vim tries to become the owner of the windowing
-    "       system's global selection.  This means that the Visually highlighted
-    "       text is available for pasting into other applications as well as
-    "       into Vim itself.  When the Visual mode ends, possibly due to an
-    "       operation on the text, or when an application wants to paste the
+    " ! -   External commands are executed in a terminal window.  Without this
+    "       flag the MS-Windows GUI will open a console window to execute the
+    "       command.  The Unix GUI will simulate a dumb terminal to list the
+    "       command output.  The terminal window will be positioned at the
+    "       bottom, and grow upwards as needed.
+    " a -d  Autoselect:  If present, then whenever VISUAL mode is started, or
+    "       the Visual area extended, Vim tries to become the owner of the
+    "       windowing system's global selection.  This means that the Visually
+    "       highlighted text is available for pasting into other applications as
+    "       well as into Vim itself.  When the Visual mode ends, possibly due to
+    "       an operation on the text, or when an application wants to paste the
     "       selection, the highlighted text is automatically yanked into the "*
     "       selection register.  Thus the selection is still available for
-    "       pasting into other applications after the VISUAL mode has ended.  If
-    "       not present, then Vim won't become the owner of the windowing
-    "       system's global selection unless explicitly told to by a yank or
-    "       delete operation for the "* register.  The same applies to the
-    "       modeless selection.
+    "       pasting into other applications after the VISUAL mode has ended.
+    "               If not present, then Vim won't become the owner of the
+    "       windowing system's global selection unless explicitly told to by a
+    "       yank or delete operation for the "* register.  The same applies to
+    "       the modeless selection.
     " P -   Like autoselect but using the "+ register instead of the "*
     "       register.
     " A -   Autoselect for the modeless selection.  Like 'a', but only applies
@@ -91,6 +93,11 @@
     "       GUI.  Set it in your |gvimrc|.  Adding or removing it after the GUI
     "       has started has no effect.
     " F -   Add a footer.  Only for Motif.  See |gui-footer|.
+    " k -   Keep the GUI window size when adding/removing a scrollbar, or
+    "       toolbar, tabline, etc.  Instead, the behavior is similar to when the
+    "       window is maximized and will adjust 'lines' and 'columns' to fit to
+    "       the window.  Without the 'k' flag Vim will try to keep 'lines' and
+    "       'columns' the same when adding and removing GUI components.
 " }}}
 " Maps & Functions                               {{{
 " ------------------------------------------------------------------------------

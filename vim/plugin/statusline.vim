@@ -3,10 +3,10 @@
 " Inspired by:
 "     StatusLineHighlight (http://www.vim.org/scripts/script.php?script_id=3383)
 
-if exists('g:loaded_StatusLine') || (! has('gui_running') && &t_Co <= 2)
+if exists('g:loaded_statusline') || (! has('gui_running') && &t_Co <= 2)
     finish
 endif
-let g:loaded_StatusLine = 1
+let g:loaded_statusline = 1
 
 function! SLFileType()
     if (&ff ==# 'dos')
