@@ -9,7 +9,7 @@
     set columns=100
     set lines=30
     set mousehide                    "hide mouse pointer when typing
-    set guicursor+=a:block-blinkon0  "always block cursor; no blinking
+    set guicursor+=a:blinkon0        "no blinking
     set guifont=DejaVu\ Sans\ Mono\ 10
     set winaltkeys=no                "don't use the alt key to access the menus
 " }}}
