@@ -58,6 +58,7 @@
     " }}}
     " Swap, Backup, Undo                         {{{
     " --------------------------------------------------------------------------
+        set updatetime=250
         if exists("g:sudoedit")
             set noswapfile
         else
