@@ -1,12 +1,11 @@
 # Paths {{{
 # ------------------------------------------------------------------------------
-set alias_file       = ~/.mutt/aliases
-set mailcap_path     = ~/.mutt/mailcap
-set signature        = ~/.mutt/sig
-set certificate_file = ~/.mutt/certs
-set header_cache     = ~/.mutt/cache/hdr
-set message_cachedir = ~/.mutt/cache/bod
-set tmpdir           = ~/.mutt/tmp
+set alias_file       = ~/.config/neomutt/aliases
+set mailcap_path     = ~/.config/neomutt/mailcap
+set signature        = ~/.config/neomutt/sig
+set certificate_file = ~/.local/share/neomutt/certs
+set header_cache     = ~/.cache/neomutt/hdr/
+set message_cachedir = ~/.cache/neomutt/bod/
 
 # }}}
 # Editor {{{
@@ -110,15 +109,15 @@ unset record           # don't save outgoing messages, gmail & outlook do that
 
 alternates "$username$@(gmail|hotmail|outlook)\.com"
 
-source ~/.mutt/local_mailboxes
-source ~/.mutt/mailboxes
-source ~/.mutt/mlists
-source ~/.mutt/accounts/gmail
+source ~/.local/share/neomutt/local_mailboxes
+source ~/.local/share/neomutt/mailboxes
+source ~/.local/share/neomutt/mlists
+source ~/.config/neomutt/accounts/gmail
 
-folder-hook Archive/* source ~/.mutt/accounts/local
-folder-hook Gmail/*   source ~/.mutt/accounts/gmail
-folder-hook Local/*   source ~/.mutt/accounts/local
-folder-hook Outlook/* source ~/.mutt/accounts/outlook
+folder-hook Archive/* source ~/.config/neomutt/accounts/local
+folder-hook Gmail/*   source ~/.config/neomutt/accounts/gmail
+folder-hook Local/*   source ~/.config/neomutt/accounts/local
+folder-hook Outlook/* source ~/.config/neomutt/accounts/outlook
 
 # }}}
 # Colour Theme {{{

@@ -1,6 +1,6 @@
-mutt/accounts/gmail filter=mail
-mutt/accounts/outlook filter=mail
-mutt/muttrc filter=mail
+neomutt/accounts/gmail filter=mail
+neomutt/accounts/outlook filter=mail
+neomutt/neomuttrc filter=mail
 msmtp.config filter=mail
 notmuch.config filter=mail
 reportbugrc filter=mail
