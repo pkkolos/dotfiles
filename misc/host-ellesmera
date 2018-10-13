@@ -1,7 +1,6 @@
 TAG:bspwm
 TAG:gpg
 TAG:mail
-TAG:vim
 TAG:zsh
 cdrdao
 conky.conf
@@ -23,5 +22,6 @@ sbuildrc
 ssh-agent.service
 tmux.conf
 urxvt-scripts
+vim
 Xresources
 xserverrc

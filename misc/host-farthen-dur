@@ -1,4 +1,3 @@
-TAG:vim
 TAG:zsh
 bin/lock
 gitconfig
@@ -14,6 +13,7 @@ open-urxvt.py
 ssh-agent.service
 tmux.conf
 urxvt-scripts
+vim
 xinitrc
 Xresources
 xserverrc

@@ -1,6 +1,5 @@
 TAG:bspwm
 TAG:gpg
-TAG:vim
 TAG:zsh
 conky.conf
 gitconfig
@@ -18,5 +17,6 @@ open-urxvt.py
 ssh-agent.service
 tmux.conf
 urxvt-scripts
+vim
 Xresources
 xserverrc
