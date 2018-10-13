@@ -20,6 +20,7 @@ mail.target ~/.config/systemd/user/mail.target
 moc.config ~/.moc/config
 mpd.conf ~/.config/mpd/mpd.conf
 mpv.conf ~/.config/mpv/mpv.conf
+msmtp.config ~/.config/msmtp/config
 ncmpcpp.bindings ~/.config/ncmpcpp/bindings
 ncmpcpp.config ~/.config/ncmpcpp/config
 notmuch.config ~/.config/notmuch/config
