@@ -6,3 +6,4 @@ offlineimap.timer
 offlineimap.py
 offlineimap.config
 msmtp.config
+khard.conf

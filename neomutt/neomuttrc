@@ -15,8 +15,9 @@ set editor = "/usr/bin/vim -n -i NONE -u '$HOME/.vim/se_rc.vim'"
 # }}}
 # Contacts {{{
 # ------------------------------------------------------------------------------
-set query_command = "/usr/bin/abook --mutt-query %s"
-macro pager A "|/usr/bin/abook --add-email<return>" 'add sender to abook'
+set query_command = "/usr/bin/khard email --parsable '%s'"
+macro index,pager A "<pipe-message>/usr/bin/khard add-email<return>" \
+    "add the sender email address to khard"
 
 # }}}
 # Basic Options {{{
