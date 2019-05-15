@@ -6,6 +6,7 @@
 
 # trick qt apps to use gtk icon theme
 export DESKTOP_SESSION=gnome
+export QT_QPA_PLATFORMTHEME=qt5ct
 
 # use default pointer in X Server instead of x pointer
 xsetroot -cursor_name left_ptr
