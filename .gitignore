@@ -1,8 +1,3 @@
 .*
 gtk3/bookmarks
-mutt/cache
-mutt/local_mailboxes
-mutt/mailboxes
-mutt/mlists
-mutt/tmp
-vim/tmp
+zsh/functions/_*
