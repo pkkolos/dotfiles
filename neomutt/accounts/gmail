@@ -1,7 +1,7 @@
 set from      = "$username$@gmail.com"
 set mbox      = "+Gmail/Archive"
 set postponed = "+Gmail/Drafts"
-set trash     = "+Gmail/Trash"
+unset trash
 
 macro index S "<save-message>+Gmail/Spam<return>" 'mark message as spam'
 
