@@ -7,6 +7,7 @@ neomutt ~/.config/neomutt
 oh-my-git ~/.config/oh-my-git
 urxvt-scripts ~/.local/share/urxvt/ext
 zsh ~/.config/zsh
+alacritty.yml ~/.config/alacritty/alacritty.yml
 bspwmrc ~/.config/bspwm/bspwmrc
 compton.conf ~/.config/compton.conf
 conky.conf ~/.config/conky/conky.conf
