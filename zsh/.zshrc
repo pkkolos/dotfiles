@@ -14,6 +14,14 @@ function {
     done
 }
 
+function {
+    local widget
+
+    for widget in $HOME/.config/zsh/widgets/*; do
+        source "$widget"
+    done
+}
+
 autoload -Uz colors
 autoload -Uz compinit
 autoload -Uz edit-command-line
@@ -30,6 +38,9 @@ bindkey '^I'    complete-word
 bindkey '^U'    backward-kill-line
 bindkey '^X^E'  edit-command-line   # edit current command line in $EDITOR
 bindkey '^[k'   kill-whole-line
+bindkey '\ec'   fzf-cd-widget
+bindkey '^T'    fzf-file-widget
+bindkey '^R'    fzf-history-widget
 
 source ~/.config/zsh/options.zsh
 source ~/.config/zsh/exports.zsh
