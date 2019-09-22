@@ -10,6 +10,7 @@ gitconfig
 gtk3
 gtkrc-2.0
 khal.config
+khard.conf
 liquidprompt
 moc.config
 moc.themes
