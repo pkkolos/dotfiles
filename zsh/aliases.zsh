@@ -12,6 +12,8 @@ alias j='jobs -l'
 alias md='mkdir -p'
 alias rd='rmdir'
 
+alias fd='fdfind'
+
 alias grep='grep -n --color=auto'
 
 alias ls='ls -F --color=auto'
