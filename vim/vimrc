@@ -30,7 +30,8 @@
             Plug 'honza/vim-snippets', { 'as': 'programming/snippets' }
             Plug 'SirVer/ultisnips', { 'as': 'programming/ultisnips' }
             Plug 'qpkorr/vim-bufkill', { 'as': 'generic/bufkill' }
-            Plug 'ctrlpvim/ctrlp.vim', { 'as': 'generic/ctrlp' }
+            Plug 'junegunn/fzf', { 'as': 'generic/fzf' }
+            Plug 'junegunn/fzf.vim', { 'as': 'generic/fzfvim' }
             Plug 'Konfekt/FastFold', { 'as': 'generic/fastfold' }
             Plug 'vim-latex/vim-latex', { 'as': 'generic/latex' }
             Plug 'simnalamburt/vim-mundo', { 'as': 'generic/mundo' }
