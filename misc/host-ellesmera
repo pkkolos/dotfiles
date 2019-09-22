@@ -22,6 +22,7 @@ oh-my-git
 open-urxvt.py
 sbuildrc
 ssh-agent.service
+task.config
 tmux.conf
 urxvt-scripts
 vim
