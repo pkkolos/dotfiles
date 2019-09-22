@@ -9,6 +9,7 @@ gbp.conf
 gitconfig
 gtk3
 gtkrc-2.0
+khal.config
 liquidprompt
 moc.config
 moc.themes
