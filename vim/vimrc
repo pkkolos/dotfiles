@@ -15,6 +15,7 @@
     " --------------------------------------------------------------------------
         if !exists("g:sudoedit")
             call plug#begin('~/.local/share/vim/plugins')
+            Plug 'DaeZak/crafttweaker-vim-highlighting', { 'as': 'syntax/crafttweaker' }
             Plug 'jtratner/vim-flavored-markdown', { 'as': 'syntax/ghmarkdown' }
             Plug 'tpope/vim-git', { 'as': 'syntax/git' }
             Plug 'ledger/vim-ledger', { 'as': 'syntax/ledger' }
