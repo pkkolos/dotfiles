@@ -38,6 +38,8 @@
 	stl = stash list
 	stp = stash pop
 	t = tag
+[annex]
+	gitaddtoannex = false
 [color]
 	ui = auto
 [color "diff"]
