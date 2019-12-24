@@ -50,16 +50,16 @@ XF86AudioMute
     pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 XF86AudioPlay
-    mpc toggle >/dev/null
+    mpc -q toggle
 
 XF86AudioStop
-    mpc stop >/dev/null
+    mpc -q stop
 
 XF86AudioNext
-    mpc next >/dev/null
+    mpc -q next
 
 XF86AudioPrev
-    mpc prev >/dev/null
+    mpc -q prev
 
 # start applications
 ctrl + alt + t
