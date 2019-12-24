@@ -171,7 +171,7 @@ color quoted5 default color11
 # Sidebar Patch {{{
 # ------------------------------------------------------------------------------
 set sidebar_visible
-unset sidebar_sort_method
+set sidebar_sort_method = 'unsorted'
 set sidebar_width = 26
 set sidebar_divider_char = '│'
 set mail_check_stats
