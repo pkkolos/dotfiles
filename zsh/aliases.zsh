@@ -13,6 +13,7 @@ alias md='mkdir -p'
 alias rd='rmdir'
 
 alias fd='fdfind'
+alias bat='batcat'
 
 alias grep='grep -n --color=auto'
 
