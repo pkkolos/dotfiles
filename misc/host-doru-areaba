@@ -5,6 +5,7 @@ TAG:zsh
 gtk3
 liquidprompt
 moc.themes
+mpv
 oh-my-git
 urxvt-scripts
 cdrdao
@@ -15,7 +16,6 @@ gitconfig
 gtkrc-2.0
 moc.config
 mpd.conf
-mpv.conf
 ncmpcpp.bindings
 ncmpcpp.config
 open-urxvt.py

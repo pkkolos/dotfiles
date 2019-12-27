@@ -3,6 +3,7 @@ bin/rofi_power_menu ~/.local/bin/rofi_power_menu
 gtk3 ~/.config/gtk-3.0
 liquidprompt ~/.config/liquidprompt
 moc.themes ~/.moc/themes
+mpv ~/.config/mpv
 neomutt ~/.config/neomutt
 oh-my-git ~/.config/oh-my-git
 urxvt-scripts ~/.local/share/urxvt/ext
@@ -23,7 +24,6 @@ khard.conf ~/.config/khard/khard.conf
 mail.target ~/.config/systemd/user/mail.target
 moc.config ~/.moc/config
 mpd.conf ~/.config/mpd/mpd.conf
-mpv.conf ~/.config/mpv/mpv.conf
 msmtp.config ~/.config/msmtp/config
 ncmpcpp.bindings ~/.config/ncmpcpp/bindings
 ncmpcpp.config ~/.config/ncmpcpp/config
