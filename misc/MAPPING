@@ -4,6 +4,7 @@ gtk3 ~/.config/gtk-3.0
 liquidprompt ~/.config/liquidprompt
 moc.themes ~/.moc/themes
 mpv ~/.config/mpv
+ncmpcpp ~/.config/ncmpcpp
 neomutt ~/.config/neomutt
 oh-my-git ~/.config/oh-my-git
 urxvt-scripts ~/.local/share/urxvt/ext
@@ -25,8 +26,6 @@ mail.target ~/.config/systemd/user/mail.target
 moc.config ~/.moc/config
 mpd.conf ~/.config/mpd/mpd.conf
 msmtp.config ~/.config/msmtp/config
-ncmpcpp.bindings ~/.config/ncmpcpp/bindings
-ncmpcpp.config ~/.config/ncmpcpp/config
 notmuch.config ~/.config/notmuch/config
 offlineimap.config ~/.config/offlineimap/config
 offlineimap.py ~/.local/share/offlineimap/offlineimap.py

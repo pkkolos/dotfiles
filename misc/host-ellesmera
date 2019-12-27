@@ -6,6 +6,7 @@ gtk3
 liquidprompt
 moc.themes
 mpv
+ncmpcpp
 oh-my-git
 urxvt-scripts
 vim
@@ -20,8 +21,6 @@ khal.config
 khard.conf
 moc.config
 mpd.conf
-ncmpcpp.bindings
-ncmpcpp.config
 open-urxvt.py
 sbuildrc
 ssh-agent.service
