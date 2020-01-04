@@ -13,7 +13,6 @@ i3.config
 i3status.config
 moc.config
 open-urxvt.py
-ssh-agent.service
 tmux.conf
 xinitrc
 Xresources

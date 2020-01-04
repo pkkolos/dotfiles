@@ -19,7 +19,6 @@ moc.config
 mpd.conf
 open-urxvt.py
 sbuildrc
-ssh-agent.service
 tmux.conf
 vim
 Xresources

@@ -23,7 +23,6 @@ moc.config
 mpd.conf
 open-urxvt.py
 sbuildrc
-ssh-agent.service
 task.config
 tmux.conf
 Xresources

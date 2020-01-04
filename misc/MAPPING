@@ -34,6 +34,5 @@ offlineimap.py ~/.local/share/offlineimap/offlineimap.py
 open-urxvt.py ~/.local/share/nautilus-python/extensions/open-urxvt.py
 polybar.config ~/.config/polybar/config
 rofi.config ~/.config/rofi/config
-ssh-agent.service ~/.config/systemd/user/ssh-agent.service
 sxhkdrc ~/.config/sxhkd/sxhkdrc
 task.config ~/.config/task/config
