@@ -1,3 +1,4 @@
+bin/external_rules
 bin/lock
 bin/rofi_power_menu
 bspwmrc

@@ -1,3 +1,4 @@
+bin/external_rules ~/.local/bin/external_rules
 bin/lock ~/.local/bin/lock
 bin/rofi_power_menu ~/.local/bin/rofi_power_menu
 gtk3 ~/.config/gtk-3.0

@@ -23,6 +23,8 @@ bspc config presel_feedback_color '#1f62b0'
 
 bspc monitor -d home terminal code browser files videos other mail chat music
 
+bspc config external_rules_command "$(which external_rules)"
+
 bspc rule -a mpv desktop=videos
 bspc rule -a Firefox desktop=browser
 bspc rule -a Org.gnome.Nautilus desktop=files
