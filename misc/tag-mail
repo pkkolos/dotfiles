@@ -1,9 +1,9 @@
 neomutt
-notmuch.config
-mail.target
-offlineimap.service
-offlineimap.timer
-offlineimap.py
-offlineimap.config
-msmtp.config
+systemd/mail.target
+systemd/offlineimap.service
+systemd/offlineimap.timer
 khard.conf
+msmtp.config
+notmuch.config
+offlineimap.config
+offlineimap.py
