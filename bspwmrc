@@ -30,6 +30,8 @@ bspc rule -a URxvt:mutt desktop=mail
 bspc rule -a URxvt:ncmpcpp desktop=music
 bspc rule -a URxvt:tmux desktop=terminal
 bspc rule -a MultiMC5 desktop=other
+bspc rule -a Steam desktop=other
+bspc rule -a factorio desktop=other
 
 # run polybar
 polybar panel &
