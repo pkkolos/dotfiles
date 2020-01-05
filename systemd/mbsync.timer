@@ -1,0 +1,10 @@
+[Unit]
+Description=Mailbox synchronization timer
+ConditionPathExists=%h/.config/mbsync/mbsyncrc
+
+[Timer]
+OnStartupSec=2m
+OnUnitInactiveSec=10m
+
+[Install]
+WantedBy=timers.target

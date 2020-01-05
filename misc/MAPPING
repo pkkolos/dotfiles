@@ -8,9 +8,8 @@ mpv ~/.config/mpv
 ncmpcpp ~/.config/ncmpcpp
 neomutt ~/.config/neomutt
 oh-my-git ~/.config/oh-my-git
-systemd/mail.target ~/.config/systemd/user/mail.target
-systemd/offlineimap.service ~/.config/systemd/user/offlineimap.service
-systemd/offlineimap.timer ~/.config/systemd/user/offlineimap.timer
+systemd/mbsync.service ~/.config/systemd/user/mbsync.service
+systemd/mbsync.timer ~/.config/systemd/user/mbsync.timer
 urxvt-scripts ~/.local/share/urxvt/ext
 zsh ~/.config/zsh
 alacritty.yml ~/.config/alacritty/alacritty.yml
@@ -26,12 +25,11 @@ i3.config ~/.config/i3/config
 i3status.config ~/.config/i3status/config
 khal.config ~/.config/khal/config
 khard.conf ~/.config/khard/khard.conf
+mbsyncrc ~/.config/mbsync/mbsyncrc
 moc.config ~/.moc/config
 mpd.conf ~/.config/mpd/mpd.conf
 msmtp.config ~/.config/msmtp/config
 notmuch.config ~/.config/notmuch/config
-offlineimap.config ~/.config/offlineimap/config
-offlineimap.py ~/.local/share/offlineimap/offlineimap.py
 open-urxvt.py ~/.local/share/nautilus-python/extensions/open-urxvt.py
 polybar.config ~/.config/polybar/config
 rofi.config ~/.config/rofi/config

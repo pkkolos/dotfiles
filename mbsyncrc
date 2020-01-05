@@ -1,0 +1,103 @@
+Create Both
+Expunge Both
+
+
+IMAPAccount gmail
+Host imap.gmail.com
+User $username$@gmail.com
+PassCmd "secret-tool lookup mbsync gmail"
+SSLType IMAPS
+SSLVersions TLSv1.2
+PipelineDepth 50
+
+IMAPStore gmail-remote
+Account gmail
+
+MaildirStore gmail-local
+Subfolders Verbatim
+# The trailing "/" is important
+Path ~/.mail/Gmail/
+Inbox ~/.mail/Gmail/Inbox
+
+Channel gmail-inbox
+Master :gmail-remote:INBOX
+Slave :gmail-local:Inbox
+SyncState ~/.mail/.mbsync/Gmail/
+
+Channel gmail-drafts
+Master :gmail-remote:"[Google Mail]/Drafts"
+Slave :gmail-local:Drafts
+Create Slave
+SyncState ~/.mail/.mbsync/Gmail/
+
+Channel gmail-sent
+Master :gmail-remote:"[Google Mail]/Sent Mail"
+Slave :gmail-local:Sent
+Create Slave
+SyncState ~/.mail/.mbsync/Gmail/
+
+Channel gmail-spam
+Master :gmail-remote:"[Google Mail]/Spam"
+Slave :gmail-local:Spam
+Create Slave
+SyncState ~/.mail/.mbsync/Gmail/
+
+Channel gmail-trash
+Master :gmail-remote:"[Google Mail]/Bin"
+Slave :gmail-local:Trash
+Create Slave
+SyncState ~/.mail/.mbsync/Gmail/
+
+Channel gmail-labels
+Master :gmail-remote:
+Slave :gmail-local:
+Patterns * !INBOX !Inbox !Drafts !Sent !Spam !Trash "![Google Mail]*"
+SyncState ~/.mail/.mbsync/Gmail/
+
+Group gmail
+Channel gmail-inbox
+Channel gmail-drafts
+Channel gmail-sent
+Channel gmail-spam
+Channel gmail-trash
+Channel gmail-labels
+
+
+IMAPAccount outlook
+Host imap-mail.outlook.com
+User $username$@hotmail.com
+PassCmd "secret-tool lookup mbsync outlook"
+SSLType IMAPS
+SSLVersions TLSv1.2
+PipelineDepth 50
+
+IMAPStore outlook-remote
+Account outlook
+
+MaildirStore outlook-local
+Subfolders Verbatim
+# The trailing "/" is important
+Path ~/.mail/Outlook/
+Inbox ~/.mail/Outlook/Inbox
+
+Channel outlook-inbox
+Master :outlook-remote:INBOX
+Slave :outlook-local:Inbox
+SyncState ~/.mail/.mbsync/Outlook/
+
+Channel outlook-spam
+Master :outlook-remote:Junk
+Slave :outlook-local:Spam
+Create Slave
+SyncState ~/.mail/.mbsync/Outlook/
+
+Channel outlook-folders
+Master :outlook-remote:
+Slave :outlook-local:
+Patterns * !INBOX !Inbox !Archive !Deleted !Junk !Spam !Notes !Outbox
+SyncState ~/.mail/.mbsync/Outlook/
+
+Group outlook
+Channel outlook-inbox
+Channel outlook-spam
+Channel outlook-folders
