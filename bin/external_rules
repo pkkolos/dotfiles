@@ -8,6 +8,8 @@ title="$(xprop -id "$wid" _NET_WM_NAME | cut -d' ' -f 3- | tr -d '"')"
 
 if [[ "$class" == "Firefox" && "$title" == "About Mozilla Firefox" ]]; then
     echo "state = floating"
+elif [[ "$class" == "Tor Browser" && "$title" == "About Tor Browser" ]]; then
+    echo "state = floating"
 elif [[ "$class" == "jetbrains-idea"* && "$title" == "win0" ]]; then
     echo "state = floating"
 elif [[ "$class" == "Minecraft"* || "$title" == "Mindustry" ]]; then
