@@ -25,19 +25,9 @@ bspc monitor -d home terminal code browser files videos other mail chat music
 
 bspc config external_rules_command "$(which external_rules)"
 
-bspc rule -a mpv desktop=videos
-bspc rule -a Firefox desktop=browser
-bspc rule -a Org.gnome.Nautilus desktop=files
-bspc rule -a URxvt:mutt desktop=mail
-bspc rule -a URxvt:ncmpcpp desktop=music
-bspc rule -a URxvt:tmux desktop=terminal
-bspc rule -a MultiMC5 desktop=other
-bspc rule -a Steam desktop=other
-bspc rule -a factorio desktop=other
-
 # run polybar
 polybar panel &
 
-urxvt -name mutt &
-urxvt -name ncmpcpp &
-urxvt -name tmux -e tmux &
+urxvt -name mail &
+urxvt -name music &
+urxvt -name terminal -e tmux &
