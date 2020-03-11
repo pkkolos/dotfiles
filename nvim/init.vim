@@ -1,44 +1,109 @@
 " ------------------------------------------------------------------------------
 " Environment                                    {{{
 " ------------------------------------------------------------------------------
-    " Compatibility, Viminfo                     {{{
+    " Shada File                                 {{{
     " --------------------------------------------------------------------------
-        set nocompatible
-        set viminfo=
+        if exists("g:sudoedit")
+            set shada=
+        endif
+    " }}}
+    " Setup Plugins                              {{{
+    " --------------------------------------------------------------------------
+        if !exists("g:sudoedit")
+            let g:python3_host_prog = '/usr/bin/python3'
+
+            call plug#begin('~/.local/share/nvim/plugins')
+            Plug 'nathangrigg/vim-beancount', { 'as': 'syntax/beancount' }
+            Plug 'DaeZak/crafttweaker-vim-highlighting', { 'as': 'syntax/crafttweaker' }
+            Plug 'jtratner/vim-flavored-markdown', { 'as': 'syntax/ghmarkdown' }
+            Plug 'tpope/vim-git', { 'as': 'syntax/git' }
+            Plug 'ledger/vim-ledger', { 'as': 'syntax/ledger' }
+            Plug 'tpope/vim-markdown', { 'as': 'syntax/markdown' }
+            Plug 'vim-ruby/vim-ruby', { 'as': 'syntax/ruby' }
+            Plug 'sunaku/vim-ruby-minitest', { 'as': 'syntax/ruby-minitest' }
+            Plug 'rust-lang/rust.vim', { 'as': 'syntax/rust' }
+            Plug 'baskerville/vim-sxhkdrc', { 'as': 'syntax/sxhkdrc' }
+            Plug 'cespare/vim-toml', { 'as': 'syntax/toml' }
+            Plug 'w0rp/ale', { 'as': 'programming/ale' }
+            Plug 'airblade/vim-gitgutter', { 'as': 'programming/gitgutter' }
+            " Plug 'autozimu/LanguageClient-neovim', {
+            "             \ 'as': 'programming/lsp-client',
+            "             \ 'branch': 'next',
+            "             \ 'do': 'make release' }
+            Plug 'honza/vim-snippets', { 'as': 'programming/snippets' }
+            Plug 'SirVer/ultisnips', { 'as': 'programming/ultisnips' }
+            Plug 'qpkorr/vim-bufkill', { 'as': 'generic/bufkill' }
+            Plug 'junegunn/fzf', { 'as': 'generic/fzf' }
+            Plug 'junegunn/fzf.vim', { 'as': 'generic/fzfvim' }
+            " Plug 'bfredl/nvim-miniyank', { 'as': 'generic/miniyank' }
+            Plug 'simnalamburt/vim-mundo', { 'as': 'generic/mundo' }
+            Plug 'tpope/vim-repeat', { 'as': 'generic/repeat' }
+            Plug 'justinmk/vim-sneak', { 'as': 'generic/sneak' }
+            Plug 'tpope/vim-surround', { 'as': 'generic/surround' }
+            Plug 'tomtom/tcomment_vim', { 'as': 'generic/tcomment' }
+            Plug 'Shougo/deoplete.nvim', { 'as': 'generic/deoplete',
+                        \ 'do': ':UpdateRemotePlugins' }
+            Plug 'Shougo/neco-syntax', { 'as': 'deoplete/syntax' }
+            Plug 'Shougo/neco-vim', { 'as': 'deoplete/vim' }
+            Plug 'Shougo/neoinclude.vim', { 'as': 'deoplete/include' }
+            Plug 'zchee/deoplete-zsh', { 'as': 'deoplete/zsh' }
+            Plug 'sebastianmarkow/deoplete-rust', { 'as': 'deoplete/rust' }
+            call plug#end()
+
+            for fpath in split(globpath(&rtp, 'settings/*.vim'), '\n')
+                execute 'source ' . fpath
+            endfor
+        endif
     " }}}
     " Syntax Highlighting, Theme                 {{{
     " --------------------------------------------------------------------------
         filetype plugin indent on
         syntax enable
-        set t_Co=16
         set background=dark
         colorscheme darkarc
+        " when opening .tex-files, don't treat them as plaintext
+        " if there are no LaTeX commands inside yet
+        let g:tex_flavor='latex'
     " }}}
     " Swap, Backup, Undo                         {{{
     " --------------------------------------------------------------------------
-        set noswapfile
+        set updatetime=250
+        if exists("g:sudoedit")
+            set noswapfile
+        else
+            set swapfile
+        endif
+
         set nobackup
+
         if has('persistent_undo')
-            set noundofile
+            if exists("g:sudoedit")
+                set noundofile
+            else
+                set undofile
+            endif
         endif
     " }}}
     " General Settings                           {{{
     " --------------------------------------------------------------------------
-        set encoding=utf-8
         set shell=$SHELL
         set grepprg=grep\ -nH\ $*
         set pastetoggle=<F3>
 
         set title         "set the title of the window
         set mouse=a       "use mouse in normal, visual, insert and command mode
-        set ttymouse=sgr  "terminal type for which codes are to be recognized
         set autochdir
         set autowrite     "save current buffer when changing buffers
         set confirm       "operations on unsaved buffers don't fail
                           "instead they are asking for confirmation
 
-        set nomodeline
-        set modelines=0
+        if exists("g:sudoedit")
+            set nomodeline
+            set modelines=0
+        else
+            set modeline
+            set modelines=2
+        endif
 
         set history=100   "history of previous commands and search patterns
 
@@ -46,7 +111,7 @@
         set ttimeout         "timeout on keycodes
         set ttimeoutlen=100  "configure keycode timeout
 
-        set spelllang=en
+        set spelllang=en,el
         set nospell
 
         set cedit=<C-g>      "open command-line with ctrl+g instead of ctrl+f
@@ -64,14 +129,12 @@
         "       a backslash to include the '|' in the mapping.  Applies to all
         "       mapping, abbreviation, menu and autocmd commands.
         "       See also |map_bar|.
-        " B +d  A backslash has no special meaning in mappings, abbreviations,
-        "       user commands and the "to" part of the menu commands.  Remove
-        "       this flag to be able to use a backslash like a CTRL-V.  For
-        "       example, the command ":map X \<Esc>" results in X being mapped
-        "       to:
+        " B +d  A backslash has no special meaning in mappings, abbreviations
+        "       and the "to" part of the menu commands.  Remove this flag to be
+        "       able to use a backslash like a CTRL-V.  For example, the command
+        "       ":map X \<Esc>" results in X being mapped to:
         "               'B' included:   "\^["     (^[ is a real <Esc>)
         "               'B' excluded:   "<Esc>"   (5 characters)
-        "               ('<' excluded in both cases)
         " c +d  Searching continues at the end of any match at the cursor
         "       position, but not further than the start of the next line.  When
         "       not present searching continues one character from the cursor
@@ -99,24 +162,12 @@
         " F +d  When included, a ":write" command with a file name argument will
         "       set the file name for the current buffer, if the current buffer
         "       doesn't have a file name yet.  Also see |cpo-P|.
-        " g -   Goto line 1 when using ":edit" without argument.
-        " H -   When using "I" on a line with only blanks, insert before the
-        "       last blank.  Without this flag insert after the last blank.
         " i -   When included, interrupting the reading of a file will leave it
         "       modified.
         " I +   When moving the cursor up or down just after inserting indent
         "       for 'autoindent', do not delete the indent.
-        " j -   When joining lines, only add two spaces after a '.', not after
-        "       '!' or '?'.  Also see 'joinspaces'.
         " J -   A |sentence| has to be followed by two spaces after the '.', '!'
         "       or '?'.  A <Tab> is not recognized as white space.
-        " k -   Disable the recognition of raw key codes in mappings,
-        "       abbreviations, and the "to" part of menu commands.  For example,
-        "       if <Key> sends ^[OA (where ^[ is <Esc>), the command
-        "       ":map X ^[OA" results in X being mapped to:
-        "               'k' included:   "^[OA"    (3 characters)
-        "               'k' excluded:   "<Key>"   (one key code)
-        "       Also see the '<' flag below.
         " K -   Don't wait for a key code to complete when it is halfway through
         "       a mapping.  This breaks mapping <F1><F1> when only part of the
         "       second <F1> has been read.  It enables cancelling the mapping by
@@ -126,7 +177,6 @@
         "       See |/[]|
         "               'l' included:   "/[ \t]"  finds <Space>, '\' and 't'
         "               'l' excluded:   "/[ \t]"  finds <Space> and <Tab>
-        "       Also see |cpo-\|.
         " L -   When the 'list' option is set, 'wrapmargin', 'textwidth',
         "       'softtabstop' and Virtual Replace mode (see |gR|) count a <Tab>
         "       as two characters, instead of the normal behavior of a <Tab>.
@@ -176,8 +226,6 @@
         "       mode.  Without this flag the characters are erased from the
         "       screen right away.  With this flag the screen newly typed text
         "       overwrites backspaced characters.
-        " w -   When using "cw" on a blank character, only change one character
-        "       and not all blanks until the start of the next word.
         " W -   Don't overwrite a readonly file.  When omitted, ":w!" overwrites
         "       a readonly file, if possible.
         " x -   <Esc> on the command-line executes the command-line.  The
@@ -209,52 +257,17 @@
         "       find the matching one (if there is one).  This works very well
         "       for C programs.  This flag is also used for other features, such
         "       as C-indenting.
-        " - -   When included, a vertical movement command fails when it would
-        "       go above the first line or below the last line.  Without it the
-        "       cursor moves to the first or last line, unless it already was in
-        "       that line.  Applies to the commands "-", "k", CTRL-P, "+", "j",
-        "       CTRL-N, CTRL-J and ":1234".
         " + -   When included, a ":write file" command will reset the 'modified'
         "       flag of the buffer, even though the buffer itself may still be
         "       different from its file.
-        " * -   Use ":*" in the same way as ":@".  When not included, ":*" is an
-        "       alias for ":'<,'>", select the Visual area.
-        " < -   Disable the recognition of special key codes in |<>| form in
-        "       mappings, abbreviations, and the "to" part of menu commands.
-        "       For example, the command ":map X <Tab>" results in X being
-        "       mapped to:
-        "               '<' included:   "<Tab>"   (5 characters)
-        "               '<' excluded:   "^I"      (^I is a real <Tab>)
-        "       Also see the 'k' flag above.
         " > -   When appending to a register, put a line break before the
         "       appended text.
         " ; -   When using |,| or |;| to repeat the last |t| search and the
         "       cursor is right in front of the searched character, the cursor
         "       won't move.  When not included, the cursor would skip over it
         "       and jump to the following occurrence.
-        "
-        " POSIX flags.  These are not included in the Vi default value, except
-        " when $VIM_POSIX was set on startup. |posix|
-        "
-        " # -   A count before "D", "o" and "O" has no effect.
-        " & -   When ":preserve" was used keep the swap file when exiting
-        "       normally while this buffer is still loaded.  This flag is tested
-        "       when exiting.
-        " \ -   Backslash in a [] range in a search pattern is taken literally,
-        "       only "\]" is special  See |/[]|
-        "               '\' included:   "/[ \-]"  finds <Space>, '\' and '-'
-        "               '\' excluded:   "/[ \-]"  finds <Space> and '-'
-        "       Also see |cpo-l|.
-        " / -   When "%" is used as the replacement string in a |:s| command,
-        "       use the previous replacement string. |:s%|
-        " { -   The |{| and |}| commands also stop at a "{" character at the
-        "       start of a line.
-        " . -   The ":chdir" and ":cd" commands fail if the current buffer is
-        "       modified, unless ! is used.  Vim doesn't need this, since it
-        "       remembers the full path of an opened file.
-        " | -   The value of the $LINES and $COLUMNS environment variables
-        "       overrule the terminal size values obtained with system specific
-        "       functions.
+        " _ -   When using |cw| on a word, do not include the whitespace
+        "       following the word in the motion.
     " }}}
 " }}}
 " Vim UI                                         {{{
@@ -270,6 +283,7 @@
         set ignorecase  "case-insensitive search by default
         set smartcase   "case-sensitive if there is an upper-case letter
         set gdefault    "when replacing, use /g by default
+        set inccommand=nosplit
     " }}}
     " Display                                    {{{
     " --------------------------------------------------------------------------
@@ -312,7 +326,6 @@
         set wildmenu                          "command-line completion
                                               "shows a list of matches
         set wildmode=list:longest,full
-        set complete-=i                       "don't scan included files
         set completeopt-=preview              "don't show preview window
         set omnifunc=syntaxcomplete#Complete
     " }}}
@@ -380,12 +393,11 @@
         "       "-- XXX completion (YYY)", "match 1 of 2", "The only match",
         "       "Pattern not found", "Back at original", etc.
         " q -   use "recording" instead of "recording @a"
-        " F -   don't give the file info when editing a file, like `:silent` was
+        " F -d  don't give the file info when editing a file, like `:silent` was
         "       used for the command
     " }}}
     " Screen Drawing                             {{{
     " --------------------------------------------------------------------------
-        set ttyfast     "indicates a fast terminal connection (fast redraw)
         set lazyredraw  "do not redraw while running macros
                         "necessary for correct usage of status line colours
     " }}}
@@ -474,13 +486,43 @@
         "       characters.  Overruled by the 'M' flag.
         " 1 -   Don't break a line after a one-letter word.  It's broken before
         "       it instead (if possible).
-        " j +   Where it makes sense, remove a comment leader when joining
+        " j +d  Where it makes sense, remove a comment leader when joining
         "       lines.
         "       For example, joining:
         "               int i;   // the index
         "                        // in the list
         "       Becomes:
         "               int i;   // the index in the list
+    " }}}
+    " C Indent Options                           {{{
+    " --------------------------------------------------------------------------
+        set cinoptions=l1,t0,U1
+        " lN  If N != 0 Vim will align with a case label instead of the
+        "     statement after it in the same line.
+        "
+        "       cino=                       cino=l1
+        "           switch (a) {              switch (a) {
+        "               case 1: {                 case 1: {
+        "                           break;            break;
+        "                       }                 }
+        "
+        " tN  Indent a function return type declaration N characters from the
+        "     margin.  (default 'shiftwidth').
+        "
+        "       cino=               cino=t0             cino=t7
+        "             int             int                        int
+        "         func()              func()              func()
+        "
+        " UN  When N is non-zero, do not ignore the indenting specified by ( or
+        "     u in case that the unclosed parentheses is the first non-white
+        "     character in its line.  (default 0).
+        "
+        "       cino= or cino=(s          cino=(s,U1
+        "         c = c1 &&                 c = c1 &&
+        "             (                         (
+        "              c2 ||                        c2 ||
+        "              c3                           c3
+        "             ) && c4;                  ) && c4;
     " }}}
 " }}}
 " Maps & Functions                               {{{
@@ -555,15 +597,16 @@
         " use tab to jump between matching pairs
         noremap <tab> %
         " move between windows
-        nnoremap <esc>h <C-w>h
-        nnoremap <esc>t <C-w>j
-        nnoremap <esc>c <C-w>k
-        nnoremap <esc>n <C-w>l
+        nnoremap <M-h> <C-w>h
+        nnoremap <M-t> <C-w>j
+        nnoremap <M-c> <C-w>k
+        nnoremap <M-n> <C-w>l
         " resize window
-        nnoremap <esc><up> <C-w>-
-        nnoremap <esc><down> <C-w>+
-        nnoremap <esc><left> <C-w><
-        nnoremap <esc><right> <C-w>>
+        nnoremap <M-up> <C-w>-
+        nnoremap <M-down> <C-w>+
+        nnoremap <M-left> <C-w><
+        nnoremap <M-right> <C-w>>
+        nnoremap <leader>vr :exe "vertical resize " . (&textwidth + 9)<cr>
         " create new tab/window
         nnoremap <leader>T :tabnew<cr>
         nnoremap <leader>- :split<cr>
@@ -648,8 +691,8 @@
         cnoremap <C-f> <right>
         cnoremap <C-n> <down>
         cnoremap <C-p> <up>
-        cnoremap <esc>b <S-left>
-        cnoremap <esc>f <S-right>
+        cnoremap <M-b> <S-left>
+        cnoremap <M-f> <S-right>
         cnoremap <C-o><C-a> <C-a>
         cnoremap <C-o><C-b> <C-b>
         cnoremap <C-o><C-d> <C-d>

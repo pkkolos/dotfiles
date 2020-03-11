@@ -53,7 +53,7 @@
 [commit]
 	verbose = true
 [core]
-	editor = vim
+	editor = nvim
 [diff]
 	tool = vimdiff
 	guitool = meld

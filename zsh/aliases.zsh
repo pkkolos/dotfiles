@@ -1,9 +1,9 @@
 alias e="$EDITOR"
-alias eb='vim -b -n -i NONE'
+alias eb='nvim -b -n -i NONE'
 alias ec="$SUDO_EDITOR"
 alias se='sudo -e'
-alias v='vim -R'
-alias vd='vim -d'
+alias v='nvim -R'
+alias vd='nvim -d'
 
 alias a='git-annex'
 alias g='git'

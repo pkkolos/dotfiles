@@ -7,6 +7,7 @@ moc.themes ~/.moc/themes
 mpv ~/.config/mpv
 ncmpcpp ~/.config/ncmpcpp
 neomutt ~/.config/neomutt
+nvim ~/.config/nvim
 oh-my-git ~/.config/oh-my-git
 systemd/mbsync.service ~/.config/systemd/user/mbsync.service
 systemd/mbsync.timer ~/.config/systemd/user/mbsync.timer
