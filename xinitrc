@@ -29,6 +29,9 @@ xss-lock -l -q -- $HOME/.local/bin/lock &
 # run X compositor
 compton &
 
+# run notification daemon
+dunst &
+
 # run X hotkey daemon
 sxhkd &
 

@@ -17,6 +17,7 @@ bspwmrc ~/.config/bspwm/bspwmrc
 compton.conf ~/.config/compton.conf
 conky.conf ~/.config/conky/conky.conf
 dirmngr.conf ~/.gnupg/dirmngr.conf
+dunstrc ~/.config/dunst/dunstrc
 fonts.conf ~/.config/fontconfig/fonts.conf
 gitconfig ~/.config/git/config
 gpg.conf ~/.gnupg/gpg.conf

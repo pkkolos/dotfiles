@@ -11,12 +11,18 @@ sleep_delay=0.5
 # Run before starting the locker
 pre_lock() {
     xset dpms 0 0 10
+    if [ ! -z "$(pidof dunst)" ]; then
+        pkill -u "$USER" -USR1 dunst
+    fi
     return
 }
 
 # Run after the locker exits
 post_lock() {
     xset -dpms
+    if [ ! -z "$(pidof dunst)" ] ; then
+        pkill -u "$USER" -USR2 dunst
+    fi
     return
 }
 

@@ -1,0 +1,65 @@
+[global]
+    follow = mouse
+    geometry = "300x5-10+40"
+    indicate_hidden = true
+    shrink = false
+    transparency = 10
+    separator_height = 1
+    padding = 6
+    horizontal_padding = 6
+    frame_width = 2
+    frame_color = "#a0a4ae"
+    separator_color = auto
+    sort = true
+    idle_threshold = 60
+    font = DejaVu Sans Mono 8
+    markup = no
+    format = "<b>%s</b>\n%b"
+    word_wrap = true
+    stack_duplicates = true
+    hide_duplicate_count = true
+    show_indicators = true
+    icon_position = off
+    sticky_history = true
+    history_length = 20
+    dmenu = /usr/bin/rofi -dmenu -p dunst:
+    browser = /usr/bin/firefox -new-tab
+    corner_radius = 0
+    mouse_left_click = close_current
+    mouse_middle_click = do_action
+    mouse_right_click = close_all
+
+[shortcuts]
+    # Shortcuts are specified as [modifier+][modifier+]...key
+    # Available modifiers are "ctrl", "mod1" (the alt-key), "mod2",
+    # "mod3" and "mod4" (windows-key).
+    # Xev might be helpful to find names for keys.
+    close = ctrl+space
+    close_all = ctrl+shift+space
+    history = ctrl+grave
+    context = ctrl+shift+period
+
+[urgency_low]
+    background = "#191b21"
+    foreground = "#5c616c"
+    timeout = 10
+
+[urgency_normal]
+    background = "#191b21"
+    foreground = "#d3dae3"
+    timeout = 10
+
+[urgency_critical]
+    background = "#191b21"
+    foreground = "#ae110c"
+    timeout = 0
+
+[transient]
+    match_transient = yes
+    set_transient = no
+    history_ignore = yes
+
+[fullscreen]
+    fullscreen = delay
+
+# vim: ft=cfg
