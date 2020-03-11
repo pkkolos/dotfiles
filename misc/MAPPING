@@ -27,6 +27,7 @@ i3.config ~/.config/i3/config
 i3status.config ~/.config/i3status/config
 khal.config ~/.config/khal/config
 khard.conf ~/.config/khard/khard.conf
+kitty.conf ~/.config/kitty/kitty.conf
 mbsyncrc ~/.config/mbsync/mbsyncrc
 moc.config ~/.moc/config
 mpd.conf ~/.config/mpd/mpd.conf
