@@ -2,7 +2,7 @@ bin/external_rules
 bin/lock
 bin/rofi_power_menu
 bspwmrc
-compton.conf
+picom.conf
 dunstrc
 polybar.config
 rofi.config

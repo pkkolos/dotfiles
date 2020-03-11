@@ -27,7 +27,7 @@ dex -a &
 xss-lock -l -q -- $HOME/.local/bin/lock &
 
 # run X compositor
-compton &
+picom &
 
 # run notification daemon
 dunst &

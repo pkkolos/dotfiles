@@ -15,7 +15,7 @@ urxvt-scripts ~/.local/share/urxvt/ext
 zsh ~/.config/zsh
 alacritty.yml ~/.config/alacritty/alacritty.yml
 bspwmrc ~/.config/bspwm/bspwmrc
-compton.conf ~/.config/compton.conf
+picom.conf ~/.config/picom/picom.conf
 conky.conf ~/.config/conky/conky.conf
 dirmngr.conf ~/.gnupg/dirmngr.conf
 dunstrc ~/.config/dunst/dunstrc
