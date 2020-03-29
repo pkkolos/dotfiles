@@ -31,7 +31,7 @@ moc.config ~/.moc/config
 mpd.conf ~/.config/mpd/mpd.conf
 msmtp.config ~/.config/msmtp/config
 notmuch.config ~/.config/notmuch/config
-open-urxvt.py ~/.local/share/nautilus-python/extensions/open-urxvt.py
+open-terminal.py ~/.local/share/nautilus-python/extensions/open-terminal.py
 polybar.config ~/.config/polybar/config
 rofi.config ~/.config/rofi/config
 sxhkdrc ~/.config/sxhkd/sxhkdrc

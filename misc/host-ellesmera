@@ -23,7 +23,7 @@ khard.conf
 kitty.conf
 moc.config
 mpd.conf
-open-urxvt.py
+open-terminal.py
 sbuildrc
 task.config
 tmux.conf
