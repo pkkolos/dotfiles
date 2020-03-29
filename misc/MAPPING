@@ -23,8 +23,6 @@ fonts.conf ~/.config/fontconfig/fonts.conf
 gitconfig ~/.config/git/config
 gpg.conf ~/.gnupg/gpg.conf
 gpg-agent.conf ~/.gnupg/gpg-agent.conf
-i3.config ~/.config/i3/config
-i3status.config ~/.config/i3status/config
 khal.config ~/.config/khal/config
 khard.conf ~/.config/khard/khard.conf
 kitty.conf ~/.config/kitty/kitty.conf
