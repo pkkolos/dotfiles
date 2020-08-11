@@ -16,6 +16,9 @@ set editor = "/usr/bin/vim -n -i NONE"
 # Contacts {{{
 # ------------------------------------------------------------------------------
 set query_command = "/usr/bin/khard email --parsable '%s'"
+
+bind editor <Tab> complete-query
+
 macro index,pager A "<pipe-message>/usr/bin/khard add-email<return>" \
     "add the sender email address to khard"
 
