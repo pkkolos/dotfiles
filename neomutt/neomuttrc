@@ -10,7 +10,7 @@ set message_cachedir = ~/.cache/neomutt/bod/
 # }}}
 # Editor {{{
 # ------------------------------------------------------------------------------
-set editor = "/usr/bin/vim -n -i NONE -u '$HOME/.vim/se_rc.vim'"
+set editor = "/usr/bin/vim -n -i NONE"
 
 # }}}
 # Contacts {{{
