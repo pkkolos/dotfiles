@@ -1,9 +1,10 @@
 [Unit]
 Description=Mailbox synchronization service
 Documentation=man:mbsync(1)
-ConditionPathExists=%h/.config/mbsync/mbsyncrc
+ConditionPathExists=%E/mbsync/mbsyncrc
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/mbsync -c %h/.config/mbsync/mbsyncrc -V -a
+Environment=NOTMUCH_CONFIG=%E/notmuch/config
+ExecStart=/usr/bin/mbsync -c %E/mbsync/mbsyncrc -V -a
 ExecStartPost=/usr/bin/notmuch new
