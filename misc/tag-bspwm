@@ -1,10 +1,12 @@
 bin/external_rules
 bin/lock
 bin/rofi_power_menu
+environment.d
 bspwmrc
-picom.conf
 dunstrc
+picom.conf
 polybar.config
 rofi.config
 sxhkdrc
 xinitrc
+xserverrc

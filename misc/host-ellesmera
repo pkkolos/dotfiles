@@ -19,13 +19,11 @@ gbp.conf
 gitconfig
 gtkrc-2.0
 khal.config
-khard.conf
-kitty.conf
 moc.config
 mpd.conf
 open-terminal.py
+reportbugrc
 sbuildrc
 task.config
 tmux.conf
 Xresources
-xserverrc
