@@ -35,5 +35,8 @@ dunst &
 # run X hotkey daemon
 sxhkd &
 
+# invoke global X session script
+. /etc/X11/Xsession
+
 # start the window manager
 exec bspwm
