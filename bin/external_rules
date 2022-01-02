@@ -8,6 +8,8 @@ title="$(xprop -id "$wid" _NET_WM_NAME | cut -d' ' -f 3- | tr -d '"')"
 
 if [[ "$class" == "URxvt" && "$instance" != "urxvt" ]]; then
     echo "desktop=$instance"
+elif [[ "$class" == "Alacritty" && "$instance" != "Alacritty" ]]; then
+    echo "desktop=$instance"
 elif [[ "$class" == "Firefox" ]]; then
     options="desktop=browser"
     if [[ "$instance" == "Browser" ]]; then

@@ -28,6 +28,6 @@ bspc config external_rules_command "$(which external_rules)"
 # run polybar
 polybar panel &
 
-urxvt -name mail &
-urxvt -name music &
-urxvt -name terminal -e tmux &
+alacritty --class mail &
+alacritty --class music &
+alacritty --class terminal -e tmux &
