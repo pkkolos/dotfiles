@@ -182,10 +182,10 @@ set sidebar_format = '%B%*  %?F?[%F] ?%?N?%N/?%S'
 set sidebar_short_path
 set sidebar_folder_indent
 
-bind index,pager <esc><down>  sidebar-next
-bind index,pager <esc><up>    sidebar-prev
-bind index,pager <esc><right> sidebar-open
-bind index,pager <esc><left>  sidebar-toggle-visible
+bind index,pager <a-down>  sidebar-next
+bind index,pager <a-up>    sidebar-prev
+bind index,pager <a-right> sidebar-open
+bind index,pager <a-left>  sidebar-toggle-visible
 
 color sidebar_indicator brightblack  blue
 color sidebar_highlight brightblack  white
