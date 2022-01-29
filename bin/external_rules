@@ -33,4 +33,10 @@ elif [[ "$class" == "MultiMC5" || "$class" == "Minecraft"* ||
     echo "desktop=other"
 elif [[ "$class" == "Steam" ]]; then
     echo "desktop=other follow=no"
+elif [[ "$class" == "Gnome-"* || "$class" == "Org.gnome."* ||
+        "$class" == "File-roller" || "$class" == "Eog" ||
+        "$class" == "Evince" || "$class" == "Seahorse" ||
+        "$class" == "Sysprof" || "$class" == "Tilix" ||
+        "$class" == "Font-viewer" ]]; then
+    wmctrl -i -r "$wid" -b add,maximized_vert,maximized_horz
 fi
