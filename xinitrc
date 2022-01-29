@@ -32,8 +32,5 @@ picom &
 # run notification daemon
 dunst &
 
-# run X hotkey daemon
-sxhkd &
-
 # invoke global X session script
 . /etc/X11/Xsession
