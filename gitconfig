@@ -39,6 +39,7 @@
 	stp = stash pop
 	t = tag
 [annex]
+	dotfiles = true
 	gitaddtoannex = false
 [color]
 	ui = auto
