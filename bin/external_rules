@@ -15,7 +15,8 @@ elif [[ "$class" == "Firefox" ]]; then
     if [[ "$instance" == "Browser" ]]; then
         options="$options state=floating"
     elif [[ "$instance" == "Toolkit" ]]; then
-        xdo move -x -10 -y -10 "$wid"
+        xdo resize -w 640 -h 360 "$wid"
+        xdo move -x 1270 -y 710 "$wid"
         options="$options sticky=on border=off manage=off"
     fi
     echo "$options"
