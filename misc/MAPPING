@@ -10,6 +10,7 @@ ncmpcpp ~/.config/ncmpcpp
 neomutt ~/.config/neomutt
 nvim ~/.config/nvim
 oh-my-git ~/.config/oh-my-git
+rofi ~/.config/rofi
 systemd/mbsync.service ~/.config/systemd/user/mbsync.service
 systemd/mbsync.timer ~/.config/systemd/user/mbsync.timer
 urxvt-scripts ~/.local/share/urxvt/ext
