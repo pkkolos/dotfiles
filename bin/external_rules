@@ -19,7 +19,8 @@ elif [[ "$class" == "Firefox" ]]; then
         options="$options sticky=on border=off manage=off"
     fi
     echo "$options"
-elif [[ "$class" == "Tor Browser" ]]; then
+elif [[ "$class" == "Tor Browser" || "$class" == "Gnome-calculator" ||
+        "$class" == "Gcolor3" ]]; then
     echo "state=floating"
 elif [[ "$class" == *"Nautilus" ]]; then
     echo "desktop=files"
