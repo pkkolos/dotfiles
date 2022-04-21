@@ -3,6 +3,7 @@ bin/lock ~/.local/bin/lock
 bin/rofi_power_menu ~/.local/bin/rofi_power_menu
 environment.d ~/.config/environment.d
 gtk3 ~/.config/gtk-3.0
+gtk4 ~/.config/gtk-4.0
 liquidprompt ~/.config/liquidprompt
 moc.themes ~/.moc/themes
 mpv ~/.config/mpv

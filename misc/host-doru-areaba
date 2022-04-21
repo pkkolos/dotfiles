@@ -3,6 +3,7 @@ TAG:gpg
 TAG:mail
 TAG:zsh
 gtk3
+gtk4
 liquidprompt
 moc.themes
 mpv
