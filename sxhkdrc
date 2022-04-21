@@ -63,7 +63,7 @@ XF86AudioPrev
 
 # start applications
 ctrl + alt + t
-    urxvt
+    alacritty
 
 super + d
     rofi -show drun -modi drun,run
