@@ -61,22 +61,22 @@ application/vnd.oasis.opendocument.text-master; /usr/bin/soffice --nologo --glob
 application/vnd.oasis.opendocument.text-master-template; /usr/bin/soffice --nologo --global %s; test=test -n "$DISPLAY"
 
 # Text Files
-application/ecmascript; /usr/bin/vim -R -n -i NONE -u "$HOME/.vim/se_rc.vim" -- %s; needsterminal
-application/javascript; /usr/bin/vim -R -n -i NONE -u "$HOME/.vim/se_rc.vim" -- %s; needsterminal
-application/json; /usr/bin/vim -R -n -i NONE -u "$HOME/.vim/se_rc.vim" -- %s; needsterminal
-application/xml; /usr/bin/vim -R -n -i NONE -u "$HOME/.vim/se_rc.vim" -- %s; needsterminal
-application/x-awk; /usr/bin/vim -R -n -i NONE -u "$HOME/.vim/se_rc.vim" -- %s; needsterminal
-application/x-cdrdao-toc; /usr/bin/vim -R -n -i NONE -u "$HOME/.vim/se_rc.vim" -- %s; needsterminal
-application/x-cue; /usr/bin/vim -R -n -i NONE -u "$HOME/.vim/se_rc.vim" -- %s; needsterminal
-application/x-perl; /usr/bin/vim -R -n -i NONE -u "$HOME/.vim/se_rc.vim" -- %s; needsterminal
-application/x-php; /usr/bin/vim -R -n -i NONE -u "$HOME/.vim/se_rc.vim" -- %s; needsterminal
-application/x-ruby; /usr/bin/vim -R -n -i NONE -u "$HOME/.vim/se_rc.vim" -- %s; needsterminal
-application/x-shellscript; /usr/bin/vim -R -n -i NONE -u "$HOME/.vim/se_rc.vim" -- %s; needsterminal
-application/x-subrip; /usr/bin/vim -R -n -i NONE -u "$HOME/.vim/se_rc.vim" -- %s; needsterminal
-application/x-yaml; /usr/bin/vim -R -n -i NONE -u "$HOME/.vim/se_rc.vim" -- %s; needsterminal
+application/ecmascript; /usr/bin/vim -R -n -i NONE -- %s; needsterminal
+application/javascript; /usr/bin/vim -R -n -i NONE -- %s; needsterminal
+application/json; /usr/bin/vim -R -n -i NONE -- %s; needsterminal
+application/xml; /usr/bin/vim -R -n -i NONE -- %s; needsterminal
+application/x-awk; /usr/bin/vim -R -n -i NONE -- %s; needsterminal
+application/x-cdrdao-toc; /usr/bin/vim -R -n -i NONE -- %s; needsterminal
+application/x-cue; /usr/bin/vim -R -n -i NONE -- %s; needsterminal
+application/x-perl; /usr/bin/vim -R -n -i NONE -- %s; needsterminal
+application/x-php; /usr/bin/vim -R -n -i NONE -- %s; needsterminal
+application/x-ruby; /usr/bin/vim -R -n -i NONE -- %s; needsterminal
+application/x-shellscript; /usr/bin/vim -R -n -i NONE -- %s; needsterminal
+application/x-subrip; /usr/bin/vim -R -n -i NONE -- %s; needsterminal
+application/x-yaml; /usr/bin/vim -R -n -i NONE -- %s; needsterminal
 text/html; /usr/bin/firefox --new-tab %s & sleep 10; test=test -n "$DISPLAY"
 text/html; /usr/bin/links -force-html -codepage utf-8 -dump %s; copiousoutput
-text/*; /usr/bin/vim -R -n -i NONE -u "$HOME/.vim/se_rc.vim" -- %s; needsterminal
+text/*; /usr/bin/vim -R -n -i NONE -- %s; needsterminal
 
 # Fonts
 application/x-font-ttf; /usr/bin/gnome-font-viewer -- %s; test=test -n "$DISPLAY"
