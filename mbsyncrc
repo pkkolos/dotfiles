@@ -7,7 +7,7 @@ Host imap.gmail.com
 User $username$@gmail.com
 PassCmd "secret-tool lookup mbsync gmail"
 SSLType IMAPS
-SSLVersions TLSv1.2
+SSLVersions TLSv1.3
 PipelineDepth 50
 
 IMAPStore gmail-remote
@@ -20,37 +20,37 @@ Path ~/.mail/Gmail/
 Inbox ~/.mail/Gmail/Inbox
 
 Channel gmail-inbox
-Master :gmail-remote:INBOX
-Slave :gmail-local:Inbox
+Far :gmail-remote:INBOX
+Near :gmail-local:Inbox
 SyncState ~/.mail/.mbsync/Gmail/
 
 Channel gmail-drafts
-Master :gmail-remote:"[Google Mail]/Drafts"
-Slave :gmail-local:Drafts
-Create Slave
+Far :gmail-remote:"[Google Mail]/Drafts"
+Near :gmail-local:Drafts
+Create Near
 SyncState ~/.mail/.mbsync/Gmail/
 
 Channel gmail-sent
-Master :gmail-remote:"[Google Mail]/Sent Mail"
-Slave :gmail-local:Sent
-Create Slave
+Far :gmail-remote:"[Google Mail]/Sent Mail"
+Near :gmail-local:Sent
+Create Near
 SyncState ~/.mail/.mbsync/Gmail/
 
 Channel gmail-spam
-Master :gmail-remote:"[Google Mail]/Spam"
-Slave :gmail-local:Spam
-Create Slave
+Far :gmail-remote:"[Google Mail]/Spam"
+Near :gmail-local:Spam
+Create Near
 SyncState ~/.mail/.mbsync/Gmail/
 
 Channel gmail-trash
-Master :gmail-remote:"[Google Mail]/Bin"
-Slave :gmail-local:Trash
-Create Slave
+Far :gmail-remote:"[Google Mail]/Bin"
+Near :gmail-local:Trash
+Create Near
 SyncState ~/.mail/.mbsync/Gmail/
 
 Channel gmail-labels
-Master :gmail-remote:
-Slave :gmail-local:
+Far :gmail-remote:
+Near :gmail-local:
 Patterns * !INBOX !Inbox !Drafts !Sent !Spam !Trash "![Google Mail]*"
 SyncState ~/.mail/.mbsync/Gmail/
 
@@ -81,19 +81,19 @@ Path ~/.mail/Outlook/
 Inbox ~/.mail/Outlook/Inbox
 
 Channel outlook-inbox
-Master :outlook-remote:INBOX
-Slave :outlook-local:Inbox
+Far :outlook-remote:INBOX
+Near :outlook-local:Inbox
 SyncState ~/.mail/.mbsync/Outlook/
 
 Channel outlook-spam
-Master :outlook-remote:Junk
-Slave :outlook-local:Spam
-Create Slave
+Far :outlook-remote:Junk
+Near :outlook-local:Spam
+Create Near
 SyncState ~/.mail/.mbsync/Outlook/
 
 Channel outlook-folders
-Master :outlook-remote:
-Slave :outlook-local:
+Far :outlook-remote:
+Near :outlook-local:
 Patterns * !INBOX !Inbox !Archive !Deleted !Junk !Spam !Notes !Outbox
 SyncState ~/.mail/.mbsync/Outlook/
 
