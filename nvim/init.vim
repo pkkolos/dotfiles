@@ -10,49 +10,7 @@
     " Setup Plugins                              {{{
     " --------------------------------------------------------------------------
         if !exists("g:sudoedit")
-            let g:python3_host_prog = '/usr/bin/python3'
-
-            call plug#begin('~/.local/share/nvim/plugins')
-            Plug 'nathangrigg/vim-beancount', { 'as': 'syntax/beancount' }
-            Plug 'DaeZak/crafttweaker-vim-highlighting', { 'as': 'syntax/crafttweaker' }
-            Plug 'jtratner/vim-flavored-markdown', { 'as': 'syntax/ghmarkdown' }
-            Plug 'tpope/vim-git', { 'as': 'syntax/git' }
-            Plug 'ledger/vim-ledger', { 'as': 'syntax/ledger' }
-            Plug 'tpope/vim-markdown', { 'as': 'syntax/markdown' }
-            Plug 'vim-ruby/vim-ruby', { 'as': 'syntax/ruby' }
-            Plug 'sunaku/vim-ruby-minitest', { 'as': 'syntax/ruby-minitest' }
-            Plug 'rust-lang/rust.vim', { 'as': 'syntax/rust' }
-            Plug 'baskerville/vim-sxhkdrc', { 'as': 'syntax/sxhkdrc' }
-            Plug 'cespare/vim-toml', { 'as': 'syntax/toml' }
-            Plug 'w0rp/ale', { 'as': 'programming/ale' }
-            Plug 'airblade/vim-gitgutter', { 'as': 'programming/gitgutter' }
-            " Plug 'autozimu/LanguageClient-neovim', {
-            "             \ 'as': 'programming/lsp-client',
-            "             \ 'branch': 'next',
-            "             \ 'do': 'make release' }
-            Plug 'honza/vim-snippets', { 'as': 'programming/snippets' }
-            Plug 'SirVer/ultisnips', { 'as': 'programming/ultisnips' }
-            Plug 'qpkorr/vim-bufkill', { 'as': 'generic/bufkill' }
-            Plug 'junegunn/fzf', { 'as': 'generic/fzf' }
-            Plug 'junegunn/fzf.vim', { 'as': 'generic/fzfvim' }
-            " Plug 'bfredl/nvim-miniyank', { 'as': 'generic/miniyank' }
-            Plug 'simnalamburt/vim-mundo', { 'as': 'generic/mundo' }
-            Plug 'tpope/vim-repeat', { 'as': 'generic/repeat' }
-            Plug 'justinmk/vim-sneak', { 'as': 'generic/sneak' }
-            Plug 'tpope/vim-surround', { 'as': 'generic/surround' }
-            Plug 'tomtom/tcomment_vim', { 'as': 'generic/tcomment' }
-            Plug 'Shougo/deoplete.nvim', { 'as': 'generic/deoplete',
-                        \ 'do': ':UpdateRemotePlugins' }
-            Plug 'Shougo/neco-syntax', { 'as': 'deoplete/syntax' }
-            Plug 'Shougo/neco-vim', { 'as': 'deoplete/vim' }
-            Plug 'Shougo/neoinclude.vim', { 'as': 'deoplete/include' }
-            Plug 'zchee/deoplete-zsh', { 'as': 'deoplete/zsh' }
-            Plug 'sebastianmarkow/deoplete-rust', { 'as': 'deoplete/rust' }
-            call plug#end()
-
-            for fpath in split(globpath(&rtp, 'settings/*.vim'), '\n')
-                execute 'source ' . fpath
-            endfor
+            lua require 'paqs'
         endif
     " }}}
     " Syntax Highlighting, Theme                 {{{
@@ -326,7 +284,7 @@
         set wildmenu                          "command-line completion
                                               "shows a list of matches
         set wildmode=list:longest,full
-        set completeopt-=preview              "don't show preview window
+        set completeopt=menuone,noinsert,noselect
         set omnifunc=syntaxcomplete#Complete
     " }}}
     " Folding                                    {{{
@@ -360,7 +318,7 @@
     " }}}
     " Short Message Format                       {{{
     " --------------------------------------------------------------------------
-        set shortmess=atToOI
+        set shortmess=atToOIc
         " f -d  use "(3 of 5)" instead of "(file 3 of 5)"
         " i -d  use "[noeol]" instead of "[Incomplete last line]"
         " l -d  use "999L, 888C" instead of "999 lines, 888 characters"
@@ -389,7 +347,7 @@
         " A -   don't give the "ATTENTION" message when an existing swap file is
         "       found.
         " I +   don't give the intro message when starting Vim |:intro|.
-        " c -   don't give |ins-completion-menu| messages.  For example,
+        " c +   don't give |ins-completion-menu| messages.  For example,
         "       "-- XXX completion (YYY)", "match 1 of 2", "The only match",
         "       "Pattern not found", "Back at original", etc.
         " q -   use "recording" instead of "recording @a"

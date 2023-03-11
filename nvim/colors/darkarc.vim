@@ -275,9 +275,9 @@ exe "hi! CursorLineNr"   .s:fmt_bold .s:fg_base1   .s:bg_base02
 exe "hi! MatchParen"     .s:fmt_bold .s:fg_red     .s:bg_base00
 exe "hi! ModeMsg"        .s:fmt_none .s:fg_blue    .s:bg_none
 exe "hi! MoreMsg"        .s:fmt_none .s:fg_blue    .s:bg_none
-exe "hi! Pmenu"          .s:fmt_revr .s:fg_base0   .s:bg_base03
-exe "hi! PmenuSel"       .s:fmt_revr .s:fg_base02  .s:bg_base0
-exe "hi! PmenuSbar"      .s:fmt_revr .s:fg_base01  .s:bg_base1
+exe "hi! Pmenu"          .s:fmt_none .s:fg_base2   .s:bg_base02
+exe "hi! PmenuSel"       .s:fmt_revr .s:fg_base0   .s:bg_base01
+exe "hi! PmenuSbar"      .s:fmt_none .s:fg_base0   .s:bg_base01
 exe "hi! PmenuThumb"     .s:fmt_revr .s:fg_base0   .s:bg_base03
 exe "hi! Question"       .s:fmt_bold .s:fg_cyan    .s:bg_none
 exe "hi! Search"         .s:fmt_revr .s:fg_yellow  .s:bg_none
@@ -405,6 +405,36 @@ let g:ss_bg_magenta = s:bg_magenta
 let g:ss_bg_cyan = s:bg_cyan
 let g:ss_bg_orange = s:bg_orange
 let g:ss_bg_violet = s:bg_violet
+" }}}
+" cmp highlighting                                                     {{{
+" ------------------------------------------------------------------------------
+exe "hi! CmpItemAbbrMatch"    .s:fmt_bold .s:fg_base3   .s:bg_none
+exe "hi! CmpItemKindVariable" .s:fmt_ital .s:fg_cyan    .s:bg_none
+exe "hi! CmpItemKindFunction" .s:fmt_ital .s:fg_magenta .s:bg_none
+exe "hi! CmpItemKindKeyword"  .s:fmt_ital .s:fg_red     .s:bg_none
+exe "hi! CmpItemKindField"    .s:fmt_ital .s:fg_green   .s:bg_none
+exe "hi! CmpItemKindClass"    .s:fmt_ital .s:fg_yellow  .s:bg_none
+exe "hi! CmpItemKindModule"   .s:fmt_ital .s:fg_blue    .s:bg_none
+exe "hi! CmpItemKindOperator" .s:fmt_ital .s:fg_violet  .s:bg_none
+
+hi! link CmpItemAbbrMatchFuzzy    CmpItemAbbrMatch
+hi! link CmpItemKindText          CmpItemKindVariable
+hi! link CmpItemKindConstant      CmpItemKindVariable
+hi! link CmpItemKindValue         CmpItemKindVariable
+hi! link CmpItemKindMethod        CmpItemKindFunction
+hi! link CmpItemKindConstructor   CmpItemKindFunction
+hi! link CmpItemKindColor         CmpItemKindKeyword
+hi! link CmpItemKindReference     CmpItemKindKeyword
+hi! link CmpItemKindEnumMember    CmpItemKindKeyword
+hi! link CmpItemKindProperty      CmpItemKindField
+hi! link CmpItemKindEnum          CmpItemKindField
+hi! link CmpItemKindUnit          CmpItemKindField
+hi! link CmpItemKindInterface     CmpItemKindClass
+hi! link CmpItemKindStruct        CmpItemKindClass
+hi! link CmpItemKindFolder        CmpItemKindModule
+hi! link CmpItemKindFile          CmpItemKindModule
+hi! link CmpItemKindTypeParameter CmpItemKindModule
+hi! link CmpItemKindEvent         CmpItemKindOperator
 " }}}
 " License                                                                    {{{
 " ------------------------------------------------------------------------------
