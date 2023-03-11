@@ -29,7 +29,7 @@ elif [[ "$class" == "mpv" ]]; then
     echo "desktop=videos"
 elif [[ "$class" == "jetbrains-idea"* && "$title" == "win0" ]]; then
     echo "state=floating"
-elif [[ "$class" == "PolyMC" || "$class" == "Minecraft"* ||
+elif [[ "$class" == "PrismLauncher" || "$class" == "Minecraft"* ||
         "$class" == "factorio" || "$title" == "Mindustry" ]]; then
     echo "desktop=other"
 elif [[ "$class" == "Steam" ]]; then
