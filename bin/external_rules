@@ -10,7 +10,7 @@ if [[ "$class" == "URxvt" && "$instance" != "urxvt" ]]; then
     echo "desktop=$instance"
 elif [[ "$class" == "Alacritty" && "$instance" != "Alacritty" ]]; then
     echo "desktop=$instance"
-elif [[ "$class" == "Firefox" ]]; then
+elif [[ "$class" == "firefox" ]]; then
     options="desktop=browser"
     if [[ "$instance" == "Browser" ]]; then
         options="$options state=floating"
@@ -24,6 +24,7 @@ elif [[ "$class" == "Tor Browser" || "$class" == "gnome-calculator" ||
         "$class" == "Gcolor3" ]]; then
     echo "state=floating"
 elif [[ "$class" == *"Nautilus" ]]; then
+    wmctrl -i -r "$wid" -b add,maximized_vert,maximized_horz
     echo "desktop=files"
 elif [[ "$class" == "mpv" ]]; then
     echo "desktop=videos"
@@ -32,13 +33,14 @@ elif [[ "$class" == "jetbrains-idea"* && "$title" == "win0" ]]; then
 elif [[ "$class" == "PrismLauncher" || "$class" == "Minecraft"* ||
         "$class" == "factorio" || "$title" == "Mindustry" ]]; then
     echo "desktop=other"
-elif [[ "$class" == "Steam" ]]; then
+elif [[ "$class" == "steam" ]]; then
     echo "desktop=other follow=no"
 elif [[ "${class,,}" == "gnome-"* || "${class,,}" == "org.gnome."* ||
-        "$class" == "File-roller" || "$class" == "Eog" ||
+        "$class" == "file-roller" || "$class" == "Eog" ||
         "$class" == "Evince" || "$class" == "Seahorse" ||
         "$class" == "Sysprof" || "$class" == "Tilix" ||
         "$class" == "Font-viewer" || "$class" == "Simple-scan" ||
-        "$class" == "baobab" ]]; then
+        "$class" == "baobab" || "$class" == *"Foliate" ||
+        "$class" == "ghex" ]]; then
     wmctrl -i -r "$wid" -b add,maximized_vert,maximized_horz
 fi
