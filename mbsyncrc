@@ -5,7 +5,8 @@ Expunge Both
 IMAPAccount gmail
 Host imap.gmail.com
 User $username$@gmail.com
-PassCmd "secret-tool lookup mbsync gmail"
+AuthMechs XOAUTH2
+PassCmd "oauth2get gmail $username$@gmail.com"
 SSLType IMAPS
 SSLVersions TLSv1.3
 PipelineDepth 50
@@ -66,7 +67,8 @@ Channel gmail-labels
 IMAPAccount outlook
 Host imap-mail.outlook.com
 User $username$@hotmail.com
-PassCmd "secret-tool lookup mbsync outlook"
+AuthMechs XOAUTH2
+PassCmd "oauth2get outlook $username$@hotmail.com"
 SSLType IMAPS
 SSLVersions TLSv1.2
 PipelineDepth 50
