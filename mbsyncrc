@@ -103,3 +103,38 @@ Group outlook
 Channel outlook-inbox
 Channel outlook-spam
 Channel outlook-folders
+
+
+IMAPAccount protonmail
+Host 127.0.0.1
+Port 1143
+User $username$@protonmail.com
+PassCmd "secret-tool lookup mbsync protonmail"
+SSLType IMAPS
+SSLVersions TLSv1.3
+CertificateFile ~/.mail/.certs/cert.pem
+PipelineDepth 50
+
+IMAPStore protonmail-remote
+Account protonmail
+
+MaildirStore protonmail-local
+Subfolders Verbatim
+# The trailing "/" is important
+Path ~/.mail/ProtonMail/
+Inbox ~/.mail/ProtonMail/Inbox
+
+Channel protonmail-inbox
+Far :protonmail-remote:INBOX
+Near :protonmail-local:Inbox
+SyncState ~/.mail/.mbsync/ProtonMail/
+
+Channel protonmail-folders
+Far :protonmail-remote:
+Near :protonmail-local:
+Patterns * !INBOX !Inbox !Archive !Starred
+SyncState ~/.mail/.mbsync/ProtonMail/
+
+Group protonmail
+Channel protonmail-inbox
+Channel protonmail-folders

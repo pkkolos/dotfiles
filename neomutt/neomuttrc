@@ -104,14 +104,14 @@ unset fcc_clear           # sign/encrypt attachments along with the message
 # }}}
 # Accounts {{{
 # ------------------------------------------------------------------------------
-set spoolfile = "+Gmail/Inbox"
+set spoolfile = "+Outlook/Inbox"
 set sendmail = "/usr/bin/msmtp"
 set sendmail_wait = 0  # wait for sendmail command to finish
 set envelope_from      # pass sender to sendmail command
 unset record           # don't save outgoing messages, gmail & outlook do that
                        # for us; this avoids duplicate messages
 
-alternates "$username$@(gmail|hotmail|outlook)\.com"
+alternates "$username$@(gmail|hotmail|outlook|protonmail)\.com"
 
 source ~/.local/share/neomutt/local_mailboxes
 source ~/.local/share/neomutt/mailboxes
@@ -122,6 +122,7 @@ folder-hook Archive/* source ~/.config/neomutt/accounts/local
 folder-hook Gmail/*   source ~/.config/neomutt/accounts/gmail
 folder-hook Local/*   source ~/.config/neomutt/accounts/local
 folder-hook Outlook/* source ~/.config/neomutt/accounts/outlook
+folder-hook ProtonMail/* source ~/.config/neomutt/accounts/protonmail
 
 # }}}
 # Colour Theme {{{
