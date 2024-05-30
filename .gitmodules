@@ -3,11 +3,6 @@
 	ignore = untracked
 	path = liquidprompt
 	url = git@pkkolos.github.com:pkkolos/liquidprompt.git
-[submodule "oh-my-git"]
-	branch = personal
-	ignore = untracked
-	path = oh-my-git
-	url = git@pkkolos.github.com:pkkolos/oh-my-git.git
 [submodule "urxvt-scripts"]
 	ignore = untracked
 	path = urxvt-scripts
