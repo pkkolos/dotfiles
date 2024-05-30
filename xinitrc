@@ -19,8 +19,5 @@ dex -a &
 # enable locker
 xss-lock -l -q -- $HOME/.local/bin/lock &
 
-# run X compositor
-picom &
-
 # invoke global X session script
 . /etc/X11/Xsession
