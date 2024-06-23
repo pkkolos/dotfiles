@@ -51,8 +51,9 @@ set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)
 # Index View Options {{{
 # ------------------------------------------------------------------------------
 set index_format = "[%Z] %D %-22.22L %s"
-set sort = threads
-set sort_aux = reverse-last-date-received
+set use_threads = threads
+set sort = reverse-last-date-received
+set sort_aux = last-date-received
 set reply_regexp = '^[ \t]*([Rr][Ee]:[ \t]*)+'
 set sort_re          # use the above regex to split messages into threads
 unset strict_threads # don't rely only in "In-Reply-To" & "References" headers
