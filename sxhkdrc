@@ -41,13 +41,13 @@ super + alt + r: shift + {h,t,c,n}
     bspc node -z {left -10 0, top 0 10, top 0 -10, left 10 0}
 
 XF86AudioRaiseVolume
-    pactl set-sink-volume @DEFAULT_SINK@ +5%
+    wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
 
 XF86AudioLowerVolume
-    pactl set-sink-volume @DEFAULT_SINK@ -5%
+    wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
 
 XF86AudioMute
-    pactl set-sink-mute @DEFAULT_SINK@ toggle
+    wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
 XF86AudioPlay
     mpc -q toggle
