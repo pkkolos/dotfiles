@@ -33,7 +33,6 @@ mpd.conf ~/.config/mpd/mpd.conf
 msmtp.config ~/.config/msmtp/config
 notmuch.config ~/.config/notmuch/config
 open-terminal.py ~/.local/share/nautilus-python/extensions/open-terminal.py
-polybar.config ~/.config/polybar/config
-rofi.config ~/.config/rofi/config
+polybar.ini ~/.config/polybar/config.ini
 sxhkdrc ~/.config/sxhkd/sxhkdrc
 task.config ~/.config/task/config

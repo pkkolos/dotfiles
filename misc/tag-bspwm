@@ -6,7 +6,7 @@ rofi
 bspwmrc
 dunstrc
 picom.conf
-polybar.config
+polybar.ini
 sxhkdrc
 xinitrc
 xserverrc
