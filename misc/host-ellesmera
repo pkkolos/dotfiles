@@ -11,7 +11,7 @@ ncmpcpp
 nvim
 urxvt-scripts
 vim
-alacritty.yml
+alacritty.toml
 cdrdao
 conky.conf
 fonts.conf

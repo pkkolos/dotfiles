@@ -1,0 +1,66 @@
+ipc_socket = false
+
+[bell]
+color = "#b6bcc8"
+
+[colors.bright]
+black = "#474e5c"
+blue = "#7c879c"
+cyan = "#99a2b2"
+green = "#2c313a"
+magenta = "#b888e2"
+red = "#df8558"
+white = "#e2e4e9"
+yellow = "#353b45"
+
+[colors.footer_bar]
+background = "#b6bcc8"
+foreground = "#282c34"
+
+[colors.hints.end]
+background = "#282c34"
+foreground = "#97cb72"
+
+[colors.hints.start]
+background = "#97cb72"
+foreground = "#282c34"
+
+[colors.normal]
+black = "#282c34"
+blue = "#4aa4ed"
+cyan = "#3fc7d9"
+green = "#97cb72"
+magenta = "#dd78c4"
+red = "#e05c67"
+white = "#b6bcc8"
+yellow = "#f2c97d"
+
+[colors.primary]
+background = "#282c34"
+foreground = "#b6bcc8"
+
+[font]
+size = 10.0
+
+[font.bold]
+family = "DejaVu Sans Mono"
+
+[font.bold_italic]
+family = "DejaVu Sans Mono"
+
+[font.italic]
+family = "DejaVu Sans Mono"
+
+[font.normal]
+family = "DejaVu Sans Mono"
+
+[hints]
+alphabet = "hutenosadimkc.r,z;"
+
+[window]
+decorations = "full"
+startup_mode = "Maximized"
+
+[window.dimensions]
+columns = 80
+lines = 24

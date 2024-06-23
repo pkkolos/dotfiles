@@ -15,7 +15,7 @@ systemd/mbsync.service ~/.config/systemd/user/mbsync.service
 systemd/mbsync.timer ~/.config/systemd/user/mbsync.timer
 urxvt-scripts ~/.local/share/urxvt/ext
 zsh ~/.config/zsh
-alacritty.yml ~/.config/alacritty/alacritty.yml
+alacritty.toml ~/.config/alacritty/alacritty.toml
 bspwmrc ~/.config/bspwm/bspwmrc
 picom.conf ~/.config/picom/picom.conf
 conky.conf ~/.config/conky/conky.conf
