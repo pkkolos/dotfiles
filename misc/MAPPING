@@ -14,6 +14,7 @@ rofi ~/.config/rofi
 systemd/mbsync.service ~/.config/systemd/user/mbsync.service
 systemd/mbsync.timer ~/.config/systemd/user/mbsync.timer
 urxvt-scripts ~/.local/share/urxvt/ext
+vim ~/.config/vim
 zsh ~/.config/zsh
 alacritty.toml ~/.config/alacritty/alacritty.toml
 bspwmrc ~/.config/bspwm/bspwmrc

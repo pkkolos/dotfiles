@@ -5,7 +5,7 @@ export LESS='iwx4$z-4$MRS'
 export PAGER='less'
 export EDITOR='nvim'
 export VISUAL='nvim'
-export SUDO_EDITOR='vim -Z -n -i NONE -u $HOME/.vim/vimrc'
+export SUDO_EDITOR='vim -Z -n -i NONE -u $HOME/.config/vim/vimrc'
 export FZF_DEFAULT_COMMAND="fdfind --type f --color=always"
 export FZF_ALT_C_COMMAND="fdfind -L --type d"
 export FZF_CTRL_T_COMMAND="fdfind -L --type f --type d --type l --color=always"
