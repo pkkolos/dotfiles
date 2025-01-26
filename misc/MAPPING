@@ -27,7 +27,7 @@ gpg.conf ~/.gnupg/gpg.conf
 gpg-agent.conf ~/.gnupg/gpg-agent.conf
 khal.config ~/.config/khal/config
 khard.conf ~/.config/khard/khard.conf
-mbsyncrc ~/.config/mbsync/mbsyncrc
+mbsyncrc ~/.config/isyncrc
 moc.config ~/.moc/config
 mpd.conf ~/.config/mpd/mpd.conf
 msmtp.config ~/.config/msmtp/config

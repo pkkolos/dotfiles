@@ -1,6 +1,5 @@
 [Unit]
 Description=Mailbox synchronization timer
-ConditionPathExists=%h/.config/mbsync/mbsyncrc
 
 [Timer]
 OnStartupSec=2m

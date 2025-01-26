@@ -7,8 +7,8 @@ Host imap.gmail.com
 User $username$@gmail.com
 AuthMechs XOAUTH2
 PassCmd "oauth2get gmail $username$@gmail.com"
-SSLType IMAPS
-SSLVersions TLSv1.3
+TLSType IMAPS
+TLSVersions -1.2
 PipelineDepth 50
 
 IMAPStore gmail-remote
@@ -69,8 +69,7 @@ Host imap-mail.outlook.com
 User $username$@hotmail.com
 AuthMechs XOAUTH2
 PassCmd "oauth2get outlook $username$@hotmail.com"
-SSLType IMAPS
-SSLVersions TLSv1.2
+TLSType IMAPS
 PipelineDepth 50
 
 IMAPStore outlook-remote
@@ -110,8 +109,8 @@ Host 127.0.0.1
 Port 1143
 User $username$@protonmail.com
 PassCmd "secret-tool lookup mbsync protonmail"
-SSLType IMAPS
-SSLVersions TLSv1.3
+TLSType IMAPS
+TLSVersions -1.2
 CertificateFile ~/.mail/.certs/cert.pem
 PipelineDepth 50
 
