@@ -18,7 +18,7 @@ khal.config
 mpd.conf
 open-terminal.py
 reportbugrc
-sbuildrc
+sbuild.pl
 task.config
 tmux.conf
 Xresources

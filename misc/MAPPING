@@ -34,5 +34,6 @@ msmtp.config ~/.config/msmtp/config
 notmuch.config ~/.config/notmuch/config
 open-terminal.py ~/.local/share/nautilus-python/extensions/open-terminal.py
 polybar.ini ~/.config/polybar/config.ini
+sbuild.pl ~/.config/sbuild/config.pl
 sxhkdrc ~/.config/sxhkd/sxhkdrc
 task.config ~/.config/task/config
