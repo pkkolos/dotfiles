@@ -257,9 +257,6 @@
         set splitbelow        "put the new window below the current one
         set splitright        "put the new window right of the current one
         set display=lastline  "display as much as possible of the last line
-        set conceallevel=1    "show cchar or listchar for conceal text
-        set concealcursor=nc  "conceal text even in the cursorline in
-                              "normal mode and command-line editing mode
     " }}}
     " Navigation                                 {{{
     " -------------------------------------------------------------------------
