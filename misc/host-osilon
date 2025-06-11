@@ -1,16 +1,14 @@
-TAG:bspwm
 TAG:gpg
 TAG:gtk
 TAG:mail
+TAG:niri
 TAG:zsh
 mpv
 ncmpcpp
 nvim
-ranger
 vim
 alacritty.toml
 cdrdao
-conky.conf
 fonts.conf
 gbp.conf
 gitconfig
@@ -21,4 +19,3 @@ reportbugrc
 sbuild.pl
 task.config
 tmux.conf
-Xresources

@@ -1,0 +1,8 @@
+environment.d
+nwg-bar
+systemd/swayidle.service
+waybar
+fuzzel.ini
+mako.config
+niri-config.kdl
+swaylock.config
