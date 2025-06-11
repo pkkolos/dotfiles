@@ -44,29 +44,34 @@
 [color]
 	ui = auto
 [color "diff"]
-	meta = yellow bold
 	frag = blue
 	func = magenta
+	meta = yellow bold
 [color "interactive"]
 	prompt = 13 bold
 [color "status"]
 	untracked = blue
+[column]
+	ui = auto
 [commit]
 	verbose = true
 [core]
 	editor = nvim
 [diff]
-	tool = vimdiff
-	guitool = meld
-	renames = copies
-	mnemonicprefix = true
 	algorithm = histogram
-[filter "mail"]
-	smudge = sed \"s/\\\\\\$username\\\\\\$/pkkolos/g\"
-	clean = sed \"s/pkkolos@/\\$username\\$@/g\"
-[merge]
+	colorMoved = plain
+	guitool = meld
+	mnemonicPrefix = true
+	renames = true
 	tool = vimdiff
-	conflictstyle = diff3
+[filter "mail"]
+	clean = sed \"s/pkkolos@/\\$username\\$@/g\"
+	smudge = sed \"s/\\\\\\$username\\\\\\$/pkkolos/g\"
+[help]
+	autocorrect = prompt
+[merge]
+	conflictstyle = zdiff3
+	tool = vimdiff
 [mergetool]
 	keepBackup = false
 [mergetool "meld"]
@@ -84,5 +89,5 @@
 [tar "tar.xz"]
 	command = xz -c
 [user]
-	name = Panagiotis Kkolos
 	email = pkkolos@gmail.com
+	name = Panagiotis Kkolos
