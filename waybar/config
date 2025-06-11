@@ -1,0 +1,193 @@
+{
+    "layer": "bottom",
+    "position": "top",
+    "height": 30,
+    "modules-left": [
+        "custom/workspace-padding",
+        "niri/workspaces",
+        "custom/workspace-padding",
+        "mpd"
+    ],
+    "modules-center": ["niri/window"],
+    "modules-right": [
+        "niri/language",
+        "custom/separator",
+        "cpu",
+        "custom/separator",
+        "memory",
+        "custom/separator",
+        "custom/mail",
+        "custom/separator",
+        "network",
+        "custom/separator",
+        "wireplumber",
+        "custom/separator",
+        "clock#date",
+        "custom/separator",
+        "clock#time",
+        "tray"
+    ],
+    "niri/workspaces": {
+        "all-outputs": false,
+        "disable-scroll-wraparound": true,
+        "format": "{icon}",
+        "format-icons": {
+            "home": "",
+            "terminal": "",
+            "code": "",
+            "browser": "",
+            "files": "",
+            "videos": "",
+            "other": "",
+            "mail": "",
+            "chat": "",
+            "music": "",
+            "urgent": "",
+            "default": ""
+        },
+        "persistent-workspaces": {
+            "home": ["DP-3"],
+            "terminal": ["DP-3"],
+            "code": ["DP-3"],
+            "browser": ["DP-3"],
+            "files": ["DP-3"],
+            "videos": ["DP-3"],
+            "other": ["DP-3"],
+            "mail": ["HDMI-A-1"],
+            "chat": ["HDMI-A-1"],
+            "music": ["HDMI-A-1"]
+        }
+    },
+    "custom/workspace-padding": {
+        "format": " ",
+        "tooltip": false
+    },
+    "mpd": {
+        "interval": 1,
+        "format": "{stateIcon}  {randomIcon} {repeatIcon} {singleIcon} {consumeIcon}  {artist} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S})",
+        "format-disconnected": "   Offline",
+        "format-stopped": "",
+        "unknown-tag": "N/A",
+        "consume-icons": {
+            "off": "<span color=\"#454c5c\"></span>",
+            "on": ""
+        },
+        "random-icons": {
+            "off": "<span color=\"#454c5c\"></span>",
+            "on": ""
+        },
+        "repeat-icons": {
+            "off": "<span color=\"#454c5c\"></span>",
+            "on": ""
+        },
+        "single-icons": {
+            "off": "<span color=\"#454c5c\"></span>",
+            "on": ""
+        },
+        "state-icons": {
+            "playing": " ",
+            "paused": " "
+        },
+        "on-click": "mpc -q toggle",
+        "on-click-right": "mpc -q stop",
+        "on-click-middle": "alacritty -e ncmpcpp",
+        "tooltip": false
+    },
+    "niri/window": {
+        "format": "{title} | {app_id}"
+    },
+    "niri/language": {
+        "format": "  {shortDescription}"
+    },
+    "custom/separator": {
+        "format": "|",
+        "tooltip": false
+    },
+    "cpu": {
+        "format": "  {usage}%",
+        "tooltip": false
+    },
+    "memory": {
+        "format": "  {}%",
+        "tooltip": false
+    },
+    "custom/storage-debian": {
+        "format": "  {}",
+        "format-alt": "  {percentage}%",
+        "return-type": "json",
+        "interval": 60,
+        "exec": "~/.config/waybar/modules/storage.sh '/dev/mapper/debian'"
+    },
+    "custom/storage-media": {
+        "format": "  {}",
+        "format-alt": "  {percentage}%",
+        "return-type": "json",
+        "interval": 60,
+        "exec": "~/.config/waybar/modules/storage.sh '/dev/mapper/media'"
+    },
+    "custom/mail": {
+        "format": "  {}",
+        "interval": 60,
+        "exec": "notmuch count tag:unread",
+        "on-click-middle": "alacritty -e neomutt",
+        "tooltip": false
+    },
+    "network": {
+        "interval": 5,
+        "format": "  {ipaddr}/{cidr}",
+        "format-linked": "  {ifname}",
+        "format-disconnected": "  Disconnected",
+        "tooltip-format": " {bandwidthDownBits}   {bandwidthUpBits}"
+    },
+    "wireplumber": {
+        "scroll-step": 5,
+        "format": "{icon} {volume}%",
+        "format-muted": "",
+        "format-icons": [" ", " ", " "],
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+        "on-click-middle": "pavucontrol",
+        "tooltip": false
+    },
+    "clock#date": {
+        "format": "  {:%a, %b %d}",
+        "on-click-middle": "alacritty -e khal interactive",
+        "interval": 30,
+        "tooltip-format": "<tt>{calendar}</tt>",
+        "calendar": {
+            "mode"          : "month",
+            "mode-mon-col"  : 3,
+            "weeks-pos"     : "left",
+            "on-scroll"     : 1,
+            "format": {
+                "months":     "<span color='#1f62b0'><b>{}</b></span>",
+                "days":       "<span color='#f2ce18'>{}</span>",
+                "weeks":      "<span color='#669900'><b>W{}</b></span>",
+                "weekdays":   "<span color='#ff8800'><b>{}</b></span>",
+                "today":      "<span color='#ae110c'><b><u>{}</u></b></span>"
+            }
+        },
+        "actions":  {
+            "on-click-right": "mode",
+            "on-scroll-up": "shift_down",
+            "on-scroll-down": "shift_up"
+        }
+    },
+    "clock#time": {
+        "format": "  {:%H:%M %Z}",
+        "interval": 30,
+        "tooltip-format": "{tz_list}",
+        "timezones": [
+            "Europe/Nicosia",
+            "Etc/UTC",
+            "America/Los_Angeles",
+            "America/New_York",
+            "Europe/London",
+            "Europe/Paris",
+            "Asia/Tokyo",
+            "Australia/Sydney"
+        ]
+    },
+    "tray": {
+        "spacing": 10
+    }
+}
