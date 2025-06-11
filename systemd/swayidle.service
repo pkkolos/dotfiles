@@ -1,0 +1,19 @@
+[Unit]
+Description=Idle manager for Wayland
+Documentation=man:swayidle(1)
+PartOf=graphical-session.target
+After=graphical-session.target
+Requisite=graphical-session.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/swayidle -w \
+          timeout 10 'if pgrep -x swaylock; then niri msg action power-off-monitors; fi' \
+          resume 'niri msg action power-on-monitors' \
+          lock 'if ! pgrep -x swaylock; then swaylock -f; fi' \
+          before-sleep 'if ! pgrep -x swaylock; then swaylock -f; fi'
+Restart=always
+RestartSec=1
+
+[Install]
+WantedBy=graphical-session.target
