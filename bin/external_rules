@@ -22,7 +22,7 @@ elif [[ "$class" == "firefox" ]]; then
     fi
     echo "$options"
 elif [[ "$class" == "Tor Browser" || "$class" == "gnome-calculator" ||
-        "$class" == "Gcolor3" ]]; then
+        "$class" == "Gcolor3" || "$class" == "Qalculate-gtk" ]]; then
     echo "state=floating"
 elif [[ "$class" == *"Nautilus" ]]; then
     wmctrl -i -r "$wid" -b add,maximized_vert,maximized_horz
@@ -42,6 +42,11 @@ elif [[ "${class,,}" == "gnome-"* || "${class,,}" == "org.gnome."* ||
         "$class" == "Sysprof" || "$class" == "Tilix" ||
         "$class" == "Font-viewer" || "$class" == "Simple-scan" ||
         "$class" == "baobab" || "$class" == *"Foliate" ||
-        "$class" == "ghex" ]]; then
+        "$class" == "ghex" || "$class" == "papers" ||
+        "$class" == "amberol" || "$class" == "apostrophe" ||
+        "$class" == "d-spy" || "$class" == "identity" ||
+        "$class" == "obfuscate" || "$class" == "upscaler" ||
+        "$class" == "loupe" || "$class" == "metadata-cleaner" ||
+        "$class" == *"Flatseal" || "$class" == "Sequeler" ]]; then
     wmctrl -i -r "$wid" -b add,maximized_vert,maximized_horz
 fi
