@@ -28,16 +28,16 @@ macro index,pager A "<pipe-message>/usr/bin/khard add-email<return>" \
 set folder = ~/.mail
 set mbox_type = Maildir
 set date_format = "!%Y-%m-%dT%H:%M%z"
-set beep_new        # bell on new messages
-unset move          # don't move to archive
-unset confirmappend # don't ask for confirmation when moving messages
-unset mark_old      # don't distinguish between old and new unread messages
-unset wait_key      # return to mutt immediately after external command
-set delete          # delete messages on closing
-set quit            # quit without asking
-set timeout = 10    # idle time before update status
-set mail_check = 5  # time before scan for folder changes
-set thorough_search # decode headers & attachments before searching
+set beep_new         # bell on new messages
+unset move           # don't move to archive
+unset confirm_append # don't ask for confirmation when moving messages
+unset mark_old       # don't distinguish between old and new unread messages
+unset wait_key       # return to mutt immediately after external command
+set delete           # delete messages on closing
+set quit             # quit without asking
+set timeout = 10     # idle time before update status
+set mail_check = 5   # time before scan for folder changes
+set thorough_search  # decode headers & attachments before searching
 
 # }}}
 # Status Bar {{{
@@ -54,7 +54,7 @@ set index_format = "[%Z] %D %-22.22L %s"
 set use_threads = threads
 set sort = reverse-last-date-received
 set sort_aux = last-date-received
-set reply_regexp = '^[ \t]*([Rr][Ee]:[ \t]*)+'
+set reply_regex = '^[ \t]*([Rr][Ee]:[ \t]*)+'
 set sort_re          # use the above regex to split messages into threads
 unset strict_threads # don't rely only in "In-Reply-To" & "References" headers
                      # to split messages into threads
@@ -75,22 +75,23 @@ bind pager <left>  previous-page
 
 auto_view text/html
 alternative_order text/plain text/enriched text/html
+unignore tags
 
 # }}}
 # Compose View Options {{{
 # ------------------------------------------------------------------------------
-set realname = "Panagiotis Kkolos"
+set real_name = "Panagiotis Kkolos"
 set send_charset = "us-ascii:utf-8" # list of charsets for outgoing messages
 #set edit_headers          # edit headers along with the body of the message
-set askcc                 # prompt for cc recipients
+set ask_cc                # prompt for cc recipients
 set use_from              # generate "From" header
 unset user_agent          # don't add a "User-Agent" header
 set fast_reply            # skip to compose when replying
 unset reply_self          # if it's our message reply to recipients, not ourself
-unset metoo               # don't send to ourself when replying
+unset me_too              # don't send to ourself when replying
 set reply_to              # use "Reply-To" header to reply to message
 set reverse_name          # reply as whomever it was sent to
-set reverse_realname      # same for real name
+set reverse_real_name     # same for real name
 set include               # include message in replies
 set forward_quote         # include message in forwards
 set forward_format = "Fwd: %s" # format of subject when forwarding
@@ -105,10 +106,10 @@ unset fcc_clear           # sign/encrypt attachments along with the message
 # }}}
 # Accounts {{{
 # ------------------------------------------------------------------------------
-set spoolfile = "+Outlook/Inbox"
+set spool_file = "+Outlook/Inbox"
 set sendmail = "/usr/bin/msmtp"
 set sendmail_wait = 0  # wait for sendmail command to finish
-set envelope_from      # pass sender to sendmail command
+set use_envelope_from  # pass sender to sendmail command
 unset record           # don't save outgoing messages, gmail & outlook do that
                        # for us; this avoids duplicate messages
 
@@ -186,6 +187,8 @@ set sidebar_folder_indent
 
 bind index,pager <a-down>  sidebar-next
 bind index,pager <a-up>    sidebar-prev
+bind index,pager <a-home>  sidebar-first
+bind index,pager <a-end>   sidebar-last
 bind index,pager <a-right> sidebar-open
 bind index,pager <a-left>  sidebar-toggle-visible
 
