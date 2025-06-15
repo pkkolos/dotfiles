@@ -1,6 +1,5 @@
 export WORDCHARS=${WORDCHARS//\/}
 
-export LESSHISTFILE="${XDG_DATA_HOME:-"$HOME/.local/share"}/less/history"
 export LESS='iwx4$z-4$MRS'
 export PAGER='less'
 export EDITOR='nvim'
