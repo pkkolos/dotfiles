@@ -9,6 +9,7 @@ nvim
 vim
 alacritty.toml
 cdrdao
+eza.yml
 fonts.conf
 gbp.conf
 gitconfig

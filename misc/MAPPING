@@ -21,6 +21,7 @@ waybar ~/.config/waybar
 zsh ~/.config/zsh
 alacritty.toml ~/.config/alacritty/alacritty.toml
 bspwmrc ~/.config/bspwm/bspwmrc
+eza.yml ~/.config/eza/theme.yml
 fuzzel.ini ~/.config/fuzzel/fuzzel.ini
 picom.conf ~/.config/picom/picom.conf
 conky.conf ~/.config/conky/conky.conf

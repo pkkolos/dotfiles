@@ -1,0 +1,78 @@
+filekinds:
+  symlink:
+    is_bold: true
+  pipe:
+    foreground: Green
+    is_bold: false
+    is_reverse: true
+  socket:
+    foreground: Purple
+    is_bold: false
+    is_reverse: true
+  block_device:
+    foreground: LightRed
+
+file_type:
+  video:
+    foreground: LightPurple
+    is_bold: false
+  lossless:
+    is_bold: false
+  crypto:
+    foreground: Default
+    is_bold: false
+  document:
+    foreground: Default
+  compiled:
+    foreground: Default
+  build:
+    foreground: Default
+    is_bold: false
+    is_underline: false
+  source:
+    is_bold: false
+
+links:
+  normal:
+    is_bold: false
+  multi_link_file:
+    foreground: LightPurple
+    background: Default
+
+size:
+  number_kilo:
+    foreground: Yellow
+    is_bold: false
+  unit_kilo:
+    foreground: Yellow
+    is_bold: false
+  number_mega:
+    foreground: LightRed
+  unit_mega:
+    foreground: LightRed
+  number_huge:
+    foreground: LightPurple
+  unit_huge:
+    foreground: LightPurple
+
+users:
+  user_you:
+    is_bold: false
+  group_yours:
+    is_bold: false
+
+punctuation:
+  foreground: Default
+  is_bold: false
+  is_dimmed: true
+
+symlink_path:
+  foreground: Default
+
+broken_symlink:
+  foreground: Cyan
+  is_bold: true
+  is_reverse: true
+
+broken_path_overlay:
+  is_underline: false
