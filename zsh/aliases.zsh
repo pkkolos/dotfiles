@@ -17,12 +17,12 @@ alias bat='batcat'
 
 alias grep='grep -n --color=auto'
 
-alias ls='ls -F --color=auto'
-alias la='ls -A'
+alias eza='eza --icons=never'
+alias ls='eza --group-directories-first'
+alias la='ls -a'
 alias lh='ls -d .*'
-alias ll='ls -lh'
-alias lla='ll -a'
-alias l='ls -x'
+alias ll='ls -lgH --smart-group'
+alias lla='ll -aa'
 
 alias ds='du -sch'
 alias drs='du -sch * | sort -hr'
