@@ -8,6 +8,7 @@ ncmpcpp
 nvim
 vim
 alacritty.toml
+bat.config
 cdrdao
 eza.yml
 fonts.conf

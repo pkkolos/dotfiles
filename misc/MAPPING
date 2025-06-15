@@ -20,6 +20,7 @@ vim ~/.config/vim
 waybar ~/.config/waybar
 zsh ~/.config/zsh
 alacritty.toml ~/.config/alacritty/alacritty.toml
+bat.config ~/.config/bat/config
 bspwmrc ~/.config/bspwm/bspwmrc
 eza.yml ~/.config/eza/theme.yml
 fuzzel.ini ~/.config/fuzzel/fuzzel.ini
