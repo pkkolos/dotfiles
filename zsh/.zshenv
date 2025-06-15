@@ -3,14 +3,11 @@ typeset -gU path fpath cdpath mailpath
 
 path=(~/.local/bin ~/.cargo/bin $path)
 
-export DESKTOP_SESSION=gnome
-export QT_QPA_PLATFORMTHEME=qt5ct
 export XAUTHORITY="${XDG_RUNTIME_DIR:-"${XDG_DATA_HOME:-"$HOME/.local/share"}"}/Xauthority"
 export ICEAUTHORITY="${XDG_RUNTIME_DIR:-"${XDG_DATA_HOME:-"$HOME/.local/share"}"}/ICEauthority"
 export NOTMUCH_CONFIG="${XDG_CONFIG_HOME:-"$HOME/.config"}/notmuch/config"
 export TASKRC="${XDG_CONFIG_HOME:-"$HOME/.config"}/task/config"
 export URXVT_PERL_LIB="${XDG_DATA_HOME:-"$HOME/.local/share"}/urxvt/ext"
-export NO_AT_BRIDGE=1
 
 # Temporary Files
 if [[ -d "$XDG_RUNTIME_DIR" ]]; then
