@@ -1,62 +1,38 @@
 # Configuration file for dircolors, a utility to help you set the
 # LS_COLORS environment variable used by GNU ls with the --color option.
 
+COLORTERM ?*
 TERM Eterm
 TERM ansi
-TERM color-xterm
-TERM con132x25
-TERM con132x30
-TERM con132x43
-TERM con132x60
-TERM con80x25
-TERM con80x28
-TERM con80x30
-TERM con80x43
-TERM con80x50
-TERM con80x60
+TERM *color*
+TERM con[0-9]*x[0-9]*
 TERM cons25
 TERM console
 TERM cygwin
+TERM *direct*
 TERM dtterm
-TERM eterm-color
 TERM gnome
-TERM gnome-256color
+TERM hurd
 TERM jfbterm
 TERM konsole
 TERM kterm
 TERM linux
 TERM linux-c
-TERM mach-color
 TERM mlterm
 TERM putty
-TERM rxvt
-TERM rxvt-256color
-TERM rxvt-cygwin
-TERM rxvt-cygwin-native
-TERM rxvt-unicode
-TERM rxvt-unicode-256color
-TERM rxvt-unicode256
-TERM screen
-TERM screen-256color
-TERM screen-256color-bce
-TERM screen-bce
-TERM screen-w
-TERM screen.Eterm
-TERM screen.rxvt
-TERM screen.linux
+TERM rxvt*
+TERM screen*
 TERM st
-TERM st-256color
 TERM terminator
+TERM tmux*
 TERM vt100
-TERM xterm
-TERM xterm-16color
-TERM xterm-256color
-TERM xterm-88color
-TERM xterm-color
-TERM xterm-debian
+TERM vt220
+TERM xterm*
 
-# Below are the color init strings for the basic file types. A color init
-# string consists of one or more of the following numeric codes:
+# Below are the color init strings for the basic file types.
+# One can use codes for 256 or more colors supported by modern terminals.
+# The default color codes use the capabilities of an 8 color terminal
+# with some additional attributes as per the following codes:
 # Attribute codes:
 # 00=none 01=bold 04=underscore 05=blink 07=reverse 08=concealed
 # Text color codes:
@@ -67,316 +43,428 @@ TERM xterm-debian
 # 100 - 107
 
 NORMAL                00        # no color code at all
-RESET                 00        # reset to "normal" color
 FILE                  00        # regular file: use no color at all
+RESET                 0         # reset to "normal" color
 DIR                   01;34     # directory
-EXEC                  01;32     # files with execute permission
+EXEC                  01;32     # regular files with execute permission
 LINK                  01;36     # symbolic link
 MULTIHARDLINK         01;95     # regular file with more than one link
-ORPHAN                01;30;46  # symlink to nonexistent file
-MISSING               00;30;46  # nonexistent file pointed to by a symlink
+ORPHAN                01;30;46  # symlink to nonexistent file ...
+MISSING               00        # ... and the files they point to
 FIFO                  00;30;42  # pipe
 SOCK                  00;30;45  # socket
-DOOR                  00;30;45  # door (not in linux)
+DOOR                  00;30;45  # door
 BLK                   01;91     # block device driver
 CHR                   01;33     # character device driver
-SETUID                01;95;41  # file that is setuid (u+s)
-SETGID                01;30;41  # file that is setgid (g+s)
-CAPABILITY            00;30;41  # file with capability
-OTHER_WRITABLE        01;95;101 # dir that is other-writable (o+w) and not sticky
-STICKY_OTHER_WRITABLE 01;30;101 # dir that is sticky (not in linux) and other-writable (+t,o+w)
-STICKY                00;30;43  # dir with the sticky bit set (+t) (not in linux) and not other-writable
-
-# List any file extensions like '.gz' or '.tar' that you would like ls
-# to colorize below. Put the extension, a space, and the color init string.
-# (and any comments you want to add after a '#')
-# If you use DOS-style suffixes, you may want to uncomment the following:
-#.cmd 01;32 # executables (bright green)
-#.exe 01;32
-#.com 01;32
-#.btm 01;32
-#.bat 01;32
-# Or if you want to colorize scripts even if they do not have the
-# executable bit actually set.
-#.sh 01;32
-#.csh 01;32
+SETUID                01;30;41  # regular file that is setuid (u+s)
+SETGID                00;30;41  # regular file that is setgid (g+s)
+CAPABILITY            00        # regular file with capability (very expensive to lookup)
+OTHER_WRITABLE        01;31     # dir that is other-writable (o+w) and not sticky
+STICKY_OTHER_WRITABLE 01;31;103 # dir that is sticky and other-writable (+t,o+w)
+STICKY                01;37;103 # dir with the sticky bit set (+t) and not other-writable
 
 # code files
-*.asm  00;33
-*.c    00;33
-*.cpp  00;33
-*.cs   00;33
-*.cxx  00;33
-*.c++  00;33
-*.erb  00;33
-*.erl  00;33
-*.fs   00;33
-*.go   00;33
-*.h    00;33
-*.hpp  00;33
-*.hs   00;33
-*.hxx  00;33
-*.h++  00;33
-*.java 00;33
-*.js   00;33
-*.l    00;33
-*.lisp 00;33
-*.lua  00;33
-*.ml   00;33
-*.mli  00;33
-*.mll  00;33
-*.mly  00;33
-*.php  00;33
-*.pl   00;33
-*.pm   00;33
-*.py   00;33
-*.rb   00;33
-*.sml  00;33
-*.t    00;33
-*.tcl  00;33
-*.vb   00;33
-*.y    00;33
+.ada   00;33
+.adb   00;33
+.ads   00;33
+.asm   00;33
+.c     00;33
+.cc    00;33
+.clj   00;33
+.cljs  00;33
+.cpp   00;33
+.cr    00;33
+.cs    00;33
+.csx   00;33
+.cxx   00;33
+.c++   00;33
+.d     00;33
+.dart  00;33
+.elm   00;33
+.erb   00;33
+.erl   00;33
+.ex    00;33
+.exs   00;33
+.f     00;33
+.fs    00;33
+.fsx   00;33
+.gleam 00;33
+.go    00;33
+.gvy   00;33
+.h     00;33
+.hh    00;33
+.hpp   00;33
+.hs    00;33
+.hxx   00;33
+.hy    00;33
+.h++   00;33
+.idr   00;33
+.java  00;33
+.jl    00;33
+.js    00;33
+.kt    00;33
+.kts   00;33
+.l     00;33
+.lisp  00;33
+.lsp   00;33
+.lua   00;33
+.m     00;33
+.ml    00;33
+.mli   00;33
+.mll   00;33
+.mly   00;33
+.nim   00;33
+.nims  00;33
+.php   00;33
+.pl    00;33
+.plx   00;33
+.pm    00;33
+.py    00;33
+.r     00;33
+.raku  00;33
+.rb    00;33
+.rs    00;33
+.sc    00;33
+.scala 00;33
+.scm   00;33
+.sml   00;33
+.swift 00;33
+.t     00;33
+.tcl   00;33
+.vala  00;33
+.vb    00;33
+.y     00;33
+.zig   00;33
 
 # scripts
-#.awk  00;33
-#.bat  00;33
-#.bash 00;33
-#.sed  00;33
-#.sh   00;33
-#.vim  00;33
-#.zsh  00;33
+.awk   00;33
+.bat   00;33
+.bash  00;33
+.cmd   00;33
+.csh   00;33
+.fish  00;33
+.sh    00;33
+.zsh   00;33
 
-# markup lang files
-#.css      00;33
-#.htm      00;33
-#.html     00;33
-#.json     00;33
-#.markdown 00;33
-#.md       00;33
-#.sql      00;33
-#.tex      00;33
-#.theme    00;33
-#.ui       00;33
-#.xaml     00;33
-#.xml      00;33
-#.yml      00;33
+# archives or compressed
+.7z    00;31
+.a     00;31
+.ace   00;31
+.alz   00;31
+.apk   00;31
+.arc   00;31
+.arj   00;31
+.bz    00;31
+.bz2   00;31
+.cab   00;31
+.cpio  00;31
+.deb   00;31
+.drpm  00;31
+.dz    00;31
+.ear   00;31
+.gz    00;31
+.ipk   00;31
+.jar   00;31
+.lha   00;31
+.lrz   00;31
+.lz    00;31
+.lz4   00;31
+.lzh   00;31
+.lzma  00;31
+.lzo   00;31
+.rar   00;31
+.rpm   00;31
+.rz    00;31
+.t7z   00;31
+.tar   00;31
+.taz   00;31
+.tbz   00;31
+.tbz2  00;31
+.tgz   00;31
+.tlz   00;31
+.txz   00;31
+.tz    00;31
+.tzo   00;31
+.tzst  00;31
+.udeb  00;31
+.war   00;31
+.xz    00;31
+.Z     00;31
+.zip   00;31
+.zoo   00;31
+.zst   00;31
 
-# config files
-#.conf   00;33
-#.config 00;33
-#.ini    00;33
+# disk image formats
+.b5i   00;91
+.b6i   00;91
+.bin   00;91
+.bwi   00;91
+.bws   00;91
+.c2d   00;91
+.cif   00;91
+.cso   00;91
+.daa   00;91
+.dao   00;91
+.dmg   00;91
+.ecm   00;91
+.esd   00;91
+.fcd   00;91
+.gi    00;91
+.ibq   00;91
+.img   00;91
+.iso   00;91
+.isz   00;91
+.mdf   00;91
+.nrg   00;91
+.pdi   00;91
+.qcow  00;91
+.qcow2 00;91
+.smi   00;91
+.swm   00;91
+.tao   00;91
+.tib   00;91
+.udf   00;91
+.vdi   00;91
+.vhd   00;91
+.vhdx  00;91
+.vmdk  00;91
+.wim   00;91
 
-#.diff   00;33
-#.patch  00;33
+# image formats
+.art   00;35
+.avci  00;35
+.avcs  00;35
+.avif  00;35
+.avifs 00;35
+.bmp   00;35
+.bpg   00;35
+.cdr   00;35
+.cdt   00;35
+.cgm   00;35
+.clip  00;35
+.cpt   00;35
+.cr2   00;35
+.crw   00;35
+.dib   00;35
+.drw   00;35
+.ecw   00;35
+.emf   00;35
+.erf   00;35
+.fit   00;35
+.fits  00;35
+.flif  00;35
+.fts   00;35
+.gif   00;35
+.hdp   00;35
+.heic  00;35
+.heics 00;35
+.heif  00;35
+.heifs 00;35
+.hif   00;35
+.icb   00;35
+.ico   00;35
+.ief   00;35
+.iff   00;35
+.j2c   00;35
+.j2k   00;35
+.jfi   00;35
+.jfif  00;35
+.jif   00;35
+.jng   00;35
+.jp2   00;35
+.jpc   00;35
+.jpg2  00;35
+.jpeg  00;35
+.jpg   00;35
+.jpe   00;35
+.jpf   00;35
+.jpm   00;35
+.jpx   00;35
+.jxl   00;35
+.jxr   00;35
+.kra   00;35
+.lbm   00;35
+.mj2   00;35
+.mjpg  00;35
+.mjpeg 00;35
+.nef   00;35
+.orf   00;35
+.pat   00;35
+.pbm   00;35
+.pcx   00;35
+.pgf   00;35
+.pgm   00;35
+.png   00;35
+.pnm   00;35
+.ppm   00;35
+.psd   00;35
+.psp   00;35
+.ras   00;35
+.rbg   00;35
+.rgb   00;35
+.sgi   00;35
+.sun   00;35
+.svg   00;35
+.svgz  00;35
+.tga   00;35
+.tif   00;35
+.tiff  00;35
+.vda   00;35
+.wbmp  00;35
+.wdp   00;35
+.webp  00;35
+.xbm   00;35
+.xcf   00;35
+.xpm   00;35
+.xwd   00;35
 
-# text files
-#.csv          00;33
-#.info         00;33
-#.log          00;33
-#.nfo          00;33
-#.out          00;33
-#.srt          00;33
-#.txt          00;33
+# video formats
+.3g2   00;95
+.3gp   00;95
+.amv   00;95
+.asf   00;95
+.asx   00;95
+.axv   00;95
+.avi   00;95
+.dl    00;95
+.dif   00;95
+.drc   00;95
+.dv    00;95
+.f4p   00;95
+.f4v   00;95
+.flc   00;95
+.fli   00;95
+.flv   00;95
+.gl    00;95
+.lsf   00;95
+.lsx   00;95
+.m2v   00;95
+.m4p   00;95
+.m4v   00;95
+.mkv   00;95
+.mng   00;95
+.mov   00;95
+.movie 00;95
+.mp4   00;95
+.mp4v  00;95
+.mpe   00;95
+.mpeg  00;95
+.mpg   00;95
+.mpv   00;95
+.mts   00;95
+.mxf   00;95
+.mxu   00;95
+.nsv   00;95
+.nuv   00;95
+.ogm   00;95
+.ogv   00;95
+.ogx   00;95
+.qt    00;95
+.rm    00;95
+.rmvb  00;95
+.svi   00;95
+.ts    00;95
+.vob   00;95
+.webm  00;95
+.wm    00;95
+.wmv   00;95
+.wmx   00;95
+.wvx   00;95
+.yuv   00;95
 
-*CONTRIBUTING 01;30;47
-*COPYING      01;30;47
-*LICENSE      01;30;47
-*Makefile     01;30;47
-*MANIFEST     01;30;47
-*README       01;30;47
-
-# fonts
-#.afm 00;96
-#.otf 00;96
-#.pcf 00;96
-#.pfb 00;96
-#.pfm 00;96
-#.psf 00;96
-#.ttf 00;96
+# audio formats
+.aa    00;36
+.aa3   00;36
+.aac   00;36
+.aax   00;36
+.adif  00;36
+.adts  00;36
+.aea   00;36
+.aif   00;36
+.aifc  00;36
+.aiff  00;36
+.alac  00;36
+.amr   00;36
+.ape   00;36
+.at3   00;36
+.at9   00;36
+.atp   00;36
+.au    00;36
+.awb   00;36
+.axa   00;36
+.caf   00;36
+.cda   00;36
+.dss   00;36
+.dvf   00;36
+.f4a   00;36
+.flac  00;36
+.gsm   00;36
+.hma   00;36
+.m4a   00;36
+.m4b   00;36
+.m4p   00;36
+.m4r   00;36
+.mid   00;36
+.midi  00;36
+.mka   00;36
+.mmf   00;36
+.mogg  00;36
+.mp1   00;36
+.mp2   00;36
+.mp3   00;36
+.mpc   00;36
+.mpga  00;36
+.mpega 00;36
+.mpp   00;36
+.msv   00;36
+.nmf   00;36
+.oga   00;36
+.ogg   00;36
+.oma   00;36
+.omg   00;36
+.opus  00;36
+.orc   00;36
+.pcm   00;36
+.ra    00;36
+.rf64  00;36
+.rm    00;36
+.sd2   00;36
+.shn   00;36
+.sln   00;36
+.snd   00;36
+.spx   00;36
+.tta   00;36
+.voc   00;36
+.wav   00;36
+.wave  00;36
+.wax   00;36
+.wma   00;36
+.wv    00;36
+.wvc   00;36
 
 # backups, undo files, tempfiles
-*~          01;93
-*.bak       01;93
-*.bin       01;93
-*.lock      01;93
-*.pid       01;93
-*.swp       01;93
-*.tmp       01;93
-*.zcompdump 01;93
-*.zwc       01;93
-
-# databases
-#.db     00;96
-#.mdb    00;96
-#.dump   00;96
-#.sqlite 00;96
-
-# documents
-#.cbr  00;91
-#.cbz  00;91
-#.chm  00;91
-#.djv  00;91
-#.djvu 00;91
-#.eps  00;91
-#.odb  00;91
-#.odp  00;91
-#.ods  00;91
-#.odt  00;91
-#.pdf  00;91
-
-# archives or compressed (bright red)
-*.7z   01;31
-*.a    01;31
-*.ace  01;31
-*.apk  01;31
-*.arj  01;31
-*.bz   01;31
-*.bz2  01;31
-*.cab  01;31
-*.cpio 01;31
-*.deb  01;31
-*.gz   01;31
-*.ipk  01;31
-*.jar  01;31
-*.lz   01;31
-*.lzh  01;31
-*.lzma 01;31
-*.part 01;31
-*.rar  01;31
-*.rpm  01;31
-*.tar  01;31
-*.taz  01;31
-*.tbz  01;31
-*.tbz2 01;31
-*.tgz  01;31
-*.tlz  01;31
-*.txz  01;31
-*.tz   01;31
-*.udeb 01;31
-*.war  01;31
-*.xz   01;31
-*.z    01;31
-*.Z    01;31
-*.zip  01;31
-
-# images (red)
-*.iso  00;31
-*.nrg  00;31
-*.qcow 00;31
-*.vdi  00;31
-
-# pictures (bright magenta)
-*.gif  01;35
-*.ief  01;35
-*.jp2  01;35
-*.jpg2 01;35
-*.jpeg 01;35
-*.jpg  01;35
-*.jpe  01;35
-*.jpm  01;35
-*.jpx  01;35
-*.jpf  01;35
-*.pcx  01;35
-*.png  01;35
-*.svg  01;35
-*.svgz 01;35
-*.tiff 01;35
-*.tif  01;35
-*.ico  01;35
-*.wbmp 01;35
-*.cr2  01;35
-*.crw  01;35
-*.ras  01;35
-*.cdr  01;35
-*.pat  01;35
-*.cdt  01;35
-*.cpt  01;35
-*.erf  01;35
-*.art  01;35
-*.jng  01;35
-*.bmp  01;35
-*.nef  01;35
-*.orf  01;35
-*.psd  01;35
-*.pnm  01;35
-*.pbm  01;35
-*.pgm  01;35
-*.ppm  01;35
-*.rgb  01;35
-*.xbm  01;35
-*.xpm  01;35
-*.xwd  01;35
-
-# video (magenta)
-*.3gp   00;35
-*.axv   00;35
-*.dl    00;35
-*.dif   00;35
-*.dv    00;35
-*.fli   00;35
-*.gl    00;35
-*.mpeg  00;35
-*.mpg   00;35
-*.mpe   00;35
-*.ts    00;35
-*.mp4   00;35
-*.qt    00;35
-*.mov   00;35
-*.ogv   00;35
-*.webm  00;35
-*.mxu   00;35
-*.flv   00;35
-*.lsf   00;35
-*.lsx   00;35
-*.mng   00;35
-*.asf   00;35
-*.asx   00;35
-*.wm    00;35
-*.wmv   00;35
-*.wmx   00;35
-*.wvx   00;35
-*.avi   00;35
-*.movie 00;35
-*.mpv   00;35
-*.mkv   00;35
-
-# audio (cyan)
-*.amr   00;36
-*.awb   00;36
-*.axa   00;36
-*.au    00;36
-*.snd   00;36
-*.csd   00;36
-*.orc   00;36
-*.sco   00;36
-*.flac  00;36
-*.mid   00;36
-*.midi  00;36
-*.kar   00;36
-*.mpga  00;36
-*.mpega 00;36
-*.mp2   00;36
-*.mp3   00;36
-*.m4a   00;36
-*.m3u   00;36
-*.oga   00;36
-*.ogg   00;36
-*.opus  00;36
-*.spx   00;36
-*.sid   00;36
-*.aif   00;36
-*.aiff  00;36
-*.aifc  00;36
-*.gsm   00;36
-*.m3u   00;36
-*.wma   00;36
-*.wax   00;36
-*.ra    00;36
-*.rm    00;36
-*.ram   00;36
-*.ra    00;36
-*.pls   00;36
-*.sd2   00;36
-*.wav   00;36
+*~         00;94
+*#         00;94
+.bak       00;94
+.bin       00;94
+.dpkg-dist 00;94
+.dpkg-new  00;94
+.dpkg-old  00;94
+.dpkg-tmp  00;94
+.lock      00;94
+.old       00;94
+.orig      00;94
+.part      00;94
+.pid       00;94
+.rpmnew    00;94
+.rpmorig   00;94
+.rpmsave   00;94
+.swp       00;94
+.tmp       00;94
+.ucf-dist  00;94
+.ucf-new   00;94
+.ucf-old   00;94
+.zcompdump 00;94
+.zwc       00;94
 
 # vim: ft=dircolors et ts=4 sts=4 sw=4
