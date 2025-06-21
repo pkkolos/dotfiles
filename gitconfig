@@ -77,7 +77,7 @@
 [mergetool "meld"]
 	hasOutput = true
 [pager]
-	log = less -FX
+	log = less -F
 [pretty]
 	graph = format:%C(auto,yellow)%h %C(auto,blue bold)%aN -%C(auto,red)%d%Creset %s %C(auto,green)(%cd)%Creset
 [push]
