@@ -1,5 +1,6 @@
 neomutt/accounts/gmail filter=mail
 neomutt/accounts/outlook filter=mail
+neomutt/accounts/protonmail filter=mail
 neomutt/neomuttrc filter=mail
 mbsyncrc filter=mail
 msmtp.config filter=mail

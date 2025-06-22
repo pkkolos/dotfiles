@@ -1,4 +1,4 @@
-set from      = "pkkolos@protonmail.com"
+set from      = "$username$@protonmail.com"
 set mbox      = "+ProtonMail/Archive"
 set postponed = "+ProtonMail/Drafts"
 set trash     = "+ProtonMail/Trash"
