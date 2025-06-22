@@ -147,6 +147,7 @@ window-rule {
 
 window-rule {
     match app-id="firefox$"
+    exclude title="^Save"
     exclude title="^About"
     exclude title="^Opening"
     exclude title="^Picture-in-Picture$"
