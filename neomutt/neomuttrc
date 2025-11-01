@@ -151,9 +151,9 @@ color index brightyellow  default "~N"      # new messages
 color index brightblue    default "~P"      # messages from me
 color index brightred     default "~F"      # flagged messages
 color index brightblack   red     "~D"      # deleted messages
-color index brightcyan    color10 "~v"      # collapsed thread
-color index brightyellow  color10 "~v~(~N)" # collapsed thread with some new
-color index brightred     color10 "~v~(~F)" # collapsed thread with some flagged
+color index brightcyan    color16 "~v"      # collapsed thread
+color index brightyellow  color16 "~v~(~N)" # collapsed thread with some new
+color index brightred     color16 "~v~(~F)" # collapsed thread with some flagged
 
 color hdrdefault magenta    default
 color header     brightred  default "^(From)"
@@ -168,12 +168,12 @@ color body brightblue   default "^-----BEGIN PGP SIGNATURE-----"
 color body brightblue   default "^-----END PGP SIGNED MESSAGE-----"
 color body brightblue   default "^-----END PGP SIGNATURE-----"
 
-color quoted  default color10
-color quoted1 default color11
+color quoted  default color16
+color quoted1 default color17
 color quoted2 default color08
-color quoted3 black   color12
+color quoted3 black   color18
 color quoted4 default color08
-color quoted5 default color11
+color quoted5 default color17
 
 # }}}
 # Sidebar Patch {{{

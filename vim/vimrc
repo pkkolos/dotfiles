@@ -10,7 +10,11 @@
     " --------------------------------------------------------------------------
         filetype plugin indent on
         syntax enable
-        set t_Co=16
+        let &t_Ce="\e[4:0m"
+        let &t_Us="\e[4:2m"
+        let &t_Cs="\e[4:3m"
+        let &t_ds="\e[4:4m"
+        let &t_Ds="\e[4:5m"
         set background=dark
         colorscheme darkarc
     " }}}

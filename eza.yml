@@ -10,11 +10,11 @@ filekinds:
     is_bold: false
     is_reverse: true
   block_device:
-    foreground: LightRed
+    foreground: 20
 
 file_type:
   video:
-    foreground: LightPurple
+    foreground: 21
     is_bold: false
   lossless:
     is_bold: false
@@ -36,7 +36,7 @@ links:
   normal:
     is_bold: false
   multi_link_file:
-    foreground: LightPurple
+    foreground: 21
     background: Default
 
 size:
@@ -47,13 +47,13 @@ size:
     foreground: Yellow
     is_bold: false
   number_mega:
-    foreground: LightRed
+    foreground: 20
   unit_mega:
-    foreground: LightRed
+    foreground: 20
   number_huge:
-    foreground: LightPurple
+    foreground: 21
   unit_huge:
-    foreground: LightPurple
+    foreground: 21
 
 users:
   user_you:
