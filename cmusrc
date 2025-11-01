@@ -1,0 +1,115 @@
+set color_cmdline_attr=default
+set color_cmdline_bg=default
+set color_cmdline_fg=default
+
+set color_error=lightred
+set color_info=lightyellow
+set color_separator=blue
+set color_statusline_attr=default
+set color_statusline_bg=default
+set color_statusline_fg=default
+set color_titleline_attr=reverse
+set color_titleline_bg=default
+set color_titleline_fg=lightgreen
+set color_trackwin_album_attr=bold
+set color_trackwin_album_bg=default
+set color_trackwin_album_fg=default
+
+set color_win_dir=lightblue
+set color_win_attr=default
+set color_win_bg=default
+set color_win_fg=default
+set color_win_cur=lightred
+set color_win_cur_attr=default
+set color_win_cur_sel_attr=reverse
+set color_win_cur_sel_bg=default
+set color_win_cur_sel_fg=lightred
+set color_win_sel_attr=reverse
+set color_win_sel_bg=default
+set color_win_sel_fg=lightblue
+set color_win_title_attr=reverse
+set color_win_title_bg=default
+set color_win_title_fg=lightmagenta
+
+set color_win_inactive_cur_sel_attr=default
+set color_win_inactive_cur_sel_bg=darkgray
+set color_win_inactive_cur_sel_fg=lightred
+set color_win_inactive_sel_attr=default
+set color_win_inactive_sel_bg=darkgray
+set color_win_inactive_sel_fg=black
+
+set continue=false
+set continue_album=false
+set output_plugin=pulse
+set replaygain=album
+set resume=false
+set shuffle=false
+set softvol=false
+set stop_after_queue=true
+set time_show_leading_zero=true
+
+unbind -f common !
+unbind -f common b
+unbind -f common h
+unbind -f common g
+unbind -f common l
+unbind -f common v
+unbind -f common C
+unbind -f common D
+unbind -f common G
+unbind -f common I
+unbind -f common P
+unbind -f common ^C
+unbind -f common ^R
+unbind -f common left
+unbind -f common right
+unbind -f common mlb_click_selected
+bind -f common x player-play
+bind -f common p player-pause
+bind -f common s player-stop
+bind -f common < player-prev
+bind -f common > player-next
+bind -f common c toggle continue
+bind -f common z toggle shuffle
+bind -f common r toggle repeat
+bind -f common R toggle repeat_current
+bind -f common m toggle aaa_mode
+bind -f common M toggle play_library
+bind -f common o toggle play_sorted
+bind -f common t toggle show_remaining_time
+bind -f common f toggle follow
+bind -f common , vol -5%
+bind -f common . vol +5%
+bind -f common { seek -5
+bind -f common } seek +5
+bind -f common [ seek -1m
+bind -f common ] seek +1m
+bind -f common a win-add-l
+bind -f common y win-add-p
+bind -f common e win-add-q
+bind -f common E win-add-Q
+bind -f common d win-remove
+bind -f common delete win-remove
+bind -f common space win-toggle
+bind -f common enter win-activate
+bind -f common i win-sel-cur
+bind -f common j win-mv-after
+bind -f common k win-mv-before
+bind -f common ^F win-page-down
+bind -f common ^B win-page-up
+bind -f common ^D win-half-page-down
+bind -f common ^U win-half-page-up
+bind -f common ^E win-scroll-down
+bind -f common ^Y win-scroll-up
+bind -f common U win-update-cache
+bind -f common u update-cache
+bind -f common F push filter
+bind -f common L push live-filter
+
+unbind -f browser i
+unbind -f browser space
+bind -f browser u win-update
+bind -f browser h toggle show_hidden
+bind -f browser backspace browser-up
+
+# vim: ft=cmusrc

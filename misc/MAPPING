@@ -22,13 +22,13 @@ zsh ~/.config/zsh
 alacritty.toml ~/.config/alacritty/alacritty.toml
 bat.config ~/.config/bat/config
 bspwmrc ~/.config/bspwm/bspwmrc
-eza.yml ~/.config/eza/theme.yml
-fuzzel.ini ~/.config/fuzzel/fuzzel.ini
-picom.conf ~/.config/picom/picom.conf
+cmusrc ~/.config/cmus/rc
 conky.conf ~/.config/conky/conky.conf
 dirmngr.conf ~/.gnupg/dirmngr.conf
 dunstrc ~/.config/dunst/dunstrc
+eza.yml ~/.config/eza/theme.yml
 fonts.conf ~/.config/fontconfig/fonts.conf
+fuzzel.ini ~/.config/fuzzel/fuzzel.ini
 gitconfig ~/.config/git/config
 gpg.conf ~/.gnupg/gpg.conf
 gpg-agent.conf ~/.gnupg/gpg-agent.conf
@@ -42,6 +42,7 @@ msmtp.config ~/.config/msmtp/config
 niri-config.kdl ~/.config/niri/config.kdl
 notmuch.config ~/.config/notmuch/config
 open-terminal.py ~/.local/share/nautilus-python/extensions/open-terminal.py
+picom.conf ~/.config/picom/picom.conf
 polybar.ini ~/.config/polybar/config.ini
 sbuild.pl ~/.config/sbuild/config.pl
 swaylock.config ~/.config/swaylock/config

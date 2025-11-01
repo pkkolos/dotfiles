@@ -11,6 +11,7 @@ urxvt-scripts
 vim
 alacritty.toml
 cdrdao
+cmusrc
 conky.conf
 fonts.conf
 gbp.conf

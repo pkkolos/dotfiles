@@ -10,6 +10,7 @@ vim
 alacritty.toml
 bat.config
 cdrdao
+cmusrc
 eza.yml
 fonts.conf
 gbp.conf
