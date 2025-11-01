@@ -1,11 +1,9 @@
 spawn-at-startup "swaybg" "-i" "/home/panagiotis/Pictures/.wallpaper"
-spawn-at-startup "xwayland-satellite"
 
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 prefer-no-csd
 
 environment {
-    DISPLAY ":0"
     XDG_CURRENT_DESKTOP "niri:GNOME"
 }
 
