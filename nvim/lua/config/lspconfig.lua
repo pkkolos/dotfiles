@@ -1,6 +1,3 @@
-local nvim_lsp = require 'lspconfig'
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-
 -- Mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
 local opts = { noremap=true, silent=true }
@@ -28,8 +25,10 @@ local on_attach = function(client, bufnr)
   -- vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
 end
 
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
 -- Enable rust_analyzer
-nvim_lsp.rust_analyzer.setup({
+vim.lsp.config('rust_analyzer', {
     on_attach = on_attach,
     capabilities = capabilities,
     -- Server-specific settings...
@@ -37,3 +36,4 @@ nvim_lsp.rust_analyzer.setup({
         ["rust-analyzer"] = {}
     }
 })
+vim.lsp.enable('rust_analyzer')

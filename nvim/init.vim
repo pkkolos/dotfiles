@@ -46,7 +46,6 @@
     " --------------------------------------------------------------------------
         set shell=$SHELL
         set grepprg=grep\ -nH\ $*
-        set pastetoggle=<F3>
 
         set title         "set the title of the window
         set mouse=a       "use mouse in normal, visual, insert and command mode
@@ -151,8 +150,6 @@
         "       didn't exist when editing it.  This is a protection against a
         "       file unexpectedly created by someone else.  Vi didn't complain
         "       about this.
-        " p -   Vi compatible Lisp indenting.  When not present, a slightly
-        "       better algorithm is used.
         " P -   When included, a ":write" command that appends to a file will
         "       set the file name for the current buffer, if the current buffer
         "       doesn't have a file name yet and the 'F' flag is also included
