@@ -3,7 +3,6 @@ TAG:gpg
 TAG:gtk
 TAG:mail
 TAG:zsh
-moc.themes
 mpv
 ncmpcpp
 nvim
@@ -17,7 +16,6 @@ fonts.conf
 gbp.conf
 gitconfig
 khal.config
-moc.config
 mpd.conf
 open-terminal.py
 reportbugrc

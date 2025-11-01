@@ -5,7 +5,6 @@ environment.d ~/.config/environment.d
 gtk3 ~/.config/gtk-3.0
 gtk4 ~/.config/gtk-4.0
 liquidprompt ~/.config/liquidprompt
-moc.themes ~/.moc/themes
 mpv ~/.config/mpv
 ncmpcpp ~/.config/ncmpcpp
 neomutt ~/.config/neomutt
@@ -36,7 +35,6 @@ khal.config ~/.config/khal/config
 khard.conf ~/.config/khard/khard.conf
 mako.config ~/.config/mako/config
 mbsyncrc ~/.config/isyncrc
-moc.config ~/.moc/config
 mpd.conf ~/.config/mpd/mpd.conf
 msmtp.config ~/.config/msmtp/config
 niri-config.kdl ~/.config/niri/config.kdl
