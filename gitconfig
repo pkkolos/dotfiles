@@ -41,6 +41,8 @@
 [annex]
 	dotfiles = true
 	gitaddtoannex = false
+[branch]
+	sort = -committerdate
 [color]
 	ui = auto
 [color "diff"]
@@ -82,10 +84,18 @@
 	graph = format:%C(auto,yellow)%h %C(auto,blue bold)%aN -%C(auto,red)%d%Creset %s %C(auto,green)(%cd)%Creset
 [push]
 	default = simple
+	followTags = true
+[rebase]
+	updateRefs = true
+[rerere]
+	enabled = true
+	autoupdate = true
 [stash]
 	showPatch = true
 [status]
 	branch = true
+[tag]
+	sort = version:refname
 [tar "tar.xz"]
 	command = xz -c
 [user]
