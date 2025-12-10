@@ -3,7 +3,6 @@ ipc_socket = false
 
 [window]
 decorations = "full"
-startup_mode = "Maximized"
 
 [window.dimensions]
 columns = 80
