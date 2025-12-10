@@ -1,11 +1,11 @@
 # Paths {{{
 # ------------------------------------------------------------------------------
-set alias_file       = ~/.config/neomutt/aliases
-set mailcap_path     = ~/.config/neomutt/mailcap
-set signature        = ~/.config/neomutt/sig
-set certificate_file = ~/.local/share/neomutt/certs
-set header_cache     = ~/.cache/neomutt/hdr/
-set message_cachedir = ~/.cache/neomutt/bod/
+set alias_file        = ~/.config/neomutt/aliases
+set mailcap_path      = ~/.config/neomutt/mailcap
+set signature         = ~/.config/neomutt/sig
+set certificate_file  = ~/.local/share/neomutt/certs
+set header_cache      = ~/.cache/neomutt/hdr/
+set message_cache_dir = ~/.cache/neomutt/bod/
 
 # }}}
 # Editor {{{
@@ -118,15 +118,13 @@ alternates "$username$@(gmail|hotmail|outlook|protonmail)\.com"
 source ~/.local/share/neomutt/local_mailboxes
 source ~/.local/share/neomutt/mailboxes
 source ~/.local/share/neomutt/mlists
-source ~/.config/neomutt/accounts/gmail
+source ~/.config/neomutt/accounts/outlook
 
-folder-hook Archive/* source ~/.config/neomutt/accounts/local
-folder-hook Gmail/*   source ~/.config/neomutt/accounts/gmail
-folder-hook Local/*   source ~/.config/neomutt/accounts/local
-folder-hook Outlook/* source ~/.config/neomutt/accounts/outlook
+folder-hook Archive/*    source ~/.config/neomutt/accounts/local
+folder-hook Gmail/*      source ~/.config/neomutt/accounts/gmail
+folder-hook Local/*      source ~/.config/neomutt/accounts/local
+folder-hook Outlook/*    source ~/.config/neomutt/accounts/outlook
 folder-hook ProtonMail/* source ~/.config/neomutt/accounts/protonmail
-
-shutdown-hook 'echo "`notmuch new --quiet`"'
 
 # }}}
 # Colour Theme {{{
