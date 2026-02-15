@@ -38,6 +38,7 @@ set quit             # quit without asking
 set timeout = 10     # idle time before update status
 set mail_check = 5   # time before scan for folder changes
 set thorough_search  # decode headers & attachments before searching
+unset crypt_use_gpgme
 
 # }}}
 # Status Bar {{{
