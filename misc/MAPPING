@@ -1,6 +1,3 @@
-bin/external_rules ~/.local/bin/external_rules
-bin/lock ~/.local/bin/lock
-bin/rofi_power_menu ~/.local/bin/rofi_power_menu
 environment.d ~/.config/environment.d
 gtk3 ~/.config/gtk-3.0
 gtk4 ~/.config/gtk-4.0
@@ -10,7 +7,6 @@ ncmpcpp ~/.config/ncmpcpp
 neomutt ~/.config/neomutt
 nvim ~/.config/nvim
 nwg-bar ~/.config/nwg-bar
-rofi ~/.config/rofi
 systemd/mbsync.service ~/.config/systemd/user/mbsync.service
 systemd/mbsync.timer ~/.config/systemd/user/mbsync.timer
 systemd/swayidle.service ~/.config/systemd/user/swayidle.service
@@ -20,7 +16,6 @@ waybar ~/.config/waybar
 zsh ~/.config/zsh
 alacritty.toml ~/.config/alacritty/alacritty.toml
 bat.config ~/.config/bat/config
-bspwmrc ~/.config/bspwm/bspwmrc
 cmusrc ~/.config/cmus/rc
 conky.conf ~/.config/conky/conky.conf
 dirmngr.conf ~/.gnupg/dirmngr.conf
@@ -40,10 +35,7 @@ msmtp.config ~/.config/msmtp/config
 niri-config.kdl ~/.config/niri/config.kdl
 notmuch.config ~/.config/notmuch/config
 open-terminal.py ~/.local/share/nautilus-python/extensions/open-terminal.py
-picom.conf ~/.config/picom/picom.conf
-polybar.ini ~/.config/polybar/config.ini
 sbuild.pl ~/.config/sbuild/config.pl
 swaylock.config ~/.config/swaylock/config
-sxhkdrc ~/.config/sxhkd/sxhkdrc
 task.config ~/.config/task/config
 tmux.conf ~/.config/tmux/tmux.conf
