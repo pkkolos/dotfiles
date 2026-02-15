@@ -37,35 +37,6 @@
 
 *.saveLines:       4000
 
-URxvt.title:           URxvt
-URxvt.font:            xft:DejaVu Sans Mono:size=10
-URxvt.intensityStyles: false
-
-URxvt.scrollstyle:       plain
-URxvt.scrollBar_right:   true
-URxvt.jumpScroll:        true
-URxvt.skipScroll:        false
-URxvt.scrollTtyOutput:   false
-URxvt.scrollWithBuffer:  true
-URxvt.scrollTtyKeypress: true
-URxvt.secondaryScroll:   false
-
-URxvt.iso14755:    false
-URxvt.iso14755_52: false
-
-URxvt.perl-ext-common:    eval,confirm-paste,font-size,fullscreen,vtwheel
-URxvt.keysym.C-Up:        command:\033]720;1\007
-URxvt.keysym.C-Down:      command:\033]721;1\007
-URxvt.keysym.S-Up:        command:\033]720;10\007
-URxvt.keysym.S-Down:      command:\033]721;10\007
-URxvt.keysym.C-S-C:       eval:selection_to_clipboard
-URxvt.keysym.C-S-V:       eval:paste_clipboard
-URxvt.keysym.M-plus:      perl:font-size:increase
-URxvt.keysym.M-equal:     perl:font-size:increase
-URxvt.keysym.M-minus:     perl:font-size:decrease
-URxvt.keysym.M-0:         perl:font-size:reset
-URxvt.keysym.F11:         perl:fullscreen:switch
-
 XTerm.title:     XTerm
 XTerm.termName:  xterm-256color
 XTerm.maximized: true

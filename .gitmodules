@@ -3,7 +3,3 @@
 	ignore = untracked
 	path = liquidprompt
 	url = git@pkkolos.github.com:pkkolos/liquidprompt.git
-[submodule "urxvt-scripts"]
-	ignore = untracked
-	path = urxvt-scripts
-	url = git@pkkolos.github.com:pkkolos/urxvt-scripts.git
