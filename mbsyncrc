@@ -128,12 +128,19 @@ Far :protonmail-remote:INBOX
 Near :protonmail-local:Inbox
 SyncState ~/.mail/.mbsync/ProtonMail/
 
-Channel protonmail-folders
+Channel protonmail-main-folders
 Far :protonmail-remote:
 Near :protonmail-local:
-Patterns * !INBOX !Inbox !Archive !Starred
+Patterns Drafts Sent Spam Trash
+SyncState ~/.mail/.mbsync/ProtonMail/
+
+Channel protonmail-other-folders
+Far :protonmail-remote:Folders/
+Near :protonmail-local:
+Patterns * !INBOX !Drafts !Sent !Spam !Trash !"All Mail"
 SyncState ~/.mail/.mbsync/ProtonMail/
 
 Group protonmail
 Channel protonmail-inbox
-Channel protonmail-folders
+Channel protonmail-main-folders
+Channel protonmail-other-folders
