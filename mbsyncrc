@@ -95,7 +95,7 @@ SyncState ~/.mail/.mbsync/Outlook/
 Channel outlook-folders
 Far :outlook-remote:
 Near :outlook-local:
-Patterns * !INBOX !Inbox !Archive !Deleted !Junk !Spam !Notes !Outbox
+Patterns * !INBOX !Inbox !Archive !Deleted !Junk !Spam !Notes !Outbox !Snoozed
 SyncState ~/.mail/.mbsync/Outlook/
 
 Group outlook
