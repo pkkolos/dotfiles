@@ -127,6 +127,8 @@ folder-hook Local/*      source ~/.config/neomutt/accounts/local
 folder-hook Outlook/*    source ~/.config/neomutt/accounts/outlook
 folder-hook ProtonMail/* source ~/.config/neomutt/accounts/protonmail
 
+shutdown-hook 'echo `notmuch --config ~/.config/notmuch/config new --quiet`'
+
 # }}}
 # Colour Theme {{{
 # ------------------------------------------------------------------------------
