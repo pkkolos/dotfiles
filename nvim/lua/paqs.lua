@@ -21,7 +21,6 @@ require "paq" {
     { 'tpope/vim-repeat', as = 'repeat' },
     { 'justinmk/vim-sneak', as = 'sneak' },
     { 'tpope/vim-surround', as = 'surround' },
-    { 'numToStr/Comment.nvim', as = 'comment', build = require('Comment').setup() },
 
     { 'crispgm/cmp-beancount', as = 'cmp-beancount' },
     { 'hrsh7th/cmp-buffer', as = 'cmp-buffer' },
