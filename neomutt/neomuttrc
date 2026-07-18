@@ -107,7 +107,7 @@ unset fcc_clear           # sign/encrypt attachments along with the message
 # }}}
 # Accounts {{{
 # ------------------------------------------------------------------------------
-set spool_file = "+Outlook/Inbox"
+set spool_file = "+ProtonMail/Inbox"
 set sendmail = "/usr/bin/msmtp"
 set sendmail_wait = 0  # wait for sendmail command to finish
 set use_envelope_from  # pass sender to sendmail command
@@ -115,6 +115,9 @@ unset record           # don't save outgoing messages, gmail & outlook do that
                        # for us; this avoids duplicate messages
 
 alternates "$username$@(gmail|hotmail|outlook|protonmail)\.com"
+alternates "$username$@(proton|pm)\.me"
+alternates "$username$@protonmail\.ch"
+alternates ".*@$domain$\.com"
 
 source ~/.local/share/neomutt/local_mailboxes
 source ~/.local/share/neomutt/mailboxes

@@ -67,8 +67,8 @@
 	renames = true
 	tool = vimdiff
 [filter "mail"]
-	clean = sed \"s/pkkolos@/\\$username\\$@/g\"
-	smudge = sed \"s/\\\\\\$username\\\\\\$/pkkolos/g\"
+	clean = sed -e 's/pkkolos@/$username$@/g' -e 's/@pkkolos/@$domain$/g'
+	smudge = sed -e 's/\\$username\\$/pkkolos/g' -e 's/\\$domain\\$/pkkolos/g'
 [help]
 	autocorrect = prompt
 [merge]
